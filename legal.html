@@ -71,7 +71,7 @@ details{background:var(--card);border:1px solid var(--line);border-radius:12px;p
 .cta{background:var(--tealx);color:#fff}.cta .wrap{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;padding-top:32px;padding-bottom:32px}.cta h2{margin:0;font-size:1.4rem}
 footer{background:var(--tealx);color:#CFE3E0;padding:24px 5vw;font-size:.88rem;margin-top:30px}
 @media(prefers-reduced-motion:reduce){.bg i,.spark,.hero .wrap>div:first-child{animation:none}}
-.em{flex-basis:100%;background:var(--rose);color:#fff;font-size:.82rem;font-weight:600;text-align:center;padding:5px 5vw;margin:-10px -5vw 2px}.em a{color:#fff;text-decoration:underline}
+.em{display:block;width:100%;background:var(--rose);color:#fff;font-size:.84rem;font-weight:600;text-align:center;padding:8px 16px;box-sizing:border-box}.em a{color:#fff;text-decoration:underline;font-weight:700}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.chip{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:4px 12px;font-size:.9rem}.chip b{color:var(--rose)}
 .warn{background:rgba(194,69,91,.14);border-left:4px solid var(--rose);border-radius:8px;padding:10px 14px;margin:12px 0;font-size:.92rem}
 .qx{background:var(--rose)!important;color:#fff!important;border-color:var(--rose)!important;font-weight:600}
@@ -80,8 +80,8 @@ footer{background:var(--tealx);color:#CFE3E0;padding:24px 5vw;font-size:.88rem;m
 </style>
 </head>
 <body>
+<div class="em" id="em"></div>
 <header>
-  <div class="em" id="em"></div>
   <div class="logo" onclick="go('home')"><svg width="30" height="30" viewBox="0 0 40 40" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6v26M11 34h18" stroke="#12504B"/><path d="M8 12h24" stroke="#F2A93B"/><path d="M8 12l-4 10c0 3 8 3 8 0zM32 12l-4 10c0 3 8 3 8 0z" stroke="#12504B"/></svg><span id="bn"></span></div>
   <a class="homelink" href="index.html">← Kaithangu · കൈത്താങ്ങ്</a><nav id="nav"></nav>
 </header>
