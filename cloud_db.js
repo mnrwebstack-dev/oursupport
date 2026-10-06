@@ -7,7 +7,7 @@
 
 const OURSUPPORT_CONFIG = {
   founderPhone: '9745226500',
-  brandName: 'OurSupport.in · കൈത്താങ്ങ്',
+  brandName: 'OruSupport.com · കൈത്താങ്ങ്',
   // Live Google Apps Script Web App URL:
   cloudApiUrl: 'https://script.google.com/macros/s/AKfycbwecAv29v2Y7y9wSIxrYL6mcovhnf4CrpD8tU5gk3eXmdZ6zlJQBZi8upHKj7Rz980avg/exec',
   adminPin: '974522' 
