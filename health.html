@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Free Health Support Service</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@400;600;800&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F1F5F4;--card:#fff;--ink:#16232B;--mute:#5A6B72;--teal:#12504B;--tealx:#0C3A36;--gold:#F2A93B;--rose:#C2455B;--line:#D9E2E0;--on:#fff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1A1C;--card:#172629;--ink:#E7F0EF;--mute:#9DB1B2;--teal:#3FA898;--tealx:#0A2A28;--line:#264043;--on:#0F1A1C}}
+:root[data-theme="dark"]{--bg:#0F1A1C;--card:#172629;--ink:#E7F0EF;--mute:#9DB1B2;--teal:#3FA898;--tealx:#0A2A28;--line:#264043;--on:#0F1A1C}
+html.hc{--bg:#000;--card:#000;--ink:#fff;--mute:#fff;--line:#fff;--teal:#FFD54A;--tealx:#000;--on:#000;--gold:#FFD54A}
+html.big{font-size:120%}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Poppins','Noto Sans Malayalam',system-ui,sans-serif;line-height:1.7}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;justify-content:space-between;padding:10px 5vw;background:var(--card);border-bottom:1px solid var(--line)}
+.logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:1.05rem;color:var(--teal);cursor:pointer;max-width:340px;line-height:1.3}
+nav{display:flex;gap:2px;flex-wrap:wrap;align-items:center}
+nav button{background:none;border:0;padding:6px 10px;border-radius:8px;font:inherit;font-size:.88rem;color:var(--ink);cursor:pointer}
+nav button.on{background:var(--teal);color:var(--on)}
+nav .lg{border:1px solid var(--line);margin-left:4px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 5vw}
+.hero{position:relative;overflow:hidden;background:var(--tealx);color:#fff}
+.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.3fr .7fr;gap:24px;align-items:center;padding-top:72px;padding-bottom:80px}
+.hero .wrap>div:first-child{animation:rise .9s ease-out both}
+.hero h1{font-size:clamp(1.8rem,4.6vw,3rem);line-height:1.3;margin:0 0 14px;font-weight:700}
+.hero p{max-width:56ch;color:#CFE3E0;font-size:1.05rem;margin:0 0 24px}
+.hero svg.art{width:100%;max-width:260px;justify-self:center}
+.hero svg.wave{position:absolute;left:0;bottom:-1px;width:100%;height:40px;z-index:1}
+@media(max-width:720px){.hero .wrap{grid-template-columns:1fr}.hero svg.art{max-width:150px}}
+.bg i{position:absolute;border-radius:50%;border:10px solid rgba(255,255,255,.07);animation:fl 16s ease-in-out infinite alternate}
+.bg i:nth-child(1){width:320px;height:320px;left:-90px;top:-100px}
+.bg i:nth-child(2){width:220px;height:220px;right:6%;bottom:-70px;border-color:rgba(242,169,59,.16);animation-delay:-5s}
+.bg i:nth-child(3){width:90px;height:90px;left:44%;top:14%;border-width:6px;animation-duration:11s}
+.bg i:nth-child(4){width:60px;height:60px;right:30%;top:10%;border-width:5px;border-color:rgba(242,169,59,.2);animation-duration:13s}
+@keyframes fl{from{transform:translate(0,0) rotate(0)}to{transform:translate(26px,-22px) rotate(25deg)}}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.spark{transform-box:fill-box;transform-origin:center;animation:pl 2.4s ease-in-out infinite}
+@keyframes pl{50%{transform:scale(1.2)}}
+.btn{background:var(--teal);color:var(--on);border:0;border-radius:10px;padding:11px 22px;font:inherit;font-weight:600;cursor:pointer}
+.btn.gold{background:var(--gold);color:#16232B}
+.btn.ghost{background:none;color:var(--ink);border:1px solid var(--line)}
+.btn.bad{background:var(--rose);color:#fff}
+.btn:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,nav button:focus-visible,summary:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.sec{padding:40px 0}.sec h2{font-size:1.6rem;margin:0 0 18px}.sec h2:after{content:"";display:block;width:44px;height:4px;background:var(--gold);border-radius:2px;margin-top:8px}
+.m{color:var(--mute);font-size:.93rem}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+.tile{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--gold);border-radius:12px;padding:18px;cursor:pointer;transition:transform .2s,box-shadow .2s;text-align:left;font:inherit;color:inherit}
+.tile:hover{transform:translateY(-4px);box-shadow:0 10px 24px rgba(18,80,75,.14)}
+.tile .ic{font-size:1.8rem}.tile b{display:block;margin:4px 0}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;counter-reset:s}
+.steps div{position:relative;padding-left:52px}
+.steps div:before{counter-increment:s;content:counter(s);position:absolute;left:0;top:0;width:38px;height:38px;border-radius:50%;background:var(--teal);color:var(--on);display:grid;place-items:center;font-weight:700}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;margin-top:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+label{display:block;font-size:.88rem;color:var(--mute);margin-bottom:2px}
+input,select,textarea{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit}
+input[type=checkbox]{width:auto}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-top:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:6px}
+.card h3{margin:0;font-size:1.05rem}
+.tag{display:inline-block;background:var(--bg);border:1px solid var(--line);border-radius:20px;padding:0 10px;font-size:.8rem;margin:2px 4px 0 0}
+.note{background:rgba(242,169,59,.18);border-radius:10px;padding:10px 14px;font-size:.9rem;margin-top:14px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap}.tabs button{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:20px;padding:7px 16px;font:inherit;cursor:pointer}.tabs button.on{background:var(--teal);color:var(--on);border-color:var(--teal)}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin-top:10px}summary{cursor:pointer;font-weight:600}
+.badge{display:inline-block;border-radius:20px;padding:1px 12px;font-size:.82rem;font-weight:600;background:rgba(242,169,59,.28)}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:10px;z-index:9}
+.tbl{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.9rem}td,th{border-bottom:1px solid var(--line);padding:8px;text-align:left;vertical-align:top}
+.cta{background:var(--tealx);color:#fff}.cta .wrap{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;padding-top:32px;padding-bottom:32px}.cta h2{margin:0;font-size:1.4rem}
+footer{background:var(--tealx);color:#CFE3E0;padding:24px 5vw;font-size:.88rem;margin-top:30px}
+@media(prefers-reduced-motion:reduce){.bg i,.spark,.hero .wrap>div:first-child{animation:none}}
+.em{flex-basis:100%;background:var(--rose);color:#fff;font-size:.82rem;font-weight:600;text-align:center;padding:5px 5vw;margin:-10px -5vw 2px}.em a{color:#fff;text-decoration:underline}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.chip{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:4px 12px;font-size:.9rem}.chip b{color:var(--rose)}
+.warn{background:rgba(194,69,91,.14);border-left:4px solid var(--rose);border-radius:8px;padding:10px 14px;margin:12px 0;font-size:.92rem}
+.homelink{font-size:.85rem;font-weight:600;color:var(--teal);text-decoration:none;border:1px solid var(--line);border-radius:20px;padding:4px 12px;white-space:nowrap}
+</style>
+</head>
+<body>
+<header>
+  <div class="em" id="em"></div>
+  <div class="logo" onclick="go('home')"><svg width="30" height="30" viewBox="0 0 40 40" fill="none" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 34C8 25 5 17 9 12c4-4 9-2 11 2 2-4 7-6 11-2 4 5 1 13-11 22z" stroke="#12504B"/><path d="M12 21h5l2-4 3 7 2-3h4" stroke="#F2A93B"/></svg><span id="bn"></span></div>
+  <a class="homelink" href="index.html">← Kaithangu · കൈത്താങ്ങ്</a><nav id="nav"></nav>
+</header>
+<div id="app"></div>
+<footer id="ft"></footer>
+<script src="cloud_db.js"></script>
+<script>
+const T={
+brand:['സൗജന്യ ആരോഗ്യ സഹായ സേവനം','Free Health Support Service'],
+home:['ഹോം','Home'],schemes:['സർക്കാർ പദ്ധതികൾ','Health schemes'],dir:['ഡയറക്ടറി','Directory'],req:['സഹായം ആവശ്യപ്പെടുക','Request help'],blood:['രക്തദാനം','Blood donors'],camps:['ക്യാമ്പുകൾ','Medical camps'],track:['അപേക്ഷയുടെ നില','Track request'],admin:['അഡ്മിൻ','Admin'],lang:['English','മലയാളം'],a11y:['അക്ഷര വലുപ്പം','Text size'],hcn:['ഉയർന്ന നിറവ്യത്യാസം','High contrast'],
+em1:['അടിയന്തരമെങ്കിൽ ഉടൻ വിളിക്കൂ:','Emergency? Call now:'],em2:['ഈ വെബ്സൈറ്റ് അടിയന്തര സേവനമല്ല.','This website is not an emergency service.'],
+h1:['ചികിത്സയ്ക്ക് മുമ്പ് ശരിയായ വിവരം','The right information before treatment'],
+sub:['ശരിയായ ആശുപത്രി, സർക്കാർ പദ്ധതി, രക്തദാതാവ്, സഹായ സ്ഥാപനം: കണ്ടെത്താൻ സൗജന്യ വഴികാട്ടി.','A free guide to the right hospital, government scheme, blood donor and aid institution.'],
+c1:['എനിക്ക് ഏത് പദ്ധതി കിട്ടും?','Which scheme can I get?'],c2:['സഹായം ആവശ്യപ്പെടുക','Request help'],whot:['ഞങ്ങൾ നൽകുന്ന സഹായം','How we help'],
+disc:['ഇത് ആശുപത്രിയോ വൈദ്യ ഉപദേശ സേവനമോ അല്ല. ഞങ്ങൾ രോഗനിർണയമോ കുറിപ്പടിയോ നൽകുന്നില്ല; യോഗ്യരായ ഡോക്ടർമാരിലേക്ക് വഴി കാണിക്കുക മാത്രമാണ് ചെയ്യുന്നത്.','This is not a hospital or a medical advice service. We do not diagnose or prescribe; we only guide you to qualified professionals.'],
+hw:['എങ്ങനെ പ്രവർത്തിക്കുന്നു','How it works'],s1:['ആവശ്യം പറയുക','Tell us what you need'],s1d:['കുറഞ്ഞ വിവരങ്ങൾ മാത്രം; രോഗവിവരം ചോദിക്കില്ല.','Minimal details only; we do not ask for your diagnosis.'],s2:['ശരിയായ വഴി കണ്ടെത്തുക','Find the right path'],s2d:['പദ്ധതികൾ, ആശുപത്രികൾ, സ്ഥാപനങ്ങൾ എന്നിവ കാണാം.','See schemes, hospitals and institutions.'],s3:['ഞങ്ങൾ ബന്ധിപ്പിക്കും','We connect you'],s3d:['ശരിയായ ആളിലേക്ക് എത്തുന്നതുവരെ ഞങ്ങൾ പിന്തുടരും.','We follow up until you reach the right place.'],
+ctat:['സഹായം വേണോ? ഇത് സൗജന്യമാണ്','Need help? It is free.'],
+demo:['ഇത് പരീക്ഷണ പതിപ്പാണ്. ആശുപത്രി, പദ്ധതി, സ്ഥാപന വിവരങ്ങൾ സാമ്പിൾ മാത്രം; പരിശോധിച്ച യഥാർത്ഥ വിവരങ്ങൾ പിന്നീട് ചേർക്കും. നൽകുന്ന വിവരങ്ങൾ ഈ ബ്രൗസറിൽ മാത്രം സൂക്ഷിക്കുന്നു.','This is a prototype. Hospital, scheme and institution data are samples and will be replaced with verified information. Anything you enter stays only in this browser.'],
+ft:['പരീക്ഷണ പതിപ്പ് · ബന്ധപ്പെടാനുള്ള വിവരങ്ങൾ ഇവിടെ ചേർക്കും','Prototype · Contact details to be added here'],f_all:['എല്ലാം','All'],no:['ഇല്ല','No'],yes:['ഉണ്ട്','Yes'],
+fq:['4 ചോദ്യങ്ങൾ, ഉടൻ ഫലം','Four questions, instant results'],ageg:['രോഗിയുടെ പ്രായ വിഭാഗം','Patient age group'],need:['എന്ത് സഹായം വേണം','Type of care'],inc:['കുടുംബ വാർഷിക വരുമാനം','Annual family income'],dis:['രോഗിക്ക് ഭിന്നശേഷി ഉണ്ടോ?','Does the patient have a disability?'],show:['പദ്ധതികൾ കാണിക്കുക','Show schemes'],
+res:['അർഹമായേക്കാവുന്നവ','You may be eligible for'],nores:['ചേരുന്നത് കണ്ടില്ല. സഹായത്തിനായി ഞങ്ങളോട് ചോദിക്കൂ.','Nothing matched. Ask us for help.'],elig:['അർഹത അന്തിമമായി ഉറപ്പാക്കേണ്ടത് ഔദ്യോഗിക സ്ഥലത്താണ്.','Final eligibility must be confirmed with the official authority.'],ask:['ഇതിന് സഹായം വേണം','I need help with this'],link:['ഔദ്യോഗിക ലിങ്ക്: ചേർക്കാനുണ്ട്','Official link: to be added'],chk:['അവസാനം പരിശോധിച്ചത്: ചേർക്കാനുണ്ട്','Last verified: to be added'],
+dt:['ഡയറക്ടറി','Directory'],d0:['ആശുപത്രികൾ','Hospitals'],d1:['സഹായ സ്ഥാപനങ്ങൾ','Aid institutions'],d2:['പാലിയേറ്റീവ് യൂണിറ്റുകൾ','Palliative units'],d3:['അടിയന്തര നമ്പറുകൾ','Emergency numbers'],dd:['ജില്ല','District'],dp:['വിഭാഗം','Department'],ty_:['തരം','Type'],gov:['സർക്കാർ','Government'],pvt:['സ്വകാര്യം','Private'],sch_ok:['പദ്ധതി സ്വീകരിക്കുന്നു','Accepts schemes'],
+rt:['സഹായം ആവശ്യപ്പെടുക','Request help'],rd:['ഫോം പൂരിപ്പിച്ചാൽ ഞങ്ങളുടെ ടീം ബന്ധപ്പെടും; പ്രതികരണ സമയം ഉറപ്പ് നൽകാൻ കഴിയില്ല. * ഉള്ളവ നിർബന്ധം.','Our team will contact you after you submit; we cannot guarantee a response time. Fields marked * are required.'],
+warnE:['ജീവൻ അപകടത്തിലാണെങ്കിൽ ഈ ഫോം പൂരിപ്പിക്കാതെ ഉടൻ 112 / 108 വിളിക്കൂ.','If a life is in danger, do not fill this form: call 112 / 108 immediately.'],
+t0:['ചികിത്സാ സഹായ റഫറൽ','Treatment aid referral'],t1:['പാലിയേറ്റീവ് കെയർ റഫറൽ','Palliative care referral'],t2:['അടിയന്തര സഹായ ഏകോപനം','Emergency support'],t3:['രക്തം ആവശ്യപ്പെടുക','Blood request'],
+n:['നിങ്ങളുടെ പേര്','Your name'],rel:['രോഗിയുമായുള്ള ബന്ധം','Relation to patient'],ph:['മൊബൈൽ നമ്പർ','Mobile number'],nt:['കൂടുതൽ വിവരങ്ങൾ (ഓപ്ഷണൽ; രോഗവിവരം ആവശ്യമില്ല)','Anything else (optional; no diagnosis needed)'],
+cons:['ഈ സേവനം നൽകാൻ മാത്രം എന്റെ വിവരങ്ങൾ ഉപയോഗിക്കാൻ ഞാൻ സമ്മതിക്കുന്നു.','I agree that my details are used only to provide this service.'],send:['അയയ്ക്കുക','Submit'],
+err:['പേര്, 10 അക്ക മൊബൈൽ നമ്പർ, ജില്ല എന്നിവ നൽകുക.','Please enter name, a 10-digit mobile number and district.'],errc:['സമ്മതം ടിക്ക് ചെയ്യുക.','Please tick the consent box.'],
+done:['അപേക്ഷ ലഭിച്ചു','Request received'],doned:['നിങ്ങളുടെ റഫറൻസ് നമ്പർ','Your reference number'],donen:['"അപേക്ഷയുടെ നില" പേജിൽ മൊബൈൽ നമ്പർ നൽകി നില നോക്കാം. അടിയന്തരമെങ്കിൽ 112 / 108 വിളിക്കൂ.','Check the status on the Track page with your mobile number. If urgent, call 112 / 108.'],
+bt:['രക്തദാനം','Blood donors'],bd:['രക്തദാതാക്കളുടെ ഫോൺ നമ്പറുകൾ പൊതുവായി കാണിക്കില്ല; ആവശ്യമുള്ളപ്പോൾ ടീം ദാതാക്കളെ അറിയിക്കും.','Donor phone numbers are never shown publicly; our team contacts matching donors when needed.'],regd:['രജിസ്റ്റർ ചെയ്ത ദാതാക്കൾ','Registered donors'],b0:['രക്തം വേണം','I need blood'],b1:['ഞാൻ ദാതാവാകാം','I want to donate'],
+bg:['രക്തഗ്രൂപ്പ്','Blood group'],units:['ആവശ്യമുള്ള യൂണിറ്റ്','Units needed'],hosp:['ആശുപത്രി','Hospital'],urg:['എത്ര അടിയന്തരം','How urgent'],age:['പ്രായം','Age'],last:['അവസാനം രക്തം നൽകിയ തീയതി (ഓപ്ഷണൽ)','Last donation date (optional)'],dcons:['എന്റെ വിവരങ്ങൾ രക്തദാതാവായി ടീമിന് ഉപയോഗിക്കാനും ആവശ്യമുള്ളപ്പോൾ ബന്ധപ്പെടാനും ഞാൻ സമ്മതിക്കുന്നു.','I agree that the team may keep my details as a blood donor and contact me when needed.'],derr:['പേര്, 18–65 പ്രായം, 10 അക്ക നമ്പർ, ജില്ല എന്നിവ നൽകുക.','Please enter name, age 18–65, a 10-digit number and district.'],dok:['ദാതാവായി രജിസ്റ്റർ ചെയ്തു. നന്ദി!','Registered as a donor. Thank you!'],
+ct:['മെഡിക്കൽ ക്യാമ്പുകൾ','Medical camps'],ctd:['വരാനിരിക്കുന്ന ക്യാമ്പുകൾ (സാമ്പിൾ). സംഘാടകർക്ക് ക്യാമ്പ് ചേർക്കാം; അംഗീകാരത്തിന് ശേഷം മാത്രം പ്രസിദ്ധീകരിക്കും.','Upcoming camps (sample). Organisers can submit a camp; it is published only after approval.'],cadd:['ഒരു ക്യാമ്പ് ചേർക്കുക','Submit a camp'],ctl:['ക്യാമ്പിന്റെ പേര്','Camp title'],ctyp:['തരം','Type'],cdate:['തീയതി','Date'],cplace:['സ്ഥലം','Place'],corg:['സംഘാടകൻ / സ്ഥാപനം','Organiser'],cok:['ക്യാമ്പ് അംഗീകാരത്തിനായി അയച്ചു.','Camp submitted for approval.'],cerr:['പേര്, തീയതി, സ്ഥലം, ജില്ല, ഫോൺ എന്നിവ നൽകുക.','Please enter title, date, place, district and phone.'],
+tr:['അപേക്ഷയുടെ നില','Track your request'],trd:['അപേക്ഷയിൽ നൽകിയ മൊബൈൽ നമ്പർ നൽകുക.','Enter the mobile number you used in the request.'],trb:['നോക്കുക','Check'],trn:['ഈ നമ്പറിൽ അപേക്ഷ ഇല്ല.','No request found for this number.'],
+st0:['പുതിയത്','New'],st1:['ബന്ധപ്പെട്ടു','Contacted'],st2:['റഫർ ചെയ്തു','Referred'],st3:['പൂർത്തിയായി','Completed'],
+al:['അഡ്മിൻ പ്രവേശനം','Admin login'],pin:['PIN (പരീക്ഷണം: 1234)','PIN (prototype: 1234)'],enter:['പ്രവേശിക്കുക','Sign in'],badpin:['PIN തെറ്റാണ്','Wrong PIN'],a0:['അപേക്ഷകൾ','Requests'],a1:['ദാതാക്കൾ','Donors'],a2:['ക്യാമ്പുകൾ','Camps'],none:['ഒന്നും ഇല്ല.','None yet.'],out:['പുറത്തുകടക്കുക','Sign out'],match:['ചേരുന്ന ദാതാക്കൾ','Matching donors'],ok:['അംഗീകരിക്കുക','Approve'],rej:['നിരസിക്കുക','Reject'],pend:['അംഗീകാരം കാത്തിരിക്കുന്നവ','Awaiting approval'],pub:['പ്രസിദ്ധീകരിച്ചവ','Published']};
+const t=k=>T[k][lang=='ml'?0:1],L=x=>Array.isArray(x)?x[lang=='ml'?0:1]:x;
+const DIST=[['തിരുവനന്തപുരം','Thiruvananthapuram'],['കൊല്ലം','Kollam'],['പത്തനംതിട്ട','Pathanamthitta'],['ആലപ്പുഴ','Alappuzha'],['കോട്ടയം','Kottayam'],['ഇടുക്കി','Idukki'],['എറണാകുളം','Ernakulam'],['തൃശൂർ','Thrissur'],['പാലക്കാട്','Palakkad'],['മലപ്പുറം','Malappuram'],['കോഴിക്കോട്','Kozhikode'],['വയനാട്','Wayanad'],['കണ്ണൂർ','Kannur'],['കാസറഗോഡ്','Kasaragod']];
+const IN=[['₹1 ലക്ഷത്തിൽ താഴെ','Below ₹1 lakh',1],['₹1 – 2.5 ലക്ഷം','₹1 – 2.5 lakh',2.5],['₹2.5 – 6 ലക്ഷം','₹2.5 – 6 lakh',6],['₹6 ലക്ഷത്തിന് മുകളിൽ','Above ₹6 lakh',99]];
+const AG=[['കുട്ടി (18 വരെ)','Child (up to 18)'],['മുതിർന്നയാൾ','Adult'],['മുതിർന്ന പൗരൻ (60+)','Senior citizen (60+)']];
+const ND=[['ആശുപത്രി ചികിത്സ (കിടത്തി)','Hospital treatment (admission)'],['ഒപി ചികിത്സയും മരുന്നുകളും','Outpatient care and medicines'],['ഗുരുതര രോഗ ചികിത്സ','Critical illness care'],['അമ്മയും കുഞ്ഞും','Mother and child']];
+const DEPT=[['ജനറൽ മെഡിസിൻ','General medicine'],['ശിശുരോഗം','Paediatrics'],['ഹൃദ്രോഗം','Cardiology'],['കാൻസർ ചികിത്സ','Oncology'],['വൃക്കരോഗം','Nephrology'],['അസ്ഥിരോഗം','Orthopaedics'],['പ്രസവ-സ്ത്രീരോഗം','Obstetrics & gynaecology']];
+const BG=['A+','A-','B+','B-','O+','O-','AB+','AB-'].map(x=>[x,x]);
+const REL=[['രോഗി തന്നെ','Self'],['കുടുംബാംഗം','Family member'],['സുഹൃത്ത് / അയൽക്കാരൻ','Friend / neighbour'],['മറ്റുള്ളവ','Other']];
+const CTY=[['ജനറൽ','General health'],['നേത്ര','Eye'],['ദന്ത','Dental'],['കാൻസർ സ്ക്രീനിംഗ്','Cancer screening'],['രക്തദാനം','Blood donation'],['മറ്റുള്ളവ','Other']];
+const XF=[
+[{k:'a',l:['ആവശ്യമുള്ള സഹായം','Help needed'],o:[['ആശുപത്രി ചികിത്സാ ചെലവ്','Hospital treatment cost'],['മരുന്നുകൾ','Medicines'],['ഡയാലിസിസ് / ഗുരുതര രോഗ പരിചരണം','Dialysis / critical illness care'],['ശസ്ത്രക്രിയ','Surgery'],['മറ്റുള്ളവ','Other']]},{k:'h',l:['ആശുപത്രി (അറിയാമെങ്കിൽ)','Hospital (if known)']},{k:'i',l:['കുടുംബ വാർഷിക വരുമാനം','Annual family income'],o:IN,b:1}],
+[{k:'p',l:['രോഗിയുടെ പ്രായ വിഭാഗം','Patient age group'],o:AG},{k:'c',l:['ആവശ്യമുള്ള പരിചരണം','Care needed'],o:[['വീട്ടിലെ പരിചരണം','Home care'],['ഉപകരണങ്ങൾ','Equipment'],['നഴ്സിംഗ് സഹായം','Nursing support'],['കുടുംബത്തിന് കൗൺസിലിംഗ്','Counselling for family']]}],
+[{k:'e',l:['ആവശ്യമുള്ള സഹായം','Help needed'],o:[['ആംബുലൻസ്','Ambulance'],['ആശുപത്രി പ്രവേശന സഹായം','Hospital admission support'],['ആശുപത്രിയിലേക്കുള്ള യാത്ര','Transport to hospital'],['മറ്റുള്ളവ','Other']]},{k:'l',l:['ഇപ്പോഴത്തെ സ്ഥലം / അടയാളം','Current location / landmark']}],
+[{k:'g',l:T.bg,o:BG},{k:'u',l:T.units,n:1},{k:'h',l:T.hosp},{k:'ug',l:T.urg,o:[['24 മണിക്കൂറിനുള്ളിൽ','Within 24 hours'],['3 ദിവസത്തിനുള്ളിൽ','Within 3 days'],['മുൻകൂട്ടി','Planned']]}]];
+const SCH=[
+{n:['സർക്കാർ ആരോഗ്യ ഇൻഷുറൻസ് (സാമ്പിൾ)','Government health insurance (sample)'],ag:[0,1,2],nd:[0,2],mi:2.5,d:['അർഹരായ കുടുംബങ്ങൾക്ക് ആശുപത്രി ചികിത്സാ ചെലവ് സഹായം.','Hospital treatment cost cover for eligible families.']},
+{n:['ഗുരുതര രോഗ സഹായ പദ്ധതി (സാമ്പിൾ)','Critical illness assistance (sample)'],ag:[0,1,2],nd:[2],mi:6,d:['കാൻസർ, വൃക്ക, ഹൃദയ ചികിത്സകൾക്കുള്ള ധനസഹായം.','Financial help for cancer, kidney and heart treatment.']},
+{n:['മുതിർന്ന പൗരന്മാർക്ക് സൗജന്യ മരുന്ന് (സാമ്പിൾ)','Free medicines for senior citizens (sample)'],ag:[2],nd:[1],mi:99,d:['പതിവ് മരുന്നുകൾ സൗജന്യമായി.','Regular medicines at no cost.']},
+{n:['അമ്മയും കുഞ്ഞും പദ്ധതി (സാമ്പിൾ)','Mother and child scheme (sample)'],ag:[0,1],nd:[3],mi:6,d:['പ്രസവ, ശിശു പരിചരണ സഹായം.','Support for childbirth and infant care.']},
+{n:['കുട്ടികളുടെ ആരോഗ്യ പദ്ധതി (സാമ്പിൾ)','Child health scheme (sample)'],ag:[0],nd:[0,1,3],mi:99,d:['കുട്ടികളുടെ ചികിത്സയ്ക്കുള്ള സഹായം.','Help with treatment for children.']},
+{n:['ഭിന്നശേഷി ആരോഗ്യ സഹായം (സാമ്പിൾ)','Disability health support (sample)'],ag:[0,1,2],nd:[0,1],mi:99,dis:1,d:['ഭിന്നശേഷിക്കാർക്കുള്ള ചികിത്സാ, ഉപകരണ സഹായം.','Treatment and equipment support for persons with disabilities.']}];
+const HOSP=[{n:['സാമ്പിൾ ജില്ലാ ആശുപത്രി','Sample District Hospital'],d:1,dp:[0,1,6],g:1,s:1},{n:['സാമ്പിൾ മെഡിക്കൽ കോളേജ്','Sample Medical College'],d:0,dp:[0,2,3,4],g:1,s:1},{n:['സാമ്പിൾ ഹാർട്ട് സെന്റർ','Sample Heart Centre'],d:7,dp:[2],g:0,s:1},{n:['സാമ്പിൾ കാൻസർ കെയർ','Sample Cancer Care'],d:6,dp:[3],g:0,s:0},{n:['സാമ്പിൾ താലൂക്ക് ആശുപത്രി','Sample Taluk Hospital'],d:3,dp:[0,5,6],g:1,s:1},{n:['സാമ്പിൾ ശിശു ആശുപത്രി','Sample Children\'s Hospital'],d:10,dp:[1],g:0,s:1}];
+const AID=[{n:['സാമ്പിൾ ചികിത്സാ സഹായ ട്രസ്റ്റ്','Sample Medical Aid Trust'],d:1,i:['ചികിത്സാ ചെലവ് സഹായം','Treatment cost support']},{n:['സാമ്പിൾ ഡയാലിസിസ് ഫണ്ട്','Sample Dialysis Fund'],d:6,i:['ഡയാലിസിസ് സഹായം','Dialysis support']},{n:['സാമ്പിൾ ജീവകാരുണ്യ സൊസൈറ്റി','Sample Charity Society'],d:9,i:['മരുന്ന്, ഉപകരണ സഹായം','Medicine and equipment help']}];
+const PAL=[{n:['സാമ്പിൾ പാലിയേറ്റീവ് യൂണിറ്റ്','Sample Palliative Unit'],d:1,i:['ഹോം കെയർ, നഴ്സിംഗ്','Home care, nursing']},{n:['സാമ്പിൾ പാലിയേറ്റീവ് സൊസൈറ്റി','Sample Palliative Society'],d:3,i:['ഉപകരണങ്ങൾ, കൗൺസിലിംഗ്','Equipment, counselling']},{n:['സാമ്പിൾ കെയർ ക്ലിനിക്','Sample Care Clinic'],d:7,i:['ഹോം കെയർ','Home care']}];
+const CAMPS=[{n:['സാമ്പിൾ സൗജന്യ നേത്ര പരിശോധന','Sample free eye check-up'],ty:1,dt:'2026-10-14',pl:['സാമ്പിൾ വായനശാല ഹാൾ','Sample library hall'],d:1,ok:1},{n:['സാമ്പിൾ രക്തദാന ക്യാമ്പ്','Sample blood donation camp'],ty:4,dt:'2026-10-20',pl:['സാമ്പിൾ കോളേജ്','Sample college'],d:0,ok:1},{n:['സാമ്പിൾ ജനറൽ മെഡിക്കൽ ക്യാമ്പ്','Sample general medical camp'],ty:0,dt:'2026-11-03',pl:['സാമ്പിൾ കമ്മ്യൂണിറ്റി ഹാൾ','Sample community hall'],d:9,ok:1}];
+const DON0=[['O+',1],['O+',1],['A+',1],['B+',6],['O-',0],['AB+',1],['A+',1],['B-',6]].map((x,i)=>({id:i+1,g:BG.findIndex(b=>b[0]==x[0]),d:x[1],smp:1}));
+let lang='en',view='home',rtype=0,btab=0,dtab=0,atab=0,doneId=0,fres=null,fv={},isAdmin=false,db={r:[],n:1,d:[],c:[]};
+try{const s=localStorage.getItem('hlt1');if(s)db=JSON.parse(s);lang=localStorage.getItem('hlt1l')||'en'}catch(e){}
+const save=()=>{try{localStorage.setItem('hlt1',JSON.stringify(db))}catch(e){}};
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const opt=(a,all,blank)=>(all?`<option value="">${t('f_all')}</option>`:blank?'<option value="">—</option>':'')+a.map((x,i)=>`<option value="${i}">${L(x)}</option>`).join('');
+const S=h=>`<div class="wrap sec">${h}</div>`;
+const pad=n=>'HLT-'+String(n).padStart(4,'0');
+function toast(m){const e=document.createElement('div');e.className='toast';e.textContent=m;document.body.appendChild(e);setTimeout(()=>e.remove(),2600)}
+function go(v){view=v;doneId=0;draw();scrollTo(0,0)}
+function goT(v,tb){if(v=='req')rtype=tb;if(v=='dir')dtab=tb;go(v)}
+function setLang(){lang=lang=='ml'?'en':'ml';try{localStorage.setItem('hlt1l',lang)}catch(e){}document.documentElement.lang=lang;draw()}
+function big(){document.documentElement.classList.toggle('big')}function hc(){document.documentElement.classList.toggle('hc')}
+const TABS=(arr,cur,fn)=>`<div class="tabs">${arr.map((x,i)=>`<button class="${cur==i?'on':''}" onclick="${fn}(${i})">${x}</button>`).join('')}</div>`;
+const TILES=[['🏥','dir',0,'ആശുപത്രി കണ്ടെത്തുക','Find a hospital','ശരിയായ ആശുപത്രിയും വിഭാഗവും.','The right hospital and department.'],['📋','schemes',0,'സർക്കാർ ആരോഗ്യ പദ്ധതികൾ','Government health schemes','അർഹമായ പദ്ധതികൾ കണ്ടെത്താം.','Find schemes you may qualify for.'],['💰','req',0,'ചികിത്സാ സഹായം','Medical assistance','സഹായ സ്ഥാപനങ്ങളുമായി ബന്ധം.','Connection to aid institutions.'],['🩸','blood',0,'രക്തദാതാക്കൾ','Blood donors','രക്തം വേണോ? ദാതാവാകണോ?','Need blood? Want to donate?'],['🚑','req',2,'അടിയന്തര സഹായ ഏകോപനം','Emergency support','ആംബുലൻസ്, ആശുപത്രി പ്രവേശന സഹായം.','Ambulance and admission help.'],['🕊️','req',1,'പാലിയേറ്റീവ് കെയർ','Palliative care','രോഗിക്കും കുടുംബത്തിനും പരിചരണം.','Care for patients and families.'],['⛺','camps',0,'മെഡിക്കൽ ക്യാമ്പുകൾ','Medical camps','അടുത്തുള്ള ക്യാമ്പുകൾ.','Camps near you.'],['🤝','dir',1,'സഹായ സ്ഥാപനങ്ങൾ','Aid institutions','ചികിത്സാ സഹായം നൽകുന്നവർ.','Who can help with costs.']];
+function home(){return `<section class="hero"><div class="bg" aria-hidden="true"><i></i><i></i><i></i><i></i></div><div class="wrap"><div><h1>${t('h1')}</h1><p>${t('sub')}</p><div class="row"><button class="btn gold" onclick="go('schemes')">${t('c1')}</button><button class="btn ghost" style="color:#fff" onclick="goT('req',0)">${t('c2')}</button></div></div>
+<svg class="art" viewBox="0 0 200 200" fill="none" stroke-width="7" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path class="spark" d="M100 168C40 124 26 82 46 58c20-22 46-12 54 8 8-20 34-30 54-8 20 24 6 66-54 110z" stroke="#fff"/><path d="M52 98h26l10-20 16 40 10-20h34" stroke="#F2A93B"/></svg></div>
+<svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30Q360 62 720 30T1440 30V60H0Z" fill="var(--bg)"/></svg></section>`
++S(`<div class="warn">${t('disc')}</div><h2>${t('whot')}</h2><div class="tiles">${TILES.map(x=>`<button class="tile" onclick="goT('${x[1]}',${x[2]})"><span class="ic">${x[0]}</span><b>${L([x[3],x[4]])}</b><span class="m">${L([x[5],x[6]])}</span></button>`).join('')}</div>`)
++`<section class="cta"><div class="wrap"><h2>${t('ctat')}</h2><button class="btn gold" onclick="goT('req',0)">${t('c2')}</button></div></section>`
++S(`<h2>${t('hw')}</h2><div class="steps">${[1,2,3].map(i=>`<div><b>${t('s'+i)}</b><br><span class="m">${t('s'+i+'d')}</span></div>`).join('')}</div><div class="note">${t('demo')}</div>`)}
+function schCard(s){return `<div class="card"><h3>${L(s.n)}</h3><div>${s.ag.map(a=>`<span class="tag">${L(AG[a])}</span>`).join('')}</div><p class="m" style="margin:4px 0">${L(s.d)}</p><span class="m">${t('link')}<br>${t('chk')}</span><button class="btn ghost" style="color:var(--ink);margin-top:8px" onclick="goT('req',0)">${t('ask')}</button></div>`}
+function schemes(){return S(`<h2>${t('schemes')}</h2><p class="m">${t('fq')}</p><div class="panel" style="margin-top:0"><div class="grid">
+<div><label>${t('ageg')}</label><select id="q_ag">${opt(AG)}</select></div><div><label>${t('need')}</label><select id="q_nd">${opt(ND)}</select></div><div><label>${t('inc')}</label><select id="q_in">${opt(IN)}</select></div>
+<div><label>${t('dis')}</label><select id="q_dis">${opt([[t('no'),t('no')],[t('yes'),t('yes')]])}</select></div></div><p><button class="btn" onclick="runF()">${t('show')}</button></p></div>`
++(fres?`<h2 style="margin-top:28px">${t('res')}</h2>${fres.length?`<div class="cards">${fres.map(schCard).join('')}</div><div class="note">${t('elig')}</div>`:`<p class="m">${t('nores')}</p><button class="btn" onclick="goT('req',0)">${t('c2')}</button>`}`:'')+`<div class="note">${t('disc')}</div>`)}
+function runF(){const v=i=>+document.getElementById(i).value,ag=v('q_ag'),nd=v('q_nd'),inc=IN[v('q_in')][2],dis=v('q_dis')==1;
+ fres=SCH.filter(s=>s.ag.includes(ag)&&s.nd.includes(nd)&&inc<=s.mi&&(!s.dis||dis));draw()}
+function dir(){const d=fv.dd_,dp=fv.dp_,tp=fv.dtp_,dok=x=>d==null||d===''||x.d==+d;let l;
+ const f=`<div class="panel" style="margin-top:0"><div class="grid"><div><label>${t('dd')}</label><select id="dd_" onchange="draw()">${opt(DIST,1)}</select></div>${dtab==0?`<div><label>${t('dp')}</label><select id="dp_" onchange="draw()">${opt(DEPT,1)}</select></div><div><label>${t('ty_')}</label><select id="dtp_" onchange="draw()"><option value="">${t('f_all')}</option><option value="1">${t('gov')}</option><option value="0">${t('pvt')}</option></select></div>`:''}</div></div>`;
+ if(dtab==0)l=HOSP.filter(h=>dok(h)&&(dp==null||dp===''||h.dp.includes(+dp))&&(tp==null||tp===''||h.g==+tp)).map(h=>`<div class="card"><h3>${L(h.n)}</h3><div><span class="tag">${h.g?t('gov'):t('pvt')}</span><span class="tag">${L(DIST[h.d])}</span>${h.s?`<span class="tag">${t('sch_ok')}</span>`:''}</div><p class="m" style="margin:4px 0">${h.dp.map(x=>L(DEPT[x])).join(' · ')}</p></div>`);
+ else if(dtab==3)l=[['112',['ദേശീയ അടിയന്തര നമ്പർ','National emergency number']],['108',['ആംബുലൻസ്','Ambulance']]].map(x=>`<div class="card"><h3><a href="tel:${x[0]}" style="color:var(--rose)">${x[0]}</a></h3><span>${L(x[1])}</span></div>`).concat([`<div class="card"><span class="m">${L(['മറ്റ് ഹെൽപ്‌ലൈൻ നമ്പറുകൾ ടീം നൽകുന്ന മുറയ്ക്ക് ചേർക്കും.','Other helpline numbers will be added as provided by the team.'])}</span></div>`]);
+ else l=(dtab==1?AID:PAL).filter(dok).map(x=>`<div class="card"><h3>${L(x.n)}</h3><div><span class="tag">${L(DIST[x.d])}</span></div><p class="m" style="margin:4px 0">${L(x.i)}</p></div>`);
+ return S(`<h2>${t('dt')}</h2>`+TABS([t('d0'),t('d1'),t('d2'),t('d3')],dtab,'setD')+(dtab==3?'':f)+`<div class="cards">${l.join('')||`<p class="m">${t('nores')}</p>`}</div><div class="note">${t('demo')}</div>`)}
+function setD(i){dtab=i;draw()}
+function xfld(f){return `<div><label>${L(f.l)}</label>${f.o?`<select id="r_${f.k}">${opt(f.o,0,f.b)}</select>`:f.n?`<input id="r_${f.k}" type="number" min="1" max="20" value="1">`:`<input id="r_${f.k}">`}</div>`}
+function reqForm(ty){return `${ty==2?`<div class="warn"><b>${t('warnE')}</b></div>`:''}<div class="panel"><div class="grid"><div><label>${t('n')} *</label><input id="r_name"></div><div><label>${t('rel')}</label><select id="r_rel">${opt(REL)}</select></div><div><label>${t('ph')} *</label><input id="r_ph" inputmode="numeric" maxlength="10"></div><div><label>${t('dd')} *</label><select id="r_d">${opt(DIST)}</select></div>${XF[ty].map(xfld).join('')}</div>
+<div style="margin-top:14px"><label>${t('nt')}</label><textarea id="r_note" rows="3"></textarea></div><p><label style="color:var(--ink)"><input type="checkbox" id="r_cs"> ${t('cons')}</label></p><p><button class="btn" onclick="sendReq(${ty})">${t('send')}</button></p></div>`}
+let lastSubmission=null;
+function doneView(){
+ const ref='HLT-'+pad(doneId);
+ const wa=lastSubmission&&typeof createWhatsAppDispatch==='function'?createWhatsAppDispatch(lastSubmission.title,lastSubmission.ref,lastSubmission.summary):'#';
+ return S(`<h2>${t('done')}</h2><div class="panel" style="margin-top:0"><p>${t('doned')}: <b>${pad(doneId)}</b></p><p class="m">${t('donen')}</p>
+ <div style="display:flex;gap:10px;flex-wrap:wrap;margin:18px 0">
+  <a class="btn" style="background:#25D366;color:#fff;text-decoration:none;display:inline-flex;align-items:center;gap:8px;font-weight:700" href="${wa}" target="_blank" rel="noopener">
+   <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.23 8.23 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23-1.48 0-2.93-.39-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.32a8.19 8.19 0 0 1-1.26-4.36c0-4.54 3.69-8.25 8.24-8.25m-2.52 3.69c-.17 0-.44.07-.67.31-.23.25-.88.86-.88 2.1 0 1.23.91 2.43 1.03 2.59.13.17 1.79 2.72 4.33 3.82.6.26 1.07.42 1.43.53.61.2 1.16.17 1.6.1.49-.07 1.51-.62 1.72-1.21.21-.59.21-1.1.15-1.2-.07-.11-.24-.17-.51-.3-.27-.14-1.6-.79-1.85-.88-.24-.09-.42-.14-.6.12-.17.25-.67.85-.82 1.02-.15.17-.3.19-.57.06-.27-.14-1.13-.42-2.15-1.33-.79-.71-1.33-1.58-1.48-1.84-.15-.26-.02-.4.12-.53.12-.12.27-.31.4-.46.14-.15.18-.26.28-.45.09-.2.04-.36-.03-.49-.06-.13-.57-1.38-.78-1.9-.21-.5-.42-.43-.57-.44-.15-.01-.32-.01-.5-.01"/></svg>
+   ${lang=='ml'?'വാട്സ്ആപ്പ് വഴി അറിയിക്കുക':'Notify Team via WhatsApp'}
+  </a>
+  <button class="btn" onclick="go('track')">${t('track')}</button>
+ </div></div>`)}
+function req(){if(doneId)return doneView();return S(`<h2>${t('rt')}</h2><p class="m">${t('rd')}</p>`+TABS([t('t0'),t('t1'),t('t2')],rtype,'setR')+reqForm(rtype))}
+function setR(i){rtype=i;draw()}
+function sendReq(ty){const v=i=>{const e=document.getElementById(i);return e?e.value.trim():''};
+ const phoneClean=typeof OurValidator!=='undefined'?OurValidator.isValidPhone(v('r_ph')):v('r_ph').length==10;
+ if(!v('r_name')||!phoneClean||v('r_d')===''){toast(t('err'));return}
+ if(!document.getElementById('r_cs').checked){toast(t('errc'));return}
+ const x={};XF[ty].forEach(f=>{const q=v('r_'+f.k);x[f.k]=f.o?(q===''?'':+q):q});
+ const r={id:db.n++,ty,name:v('r_name'),rel:+v('r_rel'),ph:v('r_ph'),d:+v('r_d'),x,note:v('r_note'),s:0,date:new Date().toISOString().slice(0,10)};
+ db.r.push(r);save();
+ const ref='HLT-'+pad(r.id);
+ const reqTypes=['ചികിത്സാ സഹായം','പാലിയേറ്റീവ് കെയർ','അടിയന്തര സഹായം','രക്തം ആവശ്യപ്പെടൽ'];
+ lastSubmission={
+  title:'ആരോഗ്യ സഹായം ('+(reqTypes[ty]||'Health Request')+')',
+  ref:ref,
+  summary:{
+   'പേര്':r.name,
+   'ബന്ധം':REL[r.rel]?REL[r.rel][0]:r.rel,
+   'ഫോൺ':r.ph,
+   'ജില്ല':DIST[r.d]?DIST[r.d][0]:r.d,
+   'വിഭാഗം':reqTypes[ty]||'സഹായം',
+   'കുറിപ്പ്':r.note||'—'
+  }
+ };
+ if(typeof syncRecordToCloud==='function'){
+  syncRecordToCloud('health','request',{
+   ref:ref,
+   type:reqTypes[ty]||'General',
+   name:r.name,
+   relation:REL[r.rel]?REL[r.rel][1]:r.rel,
+   phone:r.ph,
+   district:DIST[r.d]?DIST[r.d][1]:r.d,
+   details:r.note||JSON.stringify(r.x)
+  });
+ }
+ fv={};doneId=r.id;draw()}
+function counts(){const d=fv.bd_;const all=DON0.concat(db.d).filter(x=>d==null||d===''||x.d==+d);return BG.map((b,i)=>[b[0],all.filter(x=>x.g==i).length])}
+function blood(){if(doneId)return doneView();
+ return S(`<h2>${t('bt')}</h2><p class="m">${t('bd')}</p><div class="panel" style="margin-top:0"><label>${t('regd')}</label><select id="bd_" onchange="draw()" style="max-width:260px">${opt(DIST,1)}</select><div class="chips">${counts().map(c=>`<span class="chip">${c[0]}: <b>${c[1]}</b></span>`).join('')}</div></div><div style="margin-top:14px">${TABS([t('b0'),t('b1')],btab,'setB')}</div>`
++(btab==0?`<div class="warn">${t('warnE')}</div>`+reqForm(3):`<div class="panel"><div class="grid"><div><label>${t('n')} *</label><input id="b_name"></div><div><label>${t('age')} *</label><input id="b_age" type="number" min="18" max="65"></div><div><label>${t('bg')} *</label><select id="b_g">${opt(BG)}</select></div><div><label>${t('dd')} *</label><select id="b_d">${opt(DIST)}</select></div><div><label>${t('ph')} *</label><input id="b_ph" inputmode="numeric" maxlength="10"></div><div><label>${t('last')}</label><input id="b_last" type="date"></div></div><p><label style="color:var(--ink)"><input type="checkbox" id="b_cs"> ${t('dcons')}</label></p><p><button class="btn" onclick="sendDon()">${t('send')}</button></p></div>`))}
+function setB(i){btab=i;draw()}
+function sendDon(){const v=i=>document.getElementById(i).value.trim(),age=+v('b_age');
+ const phoneClean=typeof OurValidator!=='undefined'?OurValidator.isValidPhone(v('b_ph')):v('b_ph').length==10;
+ if(!v('b_name')||age<18||age>65||!phoneClean||v('b_d')===''){toast(t('derr'));return}
+ if(!document.getElementById('b_cs').checked){toast(t('errc'));return}
+ const donId=100+db.d.length;
+ const donRec={id:donId,name:v('b_name'),age,g:+v('b_g'),d:+v('b_d'),ph:v('b_ph'),last:v('b_last')};
+ db.d.push(donRec);save();
+ const ref='BLD-DON-'+donId;
+ if(typeof syncRecordToCloud==='function'){
+  syncRecordToCloud('health','donor',{
+   ref:ref,
+   name:donRec.name,
+   age:donRec.age,
+   blood_group:BG[donRec.g]?BG[donRec.g][0]:donRec.g,
+   district:DIST[donRec.d]?DIST[donRec.d][1]:donRec.d,
+   phone:donRec.ph,
+   last_donation:donRec.last||''
+  });
+ }
+ fv={};toast(t('dok'));draw()}
+function camps(){const l=CAMPS.concat(db.c.filter(c=>c.ok));
+ return S(`<h2>${t('ct')}</h2><p class="m">${t('ctd')}</p><div class="cards">${l.map(c=>`<div class="card"><h3>${typeof c.n=='string'?esc(c.n):L(c.n)}</h3><div><span class="tag">${L(CTY[c.ty])}</span><span class="tag">${L(DIST[c.d])}</span></div><p class="m" style="margin:4px 0">${c.dt}<br>${typeof c.pl=='string'?esc(c.pl):L(c.pl)}</p></div>`).join('')}</div>
+<h2 style="margin-top:34px">${t('cadd')}</h2><div class="panel" style="margin-top:0"><div class="grid"><div><label>${t('ctl')} *</label><input id="c_n"></div><div><label>${t('ctyp')}</label><select id="c_ty">${opt(CTY)}</select></div><div><label>${t('cdate')} *</label><input id="c_dt" type="date"></div><div><label>${t('cplace')} *</label><input id="c_pl"></div><div><label>${t('dd')} *</label><select id="c_d">${opt(DIST)}</select></div><div><label>${t('corg')}</label><input id="c_org"></div><div><label>${t('ph')} *</label><input id="c_ph" inputmode="numeric" maxlength="10"></div></div><p><button class="btn" onclick="sendCamp()">${t('send')}</button></p></div><div class="note">${t('demo')}</div>`)}
+function sendCamp(){const v=i=>document.getElementById(i).value.trim();
+ const phoneClean=typeof OurValidator!=='undefined'?OurValidator.isValidPhone(v('c_ph')):v('c_ph').length==10;
+ if(!v('c_n')||!v('c_dt')||!v('c_pl')||!phoneClean){toast(t('cerr'));return}
+ const campRec={id:db.c.length+1,n:v('c_n'),ty:+v('c_ty'),dt:v('c_dt'),pl:v('c_pl'),d:+v('c_d'),org:v('c_org'),ph:v('c_ph'),ok:0};
+ db.c.push(campRec);save();
+ const ref='CAMP-'+campRec.id;
+ if(typeof syncRecordToCloud==='function'){
+  syncRecordToCloud('health','camp',{
+   ref:ref,
+   title:campRec.n,
+   type:CTY[campRec.ty]?CTY[campRec.ty][1]:campRec.ty,
+   date:campRec.dt,
+   place:campRec.pl,
+   district:DIST[campRec.d]?DIST[campRec.d][1]:campRec.d,
+   organizer:campRec.org,
+   phone:campRec.ph
+  });
+ }
+ fv={};toast(t('cok'));draw()}
+function track(){const p=fv.tp;const l=p&&p.length==10?db.r.filter(r=>r.ph==p):null;
+ return S(`<h2>${t('tr')}</h2><div class="panel" style="margin-top:0;max-width:460px"><p class="m">${t('trd')}</p><input id="tp" inputmode="numeric" maxlength="10"><p><button class="btn" onclick="draw()">${t('trb')}</button></p></div>`+(l?(l.length?`<div class="cards">${l.map(r=>`<div class="card"><b>${pad(r.id)}</b><span>${t('t'+r.ty)}</span><span class="m">${r.date}</span><span class="badge">${t('st'+r.s)}</span></div>`).join('')}</div>`:`<p class="m" style="margin-top:14px">${t('trn')}</p>`):''))}
+function xtext(r){return XF[r.ty].map(f=>{const q=r.x[f.k];if(q===''||q==null)return '';return `${L(f.l)}: ${f.o?L(f.o[q]):esc(q)}`}).filter(Boolean).join('<br>')}
+function admin(){
+ if(!isAdmin)return S(`<h2>${t('al')}</h2><div class="panel" style="max-width:340px"><label>${t('pin')}</label><input id="pin" type="password"><p><button class="btn" onclick="if(document.getElementById('pin').value=='1234'){isAdmin=true;draw()}else toast(t('badpin'))">${t('enter')}</button></p></div>`);
+ let body;
+ if(atab==0)body=db.r.length?`<table>${db.r.map(r=>{const m=r.ty==3?db.d.filter(d=>d.g==r.x.g&&d.d==r.d):[];return `<tr><td>${pad(r.id)}<br><span class="m">${r.date}</span></td><td><b>${esc(r.name)}</b> (${L(REL[r.rel])})<br>${esc(r.ph)} · ${L(DIST[r.d])}</td><td>${t('t'+r.ty)}<br><span class="m">${xtext(r)}<br>${esc(r.note)}</span>${r.ty==3?`<br><b>${t('match')}: ${m.length}</b>${m.map(d=>`<br><span class="m">${esc(d.name)} ${esc(d.ph)}</span>`).join('')}`:''}</td><td><select onchange="setS(${r.id},this.value)">${[0,1,2,3].map(i=>`<option value="${i}"${r.s==i?' selected':''}>${t('st'+i)}</option>`).join('')}</select></td></tr>`}).join('')}</table>`:`<span class="m">${t('none')}</span>`;
+ else if(atab==1)body=db.d.length?`<table>${db.d.map(d=>`<tr><td><b>${esc(d.name)}</b>, ${d.age}</td><td>${BG[d.g][0]} · ${L(DIST[d.d])}</td><td>${esc(d.ph)}</td><td class="m">${esc(d.last||'')}</td></tr>`).join('')}</table>`:`<span class="m">${t('none')}</span>`;
+ else{const pe=db.c.map((c,i)=>[c,i]).filter(x=>!x[0].ok);body=`<b>${t('pend')} (${pe.length})</b>`+(pe.length?`<table>${pe.map(([c,i])=>`<tr><td><b>${esc(c.n)}</b><br><span class="m">${c.dt} · ${esc(c.pl)} · ${L(DIST[c.d])}<br>${esc(c.org)} ${esc(c.ph)}</span></td><td><button class="btn" style="padding:5px 12px" onclick="cOk(${i},1)">${t('ok')}</button> <button class="btn bad" style="padding:5px 12px" onclick="cOk(${i},0)">${t('rej')}</button></td></tr>`).join('')}</table>`:`<p class="m">${t('none')}</p>`)+`<p><b>${t('pub')}</b></p><p class="m">${CAMPS.length+db.c.filter(c=>c.ok).length}</p>`}
+ return S(`<h2>${t('admin')}</h2>`+TABS([t('a0')+' ('+db.r.length+')',t('a1')+' ('+db.d.length+')',t('a2')],atab,'setA')+`<div class="panel tbl">${body}</div><p><button class="btn ghost" style="color:var(--ink)" onclick="isAdmin=false;draw()">${t('out')}</button></p>`)}
+function setA(i){atab=i;draw()}
+function setS(id,v){db.r.find(r=>r.id==id).s=+v;save();toast(t('st'+v))}
+function cOk(i,ok){if(ok)db.c[i].ok=1;else db.c.splice(i,1);save();draw()}
+function draw(){const A=document.getElementById('app');
+ A.querySelectorAll('[id]').forEach(e=>{if('value'in e&&e.type!='file'&&e.type!='checkbox')fv[e.id]=e.value});
+ document.getElementById('bn').textContent=t('brand');
+ document.getElementById('em').innerHTML=`${t('em1')} <a href="tel:112">112</a> / <a href="tel:108">108</a>. ${t('em2')}`;
+ document.getElementById('ft').innerHTML=`<div class="wrap"><b>${t('brand')}</b><br>${t('ft')}<br>${t('disc')}</div>`;
+ document.getElementById('nav').innerHTML=['home','schemes','dir','req','blood','camps','track','admin'].map(k=>`<button class="${view==k?'on':''}" onclick="go('${k}')">${t(k)}</button>`).join('')+`<button class="lg" onclick="setLang()">${t('lang')}</button><button class="lg" onclick="big()" title="${t('a11y')}" aria-label="${t('a11y')}">A+</button><button class="lg" onclick="hc()" title="${t('hcn')}" aria-label="${t('hcn')}">◐</button>`;
+ A.innerHTML=({home,schemes,dir,req,blood,camps,track,admin})[view]();
+ A.querySelectorAll('[id]').forEach(e=>{if(fv[e.id]!=null&&'value'in e&&e.type!='file'&&e.type!='checkbox')e.value=fv[e.id]})}
+document.documentElement.lang=lang;draw();
+</script>
+</body>
+</html>

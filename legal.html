@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Free Legal &amp; Government Help Desk</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@400;600;800&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F1F5F4;--card:#fff;--ink:#16232B;--mute:#5A6B72;--teal:#12504B;--tealx:#0C3A36;--gold:#F2A93B;--rose:#C2455B;--line:#D9E2E0;--on:#fff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1A1C;--card:#172629;--ink:#E7F0EF;--mute:#9DB1B2;--teal:#3FA898;--tealx:#0A2A28;--line:#264043;--on:#0F1A1C}}
+:root[data-theme="dark"]{--bg:#0F1A1C;--card:#172629;--ink:#E7F0EF;--mute:#9DB1B2;--teal:#3FA898;--tealx:#0A2A28;--line:#264043;--on:#0F1A1C}
+html.hc{--bg:#000;--card:#000;--ink:#fff;--mute:#fff;--line:#fff;--teal:#FFD54A;--tealx:#000;--on:#000;--gold:#FFD54A}
+html.big{font-size:120%}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Poppins','Noto Sans Malayalam',system-ui,sans-serif;line-height:1.7}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;justify-content:space-between;padding:10px 5vw;background:var(--card);border-bottom:1px solid var(--line)}
+.logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:1.05rem;color:var(--teal);cursor:pointer;max-width:340px;line-height:1.3}
+nav{display:flex;gap:2px;flex-wrap:wrap;align-items:center}
+nav button{background:none;border:0;padding:6px 10px;border-radius:8px;font:inherit;font-size:.88rem;color:var(--ink);cursor:pointer}
+nav button.on{background:var(--teal);color:var(--on)}
+nav .lg{border:1px solid var(--line);margin-left:4px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 5vw}
+.hero{position:relative;overflow:hidden;background:var(--tealx);color:#fff}
+.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.3fr .7fr;gap:24px;align-items:center;padding-top:72px;padding-bottom:80px}
+.hero .wrap>div:first-child{animation:rise .9s ease-out both}
+.hero h1{font-size:clamp(1.8rem,4.6vw,3rem);line-height:1.3;margin:0 0 14px;font-weight:700}
+.hero p{max-width:56ch;color:#CFE3E0;font-size:1.05rem;margin:0 0 24px}
+.hero svg.art{width:100%;max-width:260px;justify-self:center}
+.hero svg.wave{position:absolute;left:0;bottom:-1px;width:100%;height:40px;z-index:1}
+@media(max-width:720px){.hero .wrap{grid-template-columns:1fr}.hero svg.art{max-width:150px}}
+.bg i{position:absolute;border-radius:50%;border:10px solid rgba(255,255,255,.07);animation:fl 16s ease-in-out infinite alternate}
+.bg i:nth-child(1){width:320px;height:320px;left:-90px;top:-100px}
+.bg i:nth-child(2){width:220px;height:220px;right:6%;bottom:-70px;border-color:rgba(242,169,59,.16);animation-delay:-5s}
+.bg i:nth-child(3){width:90px;height:90px;left:44%;top:14%;border-width:6px;animation-duration:11s}
+.bg i:nth-child(4){width:60px;height:60px;right:30%;top:10%;border-width:5px;border-color:rgba(242,169,59,.2);animation-duration:13s}
+@keyframes fl{from{transform:translate(0,0) rotate(0)}to{transform:translate(26px,-22px) rotate(25deg)}}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.spark{transform-box:fill-box;transform-origin:center;animation:pl 2.4s ease-in-out infinite}
+@keyframes pl{50%{transform:scale(1.2)}}
+.btn{background:var(--teal);color:var(--on);border:0;border-radius:10px;padding:11px 22px;font:inherit;font-weight:600;cursor:pointer}
+.btn.gold{background:var(--gold);color:#16232B}
+.btn.ghost{background:none;color:var(--ink);border:1px solid var(--line)}
+.btn.bad{background:var(--rose);color:#fff}
+.btn:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,nav button:focus-visible,summary:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.sec{padding:40px 0}.sec h2{font-size:1.6rem;margin:0 0 18px}.sec h2:after{content:"";display:block;width:44px;height:4px;background:var(--gold);border-radius:2px;margin-top:8px}
+.m{color:var(--mute);font-size:.93rem}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+.tile{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--gold);border-radius:12px;padding:18px;cursor:pointer;transition:transform .2s,box-shadow .2s;text-align:left;font:inherit;color:inherit}
+.tile:hover{transform:translateY(-4px);box-shadow:0 10px 24px rgba(18,80,75,.14)}
+.tile .ic{font-size:1.8rem}.tile b{display:block;margin:4px 0}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;counter-reset:s}
+.steps div{position:relative;padding-left:52px}
+.steps div:before{counter-increment:s;content:counter(s);position:absolute;left:0;top:0;width:38px;height:38px;border-radius:50%;background:var(--teal);color:var(--on);display:grid;place-items:center;font-weight:700}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;margin-top:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+label{display:block;font-size:.88rem;color:var(--mute);margin-bottom:2px}
+input,select,textarea{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit}
+input[type=checkbox]{width:auto}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-top:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:6px}
+.card h3{margin:0;font-size:1.05rem}
+.tag{display:inline-block;background:var(--bg);border:1px solid var(--line);border-radius:20px;padding:0 10px;font-size:.8rem;margin:2px 4px 0 0}
+.note{background:rgba(242,169,59,.18);border-radius:10px;padding:10px 14px;font-size:.9rem;margin-top:14px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap}.tabs button{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:20px;padding:7px 16px;font:inherit;cursor:pointer}.tabs button.on{background:var(--teal);color:var(--on);border-color:var(--teal)}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin-top:10px}summary{cursor:pointer;font-weight:600}
+.badge{display:inline-block;border-radius:20px;padding:1px 12px;font-size:.82rem;font-weight:600;background:rgba(242,169,59,.28)}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:10px;z-index:9}
+.tbl{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.9rem}td,th{border-bottom:1px solid var(--line);padding:8px;text-align:left;vertical-align:top}
+.cta{background:var(--tealx);color:#fff}.cta .wrap{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;padding-top:32px;padding-bottom:32px}.cta h2{margin:0;font-size:1.4rem}
+footer{background:var(--tealx);color:#CFE3E0;padding:24px 5vw;font-size:.88rem;margin-top:30px}
+@media(prefers-reduced-motion:reduce){.bg i,.spark,.hero .wrap>div:first-child{animation:none}}
+.em{flex-basis:100%;background:var(--rose);color:#fff;font-size:.82rem;font-weight:600;text-align:center;padding:5px 5vw;margin:-10px -5vw 2px}.em a{color:#fff;text-decoration:underline}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.chip{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:4px 12px;font-size:.9rem}.chip b{color:var(--rose)}
+.warn{background:rgba(194,69,91,.14);border-left:4px solid var(--rose);border-radius:8px;padding:10px 14px;margin:12px 0;font-size:.92rem}
+.qx{background:var(--rose)!important;color:#fff!important;border-color:var(--rose)!important;font-weight:600}
+.draft{width:100%;min-height:300px;font-family:inherit;font-size:.92rem}
+.homelink{font-size:.85rem;font-weight:600;color:var(--teal);text-decoration:none;border:1px solid var(--line);border-radius:20px;padding:4px 12px;white-space:nowrap}
+</style>
+</head>
+<body>
+<header>
+  <div class="em" id="em"></div>
+  <div class="logo" onclick="go('home')"><svg width="30" height="30" viewBox="0 0 40 40" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6v26M11 34h18" stroke="#12504B"/><path d="M8 12h24" stroke="#F2A93B"/><path d="M8 12l-4 10c0 3 8 3 8 0zM32 12l-4 10c0 3 8 3 8 0z" stroke="#12504B"/></svg><span id="bn"></span></div>
+  <a class="homelink" href="index.html">← Kaithangu · കൈത്താങ്ങ്</a><nav id="nav"></nav>
+</header>
+<div id="app"></div>
+<footer id="ft"></footer>
+<script src="cloud_db.js"></script>
+<script>
+const T={
+brand:['സൗജന്യ നിയമ-സർക്കാർ സേവന സഹായകേന്ദ്രം','Free Legal & Government Help Desk'],
+home:['ഹോം','Home'],schemes:['പദ്ധതികൾ','Schemes'],docs:['രേഖകൾ','Documents'],rights:['അവകാശങ്ങൾ','Your rights'],rti:['RTI','RTI'],req:['സഹായം ആവശ്യപ്പെടുക','Request help'],dir:['ഡയറക്ടറി','Directory'],track:['അപേക്ഷയുടെ നില','Track request'],admin:['അഡ്മിൻ','Admin'],lang:['English','മലയാളം'],a11y:['അക്ഷര വലുപ്പം','Text size'],hcn:['ഉയർന്ന നിറവ്യത്യാസം','High contrast'],quick:['പെട്ടെന്ന് പുറത്തുകടക്കുക','Quick exit'],
+em1:['അപകടത്തിലാണെങ്കിൽ ഉടൻ വിളിക്കൂ:','In danger? Call now:'],em2:['ഞങ്ങൾ വിവരങ്ങളും റഫറലും മാത്രം നൽകുന്നു; നിയമോപദേശമല്ല.','We give information and referrals, not legal advice.'],
+h1:['അവകാശം അറിയാത്തതിനാൽ ഒരു സേവനവും നഷ്ടപ്പെടരുത്','No service should be lost because you did not know your right'],
+sub:['സർക്കാർ പദ്ധതികൾ, രേഖകൾ, ഓൺലൈൻ അപേക്ഷകൾ, നിയമ സഹായം: ശരിയായ സംവിധാനത്തിലേക്ക് സൗജന്യ വഴികാട്ടി.','Government schemes, documents, online applications, legal help: a free guide to the right system.'],
+c1:['എനിക്ക് ഏത് പദ്ധതി കിട്ടും?','Which scheme can I get?'],c2:['സഹായം ആവശ്യപ്പെടുക','Request help'],whot:['ഞങ്ങൾ നൽകുന്ന സഹായം','How we help'],
+disc:['ഇത് നിയമോപദേശമല്ല. ഞങ്ങൾ വിവരങ്ങൾ നൽകുകയും ശരിയായ ഔദ്യോഗിക സംവിധാനത്തിലേക്കോ യോഗ്യരായ അഭിഭാഷകരിലേക്കോ റഫർ ചെയ്യുകയും മാത്രമാണ് ചെയ്യുന്നത്.','This is not legal advice. We only provide information and refer you to the right official system or a qualified lawyer.'],
+hw:['എങ്ങനെ പ്രവർത്തിക്കുന്നു','How it works'],s1:['ആവശ്യം പറയുക','Tell us what you need'],s1d:['കേസിന്റെ വിശദാംശങ്ങൾ ചോദിക്കില്ല; വിഭാഗം മാത്രം.','We do not ask for case details; only the type of help.'],s2:['ശരിയായ വഴി കണ്ടെത്തുക','Find the right path'],s2d:['പദ്ധതികൾ, രേഖകൾ, അവകാശങ്ങൾ എന്നിവ വായിക്കാം.','Read about schemes, documents and rights.'],s3:['ഞങ്ങൾ ബന്ധിപ്പിക്കും','We connect you'],s3d:['ശരിയായ ഓഫീസിലേക്കോ അഭിഭാഷകരിലേക്കോ എത്തുന്നതുവരെ സഹായിക്കും.','We help until you reach the right office or lawyer.'],
+ctat:['സഹായം വേണോ? ഇത് സൗജന്യമാണ്','Need help? It is free.'],
+demo:['ഇത് പരീക്ഷണ പതിപ്പാണ്. പദ്ധതി, രേഖ, അവകാശ, ഡയറക്ടറി വിവരങ്ങൾ സാമ്പിൾ മാത്രം; അഭിഭാഷകൻ പരിശോധിച്ച യഥാർത്ഥ വിവരങ്ങൾ പിന്നീട് ചേർക്കും. നൽകുന്ന വിവരങ്ങൾ ഈ ബ്രൗസറിൽ മാത്രം സൂക്ഷിക്കുന്നു.','This is a prototype. Scheme, document, rights and directory content are samples and will be replaced with lawyer-reviewed information. Anything you enter stays only in this browser.'],
+ft:['പരീക്ഷണ പതിപ്പ് · ബന്ധപ്പെടാനുള്ള വിവരങ്ങൾ ഇവിടെ ചേർക്കും','Prototype · Contact details to be added here'],f_all:['എല്ലാം','All'],no:['ഇല്ല','No'],yes:['ഉണ്ട്','Yes'],any:['ഏതും','Any'],
+fq:['6 ചോദ്യങ്ങൾ, ഉടൻ ഫലം','Six questions, instant results'],ageg:['പ്രായ വിഭാഗം','Age group'],gn:['ലിംഗം','Gender'],ct:['വിഭാഗം','Category'],dis:['ഭിന്നശേഷി ഉണ്ടോ?','Do you have a disability?'],wid:['വിധവയാണോ?','Are you a widow?'],inc:['കുടുംബ വാർഷിക വരുമാനം','Annual family income'],show:['പദ്ധതികൾ കാണിക്കുക','Show schemes'],
+res:['അർഹമായേക്കാവുന്നവ','You may be eligible for'],nores:['ചേരുന്നത് കണ്ടില്ല. സഹായത്തിനായി ഞങ്ങളോട് ചോദിക്കൂ.','Nothing matched. Ask us for help.'],elig:['അർഹത അന്തിമമായി ഉറപ്പാക്കേണ്ടത് ഔദ്യോഗിക ഓഫീസിലാണ്.','Final eligibility must be confirmed with the official office.'],ask:['ഇതിന് സഹായം വേണം','I need help with this'],link:['ഔദ്യോഗിക ലിങ്ക്: ചേർക്കാനുണ്ട്','Official link: to be added'],chk:['അവസാനം പരിശോധിച്ചത്: ചേർക്കാനുണ്ട്','Last verified: to be added'],
+dt:['രേഖകളും സർട്ടിഫിക്കറ്റുകളും','Documents & certificates'],dd_:['ഓരോ രേഖയ്ക്കും എന്തൊക്കെ വേണം, എവിടെ അപേക്ഷിക്കണം.','What you need for each document and where to apply.'],need:['വേണ്ട രേഖകൾ','What to carry'],where:['എവിടെ അപേക്ഷിക്കാം','Where to apply'],onl:['ഓൺലൈൻ അപേക്ഷ: ഘട്ടങ്ങൾ','Online application: steps'],akh:['സഹായം വേണമെങ്കിൽ അടുത്തുള്ള അക്ഷയ / സഹായ കേന്ദ്രത്തെ സമീപിക്കാം.','If you need help, you can visit a nearby Akshaya or assisted-service centre.'],
+rg:['നിങ്ങളുടെ അവകാശങ്ങൾ','Your rights'],rgd:['ലളിതമായ വിവരണം; അഭിഭാഷകൻ പരിശോധിച്ച ശേഷം പ്രസിദ്ധീകരിക്കും.','Plain-language summary; to be reviewed by a lawyer before publishing.'],
+rtit:['വിവരാവകാശം (RTI)','Right to Information (RTI)'],rtd:['സർക്കാർ ഓഫീസുകളിൽ നിന്ന് വിവരം ചോദിക്കാൻ ഓരോ പൗരനും അവകാശമുണ്ട്. താഴെ നാല് വിവരം നൽകിയാൽ അപേക്ഷയുടെ ഡ്രാഫ്റ്റ് ഉണ്ടാക്കാം.','Every citizen can ask government offices for information. Enter four details below to create a draft application.'],
+rn:['നിങ്ങളുടെ പേര്','Your name'],ra:['വിലാസം','Your address'],ro:['ഓഫീസ് / വകുപ്പ്','Office / department'],ri:['എന്ത് വിവരമാണ് വേണ്ടത്','What information do you want'],rb:['ഞാൻ ബിപിഎൽ വിഭാഗത്തിലാണ് (ഫീസ് ഇളവ്, തെളിവ് സഹിതം)','I am in the BPL category (fee exemption, with proof)'],rm:['ഡ്രാഫ്റ്റ് ഉണ്ടാക്കുക','Create draft'],rc:['പകർത്തുക','Copy'],rcd:['പകർത്തി','Copied'],rs1:['ഒരു സാധാരണ കടലാസിൽ അപേക്ഷ എഴുതുക','Write the application on plain paper'],rs2:['ബന്ധപ്പെട്ട ഓഫീസിലെ പൊതു വിവര ഓഫീസർക്ക് (PIO) അയയ്ക്കുക','Send it to the Public Information Officer (PIO) of the office'],rs3:['നിശ്ചിത ഫീസ് അടയ്ക്കുക (ബിപിഎൽ ആണെങ്കിൽ ഒഴിവ്, തെളിവ് വയ്ക്കുക)','Pay the prescribed fee (exempt for BPL; attach proof)'],rs4:['നിയമം അനുവദിച്ച സമയത്തിനുള്ളിൽ മറുപടി കിട്ടിയില്ലെങ്കിൽ അപ്പീൽ നൽകാം','If no reply within the legal time limit, you can appeal'],
+rt:['സഹായം ആവശ്യപ്പെടുക','Request help'],rd:['വിഭാഗം തിരഞ്ഞെടുക്കൂ. കേസിന്റെ വിശദാംശങ്ങൾ എഴുതേണ്ട; ഞങ്ങളുടെ ആൾ നിങ്ങളോട് സംസാരിക്കും. പ്രതികരണ സമയം ഉറപ്പ് നൽകാൻ കഴിയില്ല.','Choose a category. Do not write case details; our person will speak to you. We cannot guarantee a response time.'],
+cat:['സഹായത്തിന്റെ വിഭാഗം','Type of help'],n:['പേര്','Name'],ph:['മൊബൈൽ നമ്പർ','Mobile number'],dd:['ജില്ല','District'],safe:['വിളിക്കാൻ സുരക്ഷിതമായ സമയം','Safe time to call'],mode:['ബന്ധപ്പെടേണ്ട രീതി','How to contact you'],nt:['കൂടുതൽ വിവരങ്ങൾ (ഓപ്ഷണൽ; കേസ് വിശദാംശങ്ങൾ വേണ്ട)','Anything else (optional; no case details)'],
+cons:['ഈ സേവനം നൽകാൻ മാത്രം എന്റെ വിവരങ്ങൾ ഉപയോഗിക്കാൻ ഞാൻ സമ്മതിക്കുന്നു.','I agree that my details are used only to provide this service.'],send:['അയയ്ക്കുക','Submit'],err:['പേര്, 10 അക്ക മൊബൈൽ നമ്പർ, ജില്ല എന്നിവ നൽകുക.','Please enter name, a 10-digit mobile number and district.'],errc:['സമ്മതം ടിക്ക് ചെയ്യുക.','Please tick the consent box.'],
+warnF:['വീട്ടിലെ പ്രശ്നങ്ങളാണെങ്കിൽ: മറ്റാരും കാണാത്തപ്പോൾ ഉപയോഗിക്കൂ. മുകളിലെ "പെട്ടെന്ന് പുറത്തുകടക്കുക" ബട്ടൺ ഉപയോഗിക്കാം. ഞങ്ങൾ സന്ദേശങ്ങൾ അയയ്ക്കില്ല എന്ന ഓപ്ഷൻ തിരഞ്ഞെടുക്കാം. അപകടത്തിലാണെങ്കിൽ 112 വിളിക്കൂ.','If this is about problems at home: use this when no one else can see. You can use the "Quick exit" button above, and choose "no messages". If you are in danger, call 112.'],
+done:['അപേക്ഷ ലഭിച്ചു','Request received'],doned:['നിങ്ങളുടെ റഫറൻസ് നമ്പർ','Your reference number'],donen:['"അപേക്ഷയുടെ നില" പേജിൽ മൊബൈൽ നമ്പർ നൽകി നില നോക്കാം.','Check the status on the Track page with your mobile number.'],
+dr:['ഡയറക്ടറി','Directory'],d0:['നിയമ സേവന അതോറിറ്റികൾ','Legal Services Authorities'],d1:['ഹെൽപ്‌ലൈനുകൾ','Helplines'],d2:['സഹായ കേന്ദ്രങ്ങൾ','Assisted-service centres'],d3:['കൗൺസിലിംഗ് / കുടുംബ സഹായം','Counselling & family support'],dvn:['നമ്പറുകൾ ടീം സ്ഥിരീകരിച്ച ശേഷം മാത്രം പ്രസിദ്ധീകരിക്കും.','Numbers will be published only after the team verifies them.'],all14:['14 ജില്ലകളിലെയും വിവരങ്ങൾ ചേർക്കാനുണ്ട്.','Entries for all 14 districts are yet to be added.'],
+tr:['അപേക്ഷയുടെ നില','Track your request'],trd:['അപേക്ഷയിൽ നൽകിയ മൊബൈൽ നമ്പർ നൽകുക.','Enter the mobile number you used in the request.'],trb:['നോക്കുക','Check'],trn:['ഈ നമ്പറിൽ അപേക്ഷ ഇല്ല.','No request found for this number.'],
+st0:['പുതിയത്','New'],st1:['ബന്ധപ്പെട്ടു','Contacted'],st2:['റഫർ ചെയ്തു','Referred'],st3:['പൂർത്തിയായി','Completed'],
+al:['അഡ്മിൻ പ്രവേശനം','Admin login'],pin:['PIN (പരീക്ഷണം: 1234)','PIN (prototype: 1234)'],enter:['പ്രവേശിക്കുക','Sign in'],badpin:['PIN തെറ്റാണ്','Wrong PIN'],rq:['ലഭിച്ച അപേക്ഷകൾ','Requests received'],none:['ഒന്നും ഇല്ല.','None yet.'],out:['പുറത്തുകടക്കുക','Sign out'],coord:['ജില്ലാ കോർഡിനേറ്റർ കാഴ്ച (ജില്ല തിരഞ്ഞെടുക്കൂ)','District coordinator view (choose district)']};
+const t=k=>T[k][lang=='ml'?0:1],L=x=>Array.isArray(x)?x[lang=='ml'?0:1]:x;
+const DIST=[['തിരുവനന്തപുരം','Thiruvananthapuram'],['കൊല്ലം','Kollam'],['പത്തനംതിട്ട','Pathanamthitta'],['ആലപ്പുഴ','Alappuzha'],['കോട്ടയം','Kottayam'],['ഇടുക്കി','Idukki'],['എറണാകുളം','Ernakulam'],['തൃശൂർ','Thrissur'],['പാലക്കാട്','Palakkad'],['മലപ്പുറം','Malappuram'],['കോഴിക്കോട്','Kozhikode'],['വയനാട്','Wayanad'],['കണ്ണൂർ','Kannur'],['കാസറഗോഡ്','Kasaragod']];
+const IN=[['₹1 ലക്ഷത്തിൽ താഴെ','Below ₹1 lakh',1],['₹1 – 2.5 ലക്ഷം','₹1 – 2.5 lakh',2.5],['₹2.5 – 6 ലക്ഷം','₹2.5 – 6 lakh',6],['₹6 ലക്ഷത്തിന് മുകളിൽ','Above ₹6 lakh',99]];
+const AG=[['കുട്ടി (18 വരെ)','Child (up to 18)'],['മുതിർന്നയാൾ (18–59)','Adult (18–59)'],['മുതിർന്ന പൗരൻ (60+)','Senior citizen (60+)']];
+const GN=[['സ്ത്രീ','Female'],['പുരുഷൻ','Male'],['മറ്റുള്ളവ','Other']];
+const CT=[['പ്രത്യേക വിഭാഗമില്ല','General'],['എസ്‌സി','SC'],['എസ്‌ടി','ST'],['ഒബിസി','OBC'],['ന്യൂനപക്ഷം','Minority']];
+const YN=[['ഇല്ല','No'],['ഉണ്ട്','Yes']];
+const RC=[['പദ്ധതി കണ്ടെത്താൻ സഹായം','Help finding a scheme'],['സർട്ടിഫിക്കറ്റ് / രേഖ സഹായം','Certificate / document help'],['ഓൺലൈൻ അപേക്ഷയ്ക്ക് സഹായം','Help with an online application'],['നിയമ സഹായ റഫറൽ','Legal aid referral'],['കുടുംബ പ്രശ്ന റഫറൽ','Family issue referral'],['RTI അപേക്ഷയ്ക്ക് സഹായം','Help with an RTI application']];
+const SAFE=[['രാവിലെ','Morning'],['ഉച്ചയ്ക്ക്','Afternoon'],['വൈകുന്നേരം','Evening'],['ഏത് സമയവും','Any time']];
+const MODE=[['ഫോൺ വിളി മാത്രം','Phone call only'],['സന്ദേശം അയയ്ക്കരുത്','Do not send messages'],['നേരിട്ട് കാണാം','Meet in person']];
+const SCH=[
+{n:['വാർധക്യ പെൻഷൻ (സാമ്പിൾ)','Old-age pension (sample)'],ag:[2],mi:2.5,d:['മുതിർന്ന പൗരന്മാർക്കുള്ള പ്രതിമാസ ക്ഷേമ പെൻഷൻ.','Monthly welfare pension for senior citizens.']},
+{n:['വിധവാ പെൻഷൻ (സാമ്പിൾ)','Widow pension (sample)'],ag:[1,2],g:0,w:1,mi:2.5,d:['വിധവകളായ സ്ത്രീകൾക്കുള്ള പ്രതിമാസ പെൻഷൻ.','Monthly pension for widowed women.']},
+{n:['ഭിന്നശേഷി പെൻഷൻ (സാമ്പിൾ)','Disability pension (sample)'],ag:[0,1,2],dis:1,mi:2.5,d:['ഭിന്നശേഷിക്കാർക്കുള്ള പ്രതിമാസ സഹായം.','Monthly support for persons with disabilities.']},
+{n:['പെൺകുട്ടികളുടെ പഠന-ക്ഷേമ സഹായം (സാമ്പിൾ)','Girl child welfare support (sample)'],ag:[0],g:0,mi:6,d:['പെൺകുട്ടികളുടെ പഠനവും ക്ഷേമവും ഉറപ്പാക്കാൻ.','To support the education and welfare of girl children.']},
+{n:['പട്ടികജാതി / വർഗ ക്ഷേമ സഹായം (സാമ്പിൾ)','SC/ST welfare support (sample)'],ag:[0,1,2],ct:[1,2],mi:6,d:['ഭവന, വിദ്യാഭ്യാസ, ഉപജീവന സഹായങ്ങൾ.','Housing, education and livelihood assistance.']},
+{n:['ഭക്ഷ്യ സുരക്ഷാ സഹായം (സാമ്പിൾ)','Food security support (sample)'],ag:[0,1,2],mi:1,d:['കുറഞ്ഞ വരുമാനമുള്ള കുടുംബങ്ങൾക്ക് റേഷൻ സഹായം.','Ration support for low-income families.']}];
+const DOC=[
+{n:['വരുമാന സർട്ടിഫിക്കറ്റ്','Income certificate'],w:['വില്ലേജ് ഓഫീസ് / ഓൺലൈൻ പോർട്ടൽ','Village office / online portal'],i:[['തിരിച്ചറിയൽ രേഖ','Identity proof'],['വിലാസ രേഖ','Address proof'],['വരുമാനം തെളിയിക്കുന്ന രേഖ അല്ലെങ്കിൽ സത്യവാങ്മൂലം','Income proof or declaration'],['പാസ്പോർട്ട് സൈസ് ഫോട്ടോ','Passport-size photo']]},
+{n:['ജാതി / സമുദായ സർട്ടിഫിക്കറ്റ്','Community certificate'],w:['വില്ലേജ് / താലൂക്ക് ഓഫീസ്','Village / taluk office'],i:[['തിരിച്ചറിയൽ രേഖ','Identity proof'],['കുടുംബത്തിലെ മുൻ സർട്ടിഫിക്കറ്റ് അല്ലെങ്കിൽ സ്കൂൾ രേഖ','Earlier family certificate or school record'],['വിലാസ രേഖ','Address proof']]},
+{n:['നേറ്റിവിറ്റി സർട്ടിഫിക്കറ്റ്','Nativity certificate'],w:['വില്ലേജ് ഓഫീസ്','Village office'],i:[['തിരിച്ചറിയൽ രേഖ','Identity proof'],['ജനനം / താമസം തെളിയിക്കുന്ന രേഖ','Proof of birth or residence'],['ഫോട്ടോ','Photo']]},
+{n:['ജനന / മരണ സർട്ടിഫിക്കറ്റ്','Birth / death certificate'],w:['പഞ്ചായത്ത് / നഗരസഭ ഓഫീസ്','Panchayat / municipality office'],i:[['ആശുപത്രി രേഖ അല്ലെങ്കിൽ മെഡിക്കൽ സർട്ടിഫിക്കറ്റ്','Hospital record or medical certificate'],['അപേക്ഷകന്റെ തിരിച്ചറിയൽ രേഖ','Applicant\'s identity proof'],['വിലാസ രേഖ','Address proof']]},
+{n:['റേഷൻ കാർഡ് സംബന്ധമായ സേവനങ്ങൾ','Ration card services'],w:['താലൂക്ക് സപ്ലൈ ഓഫീസ് / ഓൺലൈൻ','Taluk supply office / online'],i:[['കുടുംബാംഗങ്ങളുടെ തിരിച്ചറിയൽ രേഖ','Identity proofs of family members'],['വിലാസ രേഖ','Address proof'],['നിലവിലെ കാർഡ് (ഉണ്ടെങ്കിൽ)','Current card (if any)']]}];
+const ONL=[['ബന്ധപ്പെട്ട ഔദ്യോഗിക പോർട്ടൽ തുറക്കുക (ലിങ്ക് ടീം നൽകും)','Open the relevant official portal (link to be provided)'],['മൊബൈൽ നമ്പർ ഉപയോഗിച്ച് രജിസ്റ്റർ ചെയ്യുക','Register with your mobile number'],['ഫോം പൂരിപ്പിച്ച് രേഖകൾ സ്കാൻ ചെയ്ത് അപ്‌ലോഡ് ചെയ്യുക','Fill the form and upload scanned documents'],['ഫീസ് ഉണ്ടെങ്കിൽ അടയ്ക്കുക','Pay the fee, if any'],['അപേക്ഷാ നമ്പർ സൂക്ഷിച്ചുവച്ച് നില പിന്തുടരുക','Keep the application number and track the status']];
+const RG=[['👩','സ്ത്രീകൾ','Women',['വീട്ടിലെ പീഡനത്തിനെതിരെ നിയമ സംരക്ഷണം തേടാം; അതിന് സംരക്ഷണ ഉദ്യോഗസ്ഥരുടെ സഹായം ലഭിക്കും.','സൗജന്യ നിയമ സഹായത്തിന് സ്ത്രീകൾക്ക് അർഹതയുണ്ടാകാം.','ഭയമോ സംശയമോ ഉണ്ടെങ്കിൽ ഹെൽപ്‌ലൈനുമായി ബന്ധപ്പെടാം.'],['You can seek legal protection against domestic violence and get help from Protection Officers.','Women may be entitled to free legal aid.','If you are afraid or unsure, contact a helpline.']],
+['👵','മുതിർന്ന പൗരന്മാർ','Senior citizens',['മക്കളിൽ നിന്ന് ജീവിതച്ചെലവ് ആവശ്യപ്പെടാൻ നിയമപരമായ വഴിയുണ്ട്.','വാർധക്യ പെൻഷനും മറ്റ് ക്ഷേമ പദ്ധതികളും ലഭ്യമാണ്.','മുതിർന്നവർക്കുള്ള ഹെൽപ്‌ലൈൻ ഉപയോഗിക്കാം.'],['There is a legal route to claim maintenance from your children.','Old-age pension and other welfare schemes are available.','You can use the senior citizens\' helpline.']],
+['♿','ഭിന്നശേഷിക്കാർ','Persons with disabilities',['ഭിന്നശേഷി അവകാശ നിയമപ്രകാരം പ്രത്യേക അവകാശങ്ങളും സംവരണവും ഉണ്ട്.','ഭിന്നശേഷി സർട്ടിഫിക്കറ്റ് പല പദ്ധതികൾക്കും ആവശ്യമാണ്.','പെൻഷനും സഹായ ഉപകരണങ്ങൾക്കും അപേക്ഷിക്കാം.'],['The disability rights law gives special rights and reservations.','A disability certificate is needed for many schemes.','You can apply for a pension and assistive devices.']],
+['⚖️','സൗജന്യ നിയമ സഹായം','Free legal aid',['അർഹരായവർക്ക് ജില്ലാ നിയമ സേവന അതോറിറ്റി വഴി സൗജന്യ അഭിഭാഷക സഹായം ലഭിക്കാം.','സ്ത്രീകൾ, കുട്ടികൾ, ഭിന്നശേഷിക്കാർ, കുറഞ്ഞ വരുമാനമുള്ളവർ തുടങ്ങിയവർക്ക് സാധ്യതയുണ്ട്.','അർഹത അതോറിറ്റി തീരുമാനിക്കും.'],['Eligible people can get a free lawyer through the District Legal Services Authority.','Women, children, persons with disabilities, low-income people and others may qualify.','The Authority decides eligibility.']]];
+const LEG=[{n:['സാമ്പിൾ ജില്ലാ നിയമ സേവന അതോറിറ്റി','Sample District Legal Services Authority'],d:0},{n:['സാമ്പിൾ ജില്ലാ നിയമ സേവന അതോറിറ്റി','Sample District Legal Services Authority'],d:1},{n:['സാമ്പിൾ താലൂക്ക് നിയമ സേവന സമിതി','Sample Taluk Legal Services Committee'],d:9},{n:['സാമ്പിൾ ജില്ലാ നിയമ സേവന അതോറിറ്റി','Sample District Legal Services Authority'],d:6}];
+const CEN=[{n:['സാമ്പിൾ അക്ഷയ കേന്ദ്രം','Sample Akshaya centre'],d:1,i:['ഓൺലൈൻ അപേക്ഷ, സർട്ടിഫിക്കറ്റ് സഹായം','Online applications, certificate help']},{n:['സാമ്പിൾ സേവന കേന്ദ്രം','Sample service centre'],d:9,i:['അപേക്ഷകൾക്കുള്ള സഹായം','Help with applications']},{n:['സാമ്പിൾ അക്ഷയ കേന്ദ്രം','Sample Akshaya centre'],d:0,i:['ഓൺലൈൻ അപേക്ഷ സഹായം','Online application help']}];
+const CNS=[{n:['സാമ്പിൾ കുടുംബ കൗൺസിലിംഗ് കേന്ദ്രം','Sample Family Counselling Centre'],d:1,i:['കുടുംബ കൗൺസിലിംഗ്','Family counselling']},{n:['സാമ്പിൾ വനിതാ സഹായ കേന്ദ്രം','Sample Women\'s Support Centre'],d:6,i:['സ്ത്രീകൾക്കുള്ള പിന്തുണ','Support for women']}];
+const HL=[['112',['അടിയന്തര സഹായം','Emergency']],['181',['വനിതാ ഹെൽപ്‌ലൈൻ','Women helpline']],['1098',['കുട്ടികളുടെ ഹെൽപ്‌ലൈൻ','Child helpline']],['14567',['മുതിർന്നവരുടെ ഹെൽപ്‌ലൈൻ','Senior citizens helpline']],['15100',['സൗജന്യ നിയമ സഹായ ഹെൽപ്‌ലൈൻ','Free legal aid helpline']]];
+let lang='en',view='home',dtab=0,rcat=0,doneId=0,fres=null,rout='',fv={},isAdmin=false,db={r:[],n:1};
+try{const s=localStorage.getItem('lgl1');if(s)db=JSON.parse(s);lang=localStorage.getItem('lgl1l')||'en'}catch(e){}
+const save=()=>{try{localStorage.setItem('lgl1',JSON.stringify(db))}catch(e){}};
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const opt=(a,all)=>(all?`<option value="">${t('f_all')}</option>`:'')+a.map((x,i)=>`<option value="${i}">${L(x)}</option>`).join('');
+const S=h=>`<div class="wrap sec">${h}</div>`;
+const pad=n=>'LGL-'+String(n).padStart(4,'0');
+function toast(m){const e=document.createElement('div');e.className='toast';e.textContent=m;document.body.appendChild(e);setTimeout(()=>e.remove(),2600)}
+function go(v){view=v;doneId=0;draw();scrollTo(0,0)}
+function goC(c){rcat=c;go('req')}
+function setLang(){lang=lang=='ml'?'en':'ml';try{localStorage.setItem('lgl1l',lang)}catch(e){}document.documentElement.lang=lang;draw()}
+function big(){document.documentElement.classList.toggle('big')}function hc(){document.documentElement.classList.toggle('hc')}
+function qx(){fv={};rout='';fres=null;doneId=0;view='home';try{draw()}catch(e){}scrollTo(0,0);try{location.replace('https://www.google.com/')}catch(e){}}
+const TABS=(arr,cur,fn)=>`<div class="tabs">${arr.map((x,i)=>`<button class="${cur==i?'on':''}" onclick="${fn}(${i})">${x}</button>`).join('')}</div>`;
+const TILES=[['📋','go(\'schemes\')','സർക്കാർ പദ്ധതികൾ കണ്ടെത്തുക','Find government schemes','പെൻഷൻ, ക്ഷേമ പദ്ധതികൾ.','Pensions and welfare schemes.'],['📄','go(\'docs\')','സർട്ടിഫിക്കറ്റുകൾ, രേഖകൾ','Certificates & documents','എന്ത് വേണം, എവിടെ അപേക്ഷിക്കണം.','What you need and where to apply.'],['🖥️','goC(2)','ഓൺലൈൻ അപേക്ഷയ്ക്ക് സഹായം','Online application help','ഘട്ടം ഘട്ടമായി വഴികാട്ടാം.','Step-by-step guidance.'],['⚖️','goC(3)','നിയമ സഹായ റഫറൽ','Legal aid referral','ശരിയായ അതോറിറ്റിയിലേക്ക്.','To the right authority.'],['👪','goC(4)','കുടുംബ പ്രശ്ന റഫറൽ','Family issue referral','സുരക്ഷിതവും രഹസ്യവുമായി.','Safe and confidential.'],['🛡️','go(\'rights\')','സ്ത്രീകൾ, മുതിർന്നവർ, ഭിന്നശേഷിക്കാർ','Rights: women, elders, disabled','നിങ്ങളുടെ അവകാശങ്ങൾ അറിയുക.','Know your rights.'],['🔎','go(\'rti\')','RTI മാർഗനിർദ്ദേശം','RTI guidance','അപേക്ഷയുടെ ഡ്രാഫ്റ്റ് ഉണ്ടാക്കാം.','Create a draft application.'],['🏛️','go(\'dir\')','നിയമ സേവന അതോറിറ്റികൾ','Legal Services Authorities','ജില്ല തിരിച്ച ഡയറക്ടറി.','District-wise directory.']];
+function home(){return `<section class="hero"><div class="bg" aria-hidden="true"><i></i><i></i><i></i><i></i></div><div class="wrap"><div><h1>${t('h1')}</h1><p>${t('sub')}</p><div class="row"><button class="btn gold" onclick="go('schemes')">${t('c1')}</button><button class="btn ghost" style="color:#fff" onclick="goC(0)">${t('c2')}</button></div></div>
+<svg class="art" viewBox="0 0 200 200" fill="none" stroke-width="7" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M100 36v118M60 164h80" stroke="#fff"/><path d="M40 62h120" stroke="#F2A93B"/><path class="spark" d="M40 62l-22 56c0 16 44 16 44 0zM160 62l-22 56c0 16 44 16 44 0z" stroke="#fff"/></svg></div>
+<svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30Q360 62 720 30T1440 30V60H0Z" fill="var(--bg)"/></svg></section>`
++S(`<div class="warn">${t('disc')}</div><h2>${t('whot')}</h2><div class="tiles">${TILES.map(x=>`<button class="tile" onclick="${x[1]}"><span class="ic">${x[0]}</span><b>${L([x[2],x[3]])}</b><span class="m">${L([x[4],x[5]])}</span></button>`).join('')}</div>`)
++`<section class="cta"><div class="wrap"><h2>${t('ctat')}</h2><button class="btn gold" onclick="goC(0)">${t('c2')}</button></div></section>`
++S(`<h2>${t('hw')}</h2><div class="steps">${[1,2,3].map(i=>`<div><b>${t('s'+i)}</b><br><span class="m">${t('s'+i+'d')}</span></div>`).join('')}</div><div class="note">${t('demo')}</div>`)}
+function schCard(s){return `<div class="card"><h3>${L(s.n)}</h3><div>${s.ag.map(a=>`<span class="tag">${L(AG[a])}</span>`).join('')}</div><p class="m" style="margin:4px 0">${L(s.d)}</p><span class="m">${t('link')}<br>${t('chk')}</span><button class="btn ghost" style="color:var(--ink);margin-top:8px" onclick="goC(0)">${t('ask')}</button></div>`}
+function schemes(){return S(`<h2>${t('schemes')}</h2><p class="m">${t('fq')}</p><div class="panel" style="margin-top:0"><div class="grid">
+<div><label>${t('ageg')}</label><select id="q_ag">${opt(AG)}</select></div><div><label>${t('gn')}</label><select id="q_gn">${opt(GN)}</select></div><div><label>${t('ct')}</label><select id="q_ct">${opt(CT)}</select></div>
+<div><label>${t('dis')}</label><select id="q_dis">${opt(YN)}</select></div><div><label>${t('wid')}</label><select id="q_w">${opt(YN)}</select></div><div><label>${t('inc')}</label><select id="q_in">${opt(IN)}</select></div></div><p><button class="btn" onclick="runF()">${t('show')}</button></p></div>`
++(fres?`<h2 style="margin-top:28px">${t('res')}</h2>${fres.length?`<div class="cards">${fres.map(schCard).join('')}</div><div class="note">${t('elig')}</div>`:`<p class="m">${t('nores')}</p><button class="btn" onclick="goC(0)">${t('c2')}</button>`}`:'')+`<div class="note">${t('disc')}</div>`)}
+function runF(){const v=i=>+document.getElementById(i).value,ag=v('q_ag'),gn=v('q_gn'),ct=v('q_ct'),dis=v('q_dis')==1,w=v('q_w')==1,inc=IN[v('q_in')][2];
+ fres=SCH.filter(s=>s.ag.includes(ag)&&(s.g==null||s.g==gn)&&(!s.w||w)&&(!s.dis||dis)&&(!s.ct||s.ct.includes(ct))&&inc<=s.mi);draw()}
+function docs(){return S(`<h2>${t('dt')}</h2><p class="m">${t('dd_')}</p>`+DOC.map(d=>`<details><summary>📄 ${L(d.n)}</summary><p><b>${t('where')}:</b> ${L(d.w)}</p><p><b>${t('need')}:</b></p><ul>${d.i.map(x=>`<li>${L(x)}</li>`).join('')}</ul></details>`).join('')+`<h2 style="margin-top:30px">${t('onl')}</h2><div class="steps">${ONL.map(x=>`<div><span>${L(x)}</span></div>`).join('')}</div><div class="note">${t('akh')}</div><p><button class="btn" onclick="goC(2)">${t('c2')}</button></p><div class="note">${t('demo')}</div>`)}
+function rights(){return S(`<h2>${t('rg')}</h2><p class="m">${t('rgd')}</p>`+RG.map(g=>`<details><summary>${g[0]} ${L([g[1],g[2]])}</summary><ul>${(lang=='ml'?g[3]:g[4]).map(x=>`<li>${x}</li>`).join('')}</ul></details>`).join('')+`<div class="warn">${t('disc')}</div><p><button class="btn" onclick="goC(3)">${t('c2')}</button></p>`)}
+function rtiText(){const v=i=>(document.getElementById(i)||{value:''}).value.trim(),n=v('rt_n')||'__________',a=v('rt_a')||'__________',o=v('rt_o')||'__________',inf=v('rt_i')||'__________',b=(document.getElementById('rt_b')||{}).checked,dt=new Date().toISOString().slice(0,10);
+ return lang=='ml'?`സ്വീകർത്താവ്,\nപൊതു വിവര ഓഫീസർ,\n${o}\n\nവിഷയം: വിവരാവകാശ നിയമം 2005 സെക്ഷൻ 6(1) പ്രകാരമുള്ള അപേക്ഷ\n\nസർ/മാഡം,\n${a} എന്ന വിലാസത്തിൽ താമസിക്കുന്ന ${n} ആയ ഞാൻ വിവരാവകാശ നിയമം 2005 പ്രകാരം താഴെ പറയുന്ന വിവരങ്ങൾ ആവശ്യപ്പെടുന്നു:\n\n${inf}\n\n${b?'ഞാൻ ബിപിഎൽ വിഭാഗത്തിൽപ്പെടുന്നു; ഇതിന്റെ തെളിവ് സഹിതം ഫീസ് ഇളവ് അഭ്യർത്ഥിക്കുന്നു.':'നിശ്ചിത അപേക്ഷാ ഫീസ് ഇതോടൊപ്പം സമർപ്പിക്കുന്നു.'}\n\nനിയമം അനുശാസിക്കുന്ന സമയത്തിനുള്ളിൽ വിവരം നൽകണമെന്ന് അഭ്യർത്ഥിക്കുന്നു.\n\nവിശ്വസ്തതയോടെ,\n${n}\nതീയതി: ${dt}\nസ്ഥലം: ________`
+ :`To,\nThe Public Information Officer,\n${o}\n\nSubject: Request for information under Section 6(1) of the Right to Information Act, 2005\n\nSir/Madam,\nI, ${n}, residing at ${a}, request the following information under the Right to Information Act, 2005:\n\n${inf}\n\n${b?'I belong to the Below Poverty Line category; proof is enclosed and I request exemption from the fee.':'The prescribed application fee is enclosed.'}\n\nKindly provide the information within the time limit prescribed by the Act.\n\nYours faithfully,\n${n}\nDate: ${dt}\nPlace: ________`}
+function makeRti(){rout=rtiText();draw()}
+function copyR(){const e=document.getElementById('rt_out');if(!e)return;e.select();try{document.execCommand('copy');toast(t('rcd'))}catch(x){}}
+function rti(){return S(`<h2>${t('rtit')}</h2><p class="m">${t('rtd')}</p><div class="steps">${[1,2,3,4].map(i=>`<div><span>${t('rs'+i)}</span></div>`).join('')}</div><div class="panel"><div class="grid"><div><label>${t('rn')}</label><input id="rt_n"></div><div><label>${t('ra')}</label><input id="rt_a"></div><div><label>${t('ro')}</label><input id="rt_o"></div></div><div style="margin-top:14px"><label>${t('ri')}</label><textarea id="rt_i" rows="3"></textarea></div><p><label style="color:var(--ink)"><input type="checkbox" id="rt_b"> ${t('rb')}</label></p><p><button class="btn" onclick="makeRti()">${t('rm')}</button></p></div>`
++(rout?`<div class="panel"><textarea id="rt_out" class="draft" readonly>${esc(rout)}</textarea><p><button class="btn gold" onclick="copyR()">${t('rc')}</button></p></div>`:'')+`<div class="note">${t('demo')}</div>`)}
+let lastSubmission=null;
+function req(){
+ if(doneId){
+  const ref='LEG-'+pad(doneId);
+  const wa=lastSubmission&&typeof createWhatsAppDispatch==='function'?createWhatsAppDispatch(lastSubmission.title,lastSubmission.ref,lastSubmission.summary):'#';
+  return S(`<h2>${t('done')}</h2><div class="panel" style="margin-top:0"><p>${t('doned')}: <b>${pad(doneId)}</b></p><p class="m">${t('donen')}</p>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin:18px 0">
+   <a class="btn" style="background:#25D366;color:#fff;text-decoration:none;display:inline-flex;align-items:center;gap:8px;font-weight:700" href="${wa}" target="_blank" rel="noopener">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.23 8.23 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23-1.48 0-2.93-.39-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.32a8.19 8.19 0 0 1-1.26-4.36c0-4.54 3.69-8.25 8.24-8.25m-2.52 3.69c-.17 0-.44.07-.67.31-.23.25-.88.86-.88 2.1 0 1.23.91 2.43 1.03 2.59.13.17 1.79 2.72 4.33 3.82.6.26 1.07.42 1.43.53.61.2 1.16.17 1.6.1.49-.07 1.51-.62 1.72-1.21.21-.59.21-1.1.15-1.2-.07-.11-.24-.17-.51-.3-.27-.14-1.6-.79-1.85-.88-.24-.09-.42-.14-.6.12-.17.25-.67.85-.82 1.02-.15.17-.3.19-.57.06-.27-.14-1.13-.42-2.15-1.33-.79-.71-1.33-1.58-1.48-1.84-.15-.26-.02-.4.12-.53.12-.12.27-.31.4-.46.14-.15.18-.26.28-.45.09-.2.04-.36-.03-.49-.06-.13-.57-1.38-.78-1.9-.21-.5-.42-.43-.57-.44-.15-.01-.32-.01-.5-.01"/></svg>
+    ${lang=='ml'?'വാട്സ്ആപ്പ് വഴി അറിയിക്കുക':'Notify Team via WhatsApp'}
+   </a>
+   <button class="btn" onclick="go('track')">${t('track')}</button>
+  </div></div>`);
+ }
+ return S(`<h2>${t('rt')}</h2><p class="m">${t('rd')}</p>${rcat==4||rcat==3?`<div class="warn">${t('warnF')}</div>`:''}<div class="panel" style="margin-top:0"><div class="grid"><div><label>${t('cat')} *</label><select id="r_cat" onchange="rcat=+this.value;draw()">${opt(RC)}</select></div><div><label>${t('n')} *</label><input id="r_name"></div><div><label>${t('ph')} *</label><input id="r_ph" inputmode="numeric" maxlength="10"></div><div><label>${t('dd')} *</label><select id="r_d">${opt(DIST)}</select></div><div><label>${t('safe')}</label><select id="r_safe">${opt(SAFE)}</select></div><div><label>${t('mode')}</label><select id="r_mode">${opt(MODE)}</select></div></div><div style="margin-top:14px"><label>${t('nt')}</label><textarea id="r_note" rows="3"></textarea></div><p><label style="color:var(--ink)"><input type="checkbox" id="r_cs"> ${t('cons')}</label></p><p><button class="btn" onclick="sendReq()">${t('send')}</button></p></div>`)}
+function sendReq(){const v=i=>{const e=document.getElementById(i);return e?e.value.trim():''};
+ const phoneClean=typeof OurValidator!=='undefined'?OurValidator.isValidPhone(v('r_ph')):v('r_ph').length==10;
+ if(!v('r_name')||!phoneClean||v('r_d')===''){toast(t('err'));return}
+ if(!document.getElementById('r_cs').checked){toast(t('errc'));return}
+ const recId=db.n++;
+ const r={id:recId,cat:+v('r_cat'),name:v('r_name'),ph:v('r_ph'),d:+v('r_d'),safe:+v('r_safe'),mode:+v('r_mode'),note:v('r_note'),s:0,date:new Date().toISOString().slice(0,10)};
+ db.r.push(r);save();
+ const ref='LEG-'+pad(recId);
+ lastSubmission={
+  title:'നിയമ-സർക്കാർ സഹായം (Legal Desk)',
+  ref:ref,
+  summary:{
+   'പേര്':r.name,
+   'വിഭാഗം':RC[r.cat]?RC[r.cat][0]:r.cat,
+   'ഫോൺ':r.ph,
+   'ജില്ല':DIST[r.d]?DIST[r.d][0]:r.d,
+   'അനുയോജ്യ സമയം':SAFE[r.safe]?SAFE[r.safe][0]:r.safe,
+   'രീതി':MODE[r.mode]?MODE[r.mode][0]:r.mode,
+   'കുറിപ്പ്':r.note||'—'
+  }
+ };
+ if(typeof syncRecordToCloud==='function'){
+  syncRecordToCloud('legal','request',{
+   ref:ref,
+   category:RC[r.cat]?RC[r.cat][1]:r.cat,
+   name:r.name,
+   phone:r.ph,
+   district:DIST[r.d]?DIST[r.d][1]:r.d,
+   safe_time:SAFE[r.safe]?SAFE[r.safe][1]:r.safe,
+   contact_mode:MODE[r.mode]?MODE[r.mode][1]:r.mode,
+   details:r.note||''
+  });
+ }
+ fv={};doneId=r.id;draw()}
+function dir(){const d=fv.dd2,dok=x=>d==null||d===''||x.d==+d;let l;
+ if(dtab==1)l=HL.map(x=>`<div class="card"><h3><a href="tel:${x[0]}" style="color:var(--rose)">${x[0]}</a></h3><span>${L(x[1])}</span></div>`).concat([`<div class="note">${t('dvn')}</div>`]);
+ else l=(dtab==0?LEG:dtab==2?CEN:CNS).filter(dok).map(x=>`<div class="card"><h3>${L(x.n)}</h3><div><span class="tag">${L(DIST[x.d])}</span></div>${x.i?`<p class="m" style="margin:4px 0">${L(x.i)}</p>`:''}</div>`);
+ return S(`<h2>${t('dr')}</h2>`+TABS([t('d0'),t('d1'),t('d2'),t('d3')],dtab,'setD')+(dtab==1?'':`<div class="panel" style="margin-top:14px;max-width:340px"><label>${t('dd')}</label><select id="dd2" onchange="draw()">${opt(DIST,1)}</select></div>`)+`<div class="cards">${l.join('')||`<p class="m">${t('nores')}</p>`}</div><div class="note">${t('all14')} ${t('demo')}</div>`)}
+function setD(i){dtab=i;draw()}
+function track(){const p=fv.tp;const l=p&&p.length==10?db.r.filter(r=>r.ph==p):null;
+ return S(`<h2>${t('tr')}</h2><div class="panel" style="margin-top:0;max-width:460px"><p class="m">${t('trd')}</p><input id="tp" inputmode="numeric" maxlength="10"><p><button class="btn" onclick="draw()">${t('trb')}</button></p></div>`+(l?(l.length?`<div class="cards">${l.map(r=>`<div class="card"><b>${pad(r.id)}</b><span>${L(RC[r.cat])}</span><span class="m">${r.date}</span><span class="badge">${t('st'+r.s)}</span></div>`).join('')}</div>`:`<p class="m" style="margin-top:14px">${t('trn')}</p>`):''))}
+function admin(){
+ if(!isAdmin)return S(`<h2>${t('al')}</h2><div class="panel" style="max-width:340px"><label>${t('pin')}</label><input id="pin" type="password"><p><button class="btn" onclick="if(document.getElementById('pin').value=='1234'){isAdmin=true;draw()}else toast(t('badpin'))">${t('enter')}</button></p></div>`);
+ const d=fv.ad_,l=db.r.filter(r=>d==null||d===''||r.d==+d);
+ return S(`<h2>${t('rq')} (${l.length})</h2><div class="panel" style="margin-top:0;max-width:380px"><label>${t('coord')}</label><select id="ad_" onchange="draw()">${opt(DIST,1)}</select></div><div class="panel tbl">${l.length?`<table>${l.map(r=>`<tr><td>${pad(r.id)}<br><span class="m">${r.date}</span></td><td><b>${esc(r.name)}</b><br>${esc(r.ph)} · ${L(DIST[r.d])}<br><span class="m">${t('safe')}: ${L(SAFE[r.safe])} · ${L(MODE[r.mode])}</span></td><td>${L(RC[r.cat])}<br><span class="m">${esc(r.note)}</span></td><td><select onchange="setS(${r.id},this.value)">${[0,1,2,3].map(i=>`<option value="${i}"${r.s==i?' selected':''}>${t('st'+i)}</option>`).join('')}</select></td></tr>`).join('')}</table>`:`<span class="m">${t('none')}</span>`}</div><p><button class="btn ghost" style="color:var(--ink)" onclick="isAdmin=false;draw()">${t('out')}</button></p>`)}
+function setS(id,v){db.r.find(r=>r.id==id).s=+v;save();toast(t('st'+v))}
+function draw(){const A=document.getElementById('app');
+ A.querySelectorAll('[id]').forEach(e=>{if('value'in e&&e.type!='file'&&e.type!='checkbox')fv[e.id]=e.value});
+ document.getElementById('bn').textContent=t('brand');
+ document.getElementById('em').innerHTML=`${t('em1')} <a href="tel:112">112</a>. ${t('em2')}`;
+ document.getElementById('ft').innerHTML=`<div class="wrap"><b>${t('brand')}</b><br>${t('ft')}<br>${t('disc')}</div>`;
+ document.getElementById('nav').innerHTML=['home','schemes','docs','rights','rti','req','dir','track','admin'].map(k=>`<button class="${view==k?'on':''}" onclick="go('${k}')">${t(k)}</button>`).join('')+`<button class="lg" onclick="setLang()">${t('lang')}</button><button class="lg" onclick="big()" title="${t('a11y')}" aria-label="${t('a11y')}">A+</button><button class="lg" onclick="hc()" title="${t('hcn')}" aria-label="${t('hcn')}">◐</button><button class="lg qx" onclick="qx()">${t('quick')}</button>`;
+ A.innerHTML=({home,schemes,docs,rights,rti,req,dir,track,admin})[view]();
+ A.querySelectorAll('[id]').forEach(e=>{if(fv[e.id]!=null&&'value'in e&&e.type!='file'&&e.type!='checkbox'&&e.id!='rt_out')e.value=fv[e.id]});
+ if(view=='req'){const c=document.getElementById('r_cat');if(c)c.value=rcat}}
+document.documentElement.lang=lang;draw();
+</script>
+</body>
+</html>

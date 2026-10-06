@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Thuna | തുണ</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@400;600;800&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F1F5F4;--card:#fff;--ink:#16232B;--mute:#5A6B72;--teal:#12504B;--tealx:#0C3A36;--gold:#F2A93B;--rose:#C2455B;--line:#D9E2E0;--on:#fff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1A1C;--card:#172629;--ink:#E7F0EF;--mute:#9DB1B2;--teal:#3FA898;--tealx:#0A2A28;--line:#264043;--on:#0F1A1C}}
+:root[data-theme="dark"]{--bg:#0F1A1C;--card:#172629;--ink:#E7F0EF;--mute:#9DB1B2;--teal:#3FA898;--tealx:#0A2A28;--line:#264043;--on:#0F1A1C}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Poppins','Noto Sans Malayalam',system-ui,sans-serif;line-height:1.7}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;justify-content:space-between;padding:10px 5vw;background:var(--card);border-bottom:1px solid var(--line)}
+.logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:1.4rem;color:var(--teal);cursor:pointer}
+nav{display:flex;gap:4px;flex-wrap:wrap;align-items:center}
+nav button{background:none;border:0;padding:7px 12px;border-radius:8px;font:inherit;font-size:.95rem;color:var(--ink);cursor:pointer}
+nav button.on{background:var(--teal);color:var(--on)}
+nav .lg{border:1px solid var(--line);margin-left:6px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 5vw}
+.hero{background:var(--tealx);color:#fff}
+.hero .wrap{display:grid;grid-template-columns:1.3fr .7fr;gap:24px;align-items:center;padding-top:56px;padding-bottom:56px}
+.hero h1{font-size:clamp(1.8rem,4.6vw,2.9rem);line-height:1.3;margin:0 0 14px;font-weight:700}
+.hero p{max-width:56ch;color:#CFE3E0;font-size:1.05rem;margin:0 0 24px}
+.hero svg{width:100%;max-width:280px;justify-self:center}
+@media(max-width:720px){.hero .wrap{grid-template-columns:1fr}.hero svg{max-width:160px}}
+.btn{background:var(--teal);color:var(--on);border:0;border-radius:10px;padding:11px 22px;font:inherit;font-weight:600;cursor:pointer}
+.btn.gold{background:var(--gold);color:#16232B}
+.btn.ghost{background:none;color:inherit;border:1px solid currentColor}
+.btn.bad{background:var(--rose);color:#fff}
+.btn:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,nav button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.sec{padding:44px 0}
+.sec h2{font-size:1.6rem;margin:0 0 18px}
+.pill{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}
+.pill div{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--gold);border-radius:12px;padding:16px}
+.pill b{display:block;margin-bottom:4px}
+.pill span,.m{color:var(--mute);font-size:.93rem}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;counter-reset:s}
+.steps div{position:relative;padding-left:52px}
+.steps div:before{counter-increment:s;content:counter(s);position:absolute;left:0;top:0;width:38px;height:38px;border-radius:50%;background:var(--teal);color:var(--on);display:grid;place-items:center;font-weight:700}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;margin-top:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+label{display:block;font-size:.88rem;color:var(--mute);margin-bottom:2px}
+input,select,textarea{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit}
+input[type=checkbox]{width:auto}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-top:16px}
+.pc{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.pc img{width:100%;aspect-ratio:4/4.2;object-fit:cover;display:block;background:var(--line)}
+.pc .b{padding:14px;display:flex;flex-direction:column;gap:2px;flex:1}
+.pc h3{margin:0;font-size:1.08rem}
+.tag{display:inline-block;background:var(--bg);border:1px solid var(--line);border-radius:20px;padding:0 10px;font-size:.8rem;margin:6px 4px 0 0}
+.hid{color:var(--mute);font-size:.8rem;margin:8px 0}
+.pc .btn{padding:9px 14px}
+.note{background:rgba(242,169,59,.18);border-radius:10px;padding:10px 14px;font-size:.9rem;margin-top:14px}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:10px;z-index:9}
+#pv{display:none;width:120px;height:130px;object-fit:cover;border-radius:10px;margin-top:8px}
+.tbl{overflow-x:auto}
+footer{background:var(--tealx);color:#CFE3E0;padding:26px 5vw;font-size:.9rem;margin-top:30px}
+
+.gov{background:var(--gold);color:#16232B;text-align:center;font-size:.85rem;font-weight:600;padding:6px 5vw}
+.hero{position:relative;overflow:hidden}
+.hero .wrap{position:relative;z-index:1;padding-top:76px;padding-bottom:76px}
+.hero .wrap>div:first-child{animation:rise .9s ease-out both}
+.bg i{position:absolute;border-radius:50%;border:10px solid rgba(255,255,255,.07);animation:fl 16s ease-in-out infinite alternate}
+.bg i:nth-child(1){width:340px;height:340px;left:-90px;top:-100px}
+.bg i:nth-child(2){width:340px;height:340px;left:70px;top:-60px;border-color:rgba(242,169,59,.16);animation-delay:-4s}
+.bg i:nth-child(3){width:220px;height:220px;right:8%;bottom:-70px;animation-delay:-8s}
+.bg i:nth-child(4){width:220px;height:220px;right:calc(8% + 90px);bottom:-40px;border-color:rgba(242,169,59,.14);animation-delay:-2s}
+.bg i:nth-child(5){width:90px;height:90px;left:44%;top:14%;border-width:6px;animation-duration:11s}
+.bg i:nth-child(6){width:60px;height:60px;right:30%;top:10%;border-width:5px;border-color:rgba(242,169,59,.2);animation-duration:13s}
+@keyframes fl{from{transform:translate(0,0) rotate(0)}to{transform:translate(26px,-22px) rotate(25deg)}}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.hero h1{font-size:clamp(2rem,5vw,3.3rem)}
+.sec h2:after{content:"";display:block;width:44px;height:4px;background:var(--gold);border-radius:2px;margin-top:8px}
+.pc,.pill div{transition:transform .2s,box-shadow .2s}
+.pc:hover,.pill div:hover{transform:translateY(-4px);box-shadow:0 10px 24px rgba(18,80,75,.14)}
+footer .wrap{padding:0}
+@media(prefers-reduced-motion:reduce){.bg i,.hero .wrap>div:first-child{animation:none}}
+.pf{display:grid;grid-template-columns:280px 1fr;gap:26px;align-items:start}
+.dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px 20px}
+.cta{background:var(--tealx);color:#fff}.cta .wrap{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;padding-top:34px;padding-bottom:34px}.cta h2{margin:0;font-size:1.5rem}.cta span{color:#CFE3E0}
+@media(max-width:720px){.pf{grid-template-columns:1fr}}
+.hero svg.wave{max-width:none;width:100%;height:40px;position:absolute;left:0;bottom:-1px;z-index:1}
+.hp{transform-box:fill-box;transform-origin:center;animation:pl 2.4s ease-in-out infinite}
+@keyframes pl{50%{transform:scale(1.14)}}
+.qs{position:relative;z-index:2;margin-top:-30px}.qs .panel{margin-top:0;box-shadow:0 12px 30px rgba(18,80,75,.16)}
+.bar{height:10px;background:var(--line);border-radius:6px;overflow:hidden}.bar i{display:block;height:100%;background:var(--gold)}
+.badge{display:inline-block;border-radius:20px;padding:2px 12px;font-size:.85rem;font-weight:600}.badge.p{background:rgba(242,169,59,.28)}.badge.l{background:rgba(63,168,152,.28)}
+@media(prefers-reduced-motion:reduce){.hp{animation:none}}
+.sup{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:20px}.sup .wrap{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;padding-top:30px;padding-bottom:30px}.sup h2{margin:0 0 4px}.sup p{margin:0;color:var(--mute)}
+.gp{display:flex;flex-wrap:wrap;gap:12px;align-items:center;background:var(--bg);border:1px dashed var(--gold);border-radius:12px;padding:12px 16px;margin-top:8px}.gp b{font-size:1.4rem;letter-spacing:.04em}
+.qt{margin:18px 0;padding:14px 20px;border-left:5px solid var(--gold);font-size:1.1rem;font-style:italic}
+.homelink{font-size:.85rem;font-weight:600;color:var(--teal);text-decoration:none;border:1px solid var(--line);border-radius:20px;padding:4px 12px;white-space:nowrap}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo" onclick="go('home')"><svg width="30" height="30" viewBox="0 0 40 40" fill="none" stroke-width="4"><circle cx="15" cy="20" r="10" stroke="#12504B"/><circle cx="25" cy="20" r="10" stroke="#F2A93B"/></svg><span id="bn"></span></div>
+  <a class="homelink" href="index.html">← Kaithangu · കൈത്താങ്ങ്</a><nav id="nav"></nav>
+</header>
+<div id="app"></div>
+<footer id="ft"></footer>
+<script src="cloud_db.js"></script>
+<script>
+const DIST=[['തിരുവനന്തപുരം','Thiruvananthapuram'],['കൊല്ലം','Kollam'],['പത്തനംതിട്ട','Pathanamthitta'],['ആലപ്പുഴ','Alappuzha'],['കോട്ടയം','Kottayam'],['ഇടുക്കി','Idukki'],['എറണാകുളം','Ernakulam'],['തൃശൂർ','Thrissur'],['പാലക്കാട്','Palakkad'],['മലപ്പുറം','Malappuram'],['കോഴിക്കോട്','Kozhikode'],['വയനാട്','Wayanad'],['കണ്ണൂർ','Kannur'],['കാസറഗോഡ്','Kasaragod']];
+const T={
+brand:['തുണ','Thuna'],home:['ഹോം','Home'],reg:['രജിസ്റ്റർ','Register'],search:['തിരയുക','Search'],admin:['അഡ്മിൻ','Admin'],lang:['English','മലയാളം'],
+h1:['വിവാഹം നടക്കാതെ പോകുന്നവർക്ക് ഒരു കൈത്താങ്ങ്','A helping hand for those whose marriages are yet to happen'],
+sub:['പാവപ്പെട്ട കുടുംബങ്ങളിലെ യുവതീയുവാക്കൾക്ക് ജീവിതപങ്കാളിയെ കണ്ടെത്താൻ സഹായിക്കുന്ന സൗജന്യ വേദി. ഫീസില്ല, പാക്കേജില്ല.','A free platform that helps young people from low-income families find a life partner. No fees, no packages.'],
+c1:['സൗജന്യമായി രജിസ്റ്റർ ചെയ്യുക','Register free'],c2:['പ്രൊഫൈലുകൾ തിരയുക','Browse profiles'],
+t1:['എപ്പോഴും സൗജന്യം','Always free'],t1d:['രജിസ്ട്രേഷനും തിരയലും ഒരിക്കലും പണം വാങ്ങില്ല.','Registration and search never cost anything.'],
+t2:['എല്ലാവർക്കും തുറന്നത്','Open to everyone'],t2d:['ജാതിയോ മതമോ ചോദിക്കുന്നില്ല.','We do not ask for caste or religion.'],
+t3:['പരിശോധിച്ച പ്രൊഫൈലുകൾ','Verified profiles'],t3d:['ഞങ്ങളുടെ ടീം അംഗീകരിച്ച ശേഷമേ പ്രൊഫൈൽ കാണൂ.','A profile appears only after our team approves it.'],
+t4:['സ്വകാര്യത സുരക്ഷിതം','Privacy protected'],t4d:['ഫോൺ നമ്പർ മറച്ചുവയ്ക്കും; ടീം വഴി മാത്രം ബന്ധിപ്പിക്കും.','Phone numbers stay hidden; we connect people through our team.'],
+hw:['എങ്ങനെ പ്രവർത്തിക്കുന്നു','How it works'],
+s1:['രജിസ്റ്റർ ചെയ്യുക','Register'],s1d:['വിവരങ്ങളും ഫോട്ടോയും നൽകുക.','Share your details and a photo.'],
+s2:['പരിശോധന','Verification'],s2d:['ഞങ്ങളുടെ ടീം പ്രൊഫൈൽ പരിശോധിച്ച് അംഗീകരിക്കും.','Our team checks and approves your profile.'],
+s3:['തിരയുക, ബന്ധപ്പെടുക','Search and connect'],s3d:['ചേരുന്നവരെ കണ്ട് താൽപര്യം അറിയിക്കുക; ടീം ഇരുകൂട്ടരെയും ബന്ധിപ്പിക്കും.','Find a match, show interest, and we will connect both families.'],
+demo:['ഇത് പരീക്ഷണ പതിപ്പാണ്. പ്രൊഫൈലുകൾ സാങ്കൽപ്പികമാണ്; നൽകുന്ന വിവരങ്ങൾ ഈ ബ്രൗസറിൽ മാത്രം സൂക്ഷിക്കുന്നു.','This is a prototype. Profiles are fictional and anything you enter stays only in this browser.'],
+rt:['സൗജന്യ രജിസ്ട്രേഷൻ','Free registration'],
+name:['പേര്','Name'],g:['ലിംഗം','Gender'],f:['സ്ത്രീ','Female'],m:['പുരുഷൻ','Male'],age:['പ്രായം','Age'],d:['ജില്ല','District'],edu:['വിദ്യാഭ്യാസം','Education'],job:['ജോലി','Occupation'],st:['വൈവാഹിക സ്ഥിതി','Marital status'],ph:['മൊബൈൽ നമ്പർ (പരസ്യമാക്കില്ല)','Mobile number (kept private)'],ab:['സ്വയം പരിചയപ്പെടുത്തുക, പങ്കാളിയെക്കുറിച്ചുള്ള പ്രതീക്ഷ','About you and what you look for in a partner'],
+photo:['ഫോട്ടോ','Photo'],photod:['വ്യക്തമായ മുഖം കാണുന്ന ഫോട്ടോ നൽകുക.','Upload a clear photo showing your face.'],
+cons:['എന്റെ ഫോട്ടോയും വിവരങ്ങളും അംഗീകൃത അംഗങ്ങൾക്ക് കാണിക്കാൻ ഞാൻ സമ്മതിക്കുന്നു.','I agree to show my photo and details to approved members.'],
+otp:['ഈ പരീക്ഷണ പതിപ്പിൽ OTP പരിശോധന ഇല്ല. യഥാർത്ഥ സൈറ്റിൽ നമ്പർ OTP വഴി ഉറപ്പാക്കും.','No OTP check in this prototype. The real site will verify numbers by OTP.'],
+sub2:['രജിസ്റ്റർ ചെയ്യുക','Register'],err:['പേര്, 18+ പ്രായം, 10 അക്ക നമ്പർ, ഫോട്ടോ, സമ്മതം എന്നിവ ആവശ്യമാണ്.','Name, age 18+, 10-digit number, photo and consent are required.'],
+got:['രജിസ്ട്രേഷൻ ലഭിച്ചു','Registration received'],gotd:['പ്രൊഫൈൽ ടീമിന്റെ പരിശോധനയ്ക്ക് അയച്ചു. അംഗീകാരത്തിന് ശേഷം മറ്റുള്ളവർക്ക് കാണാം.','Your profile is with our team for review. Others can see it after approval.'],
+sug:['നിങ്ങൾക്ക് ചേരാൻ സാധ്യതയുള്ളവർ','Suggested matches for you'],nomatch:['ഇപ്പോൾ ചേരുന്ന പ്രൊഫൈലുകൾ ഇല്ല. പുതിയവ വരുമ്പോൾ ഇവിടെ കാണാം.','No matches yet. New profiles will appear here.'],
+lk:['തിരയുന്നത്','Looking for'],all:['എല്ലാവരെയും','Everyone'],bride:['വധുവിനെ','Bride'],groom:['വരനെ','Groom'],from:['പ്രായം മുതൽ','Age from'],to:['പ്രായം വരെ','Age to'],alld:['എല്ലാ ജില്ലയും','All districts'],any:['ഏതും','Any'],go:['തിരയുക','Search'],clr:['മായ്ക്കുക','Clear'],cnt:['പ്രൊഫൈലുകൾ','profiles'],none:['ചേരുന്ന പ്രൊഫൈൽ ഇല്ല. ഫിൽട്ടർ മാറ്റി നോക്കുക.','No profile found. Try changing the filters.'],
+yrs:['വയസ്സ്','yrs'],hid:['ഫോൺ നമ്പർ മറച്ചിരിക്കുന്നു. താൽപര്യം അറിയിച്ചാൽ ടീം ബന്ധിപ്പിക്കും.','Phone hidden. Show interest and our team will connect you.'],int:['താൽപര്യം അറിയിക്കുക','Show interest'],
+needreg:['ആദ്യം രജിസ്റ്റർ ചെയ്യുക','Please register first'],already:['നേരത്തേ അറിയിച്ചിട്ടുണ്ട്','Already sent'],sent:['താൽപര്യം ടീമിനെ അറിയിച്ചു','Interest sent to our team'],
+al:['അഡ്മിൻ പ്രവേശനം','Admin login'],pin:['PIN (പരീക്ഷണ പതിപ്പ്: 1234)','PIN (prototype: 1234)'],enter:['പ്രവേശിക്കുക','Sign in'],badpin:['PIN തെറ്റാണ്','Wrong PIN'],
+pend:['അംഗീകാരം കാത്തിരിക്കുന്നവർ','Awaiting approval'],ok:['അംഗീകരിക്കുക','Approve'],no:['നിരസിക്കുക','Reject'],okd:['അംഗീകരിച്ചു','Approved'],nod:['നിരസിച്ചു','Rejected'],nop:['കാത്തിരിക്കുന്ന പ്രൊഫൈലുകൾ ഇല്ല.','No pending profiles.'],
+ints:['താൽപര്യ അറിയിപ്പുകൾ','Interest requests'],noi:['ഇതുവരെ ഇല്ല.','None yet.'],out:['പുറത്തുകടക്കുക','Sign out'],phl:['ഫോൺ','Phone'],
+tag:['സൗജന്യ വിവാഹ സഹായ വേദി','A free platform to find a life partner'],foot:['പരീക്ഷണ പതിപ്പ് · വിലാസവും ഹെൽപ്‌ലൈൻ നമ്പറും ഇവിടെ ചേർക്കും','Prototype · Address and helpline to be added here']};
+const ST=[['അവിവാഹിതർ','Never married'],['വിവാഹമോചിതർ','Divorced'],['വിധവ / വിഭാര്യർ','Widowed'],['വിവാഹമോചന നടപടിയിൽ','Awaiting divorce'],['വിവാഹം റദ്ദാക്കിയവർ','Annulled']];
+const seed=[
+{id:1,name:['അനിത കെ.','Anitha K.'],g:'F',age:27,d:1,edu:['ബിഎ','BA'],job:['തയ്യൽ ജോലി','Tailor'],st:0,about:['ലളിതമായ കുടുംബം. ജോലിയുള്ള, സ്നേഹമുള്ള പങ്കാളിയെ ആഗ്രഹിക്കുന്നു.','From a modest family. Hoping for a caring, employed partner.'],ok:1},
+{id:2,name:['സുരേഷ് ബാബു','Suresh Babu'],g:'M',age:31,d:1,edu:['ഐടിഐ','ITI'],job:['ഇലക്ട്രീഷ്യൻ','Electrician'],st:0,about:['അമ്മയോടൊപ്പം താമസം. സ്ഥിരവരുമാനമുണ്ട്.','Lives with his mother. Has a steady income.'],ok:1},
+{id:3,name:['ലേഖ എസ്.','Lekha S.'],g:'F',age:33,d:2,edu:['പ്ലസ് ടു','Plus Two'],job:['കടയിൽ ജോലി','Shop assistant'],st:1,about:['ഒരു മകളുണ്ട്. മനസ്സിലാക്കുന്ന ഒരാളെ ആഗ്രഹിക്കുന്നു.','Has a daughter. Looking for an understanding partner.'],ok:1},
+{id:4,name:['ഷാജി മോൻ','Shaji Mon'],g:'M',age:36,d:3,edu:['എസ്എസ്എൽസി','SSLC'],job:['മത്സ്യത്തൊഴിലാളി','Fisherman'],st:0,about:['അധ്വാനശീലൻ, ലഹരി ഉപയോഗമില്ല.','Hardworking, no substance use.'],ok:1},
+{id:5,name:['ഫാത്തിമ പി.','Fathima P.'],g:'F',age:24,d:9,edu:['ബികോം','B.Com'],job:['ട്യൂഷൻ ടീച്ചർ','Tutor'],st:0,about:['പഠനം തുടരാൻ പിന്തുണയ്ക്കുന്ന കുടുംബം പ്രതീക്ഷിക്കുന്നു.','Hopes for a family that supports further study.'],ok:1},
+{id:6,name:['വിനോദ് ആർ.','Vinod R.'],g:'M',age:29,d:1,edu:['ഡിപ്ലോമ','Diploma'],job:['ഓട്ടോ ഡ്രൈവർ','Auto driver'],st:0,about:['സ്വന്തമായി ഓട്ടോ ഉണ്ട്.','Owns his auto-rickshaw.'],ok:1},
+{id:7,name:['മിനി ജോസ്','Mini Jose'],g:'F',age:30,d:4,edu:['നഴ്സിംഗ്','Nursing'],job:['ഹോം നഴ്സ്','Home nurse'],st:2,about:['ഒരു ജീവിതസഖാവിനെ തേടുന്നു.','Looking for a life companion.'],ok:0}];
+
+Object.assign(T,{view:['പ്രൊഫൈൽ കാണുക','View profile'],back:['തിരികെ','Back'],cta:['ഇന്ന് തന്നെ തുടങ്ങൂ','Begin your journey today'],ctad:['രജിസ്ട്രേഷൻ സൗജന്യമാണ്, എപ്പോഴും.','Registration is free, always.'],priv:['ഫോൺ നമ്പറുകൾ സ്വകാര്യമായി സൂക്ഷിക്കുന്നു.','Phone numbers are kept private.'],regd:['കൂടുതൽ വിവരങ്ങൾ നൽകിയാൽ ചേരുന്ന പങ്കാളിയെ കണ്ടെത്താൻ എളുപ്പമാകും. * ഉള്ളവ നിർബന്ധം, ബാക്കി ഓപ്ഷണൽ.','The more you share, the better we can match you. Fields marked * are required; the rest are optional.']});
+const EMP=[['ശമ്പളമുള്ള ജോലി','Salaried'],['സ്വയംതൊഴിൽ','Self-employed'],['ദിവസക്കൂലി','Daily wage'],['കൃഷി','Farming'],['വിദേശത്ത്','Working abroad'],['വിദ്യാർത്ഥി','Student'],['ജോലിയില്ല','Not employed']];
+const INC=[['₹10,000-ൽ താഴെ','Below ₹10,000'],['₹10,000–20,000','₹10,000–20,000'],['₹20,000–40,000','₹20,000–40,000'],['₹40,000-ന് മുകളിൽ','Above ₹40,000']];
+const FT=[['അണുകുടുംബം','Nuclear'],['കൂട്ടുകുടുംബം','Joint']],HS=[['സ്വന്തം വീട്','Own house'],['വാടക വീട്','Rented'],['മറ്റുള്ളവ','Other']],DT=[['സസ്യാഹാരി','Vegetarian'],['സസ്യേതരം','Non-vegetarian'],['മുട്ട കഴിക്കും','Eggetarian']],HB=[['ഇല്ല','No'],['ഇടയ്ക്ക്','Occasionally'],['ഉണ്ട്','Yes']];
+const LB={G1:['വ്യക്തിഗത വിവരങ്ങൾ','Personal details'],G2:['സ്ഥലം','Location'],G3:['വിദ്യാഭ്യാസവും ജോലിയും','Education and work'],G4:['കുടുംബം','Family'],G5:['ജീവിതശൈലി','Lifestyle'],G6:['പങ്കാളിയെക്കുറിച്ചുള്ള പ്രതീക്ഷ','Partner preference'],G7:['ബന്ധപ്പെടാൻ','Contact and photo'],
+name:['പേര്','Full name'],g:['ലിംഗം','Gender'],age:['പ്രായം','Age'],ht:['ഉയരം (സെ.മീ.)','Height (cm)'],st:['വൈവാഹിക സ്ഥിതി','Marital status'],kids:['കുട്ടികളുടെ എണ്ണം','Number of children'],tongue:['മാതൃഭാഷ','Mother tongue'],health:['ആരോഗ്യം / അംഗവൈകല്യം (ഓപ്ഷണൽ)','Health / disability (optional)'],
+d:['ജില്ല','District'],place:['സ്ഥലം / പഞ്ചായത്ത്','Locality'],edu:['വിദ്യാഭ്യാസം','Education'],job:['ജോലി','Occupation'],emp:['തൊഴിൽ തരം','Type of work'],inc:['പ്രതിമാസ വരുമാനം (ഓപ്ഷണൽ)','Monthly income (optional)'],
+fj:['അച്ഛന്റെ ജോലി','Father\'s occupation'],mj:['അമ്മയുടെ ജോലി','Mother\'s occupation'],sib:['സഹോദരങ്ങളുടെ എണ്ണം','Siblings'],ft:['കുടുംബ തരം','Family type'],hs:['വീട് (ഓപ്ഷണൽ)','Housing (optional)'],gn:['രക്ഷിതാവിന്റെ പേര്','Guardian name'],gp:['രക്ഷിതാവിന്റെ ഫോൺ (സ്വകാര്യം)','Guardian phone (private)'],
+diet:['ഭക്ഷണരീതി','Diet'],smk:['പുകവലി','Smoking'],drk:['മദ്യപാനം','Drinking'],pa1:['പ്രായം മുതൽ','Preferred age from'],pa2:['പ്രായം വരെ','Preferred age to'],pd:['ജില്ല','Preferred district'],pst:['വൈവാഹിക സ്ഥിതി','Preferred marital status'],pe:['വിദ്യാഭ്യാസം','Preferred education'],ab:['സ്വയം പരിചയപ്പെടുത്തുക, പ്രതീക്ഷകൾ','About you and your expectations'],phone:['മൊബൈൽ നമ്പർ (സ്വകാര്യം)','Mobile number (private)']};
+const YN=[['ഇല്ല','No'],['ഉണ്ട്','Yes']],KL=[['എന്നോടൊപ്പം','Living with me'],['എന്നോടൊപ്പമല്ല','Not living with me']];
+const IDD=[['ജനനസർട്ടിഫിക്കറ്റ്','Birth certificate'],['എസ്എസ്എൽസി ബുക്ക് / സർട്ടിഫിക്കറ്റ്','SSLC book / certificate'],['പാസ്‌പോർട്ട്','Passport'],['വോട്ടർ ഐഡി','Voter ID'],['ഡ്രൈവിംഗ് ലൈസൻസ്','Driving licence'],['മറ്റുള്ളവ','Other']];
+const OT=['മറ്റുള്ളവ','Other'];
+const SD=[null,[['വിവാഹമോചന ഉത്തരവ് (കോടതി)','Divorce decree / court order'],['പരസ്പര സമ്മത വിവാഹമോചന ഉത്തരവ്','Mutual-consent divorce order'],OT],[['പങ്കാളിയുടെ മരണ സർട്ടിഫിക്കറ്റ്','Spouse\'s death certificate'],OT],[['കോടതിയിൽ നൽകിയ ഹർജിയുടെ പകർപ്പ്','Copy of court petition'],['കേസ് നമ്പർ / നില വിവരം','Case number / status document'],OT],[['വിവാഹം റദ്ദാക്കിയ ഉത്തരവ്','Annulment decree'],OT]];
+Object.assign(LB,{hk:['കുട്ടികൾ ഉണ്ടോ?','Do you have children?'],kl:['കുട്ടികൾ താമസിക്കുന്നത്','Children live'],kids:['കുട്ടികളുടെ എണ്ണം','Number of children']});
+Object.assign(T,{docs:['പരിശോധനയ്ക്കുള്ള രേഖകൾ','Verification documents'],docsd:['ഈ രേഖകൾ ഞങ്ങളുടെ ടീമിന് മാത്രമേ കാണാൻ കഴിയൂ. തിരിച്ചറിയലിനും വൈവാഹിക സ്ഥിതി ഉറപ്പാക്കാനും മാത്രം ഉപയോഗിക്കും.','Only our team can see these. They are used only to verify identity and marital status.'],idp:['തിരിച്ചറിയൽ / പ്രായം തെളിയിക്കുന്ന രേഖ','ID / age proof'],stdoc:['രേഖ','Document'],upl:['അപ്‌ലോഡ് (ചിത്രം)','Upload (image)'],errd:['രേഖകൾ ഉൾപ്പെടെ ആവശ്യമായ വിവരങ്ങൾ (പേര്, 18+ പ്രായം, 10 അക്ക നമ്പർ, ഫോട്ടോ, സമ്മതം) നൽകുക.','Please complete all required fields, including photo, documents and consent.'],
+legal:['ഈ സേവനം ദുരുപയോഗം ചെയ്യുന്നവർക്കും വ്യാജ വിവരങ്ങൾ നൽകുന്നവർക്കുമെതിരെ ഞങ്ങളുടെ ലീഗൽ ടീം നിയമ നടപടി സ്വീകരിക്കും.','Misuse of this service, or giving false information, will lead to legal action by our legal team.'],
+supt:['ഈ സേവനം എല്ലാവർക്കും സൗജന്യമായി തുടരാൻ','Help us keep this service free for everyone'],supd:['നിങ്ങളുടെ സ്വമേധയാ ഉള്ള പിന്തുണ, വരും കാലത്തും ഈ സേവനം സൗജന്യമായി നിലനിർത്തും.','Your voluntary support keeps this service free for future families.'],supb:['പിന്തുണയ്ക്കുക','Support us'],supm:['വിവാഹം ഉറപ്പിച്ചാൽ, ഈ സൗജന്യ സേവനം തുടരാൻ ഇഷ്ടമുള്ള തുക നൽകി പിന്തുണയ്ക്കാം (നിർബന്ധമില്ല).','Once you are engaged, you may voluntarily support this free service (no obligation).'],support:['പിന്തുണ','Support'],copied:['നമ്പർ പകർത്തി','Number copied'],cp:['നമ്പർ പകർത്തുക','Copy number'],
+cta:['സാധാരണക്കാരന്റെ വിവാഹസ്വപ്നം പൂവണിയാൻ സൗജന്യമായി രജിസ്റ്റർ ചെയ്യൂ','Register free and help an ordinary person\'s dream of marriage come true'],ctad:['രജിസ്ട്രേഷൻ ഫീസ് ഇല്ല • മെമ്പർഷിപ്പ് ഫീസ് ഇല്ല • വിജയഫീസ് ഇല്ല','No registration fee • No membership fee • No success fee']});
+const RC=[['എപിഎൽ','APL'],['ബിപിഎൽ','BPL'],['അന്ത്യോദയ (AAY)','Antyodaya (AAY)'],['മറ്റുള്ളവ / അറിയില്ല','Other / not sure']];
+Object.assign(LB,{G8:['വീട്ടുവിവരങ്ങൾ','Household'],hm:['വീട്ടിലെ അംഗങ്ങൾ','Household members'],rc:['റേഷൻ കാർഡ് തരം (ഓപ്ഷണൽ, പരിശോധനയ്ക്ക് മാത്രം)','Ration card type (optional, verification only)'],addr:['വിലാസം (സ്വകാര്യം)','Address (private)']});
+Object.assign(T,{recv:['ലഭിച്ച താൽപര്യങ്ങൾ','Interests received'],acc:['സ്വീകരിക്കുക','Accept'],dec:['നിരസിക്കുക','Decline'],st0:['മറുപടി കാത്തിരിക്കുന്നു','Awaiting reply'],st1:['സ്വീകരിച്ചു, ടീമിന്റെ അംഗീകാരം കാത്തിരിക്കുന്നു','Accepted, awaiting team approval'],st2:['നിരസിച്ചു','Declined'],st3:['ബന്ധിപ്പിച്ചു, ടീം ഇരു കുടുംബങ്ങളെയും ബന്ധപ്പെടും','Connected, our team will contact both families'],conn:['അംഗീകരിച്ച് ബന്ധിപ്പിക്കുക','Approve and connect'],sim:['ഡെമോ: സ്വീകരിച്ചതായി കാണിക്കുക','Demo: simulate accept'],login:['ലോഗിൻ','Login'],mine:['എന്റെ പ്രൊഫൈൽ','My profile'],logout:['ലോഗൗട്ട്','Logout'],lt:['പ്രൊഫൈലിലേക്ക് ലോഗിൻ','Login to your profile'],ld:['രജിസ്റ്റർ ചെയ്ത മൊബൈൽ നമ്പർ നൽകുക. OTP ഫോണിൽ വരും.','Enter your registered mobile number. An OTP will be sent to it.'],sendotp:['OTP അയയ്ക്കുക','Send OTP'],otpl:['OTP','OTP'],otpd:['ഡെമോ OTP: 1234','Demo OTP: 1234'],verify:['സ്ഥിരീകരിക്കുക','Verify'],nouser:['ഈ നമ്പറിൽ പ്രൊഫൈൽ ഇല്ല. ആദ്യം രജിസ്റ്റർ ചെയ്യുക.','No profile with this number. Please register first.'],badotp:['OTP തെറ്റാണ്','Wrong OTP'],dup:['ഈ നമ്പർ നേരത്തേ രജിസ്റ്റർ ചെയ്തതാണ്. ലോഗിൻ ചെയ്യുക.','This number is already registered. Please log in.'],noacc:['പ്രൊഫൈൽ ഇല്ലേ?','No profile yet?'],
+hi:['സ്വാഗതം','Welcome'],pst:['പ്രൊഫൈൽ നില','Profile status'],pending:['പരിശോധനയിൽ','Under review'],live:['സജീവം','Live'],comp:['പ്രൊഫൈൽ പൂർണ്ണത','Profile completeness'],compd:['കൂടുതൽ വിവരങ്ങൾ ചേർത്താൽ ചേരുന്ന പങ്കാളിയെ കണ്ടെത്താൻ എളുപ്പമാകും.','Adding more details helps us find better matches.'],edit:['പ്രൊഫൈൽ എഡിറ്റ് ചെയ്യുക','Edit profile'],save:['മാറ്റങ്ങൾ സൂക്ഷിക്കുക','Save changes'],saved:['സൂക്ഷിച്ചു. ടീം വീണ്ടും പരിശോധിക്കും.','Saved. Our team will review the changes.'],del:['പ്രൊഫൈൽ ഇല്ലാതാക്കുക','Delete profile'],delq:['പ്രൊഫൈൽ സ്ഥിരമായി ഇല്ലാതാക്കട്ടെ?','Delete your profile permanently?'],yes:['അതെ, ഇല്ലാതാക്കുക','Yes, delete'],cancel:['റദ്ദാക്കുക','Cancel'],sentl:['താൽപര്യം അറിയിച്ചവർ','People you showed interest in'],feat:['പുതിയ പ്രൊഫൈലുകൾ','Featured profiles'],all2:['എല്ലാ പ്രൊഫൈലുകളും കാണുക','View all profiles'],vp:['പരിശോധിച്ച പ്രൊഫൈലുകൾ','verified profiles'],pubv:['പൊതു കാഴ്ച','Public view'],adm:['അഡ്മിന് മാത്രം കാണാവുന്നത്','Visible to admin only'],
+needreg:['ആദ്യം ലോഗിൻ ചെയ്യുകയോ രജിസ്റ്റർ ചെയ്യുകയോ ചെയ്യുക','Please log in or register first']});
+const FG=[['G1',[['name','t',1],['g','g',1],['age','n',1],['ht','n'],['st','s',1,ST],['hk','s',0,YN],['kids','n'],['kl','s',0,KL],['tongue','t'],['health','t']]],['G2',[['d','s',1,DIST],['place','t']]],['G3',[['edu','t'],['job','t'],['emp','s',0,EMP],['inc','s',0,INC]]],['G4',[['fj','t'],['mj','t'],['sib','n'],['ft','s',0,FT],['gn','t'],['gp','t']]],['G8',[['hs','s',0,HS],['hm','n'],['rc','s',0,RC],['addr','a']]],['G5',[['diet','s',0,DT],['smk','s',0,HB],['drk','s',0,HB]]],['G6',[['pa1','n'],['pa2','n'],['pd','s',0,DIST,1],['pst','s',0,ST,1],['pe','t'],['ab','a']]],['G7',[['phone','t',1]]]];
+const PRIV=['phone','gp','addr','rc','inc'],lb=k=>LB[k][lang=='ml'?0:1];
+seed.forEach(p=>Object.assign(p,{ht:(p.g=='F'?150:163)+p.id%9,hk:p.st?1:0,kids:p.st?1:0,sib:p.id%3+1,emp:p.id%3,ft:p.id%2,hs:p.id%3,diet:p.id%2,smk:0,drk:0,tongue:['മലയാളം','Malayalam']}));
+let docs={},justReg=false,otpSent=false,delAsk=false,pid=0,lang='en',db={p:seed,i:[],next:8},me=null,isAdmin=false,view='home',res=null,fv={},photo=null;
+try{const s=localStorage.getItem('thuna3');if(s)db=JSON.parse(s);lang=localStorage.getItem('thuna3l')||'en'}catch(e){}
+const save=()=>{try{localStorage.setItem('thuna3',JSON.stringify(db))}catch(e){toast('Storage full')}};
+try{const m=localStorage.getItem('thuna3m');if(m)me=db.p.find(x=>x.id==+m)||null}catch(e){}
+function setMe(u){me=u;try{u?localStorage.setItem('thuna3m',u.id):localStorage.removeItem('thuna3m')}catch(e){}}
+const t=k=>T[k][lang=='ml'?0:1],L=x=>Array.isArray(x)?x[lang=='ml'?0:1]:x;
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const dO=all=>(all?`<option value="">${t('alld')}</option>`:'')+DIST.map((x,i)=>`<option value="${i}">${L(x)}</option>`).join('');
+const sO=all=>(all?`<option value="">${t('any')}</option>`:'')+ST.map((x,i)=>`<option value="${i}">${L(x)}</option>`).join('');
+function toast(m){const e=document.createElement('div');e.className='toast';e.textContent=m;document.body.appendChild(e);setTimeout(()=>e.remove(),2600)}
+function go(v){if(v!='reg')justReg=false;if(v!='login')otpSent=false;delAsk=false;view=v;draw();scrollTo(0,0)}
+function setLang(){lang=lang=='ml'?'en':'ml';try{localStorage.setItem('thuna3l',lang)}catch(e){}document.documentElement.lang=lang;draw()}
+function img(p){if(p.ph)return p.ph;const h=(p.id*57)%360,n=esc(L(p.name)[0]);
+ return 'data:image/svg+xml,'+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 210"><rect width="200" height="210" fill="hsl(${h},35%,42%)"/><circle cx="100" cy="82" r="38" fill="rgba(255,255,255,.55)"/><path d="M28 210c0-50 32-72 72-72s72 22 72 72z" fill="rgba(255,255,255,.55)"/></svg>`)}
+function card(p){return `<div class="pc"><img src="${img(p)}" alt="${esc(L(p.name))}"><div class="b"><h3>${esc(L(p.name))}</h3>
+<div class="m">${p.age} ${t('yrs')} · ${L(DIST[p.d])}</div><div><span class="tag">${esc(L(p.edu))}</span><span class="tag">${esc(L(p.job))}</span><span class="tag">${L(ST[p.st])}</span></div>
+<p class="m" style="margin:8px 0 0">${esc(L(p.about))}</p><div class="hid">${t('hid')}</div><div class="row" style="margin-top:auto"><button class="btn" onclick="interest(${p.id})">${t('int')}</button><button class="btn ghost" style="color:var(--ink)" onclick="openP(${p.id})">${t('view')}</button></div></div></div>`}
+function interest(id){if(!me){toast(t('needreg'));go('login');return}
+ if(db.i.some(x=>x.from==me.id&&x.to==id)){toast(t('already'));return}
+ db.i.push({from:me.id,to:id,s:0});save();toast(t('sent'))}
+function matches(m){return db.p.filter(p=>p.ok&&p.g!=m.g&&p.id!=m.id&&(m.pa1&&m.pa2?p.age>=m.pa1&&p.age<=m.pa2:Math.abs(p.age-m.age)<=6))
+ .map(p=>({p,s:(p.d==m.d?2:0)+(m.pd!==''&&p.d==m.pd?2:0)+(p.st==m.st?1:0)-Math.abs(p.age-m.age)/10})).sort((a,b)=>b.s-a.s).slice(0,4).map(x=>x.p)}
+const S=(h)=>`<div class="wrap sec">${h}</div>`;
+function home(){return `<section class="hero"><div class="bg" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="wrap"><div><h1>${t('h1')}</h1><p>${t('sub')}</p><p style="color:var(--gold);font-weight:600;margin:-10px 0 20px">${db.p.filter(p=>p.ok).length} ${t('vp')}</p>
+<div class="row"><button class="btn gold" onclick="go('reg')">${t('c1')}</button><button class="btn ghost" onclick="go('search')">${t('c2')}</button></div></div>
+<svg viewBox="0 0 200 200" fill="none" stroke-width="10" aria-hidden="true"><circle cx="78" cy="100" r="52" stroke="#fff"/><circle cx="122" cy="100" r="52" stroke="#F2A93B"/><path class="hp" d="M100 132C66 108 72 80 90 80c7 0 10 6 10 10 0-4 3-10 10-10 18 0 24 28-10 52z" fill="#F2A93B" stroke="none"/></svg></div><svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30Q360 62 720 30T1440 30V60H0Z" fill="var(--bg)"/></svg></section>`+qsBlock()
++S(`<div class="pill">${[1,2,3,4].map(i=>`<div><b>${t('t'+i)}</b><span>${t('t'+i+'d')}</span></div>`).join('')}</div>`)
++feat()+`<section class="cta"><div class="wrap"><div><h2>${t('cta')}</h2><span>${t('ctad')}</span></div><button class="btn gold" onclick="go('reg')">${t('c1')}</button></div></section>`
++S(`<h2>${t('hw')}</h2><div class="steps">${[1,2,3].map(i=>`<div><b>${t('s'+i)}</b><br><span class="m">${t('s'+i+'d')}</span></div>`).join('')}</div><div class="note">${t('demo')}</div>`)+supportBand()}
+function fld([k,ty,rq,o,any]){const l=lb(k)+(rq?' *':'');let c;
+ if(ty=='t')c=`<input id="f_${k}">`;else if(ty=='n')c=`<input id="f_${k}" type="number" min="0" inputmode="numeric">`;
+ else if(ty=='a')return `<div style="grid-column:1/-1"><label>${l}</label><textarea id="f_${k}" rows="3"></textarea></div>`;
+ else if(ty=='g')c=`<select id="f_g"><option value="F">${t('f')}</option><option value="M">${t('m')}</option></select>`;
+ else c=`<select id="f_${k}"${k=='st'||k=='hk'?' onchange="stChg()"':''}>${rq?'':`<option value="">${any?t('any'):'—'}</option>`}${o.map((x,i)=>`<option value="${i}">${L(x)}</option>`).join('')}</select>`;
+ return `<div id="w_${k}"${['hk','kids','kl'].includes(k)?' style="display:none"':''}><label>${l}</label>${c}</div>`}
+function stChg(fd){const e=document.getElementById('f_st');if(!e)return;const st=+e.value,hk=(document.getElementById('f_hk')||{}).value;
+ const sh={hk:st!=0,kids:st!=0&&hk==='1',kl:st!=0&&hk==='1'};for(const k in sh){const w=document.getElementById('w_'+k);if(w)w.style.display=sh[k]?'':'none'}
+ const c=document.getElementById('stdoc');if(!c||(!fd&&c.dataset.st==st))return;c.dataset.st=st;if(!fd)delete fv.d_st;
+ c.innerHTML=st==0?'':`<div class="grid"><div><label>${t('stdoc')}: ${L(ST[st])} *</label><select id="d_st">${SD[st].map((x,i)=>`<option value="${i}">${L(x)}</option>`).join('')}</select></div><div><label>${t('upl')} * <span id="n_stImg"></span></label><input type="file" accept="image/*" onchange="pickDoc(this,'stImg')"></div></div>`;
+ if(fd&&st!=0&&fv.d_st!=null)document.getElementById('d_st').value=fv.d_st}
+function panels(ed){return FG.map(g=>`${g[0]=='G7'?docBlock():''}<div class="panel"><h3 style="margin:0 0 14px">${lb(g[0])}</h3><div class="grid">${g[1].map(fld).join('')}</div>${g[0]=='G7'?`<div style="margin-top:14px"><label>${t('photo')}${ed?'':' *'} — ${t('photod')}</label><input type="file" accept="image/*" onchange="pick(this)"><img id="pv" alt=""></div>${ed?'':`<p><label style="color:var(--ink)"><input type="checkbox" id="cs"> ${t('cons')}</label></p><div class="note">${t('otp')}</div><div class="note">${t('legal')}</div>`}`:''}</div>`).join('')}
+function reg(){
+ if(me&&!justReg)return mine();
+ if(me&&justReg){const m=matches(me);
+  const ref='MAT-'+String(me.id).padStart(4,'0');
+  const dName=DIST[me.d]?DIST[me.d][0]:'';
+  const wa=typeof createWhatsAppDispatch==='function'?createWhatsAppDispatch('വിവാഹ സഹായം (തുണ / Thuna)',ref,{
+   'പേര്':esc(L(me.name)),
+   'ലിംഗം':me.g=='F'?'സ്ത്രീ':'പുരുഷൻ',
+   'പ്രായം':me.age,
+   'ഫോൺ':me.phone,
+   'ജില്ല':dName,
+   'വിദ്യാഭ്യാസം':esc(L(me.edu)),
+   'ജോലി':esc(L(me.job)),
+   'വിവരണം':esc(L(me.about))
+  }):'#';
+  return S(`<h2>${t('got')}</h2><div class="note">${esc(L(me.name))} — ${t('gotd')}</div>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin:18px 0">
+   <a class="btn" style="background:#25D366;color:#fff;text-decoration:none;display:inline-flex;align-items:center;gap:8px;font-weight:700" href="${wa}" target="_blank" rel="noopener">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.23 8.23 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23-1.48 0-2.93-.39-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.32a8.19 8.19 0 0 1-1.26-4.36c0-4.54 3.69-8.25 8.24-8.25m-2.52 3.69c-.17 0-.44.07-.67.31-.23.25-.88.86-.88 2.1 0 1.23.91 2.43 1.03 2.59.13.17 1.79 2.72 4.33 3.82.6.26 1.07.42 1.43.53.61.2 1.16.17 1.6.1.49-.07 1.51-.62 1.72-1.21.21-.59.21-1.1.15-1.2-.07-.11-.24-.17-.51-.3-.27-.14-1.6-.79-1.85-.88-.24-.09-.42-.14-.6.12-.17.25-.67.85-.82 1.02-.15.17-.3.19-.57.06-.27-.14-1.13-.42-2.15-1.33-.79-.71-1.33-1.58-1.48-1.84-.15-.26-.02-.4.12-.53.12-.12.27-.31.4-.46.14-.15.18-.26.28-.45.09-.2.04-.36-.03-.49-.06-.13-.57-1.38-.78-1.9-.21-.5-.42-.43-.57-.44-.15-.01-.32-.01-.5-.01"/></svg>
+    ${lang=='ml'?'വാട്സ്ആപ്പ് വഴി അറിയിക്കുക':'Notify Team via WhatsApp'}
+   </a>
+   <button class="btn" onclick="go('mine')">${t('mine')}</button>
+  </div>
+  <h2 style="margin-top:28px">${t('sug')}</h2><div class="cards">${m.length?m.map(card).join(''):`<p class="m">${t('nomatch')}</p>`}</div>`)}
+ return S(`<h2>${t('rt')}</h2><p class="m">${t('regd')}</p>`+panels(0)+`<p><button class="btn" onclick="submitReg()">${t('sub2')}</button></p>`)}
+function login(){if(me)return mine();
+ return S(`<h2>${t('lt')}</h2><div class="panel" style="max-width:460px"><p class="m">${t('ld')}</p><label>${t('ph')}</label><input id="lph" inputmode="numeric" maxlength="10">${otpSent?`<label style="margin-top:12px">${t('otpl')}</label><input id="lotp" inputmode="numeric" maxlength="4"><div class="note">${t('otpd')}</div><p><button class="btn" onclick="verifyOtp()">${t('verify')}</button></p>`:`<p><button class="btn" onclick="sendOtp()">${t('sendotp')}</button></p>`}<p class="m">${t('noacc')} <a href="#" onclick="go('reg');return false" style="color:var(--teal)">${t('reg')}</a></p></div>`)}
+function sendOtp(){const v=document.getElementById('lph').value.trim();if(!db.p.some(x=>x.phone==v)){toast(t('nouser'));return}otpSent=true;draw()}
+function verifyOtp(){const v=document.getElementById('lph').value.trim();if(document.getElementById('lotp').value.trim()!='1234'){toast(t('badotp'));return}setMe(db.p.find(x=>x.phone==v));otpSent=false;fv={};go('mine')}
+function mine(){if(!me)return login();
+ const ks=FG.flatMap(g=>g[1]).map(f=>f[0]),n=ks.filter(k=>me[k]!==''&&me[k]!=null).length+1,pct=Math.round(n*100/(ks.length+1)),m=matches(me);
+ const sent=db.i.filter(x=>x.from==me.id).map(x=>({p:db.p.find(p=>p.id==x.to),s:x.s||0})).filter(x=>x.p),recv=db.i.filter(x=>x.to==me.id&&!x.s).map(x=>({p:db.p.find(p=>p.id==x.from)})).filter(o=>o.p);
+ return S(`<h2>${t('hi')}, ${esc(L(me.name))}</h2><div class="pf"><div><img src="${img(me)}" alt="" style="width:100%;border-radius:14px;aspect-ratio:4/4.4;object-fit:cover"></div><div style="display:grid;gap:14px">
+<div class="panel" style="margin-top:0"><b>${t('pst')}:</b> <span class="badge ${me.ok?'l':'p'}">${t(me.ok?'live':'pending')}</span><p class="m" style="margin:14px 0 6px">${t('comp')}: <b>${pct}%</b></p><div class="bar"><i style="width:${pct}%"></i></div><p class="m" style="margin-bottom:0">${t('compd')}</p></div>
+<div class="row"><button class="btn" onclick="openEdit()">${t('edit')}</button><button class="btn ghost" style="color:var(--ink)" onclick="openP(${me.id})">${t('pubv')}</button></div>
+<div class="panel" style="margin-top:0"><b>${t('sentl')} (${sent.length})</b><p class="m" style="margin:6px 0 0">${sent.map(x=>esc(L(x.p.name))+' — '+t('st'+x.s)).join('<br>')||'—'}</p></div>
+${sent.some(x=>x.s==3)?`<div class="note" style="margin-top:0">${t('supm')} <a href="#" onclick="go('support');return false" style="color:var(--teal);font-weight:600">${t('supb')}</a></div>`:''}
+<div class="panel" style="margin-top:0"><b>${t('recv')} (${recv.length})</b>${recv.map(o=>`<div class="row" style="align-items:center;margin-top:10px"><span>${esc(L(o.p.name))}</span><button class="btn ghost" style="color:var(--ink);padding:5px 12px" onclick="openP(${o.p.id})">${t('view')}</button><button class="btn" style="padding:5px 12px" onclick="respond(${o.p.id},1)">${t('acc')}</button><button class="btn bad" style="padding:5px 12px" onclick="respond(${o.p.id},0)">${t('dec')}</button></div>`).join('')||'<p class="m" style="margin:6px 0 0">—</p>'}</div>
+<div>${delAsk?`<p>${t('delq')}</p><div class="row"><button class="btn bad" onclick="delMe()">${t('yes')}</button><button class="btn ghost" style="color:var(--ink)" onclick="delAsk=false;draw()">${t('cancel')}</button></div>`:`<button class="btn ghost" style="color:var(--rose)" onclick="delAsk=true;draw()">${t('del')}</button>`}</div></div></div>
+<h2 style="margin-top:32px">${t('sug')}</h2><div class="cards">${m.length?m.map(card).join(''):`<p class="m">${t('nomatch')}</p>`}</div>`)}
+function openEdit(){fv={};FG.forEach(g=>g[1].forEach(([k])=>fv['f_'+k]=me[k]??''));photo=me.ph;fv.d_id=me.dId??0;fv.d_st=me.dSt;docs=Object.assign({},me.docs||{});go('edit')}
+function edit(){if(!me)return login();return S(`<h2>${t('edit')}</h2>`+panels(1)+`<p class="row"><button class="btn" onclick="saveEdit()">${t('save')}</button><button class="btn ghost" style="color:var(--ink)" onclick="photo=null;docs={};fv={};go('mine')">${t('cancel')}</button></p>`)}
+function readF(){const o={};FG.forEach(g=>g[1].forEach(([k,ty])=>{const v=document.getElementById('f_'+k).value.trim();o[k]=v===''?'':(ty=='n'||ty=='s')?+v:v}));return o}
+function saveEdit(){const o=readF();kidFix(o);if(!o.name||!(o.age>=18)||!docs.idImg||o.st!==0&&!docs.stImg){toast(t('errd'));return}o.phone=me.phone;Object.assign(me,o,{ph:photo||me.ph,ok:0,dId:+document.getElementById('d_id').value,dSt:o.st?+document.getElementById('d_st').value:'',docs:Object.assign({},docs)});save();photo=null;fv={};toast(t('saved'));go('mine')}
+function delMe(){db.p=db.p.filter(x=>x.id!=me.id);db.i=db.i.filter(x=>x.from!=me.id&&x.to!=me.id);setMe(null);save();go('home')}
+function respond(f,ok){const x=db.i.find(x=>x.from==f&&x.to==me.id&&!x.s);if(x){x.s=ok?1:2;save();draw();toast(t(ok?'st1':'st2'))}}
+function adm(i,v){db.i[i].s=v;save();draw()}
+function logout(){setMe(null);fv={};go('home')}
+function qs(){const v=i=>document.getElementById(i).value;fv={fg:v('q_g'),f1:v('q_a1'),f2:v('q_a2'),fd:v('q_d')};go('search');doSearch()}
+function qsBlock(){return `<div class="wrap qs"><div class="panel"><div class="grid"><div><label>${t('lk')}</label><select id="q_g"><option value="">${t('all')}</option><option value="F">${t('bride')}</option><option value="M">${t('groom')}</option></select></div><div><label>${t('from')}</label><input id="q_a1" type="number" value="18"></div><div><label>${t('to')}</label><input id="q_a2" type="number" value="60"></div><div><label>${t('d')}</label><select id="q_d">${dO(1)}</select></div></div><p style="margin:14px 0 0"><button class="btn" onclick="qs()">${t('go')}</button></p></div></div>`}
+function feat(){return S(`<h2>${t('feat')}</h2><div class="cards">${db.p.filter(p=>p.ok).slice(0,4).map(card).join('')}</div><p style="margin-top:20px"><button class="btn" onclick="go('search')">${t('all2')}</button></p>`)}
+function docBlock(){return `<div class="panel"><h3 style="margin:0 0 6px">${t('docs')}</h3><p class="m" style="margin-top:0">${t('docsd')}</p><div class="grid"><div><label>${t('idp')} *</label><select id="d_id">${IDD.map((x,i)=>`<option value="${i}">${L(x)}</option>`).join('')}</select></div><div><label>${t('upl')} * <span id="n_idImg"></span></label><input type="file" accept="image/*" onchange="pickDoc(this,'idImg')"></div></div><div id="stdoc" style="margin-top:14px"></div></div>`}
+function pickDoc(inp,key){const fl=inp.files[0];if(!fl)return;const r=new FileReader();r.onload=e=>{const im=new Image();im.onload=()=>{const c=document.createElement('canvas'),k=Math.min(1,700/Math.max(im.width,im.height));c.width=im.width*k;c.height=im.height*k;c.getContext('2d').drawImage(im,0,0,c.width,c.height);docs[key]=c.toDataURL('image/jpeg',.5);const n=document.getElementById('n_'+key);if(n)n.textContent='✓'};im.src=e.target.result};r.readAsDataURL(fl)}
+function kidFix(o){if(o.st===0)o.hk='';if(o.st===0||o.hk!==1){o.kids='';o.kl=''}}
+function copyNo(){try{navigator.clipboard.writeText('9745226500').then(()=>toast(t('copied')),()=>toast('9745226500'))}catch(e){toast('9745226500')}}
+function supportBand(){return `<section class="sup"><div class="wrap"><div><h2>${t('supt')}</h2><p>${t('supd')}</p></div><button class="btn gold" onclick="go('support')">${t('supb')}</button></div></section>`}
+function support(){const Q=(a,b)=>L([a,b]);return S(`<h2>${t('supt')}</h2>
+<div class="panel"><b>${t('ctad')}</b><p>${Q('ജീവിതപങ്കാളിയെ കണ്ടെത്തുന്നത് സാമ്പത്തിക ബാധ്യതയാകരുത് എന്ന ആശയത്തിലാണ് ഈ സേവനം ആരംഭിച്ചത്. രജിസ്റ്റർ ചെയ്യാനോ അനുയോജ്യമായ ബന്ധങ്ങൾ അന്വേഷിക്കാനോ സേവനം ഉപയോഗിക്കാനോ യാതൊരു ഫീസും ഈടാക്കുന്നില്ല.','This service was started on the belief that finding a life partner should never be a financial burden. It is 100% free: no fee is charged to register, search for matches or use the service.')}</p></div>
+<div class="panel"><b>${Q('സ്വമേധയാ ഉള്ള പിന്തുണ','Voluntary support')}</b><p>${Q('ഇവിടെ നിന്ന് അനുയോജ്യമായ ജീവിതപങ്കാളിയെ കണ്ടെത്തുകയും ഈ സേവനം പ്രയോജനപ്പെടുകയും ചെയ്താൽ, വിവാഹനിശ്ചയത്തിനോ വിവാഹത്തിനോ ശേഷം ഇഷ്ടാനുസരണം ഈ സംരംഭത്തെ പിന്തുണയ്ക്കാം. സംഭാവന പൂർണ്ണമായും സ്വമേധയാ ഉള്ളതാണ്: നിർബന്ധമില്ല, നിബന്ധനയില്ല. നൽകാത്തതിന് അധിക ഫീസോ നിയന്ത്രണമോ ഉണ്ടാകില്ല.','If you find your life partner here and appreciate this free service, you may, after a successful engagement or marriage, voluntarily contribute any amount so that we can keep it free for future brides, grooms and families. It is completely voluntary: no obligation, no conditions, and no extra fee or restriction if you choose not to give.')}</p>
+<div class="gp"><span class="m">GPay</span><b>9745226500</b><button class="btn gold" onclick="copyNo()">${t('cp')}</button></div></div>
+<blockquote class="qt">${Q('“നിങ്ങൾ പങ്കാളിയെ കണ്ടെത്തിയത് സൗജന്യമായി. നിങ്ങളുടെ സ്വമേധയാ ഉള്ള പിന്തുണ മറ്റൊരാൾക്കും സൗജന്യമായി പങ്കാളിയെ കണ്ടെത്താൻ സഹായിക്കട്ടെ.”','“You found your match for free. Your voluntary support can help someone else find theirs, also for free.”')}</blockquote>
+<div class="panel"><p style="margin:0">${Q('സംഭാവനകൾ വലിയ തുകയായി വളർന്നാൽ സമൂഹവിവാഹം പോലുള്ള പരിപാടികൾ സംഘടിപ്പിച്ച് ഇതിനെ വലിയൊരു സാമൂഹിക പ്രവർത്തനമാക്കി മാറ്റാൻ ഞങ്ങൾ ആഗ്രഹിക്കുന്നു.','If contributions grow, we hope to organise community weddings and turn this into a larger social initiative.')}</p></div>
+<div class="note">${t('legal')}</div><p class="m">${Q('സ്നേഹത്തോടെയും വിശ്വാസത്തോടെയും ഈ സേവനത്തെ പിന്തുണയ്ക്കുന്ന എല്ലാവർക്കും നന്ദി.','Thank you to everyone who supports this service with love and trust.')}</p>`)}
+function pick(inp){const fl=inp.files[0];if(!fl)return;const r=new FileReader();r.onload=e=>{const im=new Image();im.onload=()=>{const c=document.createElement('canvas'),k=Math.min(1,360/Math.max(im.width,im.height));c.width=im.width*k;c.height=im.height*k;c.getContext('2d').drawImage(im,0,0,c.width,c.height);photo=c.toDataURL('image/jpeg',.7);const v=document.getElementById('pv');v.src=photo;v.style.display='block'};im.src=e.target.result};r.readAsDataURL(fl)}
+function submitReg(){const o={};FG.forEach(g=>g[1].forEach(([k,ty])=>{const v=document.getElementById('f_'+k).value.trim();o[k]=v===''?'':(ty=='n'||ty=='s')?+v:v}));
+ kidFix(o);
+ if(!o.name||!(o.age>=18)||o.phone.length!=10||!photo||!docs.idImg||!document.getElementById('cs').checked||o.st!==0&&!docs.stImg){toast(t('errd'));return}
+ if(db.p.some(x=>x.phone==o.phone)){toast(t('dup'));return}
+ const np=Object.assign({id:db.next++,ph:photo,ok:0,dId:+document.getElementById('d_id').value,dSt:o.st?+document.getElementById('d_st').value:'',docs:Object.assign({},docs)},o);db.p.push(np);setMe(np);justReg=true;save();
+ if(typeof syncRecordToCloud==='function'){
+  syncRecordToCloud('matrimony','profile',{
+   ref:'MAT-'+String(np.id).padStart(4,'0'),
+   name:np.name,
+   gender:np.g=='F'?'Female':'Male',
+   age:np.age,
+   phone:np.phone,
+   district:DIST[np.d]?DIST[np.d][1]:np.d,
+   education:np.edu||'',
+   job:np.job||'',
+   details:np.about||''
+  });
+ }
+ fv={};photo=null;docs={};draw()}
+function openP(id){pid=id;go('prof')}
+function prof(){const p=db.p.find(x=>x.id==pid);if(!p)return S('');
+ const row=([k,ty,,o])=>{if(PRIV.includes(k)&&!isAdmin||k=='ab'||k=='name'||p.st==0&&['hk','kids','kl'].includes(k))return '';let v=p[k];if(v===''||v==null||(k=='pa1'||k=='pa2')&&!v)return '';
+  v=ty=='s'?L(o[v]):ty=='g'?t(v=='F'?'f':'m'):k=='ht'?v+' cm':esc(L(v));return `<div><small class="m">${lb(k)}</small><br><b>${v}</b></div>`};
+ const gr=FG.map(g=>{const r=g[1].map(row).join('');return r?`<div class="panel" style="margin-top:0"><h3 style="margin:0 0 12px">${lb(g[0])}</h3><div class="dl">${r}</div></div>`:''}).join('');
+ const dp=isAdmin&&p.docs?`<div class="panel" style="margin-top:0"><h3 style="margin:0 0 12px">${t('docs')} (${t('adm')})</h3>${p.docs.idImg?`<p class="m">${L(IDD[p.dId]||IDD[5])}</p><img src="${p.docs.idImg}" alt="" style="max-width:100%;border-radius:8px">`:''}${p.docs.stImg?`<p class="m">${L((SD[p.st]||[])[p.dSt]||OT)}</p><img src="${p.docs.stImg}" alt="" style="max-width:100%;border-radius:8px">`:''}</div>`:'';
+ return S(`<button class="btn ghost" style="color:var(--ink);margin-bottom:18px" onclick="go('search')">← ${t('back')}</button><div class="pf"><div><img src="${img(p)}" alt="" style="width:100%;border-radius:14px;aspect-ratio:4/4.4;object-fit:cover"><h2 style="margin:14px 0 2px">${esc(L(p.name))}</h2><div class="m">${p.age} ${t('yrs')} · ${L(DIST[p.d])}</div><div class="hid">${isAdmin?t('adm'):t('priv')}</div><button class="btn" onclick="interest(${p.id})">${t('int')}</button></div>
+<div style="display:grid;gap:14px"><div class="panel" style="margin-top:0"><p style="margin:0">${esc(L(p.about))||'—'}</p></div>${gr}${dp}</div></div>`)}
+function search(){const list=res||db.p.filter(p=>p.ok);
+ return S(`<h2>${t('search')}</h2><div class="panel" style="margin-top:0"><div class="grid">
+<div><label>${t('lk')}</label><select id="fg"><option value="">${t('all')}</option><option value="F">${t('bride')}</option><option value="M">${t('groom')}</option></select></div>
+<div><label>${t('from')}</label><input id="f1" type="number" value="18"></div><div><label>${t('to')}</label><input id="f2" type="number" value="60"></div>
+<div><label>${t('d')}</label><select id="fd">${dO(1)}</select></div><div><label>${t('st')}</label><select id="fs">${sO(1)}</select></div></div>
+<p><button class="btn" onclick="doSearch()">${t('go')}</button> <button class="btn ghost" onclick="res=null;fv={};draw()">${t('clr')}</button></p></div>
+<p class="m">${list.length} ${t('cnt')}</p><div class="cards">${list.map(card).join('')||`<p>${t('none')}</p>`}</div>`)}
+function doSearch(){const v=i=>document.getElementById(i).value,a=+v('f1'),b=+v('f2');
+ res=db.p.filter(p=>p.ok&&(!v('fg')||p.g==v('fg'))&&p.age>=a&&p.age<=b&&(v('fd')===''||p.d==v('fd'))&&(v('fs')===''||p.st==v('fs')));draw()}
+function admin(){
+ if(!isAdmin)return S(`<h2>${t('al')}</h2><div class="panel"><label>${t('pin')}</label><input id="pin" type="password" style="max-width:220px"><p><button class="btn" onclick="if(document.getElementById('pin').value=='1234'){isAdmin=true;draw()}else toast(t('badpin'))">${t('enter')}</button></p></div>`);
+ const pd=db.p.filter(p=>!p.ok);
+ return S(`<h2>${t('pend')} (${pd.length})</h2><div class="cards">${pd.map(p=>`<div class="pc"><img src="${img(p)}" alt=""><div class="b"><h3>${esc(L(p.name))}</h3><div class="m">${p.age} ${t('yrs')} · ${L(DIST[p.d])} · ${L(ST[p.st])}</div><p class="m">${esc(L(p.about))}</p><div class="m">${t('phl')}: ${esc(p.phone||'-')}</div><button class="btn ghost" style="color:var(--ink);margin-top:8px" onclick="openP(${p.id})">${t('view')}</button><div class="row" style="margin-top:10px"><button class="btn" onclick="dec(${p.id},1)">${t('ok')}</button><button class="btn bad" onclick="dec(${p.id},0)">${t('no')}</button></div></div></div>`).join('')||`<p class="m">${t('nop')}</p>`}</div>
+<h2 style="margin-top:32px">${t('ints')} (${db.i.length})</h2><div class="panel tbl">${db.i.length?`<table width="100%">${db.i.map((x,i)=>{const a=db.p.find(p=>p.id==x.from),b=db.p.find(p=>p.id==x.to);return `<tr><td>${esc(a&&L(a.name))}</td><td>→</td><td>${esc(b&&L(b.name))}</td><td class="m">${t('st'+(x.s||0))}</td><td>${x.s==1?`<button class="btn" style="padding:5px 12px" onclick="adm(${i},3)">${t('conn')}</button>`:x.s==3?esc((a&&a.phone||'-')+' / '+(b&&b.phone||'-')):!x.s&&b&&!b.phone?`<button class="btn ghost" style="color:var(--ink);padding:5px 12px" onclick="adm(${i},1)">${t('sim')}</button>`:''}</td></tr>`}).join('')}</table>`:`<span class="m">${t('noi')}</span>`}</div>
+<p><button class="btn ghost" style="color:var(--ink)" onclick="isAdmin=false;draw()">${t('out')}</button></p>`)}
+function dec(id,ok){if(ok)db.p.find(p=>p.id==id).ok=1;else db.p=db.p.filter(p=>p.id!=id);save();draw();toast(t(ok?'okd':'nod'))}
+function draw(){const A=document.getElementById('app');
+ A.querySelectorAll('[id]').forEach(e=>{if('value'in e&&e.type!='file')fv[e.id]=e.value});
+ document.getElementById('bn').textContent=t('brand');document.getElementById('ft').innerHTML=`<div class="wrap"><b>${t('brand')}</b> · ${t('tag')}<br><span style="opacity:.8">${t('foot')} · <a href="#" onclick="go('support');return false" style="color:#fff">${t('support')}</a></span><br><span style="opacity:.7;font-size:.82rem">${t('legal')}</span></div>`;
+ document.getElementById('nav').innerHTML=(me?['home','mine','search','support','admin']:['home','reg','login','search','support','admin']).map(k=>`<button class="${view==k?'on':''}" onclick="go('${k}')">${t(k)}</button>`).join('')+`<button class="lg" onclick="setLang()">${t('lang')}</button>`+(me?`<button class="lg" onclick="logout()">${t('logout')}</button>`:'');
+ A.innerHTML=({home,reg,login,mine,edit,search,support,admin,prof})[view]();
+ A.querySelectorAll('[id]').forEach(e=>{if(fv[e.id]!=null&&'value'in e&&e.type!='file'&&e.type!='checkbox')e.value=fv[e.id]});
+ if(document.getElementById('f_st'))stChg(1);
+ ['idImg','stImg'].forEach(k=>{const n=document.getElementById('n_'+k);if(n&&docs[k])n.textContent='✓'});
+ if(view=='edit'){const e=document.getElementById('f_phone');if(e)e.disabled=true}
+ if(photo&&document.getElementById('pv')){const v=document.getElementById('pv');v.src=photo;v.style.display='block'}}
+document.documentElement.lang=lang;draw();
+</script>
+</body>
+</html>

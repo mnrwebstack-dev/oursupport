@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Free Job &amp; Livelihood Service</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@400;600;800&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F1F5F4;--card:#fff;--ink:#16232B;--mute:#5A6B72;--teal:#12504B;--tealx:#0C3A36;--gold:#F2A93B;--rose:#C2455B;--line:#D9E2E0;--on:#fff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1A1C;--card:#172629;--ink:#E7F0EF;--mute:#9DB1B2;--teal:#3FA898;--tealx:#0A2A28;--line:#264043;--on:#0F1A1C}}
+:root[data-theme="dark"]{--bg:#0F1A1C;--card:#172629;--ink:#E7F0EF;--mute:#9DB1B2;--teal:#3FA898;--tealx:#0A2A28;--line:#264043;--on:#0F1A1C}
+html.hc{--bg:#000;--card:#000;--ink:#fff;--mute:#fff;--line:#fff;--teal:#FFD54A;--tealx:#000;--on:#000;--gold:#FFD54A}
+html.big{font-size:120%}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Poppins','Noto Sans Malayalam',system-ui,sans-serif;line-height:1.7}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;justify-content:space-between;padding:10px 5vw;background:var(--card);border-bottom:1px solid var(--line)}
+.logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:1.05rem;color:var(--teal);cursor:pointer;max-width:340px;line-height:1.3}
+nav{display:flex;gap:2px;flex-wrap:wrap;align-items:center}
+nav button{background:none;border:0;padding:6px 10px;border-radius:8px;font:inherit;font-size:.88rem;color:var(--ink);cursor:pointer}
+nav button.on{background:var(--teal);color:var(--on)}
+nav .lg{border:1px solid var(--line);margin-left:4px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 5vw}
+.hero{position:relative;overflow:hidden;background:var(--tealx);color:#fff}
+.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.3fr .7fr;gap:24px;align-items:center;padding-top:72px;padding-bottom:80px}
+.hero .wrap>div:first-child{animation:rise .9s ease-out both}
+.hero h1{font-size:clamp(1.8rem,4.6vw,3rem);line-height:1.3;margin:0 0 14px;font-weight:700}
+.hero p{max-width:56ch;color:#CFE3E0;font-size:1.05rem;margin:0 0 24px}
+.hero svg.art{width:100%;max-width:260px;justify-self:center}
+.hero svg.wave{position:absolute;left:0;bottom:-1px;width:100%;height:40px;z-index:1}
+@media(max-width:720px){.hero .wrap{grid-template-columns:1fr}.hero svg.art{max-width:150px}}
+.bg i{position:absolute;border-radius:50%;border:10px solid rgba(255,255,255,.07);animation:fl 16s ease-in-out infinite alternate}
+.bg i:nth-child(1){width:320px;height:320px;left:-90px;top:-100px}
+.bg i:nth-child(2){width:220px;height:220px;right:6%;bottom:-70px;border-color:rgba(242,169,59,.16);animation-delay:-5s}
+.bg i:nth-child(3){width:90px;height:90px;left:44%;top:14%;border-width:6px;animation-duration:11s}
+.bg i:nth-child(4){width:60px;height:60px;right:30%;top:10%;border-width:5px;border-color:rgba(242,169,59,.2);animation-duration:13s}
+@keyframes fl{from{transform:translate(0,0) rotate(0)}to{transform:translate(26px,-22px) rotate(25deg)}}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.spark{transform-box:fill-box;transform-origin:center;animation:pl 2.4s ease-in-out infinite}
+@keyframes pl{50%{transform:scale(1.2)}}
+.btn{background:var(--teal);color:var(--on);border:0;border-radius:10px;padding:11px 22px;font:inherit;font-weight:600;cursor:pointer}
+.btn.gold{background:var(--gold);color:#16232B}
+.btn.ghost{background:none;color:var(--ink);border:1px solid var(--line)}
+.btn.bad{background:var(--rose);color:#fff}
+.btn:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,nav button:focus-visible,summary:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.sec{padding:40px 0}.sec h2{font-size:1.6rem;margin:0 0 18px}.sec h2:after{content:"";display:block;width:44px;height:4px;background:var(--gold);border-radius:2px;margin-top:8px}
+.m{color:var(--mute);font-size:.93rem}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+.tile{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--gold);border-radius:12px;padding:18px;cursor:pointer;transition:transform .2s,box-shadow .2s;text-align:left;font:inherit;color:inherit}
+.tile:hover{transform:translateY(-4px);box-shadow:0 10px 24px rgba(18,80,75,.14)}
+.tile .ic{font-size:1.8rem}.tile b{display:block;margin:4px 0}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;counter-reset:s}
+.steps div{position:relative;padding-left:52px}
+.steps div:before{counter-increment:s;content:counter(s);position:absolute;left:0;top:0;width:38px;height:38px;border-radius:50%;background:var(--teal);color:var(--on);display:grid;place-items:center;font-weight:700}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;margin-top:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+label{display:block;font-size:.88rem;color:var(--mute);margin-bottom:2px}
+input,select,textarea{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit}
+input[type=checkbox]{width:auto}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-top:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:6px}
+.card h3{margin:0;font-size:1.05rem}
+.tag{display:inline-block;background:var(--bg);border:1px solid var(--line);border-radius:20px;padding:0 10px;font-size:.8rem;margin:2px 4px 0 0}
+.note{background:rgba(242,169,59,.18);border-radius:10px;padding:10px 14px;font-size:.9rem;margin-top:14px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap}.tabs button{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:20px;padding:7px 16px;font:inherit;cursor:pointer}.tabs button.on{background:var(--teal);color:var(--on);border-color:var(--teal)}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin-top:10px}summary{cursor:pointer;font-weight:600}
+.badge{display:inline-block;border-radius:20px;padding:1px 12px;font-size:.82rem;font-weight:600;background:rgba(242,169,59,.28)}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:10px;z-index:9}
+.tbl{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.9rem}td,th{border-bottom:1px solid var(--line);padding:8px;text-align:left;vertical-align:top}
+.cta{background:var(--tealx);color:#fff}.cta .wrap{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;padding-top:32px;padding-bottom:32px}.cta h2{margin:0;font-size:1.4rem}
+footer{background:var(--tealx);color:#CFE3E0;padding:24px 5vw;font-size:.88rem;margin-top:30px}
+@media(prefers-reduced-motion:reduce){.bg i,.spark,.hero .wrap>div:first-child{animation:none}}
+.em{flex-basis:100%;background:var(--rose);color:#fff;font-size:.82rem;font-weight:600;text-align:center;padding:5px 5vw;margin:-10px -5vw 2px}.em a{color:#fff;text-decoration:underline}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.chip{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:4px 12px;font-size:.9rem}.chip b{color:var(--rose)}
+.warn{background:rgba(194,69,91,.14);border-left:4px solid var(--rose);border-radius:8px;padding:10px 14px;margin:12px 0;font-size:.92rem}
+.qx{background:var(--rose)!important;color:#fff!important;border-color:var(--rose)!important;font-weight:600}
+.draft{width:100%;min-height:300px;font-family:inherit;font-size:.92rem}
+.draft{width:100%;min-height:340px;font-family:inherit;font-size:.92rem}
+.cvp{background:#fff;color:#16232B;border:1px solid var(--line);border-radius:10px;padding:18px;white-space:pre-wrap;font-size:.92rem}
+.homelink{font-size:.85rem;font-weight:600;color:var(--teal);text-decoration:none;border:1px solid var(--line);border-radius:20px;padding:4px 12px;white-space:nowrap}
+</style>
+</head>
+<body>
+<header>
+  <div class="em" id="em"></div>
+  <div class="logo" onclick="go('home')"><svg width="30" height="30" viewBox="0 0 40 40" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="14" width="30" height="20" rx="3" stroke="#12504B"/><path d="M14 14V9h12v5M5 24h30" stroke="#F2A93B"/></svg><span id="bn"></span></div>
+  <a class="homelink" href="index.html">← Kaithangu · കൈത്താങ്ങ്</a><nav id="nav"></nav>
+</header>
+<div id="app"></div>
+<footer id="ft"></footer>
+<script src="cloud_db.js"></script>
+<script>
+const T={
+brand:['സൗജന്യ തൊഴിൽ-ഉപജീവന സേവനം','Free Job & Livelihood Service'],
+home:['ഹോം','Home'],jobs:['ജോലികൾ','Jobs'],cv:['റെസ്യൂമെ','Resume'],guide:['മാർഗനിർദ്ദേശം','Guidance'],skills:['പരിശീലനം','Training'],own:['സ്വയംതൊഴിൽ','Self-employment'],seek:['ഉദ്യോഗാർത്ഥി','Job seeker'],emp:['തൊഴിൽ ദാതാക്കൾ','Employers'],track:['നില','Track'],admin:['അഡ്മിൻ','Admin'],lang:['English','മലയാളം'],a11y:['അക്ഷര വലുപ്പം','Text size'],hcn:['ഉയർന്ന നിറവ്യത്യാസം','High contrast'],
+em:['ഒരു ജോലിക്കും പണം നൽകരുത്. ജോലിക്ക് ഫീസ് ചോദിച്ചാൽ അത് തട്ടിപ്പാണ്.','Never pay money to get a job. A fee for a job is a scam.'],
+h1:['ശരിയായ അവസരത്തിലേക്ക് ഒരു വഴികാട്ടി','A guide to the right opportunity'],
+sub:['ജോലി വിവരങ്ങൾ, റെസ്യൂമെ, ഇന്റർവ്യൂ മാർഗനിർദ്ദേശം, നൈപുണ്യ പരിശീലനം, സ്വയംതൊഴിൽ: എല്ലാം സൗജന്യം. ഞങ്ങൾ ജോലി ഉറപ്പ് നൽകുന്നില്ല; ശരിയായ അവസരത്തിലേക്ക് എത്തിക്കുക മാത്രം ചെയ്യുന്നു.','Job information, resume, interview guidance, skill training and self-employment: all free. We do not guarantee a job; we guide you to the right opportunity.'],
+c1:['ജോലികൾ കാണുക','Browse jobs'],c2:['റെസ്യൂമെ ഉണ്ടാക്കുക','Build my resume'],whot:['ഞങ്ങൾ നൽകുന്ന സഹായം','How we help'],
+disc:['ജോലി ലഭിക്കുമെന്ന് ഞങ്ങൾ ഉറപ്പ് നൽകുന്നില്ല. ജോലി അവസരങ്ങൾ തൊഴിൽ ദാതാക്കൾ നൽകുന്നതാണ്; ഞങ്ങൾ പരിശോധിക്കുന്നുണ്ടെങ്കിലും ഏത് ജോലിക്കും മുമ്പ് സ്ഥാപനത്തെ സ്വയം ഉറപ്പാക്കുക.','We do not guarantee a job. Jobs are posted by employers; although we check them, please verify the employer yourself before accepting any job.'],
+hw:['എങ്ങനെ പ്രവർത്തിക്കുന്നു','How it works'],s1:['ഒരുങ്ങുക','Get ready'],s1d:['റെസ്യൂമെ ഉണ്ടാക്കുക, ഇന്റർവ്യൂവിന് തയ്യാറെടുക്കുക.','Build your resume and prepare for interviews.'],s2:['അവസരം കണ്ടെത്തുക','Find an opportunity'],s2d:['ജോലി, പരിശീലനം, അപ്രന്റിസ്ഷിപ്പ്, സ്വയംതൊഴിൽ.','Jobs, training, apprenticeships, self-employment.'],s3:['ബന്ധിപ്പിക്കും','We connect you'],s3d:['രജിസ്റ്റർ ചെയ്താൽ ചേരുന്ന അവസരവുമായി ടീം ബന്ധപ്പെടും.','Register and our team contacts you when there is a match.'],
+demo:['ഇത് പരീക്ഷണ പതിപ്പാണ്. ജോലികളും സ്ഥാപനങ്ങളും സാമ്പിൾ മാത്രം; പരിശോധിച്ച യഥാർത്ഥ വിവരങ്ങൾ പിന്നീട് ചേർക്കും. നൽകുന്ന വിവരങ്ങൾ ഈ ബ്രൗസറിൽ മാത്രം സൂക്ഷിക്കുന്നു.','This is a prototype. Jobs and institutions are samples and will be replaced with verified information. Anything you enter stays only in this browser.'],
+ft:['പരീക്ഷണ പതിപ്പ് · ബന്ധപ്പെടാനുള്ള വിവരങ്ങൾ ഇവിടെ ചേർക്കും','Prototype · Contact details to be added here'],f_all:['എല്ലാം','All'],ctat:['തൊഴിൽ ദാതാവാണോ? ജോലി പോസ്റ്റ് ചെയ്യൂ','An employer? Post a job'],
+lnk:['ഇത് മറ്റൊരു സേവനത്തിൽ ലഭ്യമാണ്','Available in another service'],open:['തുറക്കുക','Open'],
+dd:['ജില്ല','District'],sec:['മേഖല','Sector'],edq:['കുറഞ്ഞ യോഗ്യത','Minimum education'],jtq:['ജോലിയുടെ തരം','Job type'],pay:['ശമ്പളം','Pay'],how:['അപേക്ഷിക്കേണ്ട രീതി','How to apply'],rep:['റിപ്പോർട്ട് ചെയ്യുക','Report'],repd:['റിപ്പോർട്ട് ലഭിച്ചു. നന്ദി.','Report received. Thank you.'],nofee:['ഈ ജോലിക്ക് പണം നൽകരുത്. ഫീസ് ചോദിച്ചാൽ ഞങ്ങളെ അറിയിക്കൂ.','Do not pay for this job. If a fee is asked, report it.'],nores:['ചേരുന്നത് കണ്ടില്ല.','Nothing matched.'],
+cvt:['റെസ്യൂമെ ബിൽഡർ','Resume builder'],cvd:['വിവരങ്ങൾ നൽകൂ; വൃത്തിയുള്ള ബയോഡാറ്റ ഉണ്ടാക്കി പകർത്താം. നിങ്ങളുടെ വിവരങ്ങൾ എവിടെയും അയയ്ക്കില്ല.','Fill in your details to create a clean resume you can copy. Your information is not sent anywhere.'],
+cn:['പേര്','Full name'],cp:['ഫോൺ','Phone'],ce:['ഇമെയിൽ (ഓപ്ഷണൽ)','Email (optional)'],ca:['വിലാസം','Address'],co:['ലക്ഷ്യം (ഒന്നോ രണ്ടോ വാചകം)','Objective (one or two lines)'],ced:['വിദ്യാഭ്യാസം (ഓരോ വരിയിൽ ഒന്ന്)','Education (one per line)'],cex:['പ്രവൃത്തിപരിചയം (ഓരോ വരിയിൽ ഒന്ന്)','Experience (one per line)'],csk:['കഴിവുകൾ (കോമ ഇട്ട്)','Skills (comma separated)'],clg:['ഭാഷകൾ','Languages'],cmk:['ബയോഡാറ്റ ഉണ്ടാക്കുക','Create resume'],ccp:['പകർത്തുക','Copy'],ccd:['പകർത്തി','Copied'],
+h_obj:['ലക്ഷ്യം','Objective'],h_ed:['വിദ്യാഭ്യാസം','Education'],h_ex:['പ്രവൃത്തിപരിചയം','Experience'],h_sk:['കഴിവുകൾ','Skills'],h_lg:['ഭാഷകൾ','Languages'],h_dc:['ഞാൻ നൽകിയ വിവരങ്ങൾ ശരിയാണെന്ന് പ്രഖ്യാപിക്കുന്നു.','I declare that the information given above is true.'],
+gt:['ഇന്റർവ്യൂ, കരിയർ മാർഗനിർദ്ദേശം','Interview & career guidance'],gd:['ഉള്ളടക്കം സാമ്പിൾ ആണ്; വിദഗ്ധർ പരിശോധിച്ച ശേഷം ചേർക്കും.','Sample content; to be reviewed by experts before publishing.'],
+st_:['നൈപുണ്യ പരിശീലനവും അപ്രന്റിസ്ഷിപ്പും','Skill training & apprenticeships'],dur:['കാലയളവ്','Duration'],freec:['സൗജന്യം','Free'],
+ow:['സ്വയംതൊഴിലും സ്ത്രീകളുടെ ഉപജീവനവും','Self-employment & women\'s livelihood'],
+sk_:['ഉദ്യോഗാർത്ഥിയായി രജിസ്റ്റർ ചെയ്യുക','Register as a job seeker'],skd:['ഇത് ഓപ്ഷണൽ ആണ്. നിങ്ങളുടെ വിവരങ്ങൾ പൊതുവായി കാണിക്കില്ല; ചേരുന്ന അവസരം ഉണ്ടെങ്കിൽ ടീം ബന്ധപ്പെടും.','This is optional. Your details are not shown publicly; our team contacts you when there is a match.'],
+n:['പേര്','Name'],ag:['പ്രായം','Age'],ph:['മൊബൈൽ നമ്പർ','Mobile number'],edu:['വിദ്യാഭ്യാസം','Education'],skl:['കഴിവുകൾ','Skills'],pdst:['ഇഷ്ടപ്പെടുന്ന ജില്ല','Preferred district'],psec:['ഇഷ്ടപ്പെടുന്ന മേഖല','Preferred sector'],yrs:['പ്രവൃത്തിപരിചയം (വർഷം)','Experience (years)'],
+cons:['ഈ സേവനം നൽകാൻ മാത്രം എന്റെ വിവരങ്ങൾ ഉപയോഗിക്കാൻ ഞാൻ സമ്മതിക്കുന്നു.','I agree that my details are used only to provide this service.'],send:['അയയ്ക്കുക','Submit'],err:['പേര്, 10 അക്ക മൊബൈൽ നമ്പർ, ജില്ല എന്നിവ നൽകുക.','Please enter name, a 10-digit mobile number and district.'],errc:['സമ്മതം ടിക്ക് ചെയ്യുക.','Please tick the consent box.'],
+done:['ലഭിച്ചു','Received'],doned:['നന്ദി! ഞങ്ങളുടെ ടീം ബന്ധപ്പെടും. നില "നില" പേജിൽ മൊബൈൽ നമ്പർ നൽകി നോക്കാം.','Thank you! Our team will be in touch. Check the status on the Track page with your mobile number.'],
+et:['തൊഴിൽ ദാതാക്കൾ','Employers'],etd:['പരിശോധിച്ച ശേഷം മാത്രം ജോലി പ്രസിദ്ധീകരിക്കും. ജോലിക്ക് ഉദ്യോഗാർത്ഥിയിൽ നിന്ന് ഒരു പണവും വാങ്ങരുത്.','Jobs are published only after verification. You must not charge job seekers any money.'],e0:['ജോലി പോസ്റ്റ് ചെയ്യുക','Post a job'],e1:['ഉദ്യോഗാർത്ഥികളെ ആവശ്യപ്പെടുക','Request candidates'],
+org:['സ്ഥാപനത്തിന്റെ പേര്','Organisation name'],cpn:['ബന്ധപ്പെടേണ്ട വ്യക്തി','Contact person'],jt_:['ജോലിയുടെ പേര്','Job title'],pay_:['ശമ്പളം (ഓപ്ഷണൽ)','Pay (optional)'],hw_:['അപേക്ഷിക്കേണ്ട രീതി','How to apply'],cnt:['ആവശ്യമായ എണ്ണം','Number needed'],nofee_c:['ഈ ജോലിക്ക് ഉദ്യോഗാർത്ഥിയിൽ നിന്ന് ഞാൻ പണം വാങ്ങില്ല, സ്ഥാപനം പരിശോധനയ്ക്ക് വിധേയമാകാൻ സമ്മതിക്കുന്നു.','I will not charge any money from job seekers and I agree to my organisation being verified.'],jerr:['സ്ഥാപനം, ഫോൺ, ജില്ല, ജോലിയുടെ പേര് എന്നിവ നൽകുക.','Please enter organisation, phone, district and job title.'],
+tr:['അപേക്ഷയുടെ നില','Track your status'],trd:['രജിസ്ട്രേഷനിൽ നൽകിയ മൊബൈൽ നമ്പർ നൽകുക.','Enter the mobile number you used.'],trb:['നോക്കുക','Check'],trn:['ഈ നമ്പറിൽ രജിസ്ട്രേഷൻ ഇല്ല.','No registration found for this number.'],
+st0:['രജിസ്റ്റർ ചെയ്തു','Registered'],st1:['ബന്ധപ്പെട്ടു','Contacted'],st2:['അവസരത്തിലേക്ക് റഫർ ചെയ്തു','Referred to an opportunity'],st3:['പൂർത്തിയായി','Completed'],
+al:['അഡ്മിൻ പ്രവേശനം','Admin login'],pin:['PIN (പരീക്ഷണം: 1234)','PIN (prototype: 1234)'],enter:['പ്രവേശിക്കുക','Sign in'],badpin:['PIN തെറ്റാണ്','Wrong PIN'],a0:['ജോലി അംഗീകാരം','Job approvals'],a1:['ഉദ്യോഗാർത്ഥികൾ','Job seekers'],a2:['ഉദ്യോഗാർത്ഥി അഭ്യർത്ഥനകൾ','Candidate requests'],none:['ഒന്നും ഇല്ല.','None yet.'],out:['പുറത്തുകടക്കുക','Sign out'],ok:['അംഗീകരിക്കുക','Approve'],rej:['നിരസിക്കുക','Reject'],pend:['അംഗീകാരം കാത്തിരിക്കുന്നവ','Awaiting approval'],pub:['പ്രസിദ്ധീകരിച്ചവ','Published'],mt:['ചേരുന്ന ജോലികൾ','Matching jobs'],reps:['റിപ്പോർട്ടുകൾ','Reports']};
+const t=k=>T[k][lang=='ml'?0:1],L=x=>Array.isArray(x)?x[lang=='ml'?0:1]:x;
+const DIST=[['തിരുവനന്തപുരം','Thiruvananthapuram'],['കൊല്ലം','Kollam'],['പത്തനംതിട്ട','Pathanamthitta'],['ആലപ്പുഴ','Alappuzha'],['കോട്ടയം','Kottayam'],['ഇടുക്കി','Idukki'],['എറണാകുളം','Ernakulam'],['തൃശൂർ','Thrissur'],['പാലക്കാട്','Palakkad'],['മലപ്പുറം','Malappuram'],['കോഴിക്കോട്','Kozhikode'],['വയനാട്','Wayanad'],['കണ്ണൂർ','Kannur'],['കാസറഗോഡ്','Kasaragod']];
+const SEC=[['നിർമ്മാണം, തൊഴിൽ വൈദഗ്ധ്യം','Construction & trades'],['വ്യാപാരം, വിൽപ്പന','Retail & sales'],['ഹോട്ടൽ, ഭക്ഷണം','Hospitality & food'],['ആരോഗ്യ പരിചരണം','Healthcare & care'],['ഓഫീസ്, ഐടി','Office & IT'],['ഉത്പാദനം','Manufacturing'],['കൃഷി, അനുബന്ധ മേഖല','Agriculture & allied'],['ഗതാഗതം, ഡെലിവറി','Transport & delivery'],['മറ്റുള്ളവ','Other']];
+const ED=[['എസ്എസ്എൽസിക്ക് താഴെ','Below SSLC'],['എസ്എസ്എൽസി','SSLC'],['പ്ലസ് ടു','Plus Two'],['ഐടിഐ / ഡിപ്ലോമ','ITI / Diploma'],['ബിരുദം','Degree'],['ബിരുദാനന്തരം / പ്രൊഫഷണൽ','Postgraduate / Professional']];
+const JT=[['മുഴുവൻ സമയം','Full-time'],['ഭാഗിക സമയം','Part-time'],['ദിവസക്കൂലി / കരാർ','Daily wage / contract'],['അപ്രന്റിസ്ഷിപ്പ് / ഇന്റേൺഷിപ്പ്','Apprenticeship / internship']];
+const LK={edu:['education.html','🎓','വിദ്യാഭ്യാസ-കരിയർ സേവനം (കരിയർ കൗൺസിലിംഗ്)','Education & Career Service (career counselling)'],sup:['support.html','👩','കുടുംബ-സമൂഹ പിന്തുണ (സ്ത്രീകളുടെ പിന്തുണ)','Family & Community Support (women\'s support)']};
+const JOBS=[
+{t:['ഇലക്ട്രീഷ്യൻ സഹായി (സാമ്പിൾ)','Electrician\'s helper (sample)'],o:['സാമ്പിൾ ഇലക്ട്രിക്കൽസ്','Sample Electricals'],d:1,sec:0,ed:1,jt:0,pay:['₹12,000–15,000','₹12,000–15,000'],hw:['ഓഫീസിൽ നേരിട്ട് ബന്ധപ്പെടുക','Contact the office directly']},
+{t:['ഷോപ്പ് അസിസ്റ്റന്റ് (സാമ്പിൾ)','Shop assistant (sample)'],o:['സാമ്പിൾ സ്റ്റോഴ്സ്','Sample Stores'],d:9,sec:1,ed:1,jt:1,pay:['₹8,000–10,000','₹8,000–10,000'],hw:['ഫോണിൽ ബന്ധപ്പെടുക','Contact by phone']},
+{t:['ഹോം നഴ്സ് (സാമ്പിൾ)','Home nurse (sample)'],o:['സാമ്പിൾ കെയർ സർവീസ്','Sample Care Service'],d:0,sec:3,ed:2,jt:0,pay:['₹15,000–20,000','₹15,000–20,000'],hw:['ഇന്റർവ്യൂവിന് വരിക','Attend the interview']},
+{t:['ഡാറ്റ എൻട്രി ഓപ്പറേറ്റർ (സാമ്പിൾ)','Data entry operator (sample)'],o:['സാമ്പിൾ ഓഫീസ് സൊല്യൂഷൻസ്','Sample Office Solutions'],d:6,sec:4,ed:2,jt:0,pay:['₹12,000–14,000','₹12,000–14,000'],hw:['ഇമെയിൽ വഴി അപേക്ഷിക്കുക','Apply by email']},
+{t:['ഡെലിവറി പങ്കാളി (സാമ്പിൾ)','Delivery partner (sample)'],o:['സാമ്പിൾ ലോജിസ്റ്റിക്സ്','Sample Logistics'],d:1,sec:7,ed:1,jt:2,pay:['കമ്മീഷൻ അടിസ്ഥാനം','Commission based'],hw:['ഓഫീസിൽ വരിക','Visit the office']},
+{t:['അടുക്കള സഹായി (സാമ്പിൾ)','Kitchen helper (sample)'],o:['സാമ്പിൾ റസ്റ്റോറന്റ്','Sample Restaurant'],d:3,sec:2,ed:0,jt:2,pay:['₹700 / ദിവസം','₹700 / day'],hw:['നേരിട്ട് ബന്ധപ്പെടുക','Contact directly']}];
+const TRN=[{n:['സാമ്പിൾ ഐടിഐ','Sample ITI'],c:['ഇലക്ട്രീഷ്യൻ കോഴ്സ്','Electrician course'],sec:0,d:1,du:['2 വർഷം','2 years'],f:1},{n:['സാമ്പിൾ നൈപുണ്യ കേന്ദ്രം','Sample Skill Centre'],c:['തയ്യൽ, ഫാഷൻ ഡിസൈൻ','Tailoring & fashion design'],sec:5,d:9,du:['6 മാസം','6 months'],f:1},{n:['സാമ്പിൾ കമ്പ്യൂട്ടർ അക്കാദമി','Sample Computer Academy'],c:['ഓഫീസ് ഓട്ടോമേഷൻ','Office automation'],sec:4,d:0,du:['3 മാസം','3 months'],f:0},{n:['സാമ്പിൾ ആരോഗ്യ പരിശീലന കേന്ദ്രം','Sample Health Training Centre'],c:['ഹോം നഴ്സിംഗ് സഹായി','Home care assistant'],sec:3,d:6,du:['3 മാസം','3 months'],f:1},{n:['സാമ്പിൾ ഹോസ്പിറ്റാലിറ്റി ഇൻസ്റ്റിറ്റ്യൂട്ട്','Sample Hospitality Institute'],c:['ഫുഡ് ആൻഡ് ബിവറേജ് സർവീസ്','Food & beverage service'],sec:2,d:3,du:['6 മാസം','6 months'],f:1}];
+const GD=[['🎤','ഇന്റർവ്യൂവിന് മുമ്പ്','Before the interview',['സ്ഥാപനത്തെക്കുറിച്ച് അന്വേഷിക്കുക.','രേഖകളുടെ ഫോട്ടോകോപ്പിയും ഒറിജിനലും കരുതുക.','സമയത്തിന് 15 മിനിറ്റ് മുമ്പ് എത്തുക.'],['Find out about the organisation.','Carry original documents and photocopies.','Arrive 15 minutes early.']],['💬','ഇന്റർവ്യൂവിൽ','During the interview',['"നിങ്ങളെക്കുറിച്ച് പറയൂ" എന്ന ചോദ്യത്തിന് തയ്യാറാകുക.','സത്യസന്ധമായും ശാന്തമായും ഉത്തരം പറയുക.','ശമ്പളം, ജോലി സമയം എന്നിവ വ്യക്തമായി ചോദിച്ചറിയുക.'],['Prepare for "tell me about yourself".','Answer honestly and calmly.','Ask clearly about pay and working hours.']],['🧭','കരിയർ മാർഗനിർദ്ദേശം','Career guidance',['നിങ്ങളുടെ കഴിവും താൽപര്യവും എഴുതിവയ്ക്കുക.','പഠിച്ചുകൊണ്ടിരിക്കെ ചെറിയ ജോലി പരിചയം നേടുക.','കൂടുതൽ മാർഗനിർദ്ദേശത്തിന് വിദ്യാഭ്യാസ-കരിയർ സേവനം നോക്കുക.'],['Write down your skills and interests.','Gain small work experience while studying.','See the Education & Career Service for more guidance.']],['⚠️','തട്ടിപ്പ് തിരിച്ചറിയുക','Spotting job scams',['ജോലിക്ക് പണം ചോദിച്ചാൽ അത് തട്ടിപ്പാണ്.','വിദേശ ജോലിക്ക് അംഗീകൃത ഏജൻസികളെ മാത്രം സമീപിക്കുക.','ഓഫർ ലെറ്ററിനും സ്ഥാപനത്തിനും ഉറപ്പ് വരുത്തുക.'],['A fee for a job is a scam.','For overseas jobs, use only approved agencies.','Verify the offer letter and the organisation.']]];
+const OW=[['🚀','സ്വയംതൊഴിൽ തുടങ്ങാൻ','Starting self-employment',['ആശയം തിരഞ്ഞെടുക്കുക; ആർക്ക് വിൽക്കും എന്ന് പരിശോധിക്കുക.','ആവശ്യമായ ലൈസൻസും രജിസ്ട്രേഷനും അന്വേഷിക്കുക.','ചെറുതായി തുടങ്ങി കണക്കുകൾ സൂക്ഷിക്കുക.'],['Choose an idea and check who will buy.','Find out the licences and registration needed.','Start small and keep records.']],['💼','ചെറുകിട സംരംഭത്തിന് ധനസഹായം','Funding for small businesses',['സർക്കാർ, ബാങ്ക് വായ്പ / സബ്സിഡി പദ്ധതികളുടെ വിവരങ്ങൾ (സാമ്പിൾ; ഔദ്യോഗിക ലിങ്കുകൾ ചേർക്കും).','പണം വാങ്ങി വായ്പ ശരിയാക്കിത്തരുന്ന ഇടനിലക്കാരെ ഒഴിവാക്കുക.'],['Government, bank loan and subsidy schemes (sample; official links to be added).','Avoid middlemen who take money to arrange loans.']],['👩‍🌾','സ്ത്രീകളുടെ ഉപജീവന പദ്ധതികൾ','Women\'s livelihood projects',['സ്ത്രീ കൂട്ടായ്മകളിലും സംഘങ്ങളിലും ചേർന്ന് പ്രവർത്തിക്കാം.','തയ്യൽ, ഭക്ഷ്യ ഉത്പന്നങ്ങൾ, കൃഷി തുടങ്ങിയ മേഖലകൾ.','പരിശീലനവും മാർക്കറ്റിംഗ് സഹായവും ചോദിക്കുക.'],['Join women\'s collectives and groups.','Fields like tailoring, food products and agriculture.','Ask about training and marketing support.']]];
+let lang='en',view='home',etab=0,atab=0,doneId=0,cvout='',fv={},isAdmin=false,db={j:[],s:[],e:[],rep:0,n:1};
+try{const s=localStorage.getItem('job1');if(s)db=JSON.parse(s);lang=localStorage.getItem('job1l')||'en'}catch(e){}
+const save=()=>{try{localStorage.setItem('job1',JSON.stringify(db))}catch(e){}};
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const opt=(a,all)=>(all?`<option value="">${t('f_all')}</option>`:'')+a.map((x,i)=>`<option value="${i}">${L(x)}</option>`).join('');
+const S=h=>`<div class="wrap sec">${h}</div>`;
+function toast(m){const e=document.createElement('div');e.className='toast';e.textContent=m;document.body.appendChild(e);setTimeout(()=>e.remove(),2600)}
+function go(v){view=v;doneId=0;draw();scrollTo(0,0)}
+function setLang(){lang=lang=='ml'?'en':'ml';try{localStorage.setItem('job1l',lang)}catch(e){}document.documentElement.lang=lang;draw()}
+function big(){document.documentElement.classList.toggle('big')}function hc(){document.documentElement.classList.toggle('hc')}
+const TABS=(arr,cur,fn)=>`<div class="tabs">${arr.map((x,i)=>`<button class="${cur==i?'on':''}" onclick="${fn}(${i})">${x}</button>`).join('')}</div>`;
+const lcard=k=>`<a class="card" href="${LK[k][0]}" style="text-decoration:none;color:inherit"><span class="m">${t('lnk')}</span><h3>${LK[k][1]} ${L([LK[k][2],LK[k][3]])}</h3><b style="color:var(--teal)">${t('open')} →</b></a>`;
+const TILES=[['💼','jobs','ജോലി വിവരങ്ങൾ','Job information','പരിശോധിച്ച ജോലി അവസരങ്ങൾ.','Verified job openings.'],['📄','cv','റെസ്യൂമെ തയ്യാറാക്കൽ','Resume preparation','ബയോഡാറ്റ സ്വയം ഉണ്ടാക്കാം.','Build your resume yourself.'],['🎤','guide','ഇന്റർവ്യൂ മാർഗനിർദ്ദേശം','Interview guidance','ഇന്റർവ്യൂവിന് തയ്യാറെടുക്കാം.','Prepare for interviews.'],['🛠️','skills','നൈപുണ്യ പരിശീലനം','Skill training','പരിശീലന സ്ഥാപനങ്ങൾ.','Training institutions.'],['🎓','skills','അപ്രന്റിസ്ഷിപ്പ്','Apprenticeships','പഠിച്ചുകൊണ്ട് സമ്പാദിക്കാം.','Earn while you learn.'],['🚀','own','സ്വയംതൊഴിൽ, ചെറുകിട സംരംഭം','Self-employment & small business','സ്വന്തം സംരംഭം തുടങ്ങാം.','Start your own venture.'],['👩‍🌾','own','സ്ത്രീകളുടെ ഉപജീവന പദ്ധതികൾ','Women\'s livelihood projects','കൂട്ടായ്മകളും പരിശീലനവും.','Collectives and training.'],['🤝','seek','ഉദ്യോഗാർത്ഥിയായി രജിസ്റ്റർ ചെയ്യുക','Register as a job seeker','ചേരുന്ന അവസരവുമായി ബന്ധിപ്പിക്കും.','We connect you to a match.']];
+function home(){return `<section class="hero"><div class="bg" aria-hidden="true"><i></i><i></i><i></i><i></i></div><div class="wrap"><div><h1>${t('h1')}</h1><p>${t('sub')}</p><div class="row"><button class="btn gold" onclick="go('jobs')">${t('c1')}</button><button class="btn ghost" style="color:#fff" onclick="go('cv')">${t('c2')}</button></div></div>
+<svg class="art" viewBox="0 0 200 200" fill="none" stroke-width="7" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><rect x="30" y="76" width="140" height="92" rx="12" stroke="#fff"/><path d="M76 76V52h48v24M30 118h140" stroke="#fff"/><path class="spark" d="M100 112v12" stroke="#F2A93B"/><path d="M100 26v14M84 34l8 8M116 34l-8 8" stroke="#F2A93B"/></svg></div>
+<svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30Q360 62 720 30T1440 30V60H0Z" fill="var(--bg)"/></svg></section>`
++S(`<div class="warn">${t('disc')}</div><h2>${t('whot')}</h2><div class="tiles">${TILES.map(x=>`<button class="tile" onclick="go('${x[1]}')"><span class="ic">${x[0]}</span><b>${L([x[2],x[3]])}</b><span class="m">${L([x[4],x[5]])}</span></button>`).join('')}</div>`)
++`<section class="cta"><div class="wrap"><h2>${t('ctat')}</h2><button class="btn gold" onclick="go('emp')">${t('emp')}</button></div></section>`
++S(`<h2>${t('hw')}</h2><div class="steps">${[1,2,3].map(i=>`<div><b>${t('s'+i)}</b><br><span class="m">${t('s'+i+'d')}</span></div>`).join('')}</div><div class="cards">${lcard('edu')}${lcard('sup')}</div><div class="note">${t('demo')}</div>`)}
+function jcard(j){const own=!Array.isArray(j.t);return `<div class="card"><h3>${own?esc(j.t):L(j.t)}</h3><span class="m">${own?esc(j.o):L(j.o)}</span><div><span class="tag">${L(DIST[j.d])}</span><span class="tag">${L(SEC[j.sec])}</span><span class="tag">${L(JT[j.jt])}</span><span class="tag">≥ ${L(ED[j.ed])}</span></div><p class="m" style="margin:4px 0">${t('pay')}: ${j.pay?(own?esc(j.pay):L(j.pay)):'—'}<br>${t('how')}: ${own?esc(j.hw):L(j.hw)}</p><span class="m">${t('nofee')}</span><button class="btn ghost" style="color:var(--ink);margin-top:6px;padding:6px 12px" onclick="rep()">${t('rep')}</button></div>`}
+function rep(){db.rep++;save();toast(t('repd'))}
+function jobs(){const d=fv.jd,s=fv.js,e=fv.je,l=JOBS.concat(db.j.filter(x=>x.ok)).filter(j=>(d==null||d===''||j.d==+d)&&(s==null||s===''||j.sec==+s)&&(e==null||e===''||j.ed<=+e));
+ return S(`<h2>${t('jobs')}</h2><div class="warn">${t('em')}</div><div class="panel" style="margin-top:0"><div class="grid"><div><label>${t('dd')}</label><select id="jd" onchange="draw()">${opt(DIST,1)}</select></div><div><label>${t('sec')}</label><select id="js" onchange="draw()">${opt(SEC,1)}</select></div><div><label>${t('edu')}</label><select id="je" onchange="draw()">${opt(ED,1)}</select></div></div></div><div class="cards">${l.map(jcard).join('')||`<p class="m">${t('nores')}</p>`}</div><div class="note">${t('demo')}</div>`)}
+function cvText(){const v=i=>(document.getElementById(i)||{value:''}).value.trim(),ln=x=>x.split('\n').map(z=>z.trim()).filter(Boolean).map(z=>'• '+z).join('\n');
+ return `${v('c_n').toUpperCase()||'__________'}\n${[v('c_p'),v('c_e'),v('c_a')].filter(Boolean).join(' | ')}\n\n${t('h_obj')}\n${v('c_o')||'—'}\n\n${t('h_ed')}\n${ln(v('c_ed'))||'—'}\n\n${t('h_ex')}\n${ln(v('c_ex'))||'—'}\n\n${t('h_sk')}\n${v('c_sk')||'—'}\n\n${t('h_lg')}\n${v('c_lg')||'—'}\n\n${t('h_dc')}`}
+function mkCv(){cvout=cvText();draw()}
+function copyCv(){const e=document.getElementById('cv_out');if(!e)return;e.select();try{document.execCommand('copy');toast(t('ccd'))}catch(x){}}
+function cv(){return S(`<h2>${t('cvt')}</h2><p class="m">${t('cvd')}</p><div class="panel" style="margin-top:0"><div class="grid"><div><label>${t('cn')}</label><input id="c_n"></div><div><label>${t('cp')}</label><input id="c_p" inputmode="numeric"></div><div><label>${t('ce')}</label><input id="c_e"></div><div><label>${t('ca')}</label><input id="c_a"></div></div>
+<div style="margin-top:14px"><label>${t('co')}</label><textarea id="c_o" rows="2"></textarea></div><div style="margin-top:14px"><label>${t('ced')}</label><textarea id="c_ed" rows="3"></textarea></div><div style="margin-top:14px"><label>${t('cex')}</label><textarea id="c_ex" rows="3"></textarea></div><div class="grid" style="margin-top:14px"><div><label>${t('csk')}</label><input id="c_sk"></div><div><label>${t('clg')}</label><input id="c_lg"></div></div><p><button class="btn" onclick="mkCv()">${t('cmk')}</button></p></div>`
++(cvout?`<div class="panel"><div class="cvp">${esc(cvout)}</div><textarea id="cv_out" class="draft" readonly style="position:absolute;left:-9999px;height:1px">${esc(cvout)}</textarea><p><button class="btn gold" onclick="copyCv()">${t('ccp')}</button></p></div>`:''))}
+function acc(a){return a.map(g=>`<details><summary>${g[0]} ${L([g[1],g[2]])}</summary><ul>${(lang=='ml'?g[3]:g[4]).map(x=>`<li>${x}</li>`).join('')}</ul></details>`).join('')}
+function guide(){return S(`<h2>${t('gt')}</h2><p class="m">${t('gd')}</p>${acc(GD)}<div class="cards">${lcard('edu')}</div>`)}
+function own(){return S(`<h2>${t('ow')}</h2><p class="m">${t('gd')}</p>${acc(OW)}<div class="cards">${lcard('sup')}</div><div class="note">${t('demo')}</div>`)}
+function skills(){const d=fv.td,s=fv.ts,l=TRN.filter(x=>(d==null||d===''||x.d==+d)&&(s==null||s===''||x.sec==+s));
+ return S(`<h2>${t('st_')}</h2><div class="panel" style="margin-top:0"><div class="grid"><div><label>${t('dd')}</label><select id="td" onchange="draw()">${opt(DIST,1)}</select></div><div><label>${t('sec')}</label><select id="ts" onchange="draw()">${opt(SEC,1)}</select></div></div></div><div class="cards">${l.map(x=>`<div class="card"><h3>${L(x.n)}</h3><b>${L(x.c)}</b><div><span class="tag">${L(DIST[x.d])}</span><span class="tag">${L(SEC[x.sec])}</span><span class="tag">${t('dur')}: ${L(x.du)}</span>${x.f?`<span class="tag">${t('freec')}</span>`:''}</div></div>`).join('')||`<p class="m">${t('nores')}</p>`}</div><div class="note">${t('demo')}</div>`)}
+let lastSubmission=null;
+function doneV(){
+ const wa=lastSubmission&&typeof createWhatsAppDispatch==='function'?createWhatsAppDispatch(lastSubmission.title,lastSubmission.ref,lastSubmission.summary):'#';
+ return S(`<h2>${t('done')}</h2><div class="note">${t('doned')}</div>
+ <div style="display:flex;gap:10px;flex-wrap:wrap;margin:18px 0">
+  <a class="btn" style="background:#25D366;color:#fff;text-decoration:none;display:inline-flex;align-items:center;gap:8px;font-weight:700" href="${wa}" target="_blank" rel="noopener">
+   <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.23 8.23 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23-1.48 0-2.93-.39-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.32a8.19 8.19 0 0 1-1.26-4.36c0-4.54 3.69-8.25 8.24-8.25m-2.52 3.69c-.17 0-.44.07-.67.31-.23.25-.88.86-.88 2.1 0 1.23.91 2.43 1.03 2.59.13.17 1.79 2.72 4.33 3.82.6.26 1.07.42 1.43.53.61.2 1.16.17 1.6.1.49-.07 1.51-.62 1.72-1.21.21-.59.21-1.1.15-1.2-.07-.11-.24-.17-.51-.3-.27-.14-1.6-.79-1.85-.88-.24-.09-.42-.14-.6.12-.17.25-.67.85-.82 1.02-.15.17-.3.19-.57.06-.27-.14-1.13-.42-2.15-1.33-.79-.71-1.33-1.58-1.48-1.84-.15-.26-.02-.4.12-.53.12-.12.27-.31.4-.46.14-.15.18-.26.28-.45.09-.2.04-.36-.03-.49-.06-.13-.57-1.38-.78-1.9-.21-.5-.42-.43-.57-.44-.15-.01-.32-.01-.5-.01"/></svg>
+   ${lang=='ml'?'വാട്സ്ആപ്പ് വഴി അറിയിക്കുക':'Notify Team via WhatsApp'}
+  </a>
+  <button class="btn" onclick="go('track')">${t('track')}</button>
+ </div>`)}
+function seek(){if(doneId)return doneV();return S(`<h2>${t('sk_')}</h2><p class="m">${t('skd')}</p><div class="panel" style="margin-top:0"><div class="grid"><div><label>${t('n')} *</label><input id="s_n"></div><div><label>${t('ag')}</label><input id="s_a" type="number" min="16" max="70"></div><div><label>${t('ph')} *</label><input id="s_p" inputmode="numeric" maxlength="10"></div><div><label>${t('dd')} *</label><select id="s_d">${opt(DIST)}</select></div><div><label>${t('edu')}</label><select id="s_e">${opt(ED)}</select></div><div><label>${t('psec')}</label><select id="s_s">${opt(SEC)}</select></div><div><label>${t('pdst')}</label><select id="s_pd">${opt(DIST)}</select></div><div><label>${t('yrs')}</label><input id="s_y" type="number" min="0" max="50"></div></div><div style="margin-top:14px"><label>${t('skl')}</label><input id="s_k"></div><p><label style="color:var(--ink)"><input type="checkbox" id="s_c"> ${t('cons')}</label></p><p><button class="btn" onclick="sendS()">${t('send')}</button></p></div>`)}
+function sendS(){const v=i=>document.getElementById(i).value.trim();
+ const phoneClean=typeof OurValidator!=='undefined'?OurValidator.isValidPhone(v('s_p')):v('s_p').length==10;
+ if(!v('s_n')||!phoneClean){toast(t('err'));return}if(!document.getElementById('s_c').checked){toast(t('errc'));return}
+ const recId=db.n++;
+ const newRec={id:recId,n:v('s_n'),a:+v('s_a')||0,p:v('s_p'),d:+v('s_d'),e:+v('s_e'),sec:+v('s_s'),pd:+v('s_pd'),y:+v('s_y')||0,k:v('s_k'),st:0,date:new Date().toISOString().slice(0,10)};
+ db.s.push(newRec);save();
+ const ref='JOB-SK-'+String(recId).padStart(4,'0');
+ lastSubmission={
+  title:'തൊഴിൽ അന്വേഷണം (Job Seeker)',
+  ref:ref,
+  summary:{
+   'പേര്':newRec.n,
+   'പ്രായം':newRec.a||'—',
+   'ഫോൺ':newRec.p,
+   'സ്വദേശ ജില്ല':DIST[newRec.d]?DIST[newRec.d][0]:newRec.d,
+   'മേഖല':SEC[newRec.sec]?SEC[newRec.sec][0]:newRec.sec,
+   'താല്പര്യമുള്ള ജില്ല':DIST[newRec.pd]?DIST[newRec.pd][0]:newRec.pd,
+   'വിദ്യാഭ്യാസം':ED[newRec.e]?ED[newRec.e][0]:newRec.e,
+   'നൈപുണ്യം':newRec.k||'—'
+  }
+ };
+ if(typeof syncRecordToCloud==='function'){
+  syncRecordToCloud('jobs','seeker',{
+   ref:ref,
+   name:newRec.n,
+   age:newRec.a,
+   phone:newRec.p,
+   district:DIST[newRec.d]?DIST[newRec.d][1]:newRec.d,
+   sector:SEC[newRec.sec]?SEC[newRec.sec][1]:newRec.sec,
+   pref_district:DIST[newRec.pd]?DIST[newRec.pd][1]:newRec.pd,
+   education:ED[newRec.e]?ED[newRec.e][1]:newRec.e,
+   skills:newRec.k
+  });
+ }
+ fv={};doneId=1;draw()}
+function emp(){if(doneId)return doneV();return S(`<h2>${t('et')}</h2><p class="m">${t('etd')}</p>`+TABS([t('e0'),t('e1')],etab,'setE')+`<div class="panel"><div class="grid"><div><label>${t('org')} *</label><input id="e_o"></div><div><label>${t('cpn')}</label><input id="e_c"></div><div><label>${t('ph')} *</label><input id="e_p" inputmode="numeric" maxlength="10"></div><div><label>${t('dd')} *</label><select id="e_d">${opt(DIST)}</select></div><div><label>${t('sec')}</label><select id="e_s">${opt(SEC)}</select></div><div><label>${t('edq')}</label><select id="e_e">${opt(ED)}</select></div>
+${etab==0?`<div><label>${t('jt_')} *</label><input id="e_t"></div><div><label>${t('jtq')}</label><select id="e_j">${opt(JT)}</select></div><div><label>${t('pay_')}</label><input id="e_pay"></div><div><label>${t('hw_')}</label><input id="e_h"></div>`:`<div><label>${t('cnt')}</label><input id="e_n" type="number" min="1" value="1"></div>`}</div>
+<p><label style="color:var(--ink)"><input type="checkbox" id="e_cs"> ${t('nofee_c')}</label></p><p><button class="btn" onclick="sendE()">${t('send')}</button></p></div>`)}
+function setE(i){etab=i;draw()}
+function sendE(){const v=i=>{const e=document.getElementById(i);return e?e.value.trim():''};
+ const phoneClean=typeof OurValidator!=='undefined'?OurValidator.isValidPhone(v('e_p')):v('e_p').length==10;
+ if(!v('e_o')||!phoneClean||(etab==0&&!v('e_t'))){toast(t('jerr'));return}if(!document.getElementById('e_cs').checked){toast(t('errc'));return}
+ const recId=db.n++;
+ const b={id:recId,o:v('e_o'),c:v('e_c'),p:v('e_p'),d:+v('e_d'),sec:+v('e_s'),ed:+v('e_e'),ok:0,date:new Date().toISOString().slice(0,10)};
+ if(etab==0)db.j.push(Object.assign(b,{t:v('e_t'),jt:+v('e_j'),pay:v('e_pay'),hw:v('e_h')}));else db.e.push(Object.assign(b,{n:+v('e_n')||1}));
+ save();
+ const ref='JOB-EMP-'+String(recId).padStart(4,'0');
+ lastSubmission={
+  title:'തൊഴിൽ ദാതാവ് (Employer Post)',
+  ref:ref,
+  summary:{
+   'സ്ഥാപനം':b.o,
+   'വ്യക്തി':b.c||'—',
+   'ഫോൺ':b.p,
+   'ജില്ല':DIST[b.d]?DIST[b.d][0]:b.d,
+   'മേഖല':SEC[b.sec]?SEC[b.sec][0]:b.sec,
+   'തസ്തിക':etab==0?v('e_t'):`ഒഴിവുകൾ: ${+v('e_n')||1}`,
+   'ശമ്പളം':etab==0?v('e_pay'):'—'
+  }
+ };
+ if(typeof syncRecordToCloud==='function'){
+  syncRecordToCloud('jobs','employer',{
+   ref:ref,
+   org:b.o,
+   contact:b.c,
+   phone:b.p,
+   district:DIST[b.d]?DIST[b.d][1]:b.d,
+   sector:SEC[b.sec]?SEC[b.sec][1]:b.sec,
+   role:etab==0?v('e_t'):'Multiple ('+(+v('e_n')||1)+')',
+   pay:etab==0?v('e_pay'):'',
+   type:etab==0?'Job Listing':'Bulk Requirement'
+  });
+ }
+ fv={};doneId=1;draw()}
+function track(){const p=fv.tp;const l=p&&p.length==10?db.s.filter(r=>r.p==p):null;
+ return S(`<h2>${t('tr')}</h2><div class="panel" style="margin-top:0;max-width:460px"><p class="m">${t('trd')}</p><input id="tp" inputmode="numeric" maxlength="10"><p><button class="btn" onclick="draw()">${t('trb')}</button></p></div>`+(l?(l.length?`<div class="cards">${l.map(r=>`<div class="card"><b>${esc(r.n)}</b><span class="m">${r.date}</span><span class="badge">${t('st'+r.st)}</span></div>`).join('')}</div>`:`<p class="m" style="margin-top:14px">${t('trn')}</p>`):''))}
+function admin(){
+ if(!isAdmin)return S(`<h2>${t('al')}</h2><div class="panel" style="max-width:340px"><label>${t('pin')}</label><input id="pin" type="password"><p><button class="btn" onclick="if(document.getElementById('pin').value=='1234'){isAdmin=true;draw()}else toast(t('badpin'))">${t('enter')}</button></p></div>`);
+ let body;
+ if(atab==0){const pe=db.j.map((j,i)=>[j,i]).filter(x=>!x[0].ok);body=`<b>${t('pend')} (${pe.length})</b>`+(pe.length?`<table>${pe.map(([j,i])=>`<tr><td><b>${esc(j.t)}</b><br><span class="m">${esc(j.o)} · ${esc(j.p)} · ${L(DIST[j.d])}<br>${L(SEC[j.sec])} · ${L(JT[j.jt])} · ${esc(j.pay||'')}<br>${esc(j.hw||'')}</span></td><td><button class="btn" style="padding:5px 12px" onclick="jOk(${i},1)">${t('ok')}</button> <button class="btn bad" style="padding:5px 12px" onclick="jOk(${i},0)">${t('rej')}</button></td></tr>`).join('')}</table>`:`<p class="m">${t('none')}</p>`)+`<p><b>${t('pub')}:</b> ${JOBS.length+db.j.filter(j=>j.ok).length} · <b>${t('reps')}:</b> ${db.rep}</p>`}
+ else if(atab==1)body=db.s.length?`<table>${db.s.map(r=>{const m=JOBS.concat(db.j.filter(j=>j.ok)).filter(j=>j.d==r.pd&&j.sec==r.sec&&j.ed<=r.e);return `<tr><td><b>${esc(r.n)}</b>, ${r.a}<br>${esc(r.p)} · ${L(DIST[r.d])}<br><span class="m">${r.date}</span></td><td>${L(ED[r.e])} · ${L(SEC[r.sec])} → ${L(DIST[r.pd])}<br><span class="m">${esc(r.k)} · ${r.y}y</span><br><b>${t('mt')}: ${m.length}</b>${m.map(j=>`<br><span class="m">${typeof j.t=='string'?esc(j.t):L(j.t)}</span>`).join('')}</td><td><select onchange="setSt(${r.id},this.value)">${[0,1,2,3].map(i=>`<option value="${i}"${r.st==i?' selected':''}>${t('st'+i)}</option>`).join('')}</select></td></tr>`}).join('')}</table>`:`<span class="m">${t('none')}</span>`;
+ else body=db.e.length?`<table>${db.e.map(e=>`<tr><td><b>${esc(e.o)}</b><br>${esc(e.c)} ${esc(e.p)} · ${L(DIST[e.d])}</td><td>${L(SEC[e.sec])} · ≥ ${L(ED[e.ed])} · × ${e.n}</td></tr>`).join('')}</table>`:`<span class="m">${t('none')}</span>`;
+ return S(`<h2>${t('admin')}</h2>`+TABS([t('a0'),t('a1')+' ('+db.s.length+')',t('a2')+' ('+db.e.length+')'],atab,'setA')+`<div class="panel tbl">${body}</div><p><button class="btn ghost" style="color:var(--ink)" onclick="isAdmin=false;draw()">${t('out')}</button></p>`)}
+function setA(i){atab=i;draw()}
+function jOk(i,ok){if(ok)db.j[i].ok=1;else db.j.splice(i,1);save();draw()}
+function setSt(id,v){db.s.find(r=>r.id==id).st=+v;save();toast(t('st'+v))}
+function draw(){const A=document.getElementById('app');
+ A.querySelectorAll('[id]').forEach(e=>{if('value'in e&&e.type!='file'&&e.type!='checkbox'&&e.id!='cv_out')fv[e.id]=e.value});
+ document.getElementById('bn').textContent=t('brand');
+ document.getElementById('em').textContent=t('em');
+ document.getElementById('ft').innerHTML=`<div class="wrap"><b>${t('brand')}</b><br>${t('ft')}<br>${t('disc')}</div>`;
+ document.getElementById('nav').innerHTML=['home','jobs','cv','guide','skills','own','seek','emp','track','admin'].map(k=>`<button class="${view==k?'on':''}" onclick="go('${k}')">${t(k)}</button>`).join('')+`<button class="lg" onclick="setLang()">${t('lang')}</button><button class="lg" onclick="big()" title="${t('a11y')}" aria-label="${t('a11y')}">A+</button><button class="lg" onclick="hc()" title="${t('hcn')}" aria-label="${t('hcn')}">◐</button>`;
+ A.innerHTML=({home,jobs,cv,guide,skills,own,seek,emp,track,admin})[view]();
+ A.querySelectorAll('[id]').forEach(e=>{if(fv[e.id]!=null&&'value'in e&&e.type!='file'&&e.type!='checkbox'&&e.id!='cv_out')e.value=fv[e.id]})}
+document.documentElement.lang=lang;draw();
+</script>
+</body>
+</html>
