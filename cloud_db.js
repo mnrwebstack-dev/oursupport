@@ -123,7 +123,7 @@ function getOurSupportFooter(lang) {
         © 2026 OruSupport.com · People Service Mission Kerala. All Rights Reserved.
       </div>
       <div>
-        Powered by <a href="https://www.anacartsolutions.in" target="_blank" rel="noopener" style="color:var(--gold,#F2A93B);text-decoration:underline;font-weight:600">Ana Cart Technology Solutions</a> (<a href="https://www.anacartsolutions.in" target="_blank" rel="noopener" style="color:#CFE3E0;text-decoration:none">www.anacartsolutions.in</a>)
+        Powered by <a href="https://www.anatechsolutions.in/" target="_blank" rel="noopener" style="color:var(--gold,#F2A93B);text-decoration:underline;font-weight:600">Anatech Technology Solutions</a>
       </div>
     </div>
   </div>`;
