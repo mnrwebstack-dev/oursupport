@@ -543,7 +543,7 @@ function onDistrictFilter(val) {
   draw();
 }
 
-function toggleLang(){lang=lang=='ml'?'en':'ml';if(typeof setAppLang==='function'){setAppLang(lang)}else{try{if(lang==='en')localStorage.setItem('kth_user_lang_pref','en');else localStorage.removeItem('kth_user_lang_pref')}catch(e){}}document.documentElement.lang=lang;draw()}
+function toggleLang(){lang=lang=='ml'?'en':'ml';if(typeof setAppLang==='function'){setAppLang(lang)}else{try{localStorage.removeItem('kth_user_lang_pref')}catch(e){}}document.documentElement.lang=lang;draw()}
 
 function toast(msg) {
   const el = document.createElement('div');

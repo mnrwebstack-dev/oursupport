@@ -240,7 +240,7 @@ const dO=all=>(all?`<option value="">${t('alld')}</option>`:'')+DIST.map((x,i)=>
 const sO=all=>(all?`<option value="">${t('any')}</option>`:'')+ST.map((x,i)=>`<option value="${i}">${L(x)}</option>`).join('');
 function toast(m){const e=document.createElement('div');e.className='toast';e.textContent=m;document.body.appendChild(e);setTimeout(()=>e.remove(),2600)}
 function go(v){if(v!='reg')justReg=false;if(v!='login')otpSent=false;delAsk=false;view=v;draw();scrollTo(0,0)}
-function setLang(){lang=lang=='ml'?'en':'ml';if(typeof setAppLang==='function'){setAppLang(lang)}else{try{if(lang==='en')localStorage.setItem('kth_user_lang_pref','en');else localStorage.removeItem('kth_user_lang_pref')}catch(e){}}document.documentElement.lang=lang;draw()}
+function setLang(){lang=lang=='ml'?'en':'ml';if(typeof setAppLang==='function'){setAppLang(lang)}else{try{localStorage.removeItem('kth_user_lang_pref')}catch(e){}}document.documentElement.lang=lang;draw()}
 function img(p){if(p.ph)return p.ph;const h=(p.id*57)%360,n=esc(L(p.name)[0]);
  return 'data:image/svg+xml,'+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 210"><rect width="200" height="210" fill="hsl(${h},35%,42%)"/><circle cx="100" cy="82" r="38" fill="rgba(255,255,255,.55)"/><path d="M28 210c0-50 32-72 72-72s72 22 72 72z" fill="rgba(255,255,255,.55)"/></svg>`)}
 function card(p){return `<div class="pc"><img src="${img(p)}" alt="${esc(L(p.name))}"><div class="b"><h3>${esc(L(p.name))}</h3>

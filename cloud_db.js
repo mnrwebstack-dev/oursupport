@@ -26,21 +26,16 @@ try {
 } catch(e) {}
 
 function getAppLang() {
-  try {
-    if (localStorage.getItem('kth_user_lang_pref') === 'en') {
-      return 'en';
-    }
-  } catch(e) {}
-  return 'ml'; // 100% DEFAULT IS MALAYALAM
+  // STRICT REQUIREMENT:
+  // Every page reload, new tab, or browser launch MUST unconditionally open in Malayalam ('ml').
+  // English is purely an active-session or in-memory choice by clicking the button.
+  return 'ml';
 }
 
 function setAppLang(l) {
+  // Purge any stored language preference so reloads/new visits always default to Malayalam
   try {
-    if (l === 'en') {
-      localStorage.setItem('kth_user_lang_pref', 'en');
-    } else {
-      localStorage.removeItem('kth_user_lang_pref');
-    }
+    localStorage.removeItem('kth_user_lang_pref');
   } catch(e) {}
 }
 

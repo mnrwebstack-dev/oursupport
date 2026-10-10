@@ -429,7 +429,7 @@ const SV=[
 let lang=(typeof getAppLang==='function')?getAppLang():'ml',view='home',fv={};
 
 const S=h=>`<div class="wrap sec">${h}</div>`;
-function setLang(){lang=lang=='ml'?'en':'ml';if(typeof setAppLang==='function'){setAppLang(lang)}else{try{if(lang==='en')localStorage.setItem('kth_user_lang_pref','en');else localStorage.removeItem('kth_user_lang_pref')}catch(e){}}document.documentElement.lang=lang;draw()}
+function setLang(){lang=lang=='ml'?'en':'ml';if(typeof setAppLang==='function'){setAppLang(lang)}else{try{localStorage.removeItem('kth_user_lang_pref')}catch(e){}}document.documentElement.lang=lang;draw()}
 function big(){document.documentElement.classList.toggle('big')}function hc(){document.documentElement.classList.toggle('hc')}
 function go(v){view=v;draw();scrollTo(0,0)}
 function jump(id){if(view!='home'){view='home';draw()}setTimeout(()=>{const e=document.getElementById(id);if(e)e.scrollIntoView({behavior:'smooth'})},30)}

@@ -158,7 +158,7 @@ const pad=n=>'SUP-'+String(n).padStart(4,'0');
 function toast(m){const e=document.createElement('div');e.className='toast';e.textContent=m;document.body.appendChild(e);setTimeout(()=>e.remove(),2600)}
 function go(v){view=v;doneId=0;vdone=0;draw();scrollTo(0,0)}
 function goC(c){rcat=c;go('req')}
-function setLang(){lang=lang=='ml'?'en':'ml';if(typeof setAppLang==='function'){setAppLang(lang)}else{try{if(lang==='en')localStorage.setItem('kth_user_lang_pref','en');else localStorage.removeItem('kth_user_lang_pref')}catch(e){}}document.documentElement.lang=lang;draw()}
+function setLang(){lang=lang=='ml'?'en':'ml';if(typeof setAppLang==='function'){setAppLang(lang)}else{try{localStorage.removeItem('kth_user_lang_pref')}catch(e){}}document.documentElement.lang=lang;draw()}
 function big(){document.documentElement.classList.toggle('big')}function hc(){document.documentElement.classList.toggle('hc')}
 function qx(){try{localStorage.removeItem('kth_draft_support')}catch(e){};fv={};doneId=0;vdone=0;view='home';try{draw()}catch(e){}scrollTo(0,0);try{location.replace('https://www.google.com/')}catch(e){}}
 const TABS=(arr,cur,fn)=>`<div class="tabs">${arr.map((x,i)=>`<button class="${cur==i?'on':''}" onclick="${fn}(${i})">${x}</button>`).join('')}</div>`;
