@@ -7,17 +7,17 @@
 <!-- WhatsApp & Social Media Rich Preview Meta Tags -->
 <meta property="og:title" content="Kaithangu · കൈത്താങ്ങ് | 7 സൗജന്യ ജനസേവനങ്ങൾ ഒരു കുടക്കീഴിൽ">
 <meta property="og:description" content="വിവാഹം, വിദ്യാഭ്യാസം, തൊഴിൽ, ആരോഗ്യം, നിയമം, കുടുംബം, അടിയന്തര സഹായം: സാധാരണക്കാർക്ക് 7 സൗജന്യ സേവനങ്ങൾ. &quot;ഞാൻ ഇല്ലാത്തപ്പോഴും ഈ സേവനം ഉണ്ടാകണം&quot; — People Service Mission Kerala.">
-<meta property="og:image" content="https://www.orusupport.com/founder.png">
-<meta property="og:image:secure_url" content="https://www.orusupport.com/founder.png">
+<meta property="og:image" content="https://www.orusupport.com/share-banner.png">
+<meta property="og:image:secure_url" content="https://www.orusupport.com/share-banner.png">
 <meta property="og:image:type" content="image/png">
-<meta property="og:image:width" content="836">
-<meta property="og:image:height" content="918">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:url" content="https://www.orusupport.com/">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Kaithangu · കൈത്താങ്ങ് | 7 സൗജന്യ ജനസേവനങ്ങൾ">
 <meta name="twitter:description" content="&quot;ഞാൻ ഇല്ലാത്തപ്പോഴും ഈ സേവനം ഉണ്ടാകണം&quot; — People Service Mission Kerala. 7 സൗജന്യ ജനസേവനങ്ങൾ.">
-<meta name="twitter:image" content="https://www.orusupport.com/founder.png">
+<meta name="twitter:image" content="https://www.orusupport.com/share-banner.png">
 <meta name="description" content="Kaithangu (കൈത്താങ്ങ്) - 7 free public welfare services for Kerala: Matrimony, Education, Jobs, Health, Legal Desk, Family Support, and Emergency Relief.">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@400;600;800&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
@@ -164,6 +164,7 @@ html.hc .fnd-wa-btn{background:#fff;color:#000;border:2px solid #FFD54A}
 </header>
 <div id="app"></div>
 <footer id="ft"></footer>
+<script src="cloud_db.js"></script>
 <script>
 const BR=['കൈത്താങ്ങ്','Kaithangu'];
 const T={
@@ -399,6 +400,22 @@ People First — Service Always
 
 const t=k=>T[k][lang=='ml'?0:1],L=x=>Array.isArray(x)?x[lang=='ml'?0:1]:x;
 const DIST=[['തിരുവനന്തപുരം','Thiruvananthapuram'],['കൊല്ലം','Kollam'],['പത്തനംതിട്ട','Pathanamthitta'],['ആലപ്പുഴ','Alappuzha'],['കോട്ടയം','Kottayam'],['ഇടുക്കി','Idukki'],['എറണാകുളം','Ernakulam'],['തൃശൂർ','Thrissur'],['പാലക്കാട്','Palakkad'],['മലപ്പുറം','Malappuram'],['കോഴിക്കോട്','Kozhikode'],['വയനാട്','Wayanad'],['കണ്ണൂർ','Kannur'],['കാസറഗോഡ്','Kasaragod']];
+
+const EXT_PORTALS = [
+  {n:['സിവിൽ സപ്ലൈസ് / റേഷൻ കാർഡ് പോർട്ടൽ','Civil Supplies / Ration Card Portal'], u:'https://civilsupplieskerala.gov.in', ic:'🌾', k:'ration card civil supplies food റേഷൻ കാർഡ് സപ്ലൈസ് അരി പലവ്യഞ്ജനം'},
+  {n:['സേവന പെൻഷൻ പോർട്ടൽ (സാമൂഹ്യ സുരക്ഷാ പെൻഷൻ)','Sevana Pension Portal (Social Security)'], u:'https://welfarepension.lsgkerala.gov.in', ic:'👴', k:'pension sevana welfare lsgd old age widow disabled പെൻഷൻ സേവന ക്ഷേമം വാർദ്ധക്യം വിധവ വികലാംഗ'},
+  {n:['കെ-സ്മാർട്ട് (ജനന, മരണ, വിവാഹ സർട്ടിഫിക്കറ്റുകൾ)','K-SMART (Birth, Death, Marriage Certificates)'], u:'https://ksmart.lsgkerala.gov.in', ic:'🏛️', k:'ksmart k-smart certificate birth death marriage building permit പഞ്ചായത്ത് മുനിസിപ്പാലിറ്റി സർട്ടിഫിക്കറ്റ് ജനന മരണ വിവാഹ'},
+  {n:['കാരുണ്യ ആരോഗ്യ സുരക്ഷാ പദ്ധതി (KASP / SHA)','Karunya Health Scheme (KASP / SHA Kerala)'], u:'https://sha.kerala.gov.in', ic:'🏥', k:'karunya kasp sha health treatment medical card കാരുണ്യ ഇൻഷുറൻസ് ചികിത്സ കാർഡ് സൗജന്യ'},
+  {n:['ആധാർ ഓൺലൈൻ സേവനങ്ങൾ (myAadhaar)','myAadhaar Portal (UIDAI)'], u:'https://myaadhaar.uidai.gov.in', ic:'🆔', k:'aadhaar card uidai download update link ആധാർ തിരുത്തൽ കാർഡ് ഡൗൺലോഡ് ലിങ്ക്'},
+  {n:['വോട്ടേഴ്സ് സർവീസ് പോർട്ടൽ (ECI)','Voters Service Portal (Election Commission)'], u:'https://voters.eci.gov.in', ic:'🗳️', k:'voter id election card epic വോട്ടർ തിരിച്ചറിയൽ കാർഡ് തിരഞ്ഞെടുപ്പ്'},
+  {n:['കേരള പി.എസ്.സി തുളസി (Kerala PSC Thulasi)','Kerala PSC Thulasi Recruitment Portal'], u:'https://thulasi.psc.kerala.gov.in', ic:'📝', k:'psc thulasi exam job vacancy psc പരീക്ഷ ജോലി ഒഴിവ് അപേക്ഷ'},
+  {n:['എംപ്ലോയ്‌മെന്റ് എക്സ്ചേഞ്ച് / നിയുക്തി (Niyukthi)','Employment Exchange / Niyukthi Portal'], u:'https://employment.kerala.gov.in', ic:'💼', k:'employment exchange job fair niyukthi തൊഴിൽ എക്സ്ചേഞ്ച് മേള രജിസ്ട്രേഷൻ'},
+  {n:['ഡി.സി.ഇ സ്കോളർഷിപ്പ് പോർട്ടൽ (DCE)','DCE Kerala Scholarship Portal'], u:'https://dcescholarship.kerala.gov.in', ic:'🎓', k:'scholarship college study aid dce വിദ്യാഭ്യാസം ധനസഹായം കോളേജ് സ്കോളർഷിപ്പ്'},
+  {n:['കേരള പോലീസ് തുണ പോർട്ടൽ (Thuna Police)','Kerala Police Thuna Citizen Portal'], u:'https://thuna.keralapolice.gov.in', ic:'👮', k:'police thuna complaint verification fir പോലീസ് തുണ പരാതി വെരിഫിക്കേഷൻ'},
+  {n:['വനിതാ ഹെൽപ്പ്‌ലൈൻ മിത്ര 181 (Mitra 181)','Mitra 181 Women Helpline Kerala'], u:'tel:181', ic:'👩', k:'women helpline mitra 181 violence domestic safety വനിത സ്ത്രീ സുരക്ഷ മിത്ര ഹെൽപ്പ്‌ലൈൻ'},
+  {n:['ദിശ 1056 ആരോഗ്യ ഹെൽപ്പ്‌ലൈൻ','Disha 1056 Health Helpline'], u:'tel:1056', ic:'📞', k:'disha 1056 mental health counselling doctor ദിശ കൗൺസിലിംഗ് സംശയം ഡോക്ടർ'}
+];
+
 const SV=[
 {ic:'💍',c:'#C2455B',u:'matrimony.html',n:['വിവാഹ സഹായം','Matrimony Support'],d:['ഫീസില്ലാത്ത, പരിശോധിച്ച വിവാഹാലോചനാ സേവനം.','A fee-free, verified matrimony service for ordinary families.'],b:[['ഫോട്ടോയോടെ പരിശോധിച്ച പ്രൊഫൈലുകൾ','Verified profiles with photos'],['താൽപര്യം സ്വീകരിച്ചാൽ ടീം ബന്ധിപ്പിക്കും','Team connects once interest is accepted'],['ഫോൺ നമ്പറുകൾ സ്വകാര്യം','Phone numbers kept private']],k:'marriage wedding partner bride groom matrimony വിവാഹം വധു വരൻ ആലോചന'},
 {ic:'🎓',c:'#2F7D6B',u:'education.html',n:['വിദ്യാഭ്യാസം, കരിയർ','Education & Career'],d:['പണമില്ലെന്ന കാരണത്താൽ പഠനം മുടങ്ങരുത്.','No child\'s education should stop for lack of money.'],b:[['സ്കോളർഷിപ്പ് ഫൈൻഡർ','Scholarship finder'],['സൗജന്യ കരിയർ കൗൺസിലിംഗ്','Free career counselling'],['ഭിന്നശേഷി വിദ്യാർത്ഥി പദ്ധതികൾ','Schemes for students with disabilities']],k:'scholarship school college study course exam education student counselling പഠനം സ്കോളർഷിപ്പ് വിദ്യാഭ്യാസം പരീക്ഷ'},
@@ -416,7 +433,11 @@ function go(v){view=v;draw();scrollTo(0,0)}
 function jump(id){if(view!='home'){view='home';draw()}setTimeout(()=>{const e=document.getElementById(id);if(e)e.scrollIntoView({behavior:'smooth'})},30)}
 function find(q){const o=document.getElementById('sres');if(!o)return;q=q.trim().toLowerCase();if(q.length<2){o.innerHTML='';return}
  const m=SV.map((s,i)=>[s,i]).filter(([s])=>s.k.toLowerCase().split(' ').some(w=>w&&(w.includes(q)||q.includes(w))));
- o.innerHTML=m.length?m.map(([s,i])=>`<a href="${s.u}">${s.ic} ${L(s.n)}</a>`).join(''):`<span style="color:#CFE3E0">${t('srn')}</span>`}
+ const ext=EXT_PORTALS.filter(p=>p.k.toLowerCase().split(' ').some(w=>w&&(w.includes(q)||q.includes(w))));
+ let h='';
+ if(m.length)h+=m.map(([s,i])=>`<a href="${s.u}">${s.ic} ${L(s.n)}</a>`).join('');
+ if(ext.length)h+=ext.map(p=>`<a href="${p.u}" ${p.u.startsWith('http')?'target="_blank" rel="noopener"':''} style="background:rgba(255,255,255,0.2);color:#fff;border:1px solid #F2A93B">${p.ic} ${L(p.n)} ↗</a>`).join('');
+ o.innerHTML=h||(`<span style="color:#CFE3E0">${t('srn')}</span>`);}
 function orbit(){const n=SV.length;return `<div class="orbit" aria-hidden="true"><div class="core">🤝</div>${SV.map((s,i)=>{const a=i*2*Math.PI/n-Math.PI/2;return `<b style="left:${50+42*Math.cos(a)}%;top:${50+42*Math.sin(a)}%;animation-delay:-${i*.55}s">${s.ic}</b>`}).join('')}</div>`}
 const SKN=['#C68E5E','#B07A4E','#8D5524'];
 function pp(x,y,sc,c1,c2,hr,sk,o){o=o||{};let b='';
@@ -503,7 +524,16 @@ function founderSection(){
 </div>`);
 }
 function home(){return `<section class="hero"><div class="bg" aria-hidden="true"><i></i><i></i><i></i><i></i></div><div class="wrap"><div><h1>${t('tag')}</h1><p>${t('sub')}</p>
-<div class="srch"><input id="q" placeholder="${t('srp')}" oninput="find(this.value)" aria-label="${t('srp')}"><div class="sres" id="sres"></div></div>
+<div class="srch"><input id="q" placeholder="${t('srp')}" oninput="find(this.value)" aria-label="${t('srp')}"><div class="sres" id="sres"></div>
+<div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;font-size:0.84rem">
+<span style="color:#CFE3E0;align-self:center">${lang=='ml'?'ദ്രുത ലിങ്കുകൾ:':'Quick Links:'}</span>
+<a href="matrimony.html" style="color:#fff;text-decoration:none;background:rgba(255,255,255,0.12);padding:3px 10px;border-radius:12px">💍 ${lang=='ml'?'വിവാഹം':'Matrimony'}</a>
+<a href="education.html" style="color:#fff;text-decoration:none;background:rgba(255,255,255,0.12);padding:3px 10px;border-radius:12px">🎓 ${lang=='ml'?'വിദ്യാഭ്യാസം':'Education'}</a>
+<a href="jobs.html" style="color:#fff;text-decoration:none;background:rgba(255,255,255,0.12);padding:3px 10px;border-radius:12px">💼 ${lang=='ml'?'തൊഴിൽ':'Jobs'}</a>
+<a href="health.html" style="color:#fff;text-decoration:none;background:rgba(255,255,255,0.12);padding:3px 10px;border-radius:12px">🩺 ${lang=='ml'?'ആരോഗ്യം':'Health'}</a>
+<a href="legal.html" style="color:#fff;text-decoration:none;background:rgba(255,255,255,0.12);padding:3px 10px;border-radius:12px">🌾 ${lang=='ml'?'റേഷൻ / പെൻഷൻ':'Ration/Pension'}</a>
+<a href="emergency.html" style="color:#fff;text-decoration:none;background:rgba(255,255,255,0.12);padding:3px 10px;border-radius:12px">🚨 ${lang=='ml'?'അടിയന്തരം':'Emergency'}</a>
+</div></div>
 <div class="row" style="margin-top:18px"><button class="btn gold" onclick="jump('services')">${t('c1')}</button><a class="btn ghost" style="color:#fff;text-decoration:none" href="${SV[6].u}">${t('c2')}</a></div></div>${orbit()}</div>
 <svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30Q360 62 720 30T1440 30V60H0Z" fill="var(--bg)"/></svg></section>`
 +S(`<div class="prom">${[1,2,3,4].map(i=>`<div><span>${['💚','✅','🔒','🚫'][i-1]}</span><b style="display:block">${t('p'+i)}</b><span class="m" style="font-size:.9rem">${t('p'+i+'d')}</span></div>`).join('')}</div>`)
@@ -520,7 +550,7 @@ function partners(){return S(`<button class="btn ghost" style="color:var(--ink);
 <h3 style="margin-top:30px">${t('d_t')}</h3><div class="note">${t('dd1')}<br>${t('dd2')}</div>`)}
 function draw(){document.getElementById('bn').innerHTML=`<span>${L(BR)}</span>`;
  document.getElementById('em').innerHTML=`${t('em')} <a href="tel:112">112</a> · <a href="tel:108">108</a> · <a href="tel:1098">1098</a> · <a href="tel:14567">14567</a>`;
- document.getElementById('ft').innerHTML=`<div class="wrap"><b>${L(BR)}</b> · ${t('tag')}<br>${t('ft')}<br><span style="opacity:.8">${t('disc')}</span></div>`;
+ document.getElementById('ft').innerHTML = typeof getOurSupportFooter === 'function' ? getOurSupportFooter(lang) : `<div class="wrap"><b>${L(BR)}</b> · ${t('tag')}</div>`;
  document.getElementById('nav').innerHTML=`<button class="${view=='home'?'on':''}" onclick="go('home')">${t('home')}</button><button onclick="jump('services')">${t('svc')}</button><button onclick="jump('founder')">${t('fnd')}</button><button onclick="jump('how')">${t('how')}</button><button class="${view=='partners'?'on':''}" onclick="go('partners')">${t('ptn')}</button><button class="lg" onclick="setLang()">${t('lang')}</button><button class="lg" onclick="big()" title="${t('a11y')}" aria-label="${t('a11y')}">A+</button><button class="lg" onclick="hc()" title="${t('hcn')}" aria-label="${t('hcn')}">◐</button>`;
  const q=(document.getElementById('q')||{}).value||'';
  document.getElementById('app').innerHTML=({home,partners})[view]();

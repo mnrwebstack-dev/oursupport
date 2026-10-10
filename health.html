@@ -3,7 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Free Health Support Service</title>
+<title>ആരോഗ്യം (Health Support) · OruSupport.com</title>
+<!-- WhatsApp & Social Media Rich Preview Meta Tags -->
+<meta property="og:title" content="ആരോഗ്യം (Health Support) · OruSupport.com">
+<meta property="og:description" content="സാധാരണക്കാർക്ക് 7 സൗജന്യ സേവനങ്ങൾ ഒരു കുടക്കീഴിൽ — People Service Mission Kerala.">
+<meta property="og:image" content="https://www.orusupport.com/share-banner.png">
+<meta property="og:image:secure_url" content="https://www.orusupport.com/share-banner.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://www.orusupport.com/health.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ആരോഗ്യം (Health Support) · OruSupport.com">
+<meta name="twitter:description" content="സാധാരണക്കാർക്ക് 7 സൗജന്യ ജനസേവനങ്ങൾ ഒരു കുടക്കീഴിൽ — People Service Mission Kerala.">
+<meta name="twitter:image" content="https://www.orusupport.com/share-banner.png">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@400;600;800&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#F1F5F4;--card:#fff;--ink:#16232B;--mute:#5A6B72;--teal:#12504B;--tealx:#0C3A36;--gold:#F2A93B;--rose:#C2455B;--line:#D9E2E0;--on:#fff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -85,7 +99,11 @@ footer{background:var(--tealx);color:#CFE3E0;padding:24px 5vw;font-size:.88rem;m
 </header>
 <div id="app"></div>
 <footer id="ft"></footer>
-<script src="cloud_db.js"></script>
+<script src="cloud_db.js">
+window.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden'){try{localStorage.setItem('kth_draft_health',JSON.stringify(fv))}catch(e){}}});
+window.addEventListener('pagehide',()=>{try{localStorage.setItem('kth_draft_health',JSON.stringify(fv))}catch(e){}});
+
+</script>
 <script>
 const T={
 brand:['സൗജന്യ ആരോഗ്യ സഹായ സേവനം','Free Health Support Service'],
@@ -141,7 +159,7 @@ const AID=[{n:['സാമ്പിൾ ചികിത്സാ സഹായ ട�
 const PAL=[{n:['സാമ്പിൾ പാലിയേറ്റീവ് യൂണിറ്റ്','Sample Palliative Unit'],d:1,i:['ഹോം കെയർ, നഴ്സിംഗ്','Home care, nursing']},{n:['സാമ്പിൾ പാലിയേറ്റീവ് സൊസൈറ്റി','Sample Palliative Society'],d:3,i:['ഉപകരണങ്ങൾ, കൗൺസിലിംഗ്','Equipment, counselling']},{n:['സാമ്പിൾ കെയർ ക്ലിനിക്','Sample Care Clinic'],d:7,i:['ഹോം കെയർ','Home care']}];
 const CAMPS=[{n:['സാമ്പിൾ സൗജന്യ നേത്ര പരിശോധന','Sample free eye check-up'],ty:1,dt:'2026-10-14',pl:['സാമ്പിൾ വായനശാല ഹാൾ','Sample library hall'],d:1,ok:1},{n:['സാമ്പിൾ രക്തദാന ക്യാമ്പ്','Sample blood donation camp'],ty:4,dt:'2026-10-20',pl:['സാമ്പിൾ കോളേജ്','Sample college'],d:0,ok:1},{n:['സാമ്പിൾ ജനറൽ മെഡിക്കൽ ക്യാമ്പ്','Sample general medical camp'],ty:0,dt:'2026-11-03',pl:['സാമ്പിൾ കമ്മ്യൂണിറ്റി ഹാൾ','Sample community hall'],d:9,ok:1}];
 const DON0=[['O+',1],['O+',1],['A+',1],['B+',6],['O-',0],['AB+',1],['A+',1],['B-',6]].map((x,i)=>({id:i+1,g:BG.findIndex(b=>b[0]==x[0]),d:x[1],smp:1}));
-let lang='en',view='home',rtype=0,btab=0,dtab=0,atab=0,doneId=0,fres=null,fv={},isAdmin=false,db={r:[],n:1,d:[],c:[]};
+let lang='en',view='home',rtype=0,btab=0,dtab=0,atab=0,doneId=0,fres=null,fv={};try{const df=localStorage.getItem('kth_draft_health');if(df)fv=JSON.parse(df)}catch(e){}let isAdmin=false,db={r:[],n:1,d:[],c:[]};
 try{const s=localStorage.getItem('hlt1');if(s)db=JSON.parse(s);lang=localStorage.getItem('hlt1l')||'en'}catch(e){}
 const save=()=>{try{localStorage.setItem('hlt1',JSON.stringify(db))}catch(e){}};
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -224,7 +242,7 @@ function sendReq(ty){const v=i=>{const e=document.getElementById(i);return e?e.v
    details:r.note||JSON.stringify(r.x)
   });
  }
- fv={};doneId=r.id;draw()}
+ try{localStorage.removeItem('kth_draft_health')}catch(e){};fv={};doneId=r.id;draw()}
 function counts(){const d=fv.bd_;const all=DON0.concat(db.d).filter(x=>d==null||d===''||x.d==+d);return BG.map((b,i)=>[b[0],all.filter(x=>x.g==i).length])}
 function blood(){if(doneId)return doneView();
  return S(`<h2>${t('bt')}</h2><p class="m">${t('bd')}</p><div class="panel" style="margin-top:0"><label>${t('regd')}</label><select id="bd_" onchange="draw()" style="max-width:260px">${opt(DIST,1)}</select><div class="chips">${counts().map(c=>`<span class="chip">${c[0]}: <b>${c[1]}</b></span>`).join('')}</div></div><div style="margin-top:14px">${TABS([t('b0'),t('b1')],btab,'setB')}</div>`
@@ -249,7 +267,7 @@ function sendDon(){const v=i=>document.getElementById(i).value.trim(),age=+v('b_
    last_donation:donRec.last||''
   });
  }
- fv={};toast(t('dok'));draw()}
+ try{localStorage.removeItem('kth_draft_health')}catch(e){};fv={};toast(t('dok'));draw()}
 function camps(){const l=CAMPS.concat(db.c.filter(c=>c.ok));
  return S(`<h2>${t('ct')}</h2><p class="m">${t('ctd')}</p><div class="cards">${l.map(c=>`<div class="card"><h3>${typeof c.n=='string'?esc(c.n):L(c.n)}</h3><div><span class="tag">${L(CTY[c.ty])}</span><span class="tag">${L(DIST[c.d])}</span></div><p class="m" style="margin:4px 0">${c.dt}<br>${typeof c.pl=='string'?esc(c.pl):L(c.pl)}</p></div>`).join('')}</div>
 <h2 style="margin-top:34px">${t('cadd')}</h2><div class="panel" style="margin-top:0"><div class="grid"><div><label>${t('ctl')} *</label><input id="c_n"></div><div><label>${t('ctyp')}</label><select id="c_ty">${opt(CTY)}</select></div><div><label>${t('cdate')} *</label><input id="c_dt" type="date"></div><div><label>${t('cplace')} *</label><input id="c_pl"></div><div><label>${t('dd')} *</label><select id="c_d">${opt(DIST)}</select></div><div><label>${t('corg')}</label><input id="c_org"></div><div><label>${t('ph')} *</label><input id="c_ph" inputmode="numeric" maxlength="10"></div></div><p><button class="btn" onclick="sendCamp()">${t('send')}</button></p></div><div class="note">${t('demo')}</div>`)}
@@ -271,7 +289,7 @@ function sendCamp(){const v=i=>document.getElementById(i).value.trim();
    phone:campRec.ph
   });
  }
- fv={};toast(t('cok'));draw()}
+ try{localStorage.removeItem('kth_draft_health')}catch(e){};fv={};toast(t('cok'));draw()}
 function track(){const p=fv.tp;const l=p&&p.length==10?db.r.filter(r=>r.ph==p):null;
  return S(`<h2>${t('tr')}</h2><div class="panel" style="margin-top:0;max-width:460px"><p class="m">${t('trd')}</p><input id="tp" inputmode="numeric" maxlength="10"><p><button class="btn" onclick="draw()">${t('trb')}</button></p></div>`+(l?(l.length?`<div class="cards">${l.map(r=>`<div class="card"><b>${pad(r.id)}</b><span>${t('t'+r.ty)}</span><span class="m">${r.date}</span><span class="badge">${t('st'+r.s)}</span></div>`).join('')}</div>`:`<p class="m" style="margin-top:14px">${t('trn')}</p>`):''))}
 function xtext(r){return XF[r.ty].map(f=>{const q=r.x[f.k];if(q===''||q==null)return '';return `${L(f.l)}: ${f.o?L(f.o[q]):esc(q)}`}).filter(Boolean).join('<br>')}
@@ -286,10 +304,10 @@ function setA(i){atab=i;draw()}
 function setS(id,v){db.r.find(r=>r.id==id).s=+v;save();toast(t('st'+v))}
 function cOk(i,ok){if(ok)db.c[i].ok=1;else db.c.splice(i,1);save();draw()}
 function draw(){const A=document.getElementById('app');
- A.querySelectorAll('[id]').forEach(e=>{if('value'in e&&e.type!='file'&&e.type!='checkbox')fv[e.id]=e.value});
+ A.querySelectorAll('[id]').forEach(e=>{if('value'in e&&e.type!='file'&&e.type!='checkbox')fv[e.id]=e.value});try{localStorage.setItem('kth_draft_health',JSON.stringify(fv))}catch(e){}
  document.getElementById('bn').textContent=t('brand');
  document.getElementById('em').innerHTML=`${t('em1')} <a href="tel:112">112</a> / <a href="tel:108">108</a>. ${t('em2')}`;
- document.getElementById('ft').innerHTML=`<div class="wrap"><b>${t('brand')}</b><br>${t('ft')}<br>${t('disc')}</div>`;
+ document.getElementById('ft').innerHTML = typeof getOurSupportFooter === 'function' ? getOurSupportFooter(lang) : `<div class="wrap"><b>${t('brand')}</b></div>`;
  document.getElementById('nav').innerHTML=['home','schemes','dir','req','blood','camps','track','admin'].map(k=>`<button class="${view==k?'on':''}" onclick="go('${k}')">${t(k)}</button>`).join('')+`<button class="lg" onclick="setLang()">${t('lang')}</button><button class="lg" onclick="big()" title="${t('a11y')}" aria-label="${t('a11y')}">A+</button><button class="lg" onclick="hc()" title="${t('hcn')}" aria-label="${t('hcn')}">◐</button>`;
  A.innerHTML=({home,schemes,dir,req,blood,camps,track,admin})[view]();
  A.querySelectorAll('[id]').forEach(e=>{if(fv[e.id]!=null&&'value'in e&&e.type!='file'&&e.type!='checkbox')e.value=fv[e.id]})}

@@ -1,6 +1,6 @@
 /**
  * ============================================================================
- * KAITHANGU / OURSUPPORT.IN — UNIFIED CLIENT CLOUD & DISPATCH ENGINE
+ * KAITHANGU / ORUSUPPORT.COM — UNIFIED CLIENT CLOUD & DISPATCH ENGINE
  * Works across all 7 services seamlessly with zero cost & zero lag.
  * ============================================================================
  */
@@ -10,7 +10,8 @@ const OURSUPPORT_CONFIG = {
   brandName: 'OruSupport.com · കൈത്താങ്ങ്',
   // Live Google Apps Script Web App URL:
   cloudApiUrl: 'https://script.google.com/macros/s/AKfycbwecAv29v2Y7y9wSIxrYL6mcovhnf4CrpD8tU5gk3eXmdZ6zlJQBZi8upHKj7Rz980avg/exec',
-  adminPin: '974522' 
+  adminPin: '974522',
+  shareBanner: 'https://www.orusupport.com/share-banner.png'
 };
 
 /**
@@ -38,6 +39,97 @@ const OurValidator = {
 };
 
 /**
+ * Robust Client Form Draft Manager (Never lose typed data on mobile tab switches or app toggling)
+ */
+const OurDraft = {
+  save: function(key, data) {
+    try {
+      if (!key) return;
+      localStorage.setItem('kth_draft_' + key, JSON.stringify(data));
+    } catch (e) {
+      console.warn('Draft save notice:', e);
+    }
+  },
+
+  load: function(key) {
+    try {
+      if (!key) return null;
+      const val = localStorage.getItem('kth_draft_' + key);
+      return val ? JSON.parse(val) : null;
+    } catch (e) {
+      return null;
+    }
+  },
+
+  clear: function(key) {
+    try {
+      if (!key) return;
+      localStorage.removeItem('kth_draft_' + key);
+    } catch (e) {}
+  },
+
+  /**
+   * Automatically attaches input/change listeners to all fields in container
+   */
+  bindAutoSync: function(pageKey, getFv, onRestore) {
+    // Save on visibility change or page hide
+    const flush = () => {
+      try {
+        const data = typeof getFv === 'function' ? getFv() : null;
+        if (data && Object.keys(data).length > 0) {
+          OurDraft.save(pageKey, data);
+        }
+      } catch (e) {}
+    };
+
+    window.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'hidden') flush();
+    });
+    window.addEventListener('pagehide', flush);
+    window.addEventListener('beforeunload', flush);
+
+    // Initial restore if exists
+    const existing = OurDraft.load(pageKey);
+    if (existing && typeof onRestore === 'function') {
+      try {
+        onRestore(existing);
+      } catch (e) {
+        console.warn('Restore draft error:', e);
+      }
+    }
+  }
+};
+
+/**
+ * Universal Official Footer for All Pages
+ * Focuses on Organization (People Service Mission Kerala) & includes Copyright + Ana Cart Technology Solutions
+ */
+function getOurSupportFooter(lang) {
+  const isMl = (lang === 'ml');
+  return `
+  <div class="wrap" style="text-align:center;line-height:1.75;padding:8px 0">
+    <div style="font-weight:700;font-size:1.05rem;color:#fff;letter-spacing:0.5px">
+      ${isMl ? 'OruSupport.com · കൈത്താങ്ങ്' : 'OruSupport.com · Kaithangu'}
+    </div>
+    <div style="color:#CFE3E0;font-size:0.9rem;margin:5px 0">
+      ${isMl ? 'പീപ്പിൾസ് സർവീസ് മിഷൻ കേരള · ഔദ്യോഗിക ഹെൽപ്‌ലൈൻ: ' : 'People Service Mission Kerala · Official Helpline: '}
+      <a href="tel:9745226500" style="color:#25D366;font-weight:700;text-decoration:none">9745226500</a>
+    </div>
+    <div style="color:#9DB1B2;font-size:0.83rem;max-width:760px;margin:6px auto 12px;line-height:1.5">
+      ${isMl ? 'വിവാഹം, വിദ്യാഭ്യാസം, തൊഴിൽ, ആരോഗ്യം, നിയമം, കുടുംബം, അടിയന്തര സഹായം: സാധാരണക്കാർക്ക് 7 സൗജന്യ സേവനങ്ങൾ ഒരു കുടക്കീഴിൽ. നിഷ്പക്ഷവും സുരക്ഷിതവുമായ ജനസേവന സംരംഭം.' : 'Matrimony, Education, Jobs, Health, Legal, Family & Emergency: 7 free welfare services under one roof. A community-first initiative.'}
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,0.12);padding-top:14px;margin-top:12px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;font-size:0.82rem;color:#9DB1B2">
+      <div>
+        © 2026 OruSupport.com · People Service Mission Kerala. All Rights Reserved.
+      </div>
+      <div>
+        Powered by <a href="https://www.anacartsolutions.in" target="_blank" rel="noopener" style="color:var(--gold,#F2A93B);text-decoration:underline;font-weight:600">Ana Cart Technology Solutions</a> (<a href="https://www.anacartsolutions.in" target="_blank" rel="noopener" style="color:#CFE3E0;text-decoration:none">www.anacartsolutions.in</a>)
+      </div>
+    </div>
+  </div>`;
+}
+
+/**
  * Generates an instant WhatsApp message link to the Founder / District Coordinator
  */
 function createWhatsAppDispatch(serviceTitle, refId, fields) {
@@ -54,7 +146,7 @@ function createWhatsAppDispatch(serviceTitle, refId, fields) {
   
   msg += `─────────────────────────\n`;
   msg += `📅 *തീയതി:* ${new Date().toLocaleDateString('en-IN')}\n`;
-  msg += `_OurSupport.in വഴി സമർപ്പിച്ചത്_`;
+  msg += `_OruSupport.com വഴി സമർപ്പിച്ചത്_`;
   
   const encoded = encodeURIComponent(msg);
   return `https://wa.me/91${OURSUPPORT_CONFIG.founderPhone}?text=${encoded}`;

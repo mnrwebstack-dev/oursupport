@@ -3,7 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Thuna | തുണ</title>
+<title>തുണ | Thuna Matrimony · OruSupport.com</title>
+<!-- WhatsApp & Social Media Rich Preview Meta Tags -->
+<meta property="og:title" content="തുണ (Thuna) · വിവാഹ സഹായം | OruSupport.com">
+<meta property="og:description" content="ഫീസില്ലാത്ത, പരിശോധിച്ച വിവാഹാലോചനാ സേവനം. 7 സൗജന്യ സേവനങ്ങൾ ഒരു കുടക്കീഴിൽ — People Service Mission Kerala.">
+<meta property="og:image" content="https://www.orusupport.com/share-banner.png">
+<meta property="og:image:secure_url" content="https://www.orusupport.com/share-banner.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://www.orusupport.com/matrimony.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="തുണ (Thuna) · വിവാഹ സഹായം | OruSupport.com">
+<meta name="twitter:description" content="സാധാരണക്കാർക്ക് 7 സൗജന്യ ജനസേവനങ്ങൾ ഒരു കുടക്കീഴിൽ — People Service Mission Kerala.">
+<meta name="twitter:image" content="https://www.orusupport.com/share-banner.png">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@400;600;800&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#F1F5F4;--card:#fff;--ink:#16232B;--mute:#5A6B72;--teal:#12504B;--tealx:#0C3A36;--gold:#F2A93B;--rose:#C2455B;--line:#D9E2E0;--on:#fff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -171,6 +185,50 @@ const FG=[['G1',[['name','t',1],['g','g',1],['age','n',1],['ht','n'],['st','s',1
 const PRIV=['phone','gp','addr','rc','inc'],lb=k=>LB[k][lang=='ml'?0:1];
 seed.forEach(p=>Object.assign(p,{ht:(p.g=='F'?150:163)+p.id%9,hk:p.st?1:0,kids:p.st?1:0,sib:p.id%3+1,emp:p.id%3,ft:p.id%2,hs:p.id%3,diet:p.id%2,smk:0,drk:0,tongue:['മലയാളം','Malayalam']}));
 let docs={},justReg=false,otpSent=false,delAsk=false,pid=0,lang='en',db={p:seed,i:[],next:8},me=null,isAdmin=false,view='home',res=null,fv={},photo=null;
+try{
+  const dFv = localStorage.getItem('kth_draft_mat_reg');
+  if(dFv) fv = JSON.parse(dFv);
+  const dPh = localStorage.getItem('kth_draft_mat_photo');
+  if(dPh) photo = dPh;
+  const dDocs = localStorage.getItem('kth_draft_mat_docs');
+  if(dDocs) docs = JSON.parse(dDocs);
+  const dView = localStorage.getItem('kth_mat_view');
+  if(!me && (dView === 'reg' || (fv && (fv.f_name || fv.f_phone)))) {
+    view = 'reg';
+  }
+}catch(e){console.warn('Draft init notice', e)}
+function saveMatDraft(){
+  if(view==='reg' && !me){
+    const A=document.getElementById('app');
+    if(A){
+      A.querySelectorAll('[id]').forEach(e=>{
+        if('value' in e && e.type!='file') fv[e.id] = (e.type=='checkbox'? e.checked : e.value);
+      });
+      try{
+        localStorage.setItem('kth_draft_mat_reg', JSON.stringify(fv));
+        localStorage.setItem('kth_mat_view', 'reg');
+      }catch(e){}
+    }
+  }
+}
+function clearMatDraft(){
+  fv = {};
+  photo = null;
+  docs = {};
+  try{
+    localStorage.removeItem('kth_draft_mat_reg');
+    localStorage.removeItem('kth_draft_mat_photo');
+    localStorage.removeItem('kth_draft_mat_docs');
+    localStorage.removeItem('kth_mat_view');
+  }catch(e){}
+  toast(lang=='ml'?'ഡ്രാഫ്റ്റ് ഒഴിവാക്കി, പുതിയതായി തുടങ്ങാം':'Draft cleared. Ready for fresh entry.');
+  draw();
+}
+window.addEventListener('input', ()=>{ if(view==='reg') saveMatDraft(); });
+window.addEventListener('change', ()=>{ if(view==='reg') saveMatDraft(); });
+window.addEventListener('visibilitychange', ()=>{ if(document.visibilityState==='hidden') saveMatDraft(); });
+window.addEventListener('pagehide', saveMatDraft);
+window.addEventListener('beforeunload', saveMatDraft);
 try{const s=localStorage.getItem('thuna3');if(s)db=JSON.parse(s);lang=localStorage.getItem('thuna3l')||'en'}catch(e){}
 const save=()=>{try{localStorage.setItem('thuna3',JSON.stringify(db))}catch(e){toast('Storage full')}};
 try{const m=localStorage.getItem('thuna3m');if(m)me=db.p.find(x=>x.id==+m)||null}catch(e){}
@@ -235,7 +293,15 @@ function reg(){
    <button class="btn" onclick="go('mine')">${t('mine')}</button>
   </div>
   <h2 style="margin-top:28px">${t('sug')}</h2><div class="cards">${m.length?m.map(card).join(''):`<p class="m">${t('nomatch')}</p>`}</div>`)}
- return S(`<h2>${t('rt')}</h2><p class="m">${t('regd')}</p>`+panels(0)+`<p><button class="btn" onclick="submitReg()">${t('sub2')}</button></p>`)}
+ const hasDraft = !me && (Boolean(fv.f_name || fv.f_phone || photo || (docs && docs.idImg)));
+ const draftNotice = hasDraft ? `<div class="note" style="background:#E3F2EE;border-left:4px solid #12504B;color:#0C3A36;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:16px">
+  <div>
+   <b>💾 ${lang=='ml'?'ഡ്രാഫ്റ്റ് സ്വയം സേവ് ചെയ്യപ്പെടുന്നു':'Draft Auto-saved'}</b><br>
+   <span style="font-size:0.85rem;opacity:.9">${lang=='ml'?'മൊബൈലിൽ ടാബ് മാറിയാലോ ഫോട്ടോ എടുത്തു വന്നാലോ വിവരങ്ങൾ നഷ്ടപ്പെടില്ല.':'Your typed details and photos are saved automatically even if you switch tabs.'}</span>
+  </div>
+  <button class="btn ghost" type="button" style="padding:4px 10px;font-size:0.8rem;border:1px solid #12504B;color:#12504B" onclick="clearMatDraft()">${lang=='ml'?'പുതിയതായി തുടങ്ങുക':'Start Fresh'}</button>
+ </div>` : '';
+ return S(`<h2>${t('rt')}</h2><p class="m">${t('regd')}</p>`+draftNotice+panels(0)+`<p><button class="btn" onclick="submitReg()">${t('sub2')}</button></p>`)}
 function login(){if(me)return mine();
  return S(`<h2>${t('lt')}</h2><div class="panel" style="max-width:460px"><p class="m">${t('ld')}</p><label>${t('ph')}</label><input id="lph" inputmode="numeric" maxlength="10">${otpSent?`<label style="margin-top:12px">${t('otpl')}</label><input id="lotp" inputmode="numeric" maxlength="4"><div class="note">${t('otpd')}</div><p><button class="btn" onclick="verifyOtp()">${t('verify')}</button></p>`:`<p><button class="btn" onclick="sendOtp()">${t('sendotp')}</button></p>`}<p class="m">${t('noacc')} <a href="#" onclick="go('reg');return false" style="color:var(--teal)">${t('reg')}</a></p></div>`)}
 function sendOtp(){const v=document.getElementById('lph').value.trim();if(!db.p.some(x=>x.phone==v)){toast(t('nouser'));return}otpSent=true;draw()}
@@ -268,7 +334,7 @@ function qs(){const v=i=>document.getElementById(i).value;fv={fg:v('q_g'),f1:v('
 function qsBlock(){return `<div class="wrap qs"><div class="panel"><div class="grid"><div><label>${t('lk')}</label><select id="q_g"><option value="">${t('all')}</option><option value="F">${t('bride')}</option><option value="M">${t('groom')}</option></select></div><div><label>${t('from')}</label><input id="q_a1" type="number" value="18"></div><div><label>${t('to')}</label><input id="q_a2" type="number" value="60"></div><div><label>${t('d')}</label><select id="q_d">${dO(1)}</select></div></div><p style="margin:14px 0 0"><button class="btn" onclick="qs()">${t('go')}</button></p></div></div>`}
 function feat(){return S(`<h2>${t('feat')}</h2><div class="cards">${db.p.filter(p=>p.ok).slice(0,4).map(card).join('')}</div><p style="margin-top:20px"><button class="btn" onclick="go('search')">${t('all2')}</button></p>`)}
 function docBlock(){return `<div class="panel"><h3 style="margin:0 0 6px">${t('docs')}</h3><p class="m" style="margin-top:0">${t('docsd')}</p><div class="grid"><div><label>${t('idp')} *</label><select id="d_id">${IDD.map((x,i)=>`<option value="${i}">${L(x)}</option>`).join('')}</select></div><div><label>${t('upl')} * <span id="n_idImg"></span></label><input type="file" accept="image/*" onchange="pickDoc(this,'idImg')"></div></div><div id="stdoc" style="margin-top:14px"></div></div>`}
-function pickDoc(inp,key){const fl=inp.files[0];if(!fl)return;const r=new FileReader();r.onload=e=>{const im=new Image();im.onload=()=>{const c=document.createElement('canvas'),k=Math.min(1,700/Math.max(im.width,im.height));c.width=im.width*k;c.height=im.height*k;c.getContext('2d').drawImage(im,0,0,c.width,c.height);docs[key]=c.toDataURL('image/jpeg',.5);const n=document.getElementById('n_'+key);if(n)n.textContent='✓'};im.src=e.target.result};r.readAsDataURL(fl)}
+function pickDoc(inp,key){const fl=inp.files[0];if(!fl)return;const r=new FileReader();r.onload=e=>{const im=new Image();im.onload=()=>{const c=document.createElement('canvas'),k=Math.min(1,700/Math.max(im.width,im.height));c.width=im.width*k;c.height=im.height*k;c.getContext('2d').drawImage(im,0,0,c.width,c.height);docs[key]=c.toDataURL('image/jpeg',.5);try{localStorage.setItem('kth_draft_mat_docs',JSON.stringify(docs))}catch(ex){}const n=document.getElementById('n_'+key);if(n)n.textContent='✓'};im.src=e.target.result};r.readAsDataURL(fl)}
 function kidFix(o){if(o.st===0)o.hk='';if(o.st===0||o.hk!==1){o.kids='';o.kl=''}}
 function copyNo(){try{navigator.clipboard.writeText('9745226500').then(()=>toast(t('copied')),()=>toast('9745226500'))}catch(e){toast('9745226500')}}
 function supportBand(){return `<section class="sup"><div class="wrap"><div><h2>${t('supt')}</h2><p>${t('supd')}</p></div><button class="btn gold" onclick="go('support')">${t('supb')}</button></div></section>`}
@@ -279,12 +345,20 @@ function support(){const Q=(a,b)=>L([a,b]);return S(`<h2>${t('supt')}</h2>
 <blockquote class="qt">${Q('“നിങ്ങൾ പങ്കാളിയെ കണ്ടെത്തിയത് സൗജന്യമായി. നിങ്ങളുടെ സ്വമേധയാ ഉള്ള പിന്തുണ മറ്റൊരാൾക്കും സൗജന്യമായി പങ്കാളിയെ കണ്ടെത്താൻ സഹായിക്കട്ടെ.”','“You found your match for free. Your voluntary support can help someone else find theirs, also for free.”')}</blockquote>
 <div class="panel"><p style="margin:0">${Q('സംഭാവനകൾ വലിയ തുകയായി വളർന്നാൽ സമൂഹവിവാഹം പോലുള്ള പരിപാടികൾ സംഘടിപ്പിച്ച് ഇതിനെ വലിയൊരു സാമൂഹിക പ്രവർത്തനമാക്കി മാറ്റാൻ ഞങ്ങൾ ആഗ്രഹിക്കുന്നു.','If contributions grow, we hope to organise community weddings and turn this into a larger social initiative.')}</p></div>
 <div class="note">${t('legal')}</div><p class="m">${Q('സ്നേഹത്തോടെയും വിശ്വാസത്തോടെയും ഈ സേവനത്തെ പിന്തുണയ്ക്കുന്ന എല്ലാവർക്കും നന്ദി.','Thank you to everyone who supports this service with love and trust.')}</p>`)}
-function pick(inp){const fl=inp.files[0];if(!fl)return;const r=new FileReader();r.onload=e=>{const im=new Image();im.onload=()=>{const c=document.createElement('canvas'),k=Math.min(1,360/Math.max(im.width,im.height));c.width=im.width*k;c.height=im.height*k;c.getContext('2d').drawImage(im,0,0,c.width,c.height);photo=c.toDataURL('image/jpeg',.7);const v=document.getElementById('pv');v.src=photo;v.style.display='block'};im.src=e.target.result};r.readAsDataURL(fl)}
+function pick(inp){const fl=inp.files[0];if(!fl)return;const r=new FileReader();r.onload=e=>{const im=new Image();im.onload=()=>{const c=document.createElement('canvas'),k=Math.min(1,360/Math.max(im.width,im.height));c.width=im.width*k;c.height=im.height*k;c.getContext('2d').drawImage(im,0,0,c.width,c.height);photo=c.toDataURL('image/jpeg',.7);try{localStorage.setItem('kth_draft_mat_photo',photo)}catch(ex){}const v=document.getElementById('pv');if(v){v.src=photo;v.style.display='block'}};im.src=e.target.result};r.readAsDataURL(fl)}
 function submitReg(){const o={};FG.forEach(g=>g[1].forEach(([k,ty])=>{const v=document.getElementById('f_'+k).value.trim();o[k]=v===''?'':(ty=='n'||ty=='s')?+v:v}));
  kidFix(o);
- if(!o.name||!(o.age>=18)||o.phone.length!=10||!photo||!docs.idImg||!document.getElementById('cs').checked||o.st!==0&&!docs.stImg){toast(t('errd'));return}
+ if(!o.name){toast(lang=='ml'?'ദയവായി പേര് നൽകുക':'Please enter full name');const el=document.getElementById('f_name');if(el)el.focus();return}
+ if(!(o.age>=18)){toast(lang=='ml'?'പ്രായം 18 അല്ലെങ്കിൽ അതിൽ കൂടുതലായിരിക്കണം':'Age must be 18 or above');const el=document.getElementById('f_age');if(el)el.focus();return}
+ if(!o.phone||o.phone.length!=10){toast(lang=='ml'?'ശരിയായ 10 അക്ക മൊബൈൽ നമ്പർ നൽകുക':'Please enter valid 10-digit mobile number');const el=document.getElementById('f_phone');if(el)el.focus();return}
+ if(!photo){toast(lang=='ml'?'ദയവായി പ്രൊഫൈൽ ഫോട്ടോ അപ്‌ലോഡ് ചെയ്യുക':'Please upload clear profile photo');return}
+ if(!docs.idImg){toast(lang=='ml'?'തിരിച്ചറിയൽ രേഖ (ID Proof) അപ്‌ലോഡ് ചെയ്യുക':'Please upload ID Proof');return}
+ if(o.st!==0&&!docs.stImg){toast(lang=='ml'?'വിവാഹ നില തെളിയിക്കുന്ന രേഖ അപ്‌ലോഡ് ചെയ്യുക':'Please upload marital status proof');return}
+ const csEl=document.getElementById('cs');
+ if(!csEl||!csEl.checked){toast(lang=='ml'?'സമ്മതപത്രം അംഗീകരിക്കാൻ ടിക്ക് ചെയ്യുക':'Please accept the consent checkbox');if(csEl)csEl.focus();return}
  if(db.p.some(x=>x.phone==o.phone)){toast(t('dup'));return}
  const np=Object.assign({id:db.next++,ph:photo,ok:0,dId:+document.getElementById('d_id').value,dSt:o.st?+document.getElementById('d_st').value:'',docs:Object.assign({},docs)},o);db.p.push(np);setMe(np);justReg=true;save();
+ try{localStorage.removeItem('kth_draft_mat_reg');localStorage.removeItem('kth_draft_mat_photo');localStorage.removeItem('kth_draft_mat_docs');localStorage.removeItem('kth_mat_view')}catch(e){}
  if(typeof syncRecordToCloud==='function'){
   syncRecordToCloud('matrimony','profile',{
    ref:'MAT-'+String(np.id).padStart(4,'0'),
@@ -325,7 +399,7 @@ function admin(){
 function dec(id,ok){if(ok)db.p.find(p=>p.id==id).ok=1;else db.p=db.p.filter(p=>p.id!=id);save();draw();toast(t(ok?'okd':'nod'))}
 function draw(){const A=document.getElementById('app');
  A.querySelectorAll('[id]').forEach(e=>{if('value'in e&&e.type!='file')fv[e.id]=e.value});
- document.getElementById('bn').textContent=t('brand');document.getElementById('ft').innerHTML=`<div class="wrap"><b>${t('brand')}</b> · ${t('tag')}<br><span style="opacity:.8">${t('foot')} · <a href="#" onclick="go('support');return false" style="color:#fff">${t('support')}</a></span><br><span style="opacity:.7;font-size:.82rem">${t('legal')}</span></div>`;
+ document.getElementById('bn').textContent=t('brand');document.getElementById('ft').innerHTML = typeof getOurSupportFooter==='function' ? getOurSupportFooter(lang) : `<div class="wrap"><b>${t('brand')}</b> · ${t('tag')}</div>`;
  document.getElementById('nav').innerHTML=(me?['home','mine','search','support','admin']:['home','reg','login','search','support','admin']).map(k=>`<button class="${view==k?'on':''}" onclick="go('${k}')">${t(k)}</button>`).join('')+`<button class="lg" onclick="setLang()">${t('lang')}</button>`+(me?`<button class="lg" onclick="logout()">${t('logout')}</button>`:'');
  A.innerHTML=({home,reg,login,mine,edit,search,support,admin,prof})[view]();
  A.querySelectorAll('[id]').forEach(e=>{if(fv[e.id]!=null&&'value'in e&&e.type!='file'&&e.type!='checkbox')e.value=fv[e.id]});

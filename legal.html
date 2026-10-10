@@ -3,7 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Free Legal &amp; Government Help Desk</title>
+<title>നിയമ സഹായം (Legal & Govt Help) · OruSupport.com</title>
+<!-- WhatsApp & Social Media Rich Preview Meta Tags -->
+<meta property="og:title" content="നിയമ സഹായം (Legal & Govt Help) · OruSupport.com">
+<meta property="og:description" content="സാധാരണക്കാർക്ക് 7 സൗജന്യ സേവനങ്ങൾ ഒരു കുടക്കീഴിൽ — People Service Mission Kerala.">
+<meta property="og:image" content="https://www.orusupport.com/share-banner.png">
+<meta property="og:image:secure_url" content="https://www.orusupport.com/share-banner.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://www.orusupport.com/legal.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="നിയമ സഹായം (Legal & Govt Help) · OruSupport.com">
+<meta name="twitter:description" content="സാധാരണക്കാർക്ക് 7 സൗജന്യ ജനസേവനങ്ങൾ ഒരു കുടക്കീഴിൽ — People Service Mission Kerala.">
+<meta name="twitter:image" content="https://www.orusupport.com/share-banner.png">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@400;600;800&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#F1F5F4;--card:#fff;--ink:#16232B;--mute:#5A6B72;--teal:#12504B;--tealx:#0C3A36;--gold:#F2A93B;--rose:#C2455B;--line:#D9E2E0;--on:#fff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -87,7 +101,11 @@ footer{background:var(--tealx);color:#CFE3E0;padding:24px 5vw;font-size:.88rem;m
 </header>
 <div id="app"></div>
 <footer id="ft"></footer>
-<script src="cloud_db.js"></script>
+<script src="cloud_db.js">
+window.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden'){try{localStorage.setItem('kth_draft_legal',JSON.stringify(fv))}catch(e){}}});
+window.addEventListener('pagehide',()=>{try{localStorage.setItem('kth_draft_legal',JSON.stringify(fv))}catch(e){}});
+
+</script>
 <script>
 const T={
 brand:['സൗജന്യ നിയമ-സർക്കാർ സേവന സഹായകേന്ദ്രം','Free Legal & Government Help Desk'],
@@ -148,7 +166,7 @@ const LEG=[{n:['സാമ്പിൾ ജില്ലാ നിയമ സേവ�
 const CEN=[{n:['സാമ്പിൾ അക്ഷയ കേന്ദ്രം','Sample Akshaya centre'],d:1,i:['ഓൺലൈൻ അപേക്ഷ, സർട്ടിഫിക്കറ്റ് സഹായം','Online applications, certificate help']},{n:['സാമ്പിൾ സേവന കേന്ദ്രം','Sample service centre'],d:9,i:['അപേക്ഷകൾക്കുള്ള സഹായം','Help with applications']},{n:['സാമ്പിൾ അക്ഷയ കേന്ദ്രം','Sample Akshaya centre'],d:0,i:['ഓൺലൈൻ അപേക്ഷ സഹായം','Online application help']}];
 const CNS=[{n:['സാമ്പിൾ കുടുംബ കൗൺസിലിംഗ് കേന്ദ്രം','Sample Family Counselling Centre'],d:1,i:['കുടുംബ കൗൺസിലിംഗ്','Family counselling']},{n:['സാമ്പിൾ വനിതാ സഹായ കേന്ദ്രം','Sample Women\'s Support Centre'],d:6,i:['സ്ത്രീകൾക്കുള്ള പിന്തുണ','Support for women']}];
 const HL=[['112',['അടിയന്തര സഹായം','Emergency']],['181',['വനിതാ ഹെൽപ്‌ലൈൻ','Women helpline']],['1098',['കുട്ടികളുടെ ഹെൽപ്‌ലൈൻ','Child helpline']],['14567',['മുതിർന്നവരുടെ ഹെൽപ്‌ലൈൻ','Senior citizens helpline']],['15100',['സൗജന്യ നിയമ സഹായ ഹെൽപ്‌ലൈൻ','Free legal aid helpline']]];
-let lang='en',view='home',dtab=0,rcat=0,doneId=0,fres=null,rout='',fv={},isAdmin=false,db={r:[],n:1};
+let lang='en',view='home',dtab=0,rcat=0,doneId=0,fres=null,rout='',fv={};try{const df=localStorage.getItem('kth_draft_legal');if(df)fv=JSON.parse(df)}catch(e){}let isAdmin=false,db={r:[],n:1};
 try{const s=localStorage.getItem('lgl1');if(s)db=JSON.parse(s);lang=localStorage.getItem('lgl1l')||'en'}catch(e){}
 const save=()=>{try{localStorage.setItem('lgl1',JSON.stringify(db))}catch(e){}};
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -233,7 +251,7 @@ function sendReq(){const v=i=>{const e=document.getElementById(i);return e?e.val
    details:r.note||''
   });
  }
- fv={};doneId=r.id;draw()}
+ try{localStorage.removeItem('kth_draft_legal')}catch(e){};fv={};doneId=r.id;draw()}
 function dir(){const d=fv.dd2,dok=x=>d==null||d===''||x.d==+d;let l;
  if(dtab==1)l=HL.map(x=>`<div class="card"><h3><a href="tel:${x[0]}" style="color:var(--rose)">${x[0]}</a></h3><span>${L(x[1])}</span></div>`).concat([`<div class="note">${t('dvn')}</div>`]);
  else l=(dtab==0?LEG:dtab==2?CEN:CNS).filter(dok).map(x=>`<div class="card"><h3>${L(x.n)}</h3><div><span class="tag">${L(DIST[x.d])}</span></div>${x.i?`<p class="m" style="margin:4px 0">${L(x.i)}</p>`:''}</div>`);
@@ -247,10 +265,10 @@ function admin(){
  return S(`<h2>${t('rq')} (${l.length})</h2><div class="panel" style="margin-top:0;max-width:380px"><label>${t('coord')}</label><select id="ad_" onchange="draw()">${opt(DIST,1)}</select></div><div class="panel tbl">${l.length?`<table>${l.map(r=>`<tr><td>${pad(r.id)}<br><span class="m">${r.date}</span></td><td><b>${esc(r.name)}</b><br>${esc(r.ph)} · ${L(DIST[r.d])}<br><span class="m">${t('safe')}: ${L(SAFE[r.safe])} · ${L(MODE[r.mode])}</span></td><td>${L(RC[r.cat])}<br><span class="m">${esc(r.note)}</span></td><td><select onchange="setS(${r.id},this.value)">${[0,1,2,3].map(i=>`<option value="${i}"${r.s==i?' selected':''}>${t('st'+i)}</option>`).join('')}</select></td></tr>`).join('')}</table>`:`<span class="m">${t('none')}</span>`}</div><p><button class="btn ghost" style="color:var(--ink)" onclick="isAdmin=false;draw()">${t('out')}</button></p>`)}
 function setS(id,v){db.r.find(r=>r.id==id).s=+v;save();toast(t('st'+v))}
 function draw(){const A=document.getElementById('app');
- A.querySelectorAll('[id]').forEach(e=>{if('value'in e&&e.type!='file'&&e.type!='checkbox')fv[e.id]=e.value});
+ A.querySelectorAll('[id]').forEach(e=>{if('value'in e&&e.type!='file'&&e.type!='checkbox')fv[e.id]=e.value});try{localStorage.setItem('kth_draft_legal',JSON.stringify(fv))}catch(e){}
  document.getElementById('bn').textContent=t('brand');
  document.getElementById('em').innerHTML=`${t('em1')} <a href="tel:112">112</a>. ${t('em2')}`;
- document.getElementById('ft').innerHTML=`<div class="wrap"><b>${t('brand')}</b><br>${t('ft')}<br>${t('disc')}</div>`;
+ document.getElementById('ft').innerHTML = typeof getOurSupportFooter === 'function' ? getOurSupportFooter(lang) : `<div class="wrap"><b>${t('brand')}</b></div>`;
  document.getElementById('nav').innerHTML=['home','schemes','docs','rights','rti','req','dir','track','admin'].map(k=>`<button class="${view==k?'on':''}" onclick="go('${k}')">${t(k)}</button>`).join('')+`<button class="lg" onclick="setLang()">${t('lang')}</button><button class="lg" onclick="big()" title="${t('a11y')}" aria-label="${t('a11y')}">A+</button><button class="lg" onclick="hc()" title="${t('hcn')}" aria-label="${t('hcn')}">◐</button><button class="lg qx" onclick="qx()">${t('quick')}</button>`;
  A.innerHTML=({home,schemes,docs,rights,rti,req,dir,track,admin})[view]();
  A.querySelectorAll('[id]').forEach(e=>{if(fv[e.id]!=null&&'value'in e&&e.type!='file'&&e.type!='checkbox'&&e.id!='rt_out')e.value=fv[e.id]});

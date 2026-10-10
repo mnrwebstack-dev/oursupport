@@ -3,7 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Free Emergency &amp; Community Support</title>
+<title>അടിയന്തര സഹായം (Emergency Support) · OruSupport.com</title>
+<!-- WhatsApp & Social Media Rich Preview Meta Tags -->
+<meta property="og:title" content="അടിയന്തര സഹായം (Emergency Support) · OruSupport.com">
+<meta property="og:description" content="സാധാരണക്കാർക്ക് 7 സൗജന്യ സേവനങ്ങൾ ഒരു കുടക്കീഴിൽ — People Service Mission Kerala.">
+<meta property="og:image" content="https://www.orusupport.com/share-banner.png">
+<meta property="og:image:secure_url" content="https://www.orusupport.com/share-banner.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://www.orusupport.com/emergency.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="അടിയന്തര സഹായം (Emergency Support) · OruSupport.com">
+<meta name="twitter:description" content="സാധാരണക്കാർക്ക് 7 സൗജന്യ ജനസേവനങ്ങൾ ഒരു കുടക്കീഴിൽ — People Service Mission Kerala.">
+<meta name="twitter:image" content="https://www.orusupport.com/share-banner.png">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@400;600;800&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#F1F5F4;--card:#fff;--ink:#16232B;--mute:#5A6B72;--teal:#12504B;--tealx:#0C3A36;--gold:#F2A93B;--rose:#C2455B;--line:#D9E2E0;--on:#fff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -92,7 +106,11 @@ footer{background:var(--tealx);color:#CFE3E0;padding:24px 5vw;font-size:.88rem;m
 </header>
 <div id="app"></div>
 <footer id="ft"></footer>
-<script src="cloud_db.js"></script>
+<script src="cloud_db.js">
+window.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden'){try{localStorage.setItem('kth_draft_emergency',JSON.stringify(fv))}catch(e){}}});
+window.addEventListener('pagehide',()=>{try{localStorage.setItem('kth_draft_emergency',JSON.stringify(fv))}catch(e){}});
+
+</script>
 <script>
 const T={
 brand:['സൗജന്യ അടിയന്തര-സാമൂഹിക പിന്തുണ','Free Emergency & Community Support'],
@@ -129,7 +147,7 @@ const AV=[['ഇപ്പോൾ ലഭ്യം','Available now'],['ആവശ്�
 const RM={3:0,4:1,5:3,6:2};
 const HL=[['112',['അടിയന്തര സഹായം','Emergency']],['108',['ആംബുലൻസ്','Ambulance']],['1077',['ജില്ലാ ദുരന്ത നിയന്ത്രണ മുറി','District disaster control room']],['1098',['കുട്ടികളുടെ ഹെൽപ്‌ലൈൻ','Child helpline']],['14567',['മുതിർന്നവരുടെ ഹെൽപ്‌ലൈൻ','Senior citizens helpline']],['181',['വനിതാ ഹെൽപ്‌ലൈൻ','Women helpline']],['15100',['സൗജന്യ നിയമ സഹായം','Free legal aid']]];
 const DIR=[[['സാമ്പിൾ ജില്ലാ ആശുപത്രി','Sample District Hospital',1,['ആശുപത്രി','Hospital']],['സാമ്പിൾ പൊലീസ് സ്റ്റേഷൻ','Sample Police Station',1,['പൊലീസ്','Police']],['സാമ്പിൾ പഞ്ചായത്ത് ഓഫീസ്','Sample Panchayat Office',9,['തദ്ദേശ സ്ഥാപനം','Local body']]],[['സാമ്പിൾ ജീവകാരുണ്യ സംഘടന','Sample Charity Organisation',1,['ഭക്ഷണം, വസ്ത്രം','Food, clothing']],['സാമ്പിൾ റിലീഫ് ഫോറം','Sample Relief Forum',3,['ദുരന്ത സഹായം','Disaster relief']]],[['സാമ്പിൾ റിലീഫ് ക്യാമ്പ് (ദുരന്ത സമയത്ത് മാത്രം)','Sample relief camp (during disasters only)',3,['താൽക്കാലിക അഭയം','Temporary shelter']]]];
-let lang='en',view='home',dtab=0,atab=0,doneId=0,odone=0,fv={},isAdmin=false,db={r:[],o:[],n:1,on:1,dm:{on:0,msg:''}};
+let lang='en',view='home',dtab=0,atab=0,doneId=0,odone=0,fv={};try{const df=localStorage.getItem('kth_draft_emergency');if(df)fv=JSON.parse(df)}catch(e){}let isAdmin=false,db={r:[],o:[],n:1,on:1,dm:{on:0,msg:''}};
 try{const s=localStorage.getItem('emg1');if(s)db=JSON.parse(s);lang=localStorage.getItem('emg1l')||'en'}catch(e){}
 const save=()=>{try{localStorage.setItem('emg1',JSON.stringify(db))}catch(e){}};
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -202,7 +220,7 @@ function sendReq(){const v=i=>{const e=document.getElementById(i);return e?e.val
    details:newRec.note||''
   });
  }
- fv={};doneId=recId;draw()}
+ try{localStorage.removeItem('kth_draft_emergency')}catch(e){};fv={};doneId=recId;draw()}
 function give(){if(odone)return S(`<h2>${t('gt')}</h2><div class="note">${t('ook')}</div><p><button class="btn" onclick="go('home')">${t('home')}</button></p>`);
  return S(`<h2>${t('gt')}</h2><p class="m">${t('gd')}</p><div class="panel" style="margin-top:0"><div class="grid"><div><label>${t('n')} *</label><input id="o_name"></div><div><label>${t('et')}</label><select id="o_et">${opt(ET)}</select></div><div><label>${t('ph')} *</label><input id="o_ph" inputmode="numeric" maxlength="10"></div><div><label>${t('dd')} *</label><select id="o_d">${opt(DIST)}</select></div><div><label>${t('otp')}</label><select id="o_t">${opt(OT)}</select></div><div><label>${t('oa')}</label><select id="o_av">${opt(AV)}</select></div></div>
 <div style="margin-top:14px"><label>${t('oq')} *</label><textarea id="o_q" rows="2"></textarea></div><p><label style="color:var(--ink)"><input type="checkbox" id="o_c"> ${t('oc')}</label></p><p><button class="btn" onclick="sendO()">${t('send')}</button></p></div>`)}
@@ -226,7 +244,7 @@ function sendO(){const v=i=>document.getElementById(i).value.trim();
    quantity_details:offRec.q
   });
  }
- fv={};odone=1;draw()}
+ try{localStorage.removeItem('kth_draft_emergency')}catch(e){};fv={};odone=1;draw()}
 function volk(){return S(`<h2>${t('vk')}</h2><p class="m">${t('vkd')}</p><div class="cards">${lcard('vol')}</div>`)}
 function dir(){const d=fv.dd2,dok=x=>d==null||d===''||x[2]==+d;let l;
  if(dtab==0)l=HL.map(x=>`<div class="card"><h3><a href="tel:${x[0]}" style="color:var(--rose)">${x[0]}</a></h3><span>${L(x[1])}</span></div>`).concat([`<div class="note">${t('cvn')}</div>`]);
@@ -247,10 +265,10 @@ function saveDm(){db.dm={on:document.getElementById('dm_on').checked?1:0,msg:doc
 function setS(id,v){db.r.find(r=>r.id==id).s=+v;save();toast(t('st'+v))}
 function setO(id,v){db.o.find(x=>x.id==id).st=+v;save();toast(t('os'+v))}
 function draw(){const A=document.getElementById('app');
- A.querySelectorAll('[id]').forEach(e=>{if('value'in e&&e.type!='file'&&e.type!='checkbox'&&!e.id.startsWith('dm_'))fv[e.id]=e.value});
+ A.querySelectorAll('[id]').forEach(e=>{if('value'in e&&e.type!='file'&&e.type!='checkbox'&&!e.id.startsWith('dm_'))fv[e.id]=e.value});try{localStorage.setItem('kth_draft_emergency',JSON.stringify(fv))}catch(e){}
  document.getElementById('bn').textContent=t('brand');
  document.getElementById('em').innerHTML=`${t('em1')} <a href="tel:112">112</a> · <a href="tel:108">108</a>. ${t('em2')}`;
- document.getElementById('ft').innerHTML=`<div class="wrap"><b>${t('brand')}</b><br>${t('ft')}<br>${t('disc')}</div>`;
+ document.getElementById('ft').innerHTML = typeof getOurSupportFooter === 'function' ? getOurSupportFooter(lang) : `<div class="wrap"><b>${t('brand')}</b></div>`;
  document.getElementById('nav').innerHTML=['home','need','give','volk','dir','track','admin'].map(k=>`<button class="${view==k?'on':''}" onclick="go('${k}')">${t(k)}</button>`).join('')+`<button class="lg" onclick="setLang()">${t('lang')}</button><button class="lg" onclick="big()" title="${t('a11y')}" aria-label="${t('a11y')}">A+</button><button class="lg" onclick="hc()" title="${t('hcn')}" aria-label="${t('hcn')}">◐</button>`;
  A.innerHTML=dBanner()+({home,need,give,volk,dir,track,admin})[view]();
  A.querySelectorAll('[id]').forEach(e=>{if(fv[e.id]!=null&&'value'in e&&e.type!='file'&&e.type!='checkbox'&&!e.id.startsWith('dm_'))e.value=fv[e.id]})}
