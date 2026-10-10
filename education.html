@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ml">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -161,8 +161,8 @@ x20:[['ഫോൺ വഴി','By phone'],['നേരിട്ട്','In person']
 x11:[['സ്കോളർഷിപ്പ് അപേക്ഷയ്ക്ക് സഹായം','Help applying for a scholarship'],['ഫീസ് സഹായം','Fee support'],['സ്ഥാപനത്തിൽ പ്രവേശനം','Admission to an institution'],['ഭിന്നശേഷി പദ്ധതികൾ','Disability schemes']],
 x12:[['പുസ്തകങ്ങൾ','Books'],['യൂണിഫോം','Uniform'],['ലാപ്ടോപ്പ് / ടാബ്‌ലെറ്റ്','Laptop / tablet'],['യാത്രാച്ചെലവ്','Transport'],['പരീക്ഷാ ഫീസ്','Exam fee'],['മറ്റുള്ളവ','Other']]};
 const XM=[['x10','x20'],['x11','x21'],['x12']];
-let lang='en',view='home',rtype=0,doneId=0,fres=null,fv={};try{const df=localStorage.getItem('kth_draft_education');if(df)fv=JSON.parse(df)}catch(e){}let isAdmin=false,db={r:[],n:1};
-try{const s=localStorage.getItem('edu1');if(s)db=JSON.parse(s);lang=localStorage.getItem('edu1l')||'en'}catch(e){}
+let lang='ml',view='home',rtype=0,doneId=0,fres=null,fv={};try{const df=localStorage.getItem('kth_draft_education');if(df)fv=JSON.parse(df)}catch(e){}let isAdmin=false,db={r:[],n:1};
+try{const s=localStorage.getItem('edu1');if(s)db=JSON.parse(s);lang=localStorage.getItem('edu1l')||'ml'}catch(e){}
 const save=()=>{try{localStorage.setItem('edu1',JSON.stringify(db))}catch(e){}};
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const opt=(a,all)=>(all?`<option value="">${t('f_all')}</option>`:'')+a.map((x,i)=>`<option value="${i}">${L(x)}</option>`).join('');

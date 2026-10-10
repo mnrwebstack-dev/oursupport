@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ml">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -159,8 +159,8 @@ const AID=[{n:['സാമ്പിൾ ചികിത്സാ സഹായ ട�
 const PAL=[{n:['സാമ്പിൾ പാലിയേറ്റീവ് യൂണിറ്റ്','Sample Palliative Unit'],d:1,i:['ഹോം കെയർ, നഴ്സിംഗ്','Home care, nursing']},{n:['സാമ്പിൾ പാലിയേറ്റീവ് സൊസൈറ്റി','Sample Palliative Society'],d:3,i:['ഉപകരണങ്ങൾ, കൗൺസിലിംഗ്','Equipment, counselling']},{n:['സാമ്പിൾ കെയർ ക്ലിനിക്','Sample Care Clinic'],d:7,i:['ഹോം കെയർ','Home care']}];
 const CAMPS=[{n:['സാമ്പിൾ സൗജന്യ നേത്ര പരിശോധന','Sample free eye check-up'],ty:1,dt:'2026-10-14',pl:['സാമ്പിൾ വായനശാല ഹാൾ','Sample library hall'],d:1,ok:1},{n:['സാമ്പിൾ രക്തദാന ക്യാമ്പ്','Sample blood donation camp'],ty:4,dt:'2026-10-20',pl:['സാമ്പിൾ കോളേജ്','Sample college'],d:0,ok:1},{n:['സാമ്പിൾ ജനറൽ മെഡിക്കൽ ക്യാമ്പ്','Sample general medical camp'],ty:0,dt:'2026-11-03',pl:['സാമ്പിൾ കമ്മ്യൂണിറ്റി ഹാൾ','Sample community hall'],d:9,ok:1}];
 const DON0=[['O+',1],['O+',1],['A+',1],['B+',6],['O-',0],['AB+',1],['A+',1],['B-',6]].map((x,i)=>({id:i+1,g:BG.findIndex(b=>b[0]==x[0]),d:x[1],smp:1}));
-let lang='en',view='home',rtype=0,btab=0,dtab=0,atab=0,doneId=0,fres=null,fv={};try{const df=localStorage.getItem('kth_draft_health');if(df)fv=JSON.parse(df)}catch(e){}let isAdmin=false,db={r:[],n:1,d:[],c:[]};
-try{const s=localStorage.getItem('hlt1');if(s)db=JSON.parse(s);lang=localStorage.getItem('hlt1l')||'en'}catch(e){}
+let lang='ml',view='home',rtype=0,btab=0,dtab=0,atab=0,doneId=0,fres=null,fv={};try{const df=localStorage.getItem('kth_draft_health');if(df)fv=JSON.parse(df)}catch(e){}let isAdmin=false,db={r:[],n:1,d:[],c:[]};
+try{const s=localStorage.getItem('hlt1');if(s)db=JSON.parse(s);lang=localStorage.getItem('hlt1l')||'ml'}catch(e){}
 const save=()=>{try{localStorage.setItem('hlt1',JSON.stringify(db))}catch(e){}};
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const opt=(a,all,blank)=>(all?`<option value="">${t('f_all')}</option>`:blank?'<option value="">—</option>':'')+a.map((x,i)=>`<option value="${i}">${L(x)}</option>`).join('');

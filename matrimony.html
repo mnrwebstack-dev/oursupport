@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ml">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -184,7 +184,7 @@ needreg:['ആദ്യം ലോഗിൻ ചെയ്യുകയോ രജി�
 const FG=[['G1',[['name','t',1],['g','g',1],['age','n',1],['ht','n'],['st','s',1,ST],['hk','s',0,YN],['kids','n'],['kl','s',0,KL],['tongue','t'],['health','t']]],['G2',[['d','s',1,DIST],['place','t']]],['G3',[['edu','t'],['job','t'],['emp','s',0,EMP],['inc','s',0,INC]]],['G4',[['fj','t'],['mj','t'],['sib','n'],['ft','s',0,FT],['gn','t'],['gp','t']]],['G8',[['hs','s',0,HS],['hm','n'],['rc','s',0,RC],['addr','a']]],['G5',[['diet','s',0,DT],['smk','s',0,HB],['drk','s',0,HB]]],['G6',[['pa1','n'],['pa2','n'],['pd','s',0,DIST,1],['pst','s',0,ST,1],['pe','t'],['ab','a']]],['G7',[['phone','t',1]]]];
 const PRIV=['phone','gp','addr','rc','inc'],lb=k=>LB[k][lang=='ml'?0:1];
 seed.forEach(p=>Object.assign(p,{ht:(p.g=='F'?150:163)+p.id%9,hk:p.st?1:0,kids:p.st?1:0,sib:p.id%3+1,emp:p.id%3,ft:p.id%2,hs:p.id%3,diet:p.id%2,smk:0,drk:0,tongue:['മലയാളം','Malayalam']}));
-let docs={},justReg=false,otpSent=false,delAsk=false,pid=0,lang='en',db={p:seed,i:[],next:8},me=null,isAdmin=false,view='home',res=null,fv={},photo=null;
+let docs={},justReg=false,otpSent=false,delAsk=false,pid=0,lang='ml',db={p:seed,i:[],next:8},me=null,isAdmin=false,view='home',res=null,fv={},photo=null;
 try{
   const dFv = localStorage.getItem('kth_draft_mat_reg');
   if(dFv) fv = JSON.parse(dFv);
@@ -229,7 +229,7 @@ window.addEventListener('change', ()=>{ if(view==='reg') saveMatDraft(); });
 window.addEventListener('visibilitychange', ()=>{ if(document.visibilityState==='hidden') saveMatDraft(); });
 window.addEventListener('pagehide', saveMatDraft);
 window.addEventListener('beforeunload', saveMatDraft);
-try{const s=localStorage.getItem('thuna3');if(s)db=JSON.parse(s);lang=localStorage.getItem('thuna3l')||'en'}catch(e){}
+try{const s=localStorage.getItem('thuna3');if(s)db=JSON.parse(s);lang=localStorage.getItem('thuna3l')||'ml'}catch(e){}
 const save=()=>{try{localStorage.setItem('thuna3',JSON.stringify(db))}catch(e){toast('Storage full')}};
 try{const m=localStorage.getItem('thuna3m');if(m)me=db.p.find(x=>x.id==+m)||null}catch(e){}
 function setMe(u){me=u;try{u?localStorage.setItem('thuna3m',u.id):localStorage.removeItem('thuna3m')}catch(e){}}

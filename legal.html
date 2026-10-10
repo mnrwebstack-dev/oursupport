@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ml">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -166,8 +166,8 @@ const LEG=[{n:['സാമ്പിൾ ജില്ലാ നിയമ സേവ�
 const CEN=[{n:['സാമ്പിൾ അക്ഷയ കേന്ദ്രം','Sample Akshaya centre'],d:1,i:['ഓൺലൈൻ അപേക്ഷ, സർട്ടിഫിക്കറ്റ് സഹായം','Online applications, certificate help']},{n:['സാമ്പിൾ സേവന കേന്ദ്രം','Sample service centre'],d:9,i:['അപേക്ഷകൾക്കുള്ള സഹായം','Help with applications']},{n:['സാമ്പിൾ അക്ഷയ കേന്ദ്രം','Sample Akshaya centre'],d:0,i:['ഓൺലൈൻ അപേക്ഷ സഹായം','Online application help']}];
 const CNS=[{n:['സാമ്പിൾ കുടുംബ കൗൺസിലിംഗ് കേന്ദ്രം','Sample Family Counselling Centre'],d:1,i:['കുടുംബ കൗൺസിലിംഗ്','Family counselling']},{n:['സാമ്പിൾ വനിതാ സഹായ കേന്ദ്രം','Sample Women\'s Support Centre'],d:6,i:['സ്ത്രീകൾക്കുള്ള പിന്തുണ','Support for women']}];
 const HL=[['112',['അടിയന്തര സഹായം','Emergency']],['181',['വനിതാ ഹെൽപ്‌ലൈൻ','Women helpline']],['1098',['കുട്ടികളുടെ ഹെൽപ്‌ലൈൻ','Child helpline']],['14567',['മുതിർന്നവരുടെ ഹെൽപ്‌ലൈൻ','Senior citizens helpline']],['15100',['സൗജന്യ നിയമ സഹായ ഹെൽപ്‌ലൈൻ','Free legal aid helpline']]];
-let lang='en',view='home',dtab=0,rcat=0,doneId=0,fres=null,rout='',fv={};try{const df=localStorage.getItem('kth_draft_legal');if(df)fv=JSON.parse(df)}catch(e){}let isAdmin=false,db={r:[],n:1};
-try{const s=localStorage.getItem('lgl1');if(s)db=JSON.parse(s);lang=localStorage.getItem('lgl1l')||'en'}catch(e){}
+let lang='ml',view='home',dtab=0,rcat=0,doneId=0,fres=null,rout='',fv={};try{const df=localStorage.getItem('kth_draft_legal');if(df)fv=JSON.parse(df)}catch(e){}let isAdmin=false,db={r:[],n:1};
+try{const s=localStorage.getItem('lgl1');if(s)db=JSON.parse(s);lang=localStorage.getItem('lgl1l')||'ml'}catch(e){}
 const save=()=>{try{localStorage.setItem('lgl1',JSON.stringify(db))}catch(e){}};
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const opt=(a,all)=>(all?`<option value="">${t('f_all')}</option>`:'')+a.map((x,i)=>`<option value="${i}">${L(x)}</option>`).join('');

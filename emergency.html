@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ml">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -147,8 +147,8 @@ const AV=[['ഇപ്പോൾ ലഭ്യം','Available now'],['ആവശ്�
 const RM={3:0,4:1,5:3,6:2};
 const HL=[['112',['അടിയന്തര സഹായം','Emergency']],['108',['ആംബുലൻസ്','Ambulance']],['1077',['ജില്ലാ ദുരന്ത നിയന്ത്രണ മുറി','District disaster control room']],['1098',['കുട്ടികളുടെ ഹെൽപ്‌ലൈൻ','Child helpline']],['14567',['മുതിർന്നവരുടെ ഹെൽപ്‌ലൈൻ','Senior citizens helpline']],['181',['വനിതാ ഹെൽപ്‌ലൈൻ','Women helpline']],['15100',['സൗജന്യ നിയമ സഹായം','Free legal aid']]];
 const DIR=[[['സാമ്പിൾ ജില്ലാ ആശുപത്രി','Sample District Hospital',1,['ആശുപത്രി','Hospital']],['സാമ്പിൾ പൊലീസ് സ്റ്റേഷൻ','Sample Police Station',1,['പൊലീസ്','Police']],['സാമ്പിൾ പഞ്ചായത്ത് ഓഫീസ്','Sample Panchayat Office',9,['തദ്ദേശ സ്ഥാപനം','Local body']]],[['സാമ്പിൾ ജീവകാരുണ്യ സംഘടന','Sample Charity Organisation',1,['ഭക്ഷണം, വസ്ത്രം','Food, clothing']],['സാമ്പിൾ റിലീഫ് ഫോറം','Sample Relief Forum',3,['ദുരന്ത സഹായം','Disaster relief']]],[['സാമ്പിൾ റിലീഫ് ക്യാമ്പ് (ദുരന്ത സമയത്ത് മാത്രം)','Sample relief camp (during disasters only)',3,['താൽക്കാലിക അഭയം','Temporary shelter']]]];
-let lang='en',view='home',dtab=0,atab=0,doneId=0,odone=0,fv={};try{const df=localStorage.getItem('kth_draft_emergency');if(df)fv=JSON.parse(df)}catch(e){}let isAdmin=false,db={r:[],o:[],n:1,on:1,dm:{on:0,msg:''}};
-try{const s=localStorage.getItem('emg1');if(s)db=JSON.parse(s);lang=localStorage.getItem('emg1l')||'en'}catch(e){}
+let lang='ml',view='home',dtab=0,atab=0,doneId=0,odone=0,fv={};try{const df=localStorage.getItem('kth_draft_emergency');if(df)fv=JSON.parse(df)}catch(e){}let isAdmin=false,db={r:[],o:[],n:1,on:1,dm:{on:0,msg:''}};
+try{const s=localStorage.getItem('emg1');if(s)db=JSON.parse(s);lang=localStorage.getItem('emg1l')||'ml'}catch(e){}
 const save=()=>{try{localStorage.setItem('emg1',JSON.stringify(db))}catch(e){}};
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const opt=(a,all)=>(all?`<option value="">${t('f_all')}</option>`:'')+a.map((x,i)=>`<option value="${i}">${L(x)}</option>`).join('');
