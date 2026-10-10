@@ -2,6 +2,7 @@
 <html lang="ml">
 <head>
 <meta charset="utf-8">
+<meta name="google" content="notranslate">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>വിദ്യാഭ്യാസം (Education & Career) · OruSupport.com</title>
 <!-- WhatsApp & Social Media Rich Preview Meta Tags -->
@@ -161,7 +162,7 @@ x20:[['ഫോൺ വഴി','By phone'],['നേരിട്ട്','In person']
 x11:[['സ്കോളർഷിപ്പ് അപേക്ഷയ്ക്ക് സഹായം','Help applying for a scholarship'],['ഫീസ് സഹായം','Fee support'],['സ്ഥാപനത്തിൽ പ്രവേശനം','Admission to an institution'],['ഭിന്നശേഷി പദ്ധതികൾ','Disability schemes']],
 x12:[['പുസ്തകങ്ങൾ','Books'],['യൂണിഫോം','Uniform'],['ലാപ്ടോപ്പ് / ടാബ്‌ലെറ്റ്','Laptop / tablet'],['യാത്രാച്ചെലവ്','Transport'],['പരീക്ഷാ ഫീസ്','Exam fee'],['മറ്റുള്ളവ','Other']]};
 const XM=[['x10','x20'],['x11','x21'],['x12']];
-let lang='ml',view='home',rtype=0,doneId=0,fres=null,fv={};try{const df=localStorage.getItem('kth_draft_education');if(df)fv=JSON.parse(df)}catch(e){}let isAdmin=false,db={r:[],n:1};
+let lang=(typeof getAppLang==='function')?getAppLang():'ml',view='home',rtype=0,doneId=0,fres=null,fv={};try{const df=localStorage.getItem('kth_draft_education');if(df)fv=JSON.parse(df)}catch(e){}let isAdmin=false,db={r:[],n:1};
 try{const s=localStorage.getItem('edu1');if(s)db=JSON.parse(s);lang=localStorage.getItem('edu1l')||'ml'}catch(e){}
 const save=()=>{try{localStorage.setItem('edu1',JSON.stringify(db))}catch(e){}};
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -169,7 +170,7 @@ const opt=(a,all)=>(all?`<option value="">${t('f_all')}</option>`:'')+a.map((x,i
 const S=h=>`<div class="wrap sec">${h}</div>`;
 function toast(m){const e=document.createElement('div');e.className='toast';e.textContent=m;document.body.appendChild(e);setTimeout(()=>e.remove(),2600)}
 function go(v){view=v;doneId=0;draw();scrollTo(0,0)}
-function setLang(){lang=lang=='ml'?'en':'ml';try{localStorage.setItem('edu1l',lang)}catch(e){}document.documentElement.lang=lang;draw()}
+function setLang(){lang=lang=='ml'?'en':'ml';if(typeof setAppLang==='function'){setAppLang(lang)}else{try{if(lang==='en')localStorage.setItem('kth_user_lang_pref','en');else localStorage.removeItem('kth_user_lang_pref')}catch(e){}}document.documentElement.lang=lang;draw()}
 function big(){document.documentElement.classList.toggle('big')}function hc(){document.documentElement.classList.toggle('hc')}
 const TL=[['home',0],['finder',0],['sch',0],['guide',0],['req',0],['inst',0],['track',0],['admin',0]];
 const TILES=[['🎓','sch','സ്കോളർഷിപ്പ് വിവരങ്ങൾ','Scholarship information','അർഹമായ പദ്ധതികൾ കണ്ടെത്താം.','Find schemes you may qualify for.'],['🧭','req','സൗജന്യ കരിയർ കൗൺസിലിംഗ്','Free career counselling','ഒരു കൗൺസിലറോട് സംസാരിക്കാം.','Talk to a counsellor.'],['📚','guide','കോഴ്സ്, ഉപരിപഠന മാർഗനിർദ്ദേശം','Course & higher-education guidance','ശരിയായ കോഴ്സും കോളേജും തിരഞ്ഞെടുക്കാൻ.','Choose the right course and college.'],['📝','guide','മത്സര പരീക്ഷാ മാർഗനിർദ്ദേശം','Competitive exam guidance','തയ്യാറെടുപ്പിന് വഴികാട്ടി.','A guide to preparation.'],['🌍','guide','വിദേശ പഠനം (അടിസ്ഥാനം)','Study abroad basics','വിദേശ പഠനത്തിന്റെ അടിസ്ഥാന വിവരങ്ങൾ.','Basic information on studying abroad.'],['🤝','inst','സഹായ സ്ഥാപനങ്ങളുമായി ബന്ധം','Connection to aid institutions','ശരിയായ സ്ഥാപനത്തിലേക്ക് റഫറൽ.','Referral to the right institution.'],['🎒','req','പഠനോപകരണ സഹായം','Study-aid referral','പുസ്തകം, യൂണിഫോം, ഉപകരണങ്ങൾ.','Books, uniforms, equipment.'],['♿','guide','ഭിന്നശേഷി വിദ്യാർത്ഥികൾക്ക്','For students with disabilities','പ്രത്യേക പദ്ധതികളും സൗകര്യങ്ങളും.','Special schemes and facilities.']];

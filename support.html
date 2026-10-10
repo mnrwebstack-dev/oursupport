@@ -2,6 +2,7 @@
 <html lang="ml">
 <head>
 <meta charset="utf-8">
+<meta name="google" content="notranslate">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>കുടുംബ പിന്തുണ (Family Support) · OruSupport.com</title>
 <!-- WhatsApp & Social Media Rich Preview Meta Tags -->
@@ -147,7 +148,7 @@ kids:[['💬','കൗൺസിലിംഗ് റഫറൽ','Counselling referra
 seniors:[['📞','എൽഡർലൈൻ 14567','Elderline 14567',['മുതിർന്ന പൗരന്മാർക്കുള്ള ഔദ്യോഗിക ഹെൽപ്‌ലൈൻ (നമ്പർ ടീം സ്ഥിരീകരിക്കും).','വിവരം, സഹായം, പീഡന പരാതി എന്നിവയ്ക്ക്.'],['The official helpline for senior citizens (number to be verified by the team).','For information, help and reporting abuse.'],6],['🤝','സന്ദർശനവും ക്ഷേമാന്വേഷണവും','Visits & check-ins',['പരിശോധിച്ച സന്നദ്ധ പ്രവർത്തകർ ഫോൺ വഴിയോ സന്ദർശിച്ചോ ക്ഷേമം അന്വേഷിക്കും.','ആശുപത്രി / ഓഫീസ് അനുഗമനം.'],['Verified volunteers check in by phone or visit.','Escort to hospital or office.'],7],['🏛️','ആനുകൂല്യങ്ങളും വൈദ്യ സഹായവും','Benefits & medical help',['പെൻഷൻ, ക്ഷേമ പദ്ധതികൾക്ക് നിയമ-സർക്കാർ സേവന സഹായകേന്ദ്രം.','ചികിത്സാ സഹായത്തിന് ആരോഗ്യ സഹായ സേവനം.'],['Legal & Government Help Desk for pensions and welfare.','Health Support Service for medical assistance.'],8]]};
 const DIR=[[['സാമ്പിൾ കുടുംബ കൗൺസിലിംഗ് കേന്ദ്രം','Sample Family Counselling Centre',1,['കുടുംബ കൗൺസിലിംഗ്','Family counselling']],['സാമ്പിൾ കൗൺസിലിംഗ് ഫോറം','Sample Counselling Forum',6,['കുട്ടികൾക്കും കുടുംബങ്ങൾക്കും','For children and families']]],[['സാമ്പിൾ തൊഴിൽ പരിശീലന കേന്ദ്രം','Sample Skill Training Centre',1,['തയ്യൽ, കമ്പ്യൂട്ടർ','Tailoring, computers']],['സാമ്പിൾ വനിതാ നൈപുണ്യ കേന്ദ്രം','Sample Women Skills Centre',9,['സ്വയംതൊഴിൽ പരിശീലനം','Self-employment training']]],[['സാമ്പിൾ വനിതാ സഹായ കേന്ദ്രം','Sample Women\'s Support Centre',0,['സുരക്ഷിത സഹായം','Safe support']],['സാമ്പിൾ ശിശു സംരക്ഷണ സമിതി','Sample Child Protection Committee',6,['ശിശു സംരക്ഷണം','Child protection']]]];
 const HL=[['112',['അടിയന്തര സഹായം','Emergency']],['14567',['മുതിർന്നവരുടെ ഹെൽപ്‌ലൈൻ (എൽഡർലൈൻ)','Senior citizens helpline (Elderline)']],['1098',['കുട്ടികളുടെ ഹെൽപ്‌ലൈൻ','Child helpline']],['181',['വനിതാ ഹെൽപ്‌ലൈൻ','Women helpline']],['15100',['സൗജന്യ നിയമ സഹായ ഹെൽപ്‌ലൈൻ','Free legal aid helpline']]];
-let lang='ml',view='home',dtab=0,rcat=0,doneId=0,vdone=0,atab=0,fv={};try{const df=localStorage.getItem('kth_draft_support');if(df)fv=JSON.parse(df)}catch(e){}let isAdmin=false,db={r:[],v:[],n:1,vn:1};
+let lang=(typeof getAppLang==='function')?getAppLang():'ml',view='home',dtab=0,rcat=0,doneId=0,vdone=0,atab=0,fv={};try{const df=localStorage.getItem('kth_draft_support');if(df)fv=JSON.parse(df)}catch(e){}let isAdmin=false,db={r:[],v:[],n:1,vn:1};
 try{const s=localStorage.getItem('sup1');if(s)db=JSON.parse(s);lang=localStorage.getItem('sup1l')||'ml'}catch(e){}
 const save=()=>{try{localStorage.setItem('sup1',JSON.stringify(db))}catch(e){}};
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -157,7 +158,7 @@ const pad=n=>'SUP-'+String(n).padStart(4,'0');
 function toast(m){const e=document.createElement('div');e.className='toast';e.textContent=m;document.body.appendChild(e);setTimeout(()=>e.remove(),2600)}
 function go(v){view=v;doneId=0;vdone=0;draw();scrollTo(0,0)}
 function goC(c){rcat=c;go('req')}
-function setLang(){lang=lang=='ml'?'en':'ml';try{localStorage.setItem('sup1l',lang)}catch(e){}document.documentElement.lang=lang;draw()}
+function setLang(){lang=lang=='ml'?'en':'ml';if(typeof setAppLang==='function'){setAppLang(lang)}else{try{if(lang==='en')localStorage.setItem('kth_user_lang_pref','en');else localStorage.removeItem('kth_user_lang_pref')}catch(e){}}document.documentElement.lang=lang;draw()}
 function big(){document.documentElement.classList.toggle('big')}function hc(){document.documentElement.classList.toggle('hc')}
 function qx(){try{localStorage.removeItem('kth_draft_support')}catch(e){};fv={};doneId=0;vdone=0;view='home';try{draw()}catch(e){}scrollTo(0,0);try{location.replace('https://www.google.com/')}catch(e){}}
 const TABS=(arr,cur,fn)=>`<div class="tabs">${arr.map((x,i)=>`<button class="${cur==i?'on':''}" onclick="${fn}(${i})">${x}</button>`).join('')}</div>`;

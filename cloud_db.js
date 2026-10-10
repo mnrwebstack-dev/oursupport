@@ -15,6 +15,36 @@ const OURSUPPORT_CONFIG = {
 };
 
 /**
+ * Universal Language Engine
+ * Default is ALWAYS Malayalam ('ml'). English is ONLY used if explicitly chosen by the user.
+ */
+try {
+  // Purge legacy storage keys that had 'en' stuck from early development
+  ['kth1l', 'thuna3l', 'edu1l', 'job1l', 'hlt1l', 'lgl1l', 'sup1l', 'emg1l', 'kth_team_lang'].forEach(k => {
+    localStorage.removeItem(k);
+  });
+} catch(e) {}
+
+function getAppLang() {
+  try {
+    if (localStorage.getItem('kth_user_lang_pref') === 'en') {
+      return 'en';
+    }
+  } catch(e) {}
+  return 'ml'; // 100% DEFAULT IS MALAYALAM
+}
+
+function setAppLang(l) {
+  try {
+    if (l === 'en') {
+      localStorage.setItem('kth_user_lang_pref', 'en');
+    } else {
+      localStorage.removeItem('kth_user_lang_pref');
+    }
+  } catch(e) {}
+}
+
+/**
  * Universal Input Validators
  */
 const OurValidator = {

@@ -2,6 +2,7 @@
 <html lang="ml">
 <head>
 <meta charset="utf-8">
+<meta name="google" content="notranslate">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>നിയമ സഹായം (Legal & Govt Help) · OruSupport.com</title>
 <!-- WhatsApp & Social Media Rich Preview Meta Tags -->
@@ -166,7 +167,7 @@ const LEG=[{n:['സാമ്പിൾ ജില്ലാ നിയമ സേവ�
 const CEN=[{n:['സാമ്പിൾ അക്ഷയ കേന്ദ്രം','Sample Akshaya centre'],d:1,i:['ഓൺലൈൻ അപേക്ഷ, സർട്ടിഫിക്കറ്റ് സഹായം','Online applications, certificate help']},{n:['സാമ്പിൾ സേവന കേന്ദ്രം','Sample service centre'],d:9,i:['അപേക്ഷകൾക്കുള്ള സഹായം','Help with applications']},{n:['സാമ്പിൾ അക്ഷയ കേന്ദ്രം','Sample Akshaya centre'],d:0,i:['ഓൺലൈൻ അപേക്ഷ സഹായം','Online application help']}];
 const CNS=[{n:['സാമ്പിൾ കുടുംബ കൗൺസിലിംഗ് കേന്ദ്രം','Sample Family Counselling Centre'],d:1,i:['കുടുംബ കൗൺസിലിംഗ്','Family counselling']},{n:['സാമ്പിൾ വനിതാ സഹായ കേന്ദ്രം','Sample Women\'s Support Centre'],d:6,i:['സ്ത്രീകൾക്കുള്ള പിന്തുണ','Support for women']}];
 const HL=[['112',['അടിയന്തര സഹായം','Emergency']],['181',['വനിതാ ഹെൽപ്‌ലൈൻ','Women helpline']],['1098',['കുട്ടികളുടെ ഹെൽപ്‌ലൈൻ','Child helpline']],['14567',['മുതിർന്നവരുടെ ഹെൽപ്‌ലൈൻ','Senior citizens helpline']],['15100',['സൗജന്യ നിയമ സഹായ ഹെൽപ്‌ലൈൻ','Free legal aid helpline']]];
-let lang='ml',view='home',dtab=0,rcat=0,doneId=0,fres=null,rout='',fv={};try{const df=localStorage.getItem('kth_draft_legal');if(df)fv=JSON.parse(df)}catch(e){}let isAdmin=false,db={r:[],n:1};
+let lang=(typeof getAppLang==='function')?getAppLang():'ml',view='home',dtab=0,rcat=0,doneId=0,fres=null,rout='',fv={};try{const df=localStorage.getItem('kth_draft_legal');if(df)fv=JSON.parse(df)}catch(e){}let isAdmin=false,db={r:[],n:1};
 try{const s=localStorage.getItem('lgl1');if(s)db=JSON.parse(s);lang=localStorage.getItem('lgl1l')||'ml'}catch(e){}
 const save=()=>{try{localStorage.setItem('lgl1',JSON.stringify(db))}catch(e){}};
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -176,7 +177,7 @@ const pad=n=>'LGL-'+String(n).padStart(4,'0');
 function toast(m){const e=document.createElement('div');e.className='toast';e.textContent=m;document.body.appendChild(e);setTimeout(()=>e.remove(),2600)}
 function go(v){view=v;doneId=0;draw();scrollTo(0,0)}
 function goC(c){rcat=c;go('req')}
-function setLang(){lang=lang=='ml'?'en':'ml';try{localStorage.setItem('lgl1l',lang)}catch(e){}document.documentElement.lang=lang;draw()}
+function setLang(){lang=lang=='ml'?'en':'ml';if(typeof setAppLang==='function'){setAppLang(lang)}else{try{if(lang==='en')localStorage.setItem('kth_user_lang_pref','en');else localStorage.removeItem('kth_user_lang_pref')}catch(e){}}document.documentElement.lang=lang;draw()}
 function big(){document.documentElement.classList.toggle('big')}function hc(){document.documentElement.classList.toggle('hc')}
 function qx(){fv={};rout='';fres=null;doneId=0;view='home';try{draw()}catch(e){}scrollTo(0,0);try{location.replace('https://www.google.com/')}catch(e){}}
 const TABS=(arr,cur,fn)=>`<div class="tabs">${arr.map((x,i)=>`<button class="${cur==i?'on':''}" onclick="${fn}(${i})">${x}</button>`).join('')}</div>`;

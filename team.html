@@ -2,6 +2,7 @@
 <html lang="ml">
 <head>
 <meta charset="utf-8">
+<meta name="google" content="notranslate">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>സംഘടനാ നേതൃത്വം | Leadership & Team · OruSupport.com</title>
 <!-- WhatsApp & Social Media Rich Preview Meta Tags -->
@@ -182,8 +183,8 @@ footer{background:var(--tealx);color:#CFE3E0;padding:24px 5vw;font-size:.88rem;m
 
 <script src="cloud_db.js"></script>
 <script>
-let lang = 'ml';
-try { lang = localStorage.getItem('kth_team_lang') || 'ml'; } catch(e){}
+let lang=(typeof getAppLang==='function')?getAppLang():'ml';
+
 
 let isAdmin = false;
 let activeTier = 'all';
@@ -542,11 +543,7 @@ function onDistrictFilter(val) {
   draw();
 }
 
-function toggleLang() {
-  lang = (lang === 'ml') ? 'en' : 'ml';
-  try { localStorage.setItem('kth_team_lang', lang); } catch(e){}
-  draw();
-}
+function toggleLang(){lang=lang=='ml'?'en':'ml';if(typeof setAppLang==='function'){setAppLang(lang)}else{try{if(lang==='en')localStorage.setItem('kth_user_lang_pref','en');else localStorage.removeItem('kth_user_lang_pref')}catch(e){}}document.documentElement.lang=lang;draw()}
 
 function toast(msg) {
   const el = document.createElement('div');
