@@ -118,6 +118,9 @@ function getOurSupportFooter(lang) {
     <div style="color:#9DB1B2;font-size:0.83rem;max-width:760px;margin:6px auto 12px;line-height:1.5">
       ${isMl ? 'വിവാഹം, വിദ്യാഭ്യാസം, തൊഴിൽ, ആരോഗ്യം, നിയമം, കുടുംബം, അടിയന്തര സഹായം: സാധാരണക്കാർക്ക് 7 സൗജന്യ സേവനങ്ങൾ ഒരു കുടക്കീഴിൽ. നിഷ്പക്ഷവും സുരക്ഷിതവുമായ ജനസേവന സംരംഭം.' : 'Matrimony, Education, Jobs, Health, Legal, Family & Emergency: 7 free welfare services under one roof. A community-first initiative.'}
     </div>
+    <div style="margin:8px 0">
+      <a href="team.html" style="color:var(--gold,#F2A93B);text-decoration:none;font-weight:600;font-size:.88rem">🤝 ${isMl ? 'സംഘടനാ നേതൃത്വം & ജില്ലാ കോർഡിനേറ്റർമാർ' : 'Leadership & District Coordinators'} →</a>
+    </div>
     <div style="border-top:1px solid rgba(255,255,255,0.12);padding-top:14px;margin-top:12px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;font-size:0.82rem;color:#9DB1B2">
       <div>
         © 2026 OruSupport.com · People Service Mission Kerala. All Rights Reserved.

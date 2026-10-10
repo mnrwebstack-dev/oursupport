@@ -413,7 +413,8 @@ const EXT_PORTALS = [
   {n:['ഡി.സി.ഇ സ്കോളർഷിപ്പ് പോർട്ടൽ (DCE)','DCE Kerala Scholarship Portal'], u:'https://dcescholarship.kerala.gov.in', ic:'🎓', k:'scholarship college study aid dce വിദ്യാഭ്യാസം ധനസഹായം കോളേജ് സ്കോളർഷിപ്പ്'},
   {n:['കേരള പോലീസ് തുണ പോർട്ടൽ (Thuna Police)','Kerala Police Thuna Citizen Portal'], u:'https://thuna.keralapolice.gov.in', ic:'👮', k:'police thuna complaint verification fir പോലീസ് തുണ പരാതി വെരിഫിക്കേഷൻ'},
   {n:['വനിതാ ഹെൽപ്പ്‌ലൈൻ മിത്ര 181 (Mitra 181)','Mitra 181 Women Helpline Kerala'], u:'tel:181', ic:'👩', k:'women helpline mitra 181 violence domestic safety വനിത സ്ത്രീ സുരക്ഷ മിത്ര ഹെൽപ്പ്‌ലൈൻ'},
-  {n:['ദിശ 1056 ആരോഗ്യ ഹെൽപ്പ്‌ലൈൻ','Disha 1056 Health Helpline'], u:'tel:1056', ic:'📞', k:'disha 1056 mental health counselling doctor ദിശ കൗൺസിലിംഗ് സംശയം ഡോക്ടർ'}
+  {n:['ദിശ 1056 ആരോഗ്യ ഹെൽപ്പ്‌ലൈൻ','Disha 1056 Health Helpline'], u:'tel:1056', ic:'📞', k:'disha 1056 mental health counselling doctor ദിശ കൗൺസിലിംഗ് സംശയം ഡോക്ടർ'},
+  {n:['സംഘടനാ നേതൃത്വം & സമിതികൾ','Leadership & Coordinators'], u:'team.html', ic:'🤝', k:'leadership team committee state zonal district founder chairman secretary coordinator നേതൃത്വം സമിതി ചെയർമാൻ സെക്രട്ടറി കോർഡിനേറ്റർ കമ്മിറ്റി ഭാരവാഹികൾ സോണൽ ജില്ല'}
 ];
 
 const SV=[
@@ -515,6 +516,11 @@ function founderSection(){
         <blockquote>${t('fnd_climax_quote')}</blockquote>
         <div class="motto">${t('fnd_climax_motto')}</div>
       </div>
+      <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(242,169,59,0.35);border-radius:14px;padding:20px;margin-top:20px;text-align:center">
+        <div style="color:var(--gold);font-weight:700;font-size:1.1rem;margin-bottom:6px">🤝 ${lang=='ml'?'സംസ്ഥാന · സോണൽ · ജില്ലാ നേതൃത്വ സമിതി':'State, Zonal & District Leadership'}</div>
+        <p style="color:#CFE3E0;font-size:.92rem;margin:0 0 14px;max-width:560px;margin-left:auto;margin-right:auto">${lang=='ml'?'5 അംഗ സംസ്ഥാന കോർ കമ്മിറ്റി, 4 സോണൽ കോർഡിനേറ്റർമാർ, 14 ജില്ലാ കോർഡിനേറ്റർമാർ. 100% നിഷ്പക്ഷ ജനസേവനം.':'5 State Core Committee Members, 4 Zonal Coordinators & 14 District Coordinators.'}</p>
+        <a href="team.html" class="btn gold" style="display:inline-block;text-decoration:none;font-weight:700;padding:10px 22px;border-radius:10px">${lang=='ml'?'സംഘടനാ നേതൃത്വം കാണുക →':'View Leadership Team →'}</a>
+      </div>
       <details class="fnd-details">
         <summary>${t('fnd_read_more')} ▾</summary>
         <div class="fnd-full-text">${lang=='ml'?T.fnd_full_ml:T.fnd_full_en}</div>
@@ -533,6 +539,7 @@ function home(){return `<section class="hero"><div class="bg" aria-hidden="true"
 <a href="health.html" style="color:#fff;text-decoration:none;background:rgba(255,255,255,0.12);padding:3px 10px;border-radius:12px">🩺 ${lang=='ml'?'ആരോഗ്യം':'Health'}</a>
 <a href="legal.html" style="color:#fff;text-decoration:none;background:rgba(255,255,255,0.12);padding:3px 10px;border-radius:12px">🌾 ${lang=='ml'?'റേഷൻ / പെൻഷൻ':'Ration/Pension'}</a>
 <a href="emergency.html" style="color:#fff;text-decoration:none;background:rgba(255,255,255,0.12);padding:3px 10px;border-radius:12px">🚨 ${lang=='ml'?'അടിയന്തരം':'Emergency'}</a>
+<a href="team.html" style="color:#fff;text-decoration:none;background:rgba(242,169,59,0.22);border:1px solid #F2A93B;padding:3px 10px;border-radius:12px">🤝 ${lang=='ml'?'സമിതികൾ':'Leadership'}</a>
 </div></div>
 <div class="row" style="margin-top:18px"><button class="btn gold" onclick="jump('services')">${t('c1')}</button><a class="btn ghost" style="color:#fff;text-decoration:none" href="${SV[6].u}">${t('c2')}</a></div></div>${orbit()}</div>
 <svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30Q360 62 720 30T1440 30V60H0Z" fill="var(--bg)"/></svg></section>`
@@ -551,7 +558,7 @@ function partners(){return S(`<button class="btn ghost" style="color:var(--ink);
 function draw(){document.getElementById('bn').innerHTML=`<span>${L(BR)}</span>`;
  document.getElementById('em').innerHTML=`${t('em')} <a href="tel:112">112</a> · <a href="tel:108">108</a> · <a href="tel:1098">1098</a> · <a href="tel:14567">14567</a>`;
  document.getElementById('ft').innerHTML = typeof getOurSupportFooter === 'function' ? getOurSupportFooter(lang) : `<div class="wrap"><b>${L(BR)}</b> · ${t('tag')}</div>`;
- document.getElementById('nav').innerHTML=`<button class="${view=='home'?'on':''}" onclick="go('home')">${t('home')}</button><button onclick="jump('services')">${t('svc')}</button><button onclick="jump('founder')">${t('fnd')}</button><button onclick="jump('how')">${t('how')}</button><button class="${view=='partners'?'on':''}" onclick="go('partners')">${t('ptn')}</button><button class="lg" onclick="setLang()">${t('lang')}</button><button class="lg" onclick="big()" title="${t('a11y')}" aria-label="${t('a11y')}">A+</button><button class="lg" onclick="hc()" title="${t('hcn')}" aria-label="${t('hcn')}">◐</button>`;
+ document.getElementById('nav').innerHTML=`<button class="${view=='home'?'on':''}" onclick="go('home')">${t('home')}</button><button onclick="jump('services')">${t('svc')}</button><button onclick="jump('founder')">${t('fnd')}</button><a href="team.html" style="text-decoration:none"><button>${lang=='ml'?'നേതൃത്വം':'Leadership'}</button></a><button onclick="jump('how')">${t('how')}</button><button class="${view=='partners'?'on':''}" onclick="go('partners')">${t('ptn')}</button><button class="lg" onclick="setLang()">${t('lang')}</button><button class="lg" onclick="big()" title="${t('a11y')}" aria-label="${t('a11y')}">A+</button><button class="lg" onclick="hc()" title="${t('hcn')}" aria-label="${t('hcn')}">◐</button>`;
  const q=(document.getElementById('q')||{}).value||'';
  document.getElementById('app').innerHTML=({home,partners})[view]();
  const qe=document.getElementById('q');if(qe&&q){qe.value=q;find(q)}}
