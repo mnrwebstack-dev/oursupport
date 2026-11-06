@@ -244,8 +244,12 @@ try{
   const s=localStorage.getItem('thuna3');
   if(s){
     db=JSON.parse(s);
-    // Permanently purge all fake/demo profiles
-    db.p = (db.p || []).filter(p => p.source === 'cloud' || (p.ref && p.ref.startsWith('MAT-')) || (p.phone && String(p.phone).length === 10));
+    // Permanently purge all fake/demo profiles AND any empty/unknown 'അജ്ഞാതൻ' entries
+    db.p = (db.p || []).filter(p => {
+      const pName = p.name ? (Array.isArray(p.name) ? p.name[0] : p.name) : '';
+      const pPhone = String(p.phone || '').trim();
+      return pPhone.length >= 7 && pName && pName !== 'അജ്ഞാതൻ' && pName !== 'Member';
+    });
     // Normalize Raihan to MAT-0001
     db.p.forEach(p => {
       if (p.phone === '9745690338' || p.ref === 'MAT-0008') {
@@ -452,8 +456,15 @@ async function syncMatrimonyFromCloud(onDone) {
   isSyncingCloud = true;
   try {
     if (typeof fetchCloudRecords === 'function') {
-      const records = await fetchCloudRecords('matrimony', 'profile');
-      if (Array.isArray(records) && records.length > 0) {
+      const rawRecords = await fetchCloudRecords('matrimony', 'profile');
+      if (Array.isArray(rawRecords) && rawRecords.length > 0) {
+        // CRITICAL FILTER: Ignore empty rows and rows without genuine name & phone
+        const records = rawRecords.filter(rec => {
+          const rName = String(rec.Name || rec.name || '').trim();
+          const rPhone = String(rec.Phone || rec.phone || '').trim();
+          return rName && rName !== 'അജ്ഞാതൻ' && rName !== 'Member' && rPhone && rPhone.length >= 7;
+        });
+
         records.forEach(rec => {
           const phone = String(rec.Phone || rec.phone || '').trim();
           const ref = String(rec.Reference || rec.ref || '').trim();
@@ -478,7 +489,7 @@ async function syncMatrimonyFromCloud(onDone) {
             p = {
               id: parsedId,
               ref: ref || ('MAT-' + String(parsedId).padStart(4, '0')),
-              name: [rec.Name || 'അജ്ഞാതൻ', rec.Name || 'Member'],
+              name: [rec.Name, rec.Name],
               g: gender,
               age: age,
               d: distIdx,
@@ -495,12 +506,21 @@ async function syncMatrimonyFromCloud(onDone) {
             };
             db.p.push(p);
           } else {
-            if (isApproved) p.ok = 1;
+            // Once approved (either locally or in cloud), NEVER revert to 0
+            if (isApproved || p.ok === 1) p.ok = 1;
             if (photoData && !p.ph) p.ph = photoData;
-            p.cloudStatus = rec.Status || p.cloudStatus;
+            p.cloudStatus = isApproved ? 'Approved' : (p.cloudStatus || rec.Status);
           }
           if (p.id >= db.next) db.next = p.id + 1;
         });
+        
+        // Final sanity check: Ensure no corrupt entries in db.p
+        db.p = db.p.filter(p => {
+          const pName = p.name ? (Array.isArray(p.name) ? p.name[0] : p.name) : '';
+          const pPhone = String(p.phone || '').trim();
+          return pPhone.length >= 7 && pName && pName !== 'അജ്ഞാതൻ' && pName !== 'Member';
+        });
+
         save();
         lastCloudSyncTime = new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
       }
@@ -786,7 +806,7 @@ function dec(id,ok){
   p.ok=1;
   p.cloudStatus='Approved';
   if(typeof updateCloudRecordStatus==='function'){
-   updateCloudRecordStatus('matrimony','profile',p.ref||('MAT-'+p.id),'Approved',{phone:p.phone});
+   updateCloudRecordStatus('matrimony','profile',p.ref||('MAT-'+p.id),'Approved',{phone:p.phone, photo:p.ph||''});
   }
  }else{
   if(p.ok){

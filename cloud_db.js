@@ -250,6 +250,8 @@ function updateCloudRecordStatus(service, type, ref, status, extra) {
         type: type,
         ref: ref,
         status: status,
+        phone: (extra && extra.phone) || '',
+        photo: (extra && extra.photo) || '',
         extra: extra || {}
       })
     }).catch(err => console.log('Status update background notice:', err));

@@ -54,8 +54,13 @@ function doPost(e) {
       for (var r = 1; r < values.length; r++) {
         var rowRef = String(values[r][1] || "");
         var rowPhone = String(values[r][5] || "");
-        if ((ref && rowRef.indexOf(ref) !== -1) || (payload.phone && rowPhone.indexOf(String(payload.phone)) !== -1)) {
+        var targetPhone = String(payload.phone || (payload.extra && payload.extra.phone) || "");
+        if ((ref && (rowRef === ref || rowRef.indexOf(ref) !== -1)) || (targetPhone && rowPhone.indexOf(targetPhone) !== -1)) {
           sheet.getRange(r + 1, 3).setValue(newStatus); // Column 3: Status
+          var photoToSave = payload.photo || (payload.extra && payload.extra.photo) || "";
+          if (photoToSave) {
+            sheet.getRange(r + 1, 13).setValue(photoToSave); // Column 13: PhotoData
+          }
           updated = true;
           break;
         }
