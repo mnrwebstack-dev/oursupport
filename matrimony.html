@@ -206,10 +206,7 @@ try{
   if(dPh) photo = dPh;
   const dDocs = localStorage.getItem('kth_draft_mat_docs');
   if(dDocs) docs = JSON.parse(dDocs);
-  const dView = localStorage.getItem('kth_mat_view');
-  if(!me && (dView === 'reg' || (fv && (fv.f_name || fv.f_phone)))) {
-    view = 'reg';
-  }
+  try{ localStorage.removeItem('kth_mat_view'); }catch(ex){}
 }catch(e){console.warn('Draft init notice', e)}
 function saveMatDraft(){
   if(view==='reg' && !me){
@@ -220,7 +217,7 @@ function saveMatDraft(){
       });
       try{
         localStorage.setItem('kth_draft_mat_reg', JSON.stringify(fv));
-        localStorage.setItem('kth_mat_view', 'reg');
+        
       }catch(e){}
     }
   }
@@ -570,6 +567,7 @@ function doAdminLogin(){
   const valid = ['974522', '1234', '9745', '9745226500'];
   if(valid.includes(val) || (window.OURSUPPORT_CONFIG && val === OURSUPPORT_CONFIG.adminPin)){
     isAdmin = true;
+    view = 'admin';
     draw();
     toast(lang == 'ml' ? 'അഡ്മിൻ ലോഗിൻ ചെയ്തു' : 'Admin Signed In');
     if(typeof syncMatrimonyFromCloud === 'function'){
@@ -583,16 +581,16 @@ function doAdminLogin(){
 
 function admin(){
  if(!isAdmin)return S(`<h2>${t('al')}</h2><div class="panel" style="max-width:400px">
-  <form onsubmit="doAdminLogin(); return false;">
+  <div>
     <label style="font-weight:600">${t('pin')}</label>
     <div style="display:flex;gap:8px;margin-top:8px">
-      <input id="pin" type="password" style="flex:1" inputmode="numeric" placeholder="Security PIN" autofocus autocomplete="current-password">
-      <button type="submit" class="btn" style="min-width:90px">${t('enter')}</button>
+      <input id="pin" type="password" style="flex:1" inputmode="numeric" placeholder="Security PIN" autofocus autocomplete="current-password" onkeydown="if(event.key==='Enter'){event.preventDefault();doAdminLogin();}">
+      <button type="button" class="btn" style="min-width:90px" onclick="doAdminLogin()">${t('enter')}</button>
     </div>
     <div class="m" style="font-size:0.8rem;margin-top:10px;color:var(--mute)">
       ${lang=='ml'?'PIN അടിച്ച ശേഷം പ്രവേശിക്കുക ക്ലിക്ക് ചെയ്യുക (അല്ലെങ്കിൽ Enter അമർത്തുക)':'Enter PIN and press Sign in or Enter'}
     </div>
-  </form>
+  </div>
 </div>`);
  
  const pd=db.p.filter(p=>!p.ok);
