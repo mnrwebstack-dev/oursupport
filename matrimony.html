@@ -150,14 +150,7 @@ pend:['അംഗീകാരം കാത്തിരിക്കുന്നവ
 ints:['താൽപര്യ അറിയിപ്പുകൾ','Interest requests'],noi:['ഇതുവരെ ഇല്ല.','None yet.'],out:['പുറത്തുകടക്കുക','Sign out'],phl:['ഫോൺ','Phone'],
 tag:['സൗജന്യ വിവാഹ സഹായ വേദി','A free platform to find a life partner'],foot:['പീപ്പിൾസ് സർവീസ് മിഷൻ കേരള · ഹെൽപ്‌ലൈൻ: 9745226500','People Service Mission Kerala · Helpline: 9745226500']};
 const ST=[['അവിവാഹിതർ','Never married'],['വിവാഹമോചിതർ','Divorced'],['വിധവ / വിഭാര്യർ','Widowed'],['വിവാഹമോചന നടപടിയിൽ','Awaiting divorce'],['വിവാഹം റദ്ദാക്കിയവർ','Annulled']];
-const seed=[
-{id:1,name:['അനിത കെ.','Anitha K.'],g:'F',age:27,d:1,edu:['ബിഎ','BA'],job:['തയ്യൽ ജോലി','Tailor'],st:0,about:['ലളിതമായ കുടുംബം. ജോലിയുള്ള, സ്നേഹമുള്ള പങ്കാളിയെ ആഗ്രഹിക്കുന്നു.','From a modest family. Hoping for a caring, employed partner.'],ok:1},
-{id:2,name:['സുരേഷ് ബാബു','Suresh Babu'],g:'M',age:31,d:1,edu:['ഐടിഐ','ITI'],job:['ഇലക്ട്രീഷ്യൻ','Electrician'],st:0,about:['അമ്മയോടൊപ്പം താമസം. സ്ഥിരവരുമാനമുണ്ട്.','Lives with his mother. Has a steady income.'],ok:1},
-{id:3,name:['ലേഖ എസ്.','Lekha S.'],g:'F',age:33,d:2,edu:['പ്ലസ് ടു','Plus Two'],job:['കടയിൽ ജോലി','Shop assistant'],st:1,about:['ഒരു മകളുണ്ട്. മനസ്സിലാക്കുന്ന ഒരാളെ ആഗ്രഹിക്കുന്നു.','Has a daughter. Looking for an understanding partner.'],ok:1},
-{id:4,name:['ഷാജി മോൻ','Shaji Mon'],g:'M',age:36,d:3,edu:['എസ്എസ്എൽസി','SSLC'],job:['മത്സ്യത്തൊഴിലാളി','Fisherman'],st:0,about:['അധ്വാനശീലൻ, ലഹരി ഉപയോഗമില്ല.','Hardworking, no substance use.'],ok:1},
-{id:5,name:['ഫാത്തിമ പി.','Fathima P.'],g:'F',age:24,d:9,edu:['ബികോം','B.Com'],job:['ട്യൂഷൻ ടീച്ചർ','Tutor'],st:0,about:['പഠനം തുടരാൻ പിന്തുണയ്ക്കുന്ന കുടുംബം പ്രതീക്ഷിക്കുന്നു.','Hopes for a family that supports further study.'],ok:1},
-{id:6,name:['വിനോദ് ആർ.','Vinod R.'],g:'M',age:29,d:1,edu:['ഡിപ്ലോമ','Diploma'],job:['ഓട്ടോ ഡ്രൈവർ','Auto driver'],st:0,about:['സ്വന്തമായി ഓട്ടോ ഉണ്ട്.','Owns his auto-rickshaw.'],ok:1},
-{id:7,name:['മിനി ജോസ്','Mini Jose'],g:'F',age:30,d:4,edu:['നഴ്സിംഗ്','Nursing'],job:['ഹോം നഴ്സ്','Home nurse'],st:2,about:['ഒരു ജീവിതസഖാവിനെ തേടുന്നു.','Looking for a life companion.'],ok:0}];
+const seed=[];
 
 Object.assign(T,{view:['പ്രൊഫൈൽ കാണുക','View profile'],back:['തിരികെ','Back'],cta:['ഇന്ന് തന്നെ തുടങ്ങൂ','Begin your journey today'],ctad:['രജിസ്ട്രേഷൻ സൗജന്യമാണ്, എപ്പോഴും.','Registration is free, always.'],priv:['ഫോൺ നമ്പറുകൾ സ്വകാര്യമായി സൂക്ഷിക്കുന്നു.','Phone numbers are kept private.'],regd:['കൂടുതൽ വിവരങ്ങൾ നൽകിയാൽ ചേരുന്ന പങ്കാളിയെ കണ്ടെത്താൻ എളുപ്പമാകും. * ഉള്ളവ നിർബന്ധം, ബാക്കി ഓപ്ഷണൽ.','The more you share, the better we can match you. Fields marked * are required; the rest are optional.']});
 const EMP=[['ശമ്പളമുള്ള ജോലി','Salaried'],['സ്വയംതൊഴിൽ','Self-employed'],['ദിവസക്കൂലി','Daily wage'],['കൃഷി','Farming'],['വിദേശത്ത്','Working abroad'],['വിദ്യാർത്ഥി','Student'],['ജോലിയില്ല','Not employed']];
@@ -230,7 +223,16 @@ window.addEventListener('change', ()=>{ if(view==='reg') saveMatDraft(); });
 window.addEventListener('visibilitychange', ()=>{ if(document.visibilityState==='hidden') saveMatDraft(); });
 window.addEventListener('pagehide', saveMatDraft);
 window.addEventListener('beforeunload', saveMatDraft);
-try{const s=localStorage.getItem('thuna3');if(s)db=JSON.parse(s);lang=localStorage.getItem('thuna3l')||'ml'}catch(e){}
+try{
+  const s=localStorage.getItem('thuna3');
+  if(s){
+    db=JSON.parse(s);
+    // Permanently purge all fake/demo profiles (id 1 to 7 without cloud source or phone)
+    db.p = (db.p || []).filter(p => p.source === 'cloud' || (p.ref && p.ref.startsWith('MAT-') && p.id >= 8) || (p.phone && String(p.phone).length === 10));
+    db.i = (db.i || []).filter(x => db.p.some(p => p.id == x.from) && db.p.some(p => p.id == x.to));
+    try{ localStorage.setItem('thuna3', JSON.stringify(db)); }catch(e){}
+  }
+}catch(e){}
 const save=()=>{try{localStorage.setItem('thuna3',JSON.stringify(db))}catch(e){toast('Storage full')}};
 try{const m=localStorage.getItem('thuna3m');if(m)me=db.p.find(x=>x.id==+m)||null}catch(e){}
 function setMe(u){me=u;try{u?localStorage.setItem('thuna3m',u.id):localStorage.removeItem('thuna3m')}catch(e){}}
@@ -257,7 +259,7 @@ function home(){return `<section class="hero"><div class="bg" aria-hidden="true"
 <svg viewBox="0 0 200 200" fill="none" stroke-width="10" aria-hidden="true"><circle cx="78" cy="100" r="52" stroke="#fff"/><circle cx="122" cy="100" r="52" stroke="#F2A93B"/><path class="hp" d="M100 132C66 108 72 80 90 80c7 0 10 6 10 10 0-4 3-10 10-10 18 0 24 28-10 52z" fill="#F2A93B" stroke="none"/></svg></div><svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30Q360 62 720 30T1440 30V60H0Z" fill="var(--bg)"/></svg></section>`+qsBlock()
 +S(`<div class="pill">${[1,2,3,4].map(i=>`<div><b>${t('t'+i)}</b><span>${t('t'+i+'d')}</span></div>`).join('')}</div>`)
 +feat()+`<section class="cta"><div class="wrap"><div><h2>${t('cta')}</h2><span>${t('ctad')}</span></div><button class="btn gold" onclick="go('reg')">${t('c1')}</button></div></section>`
-+S(`<h2>${t('hw')}</h2><div class="steps">${[1,2,3].map(i=>`<div><b>${t('s'+i)}</b><br><span class="m">${t('s'+i+'d')}</span></div>`).join('')}</div><div class="note">${t('demo')}</div>`)+supportBand()}
++S(`<h2>${t('hw')}</h2><div class="steps">${[1,2,3].map(i=>`<div><b>${t('s'+i)}</b><br><span class="m">${t('s'+i+'d')}</span></div>`).join('')}</div>`)+supportBand()}
 function fld([k,ty,rq,o,any]){const l=lb(k)+(rq?' *':'');let c;
  if(ty=='t')c=`<input id="f_${k}">`;else if(ty=='n')c=`<input id="f_${k}" type="number" min="0" inputmode="numeric">`;
  else if(ty=='a')return `<div style="grid-column:1/-1"><label>${l}</label><textarea id="f_${k}" rows="3"></textarea></div>`;
@@ -334,9 +336,8 @@ function logout(){setMe(null);fv={};go('home')}
 function qs(){const v=i=>document.getElementById(i).value;fv={fg:v('q_g'),f1:v('q_a1'),f2:v('q_a2'),fd:v('q_d')};go('search');doSearch()}
 function qsBlock(){return `<div class="wrap qs"><div class="panel"><div class="grid"><div><label>${t('lk')}</label><select id="q_g"><option value="">${t('all')}</option><option value="F">${t('bride')}</option><option value="M">${t('groom')}</option></select></div><div><label>${t('from')}</label><input id="q_a1" type="number" value="18"></div><div><label>${t('to')}</label><input id="q_a2" type="number" value="60"></div><div><label>${t('d')}</label><select id="q_d">${dO(1)}</select></div></div><p style="margin:14px 0 0"><button class="btn" onclick="qs()">${t('go')}</button></p></div></div>`}
 function feat(){
- const hideDemos = (localStorage.getItem('kth_hide_demos') === '1');
- const visible = db.p.filter(p => p.ok && (!hideDemos || p.source === 'cloud' || p.id >= 8));
- return S(`<h2>${t('feat')}</h2><div class="cards">${visible.slice(0,4).map(card).join('')}</div><p style="margin-top:20px"><button class="btn" onclick="go('search')">${t('all2')}</button></p>`)}
+ const visible = db.p.filter(p => p.ok);
+ return S(`<h2>${t('feat')}</h2><div class="cards">${visible.length ? visible.slice(0,4).map(card).join('') : `<div class="panel" style="grid-column:1/-1;text-align:center;padding:28px 14px"><span style="font-size:2rem">🤝</span><p class="m" style="margin:8px 0 0">${lang=='ml'?'രജിസ്ട്രേഷനുകൾ ടീം പരിശോധിച്ച് വരികയാണ്. അംഗീകരിച്ച പ്രൊഫൈലുകൾ ഉടൻ ഇവിടെ ലഭ്യമാകും.':'Registrations are under verification by our team. Approved profiles will appear here soon.'}</p></div>`}</div>${visible.length ? `<p style="margin-top:20px"><button class="btn" onclick="go('search')">${t('all2')}</button></p>` : ''}`)}
 function docBlock(){return `<div class="panel"><h3 style="margin:0 0 6px">${t('docs')}</h3><p class="m" style="margin-top:0">${t('docsd')}</p><div class="grid"><div><label>${t('idp')} *</label><select id="d_id">${IDD.map((x,i)=>`<option value="${i}">${L(x)}</option>`).join('')}</select></div><div><label>${t('upl')} * <span id="n_idImg"></span></label><input type="file" accept="image/*" onchange="pickDoc(this,'idImg')"></div></div><div id="stdoc" style="margin-top:14px"></div></div>`}
 function pickDoc(inp,key){const fl=inp.files[0];if(!fl)return;const r=new FileReader();r.onload=e=>{const im=new Image();im.onload=()=>{const c=document.createElement('canvas'),k=Math.min(1,700/Math.max(im.width,im.height));c.width=im.width*k;c.height=im.height*k;c.getContext('2d').drawImage(im,0,0,c.width,c.height);docs[key]=c.toDataURL('image/jpeg',.5);try{localStorage.setItem('kth_draft_mat_docs',JSON.stringify(docs))}catch(ex){}const n=document.getElementById('n_'+key);if(n)n.textContent='✓'};im.src=e.target.result};r.readAsDataURL(fl)}
 function kidFix(o){if(o.st===0)o.hk='';if(o.st===0||o.hk!==1){o.kids='';o.kl=''}}
@@ -403,19 +404,17 @@ function prof(){const p=db.p.find(x=>x.id==pid);if(!p)return S('');
  return S(`<button class="btn ghost" style="color:var(--ink);margin-bottom:18px" onclick="go('search')">← ${t('back')}</button><div class="pf"><div><img src="${img(p)}" alt="" style="width:100%;border-radius:14px;aspect-ratio:4/4.4;object-fit:cover"><h2 style="margin:14px 0 2px">${esc(L(p.name))}</h2><div class="m">${p.age} ${t('yrs')} · ${L(DIST[p.d])}</div><div class="hid">${isAdmin?t('adm'):t('priv')}</div><button class="btn" onclick="interest(${p.id})">${t('int')}</button></div>
 <div style="display:grid;gap:14px"><div class="panel" style="margin-top:0"><p style="margin:0">${esc(L(p.about))||'—'}</p></div>${gr}${dp}</div></div>`)}
 function search(){
- const hideDemos = (localStorage.getItem('kth_hide_demos') === '1');
- const baseList = db.p.filter(p => p.ok && (!hideDemos || p.source === 'cloud' || p.id >= 8));
+ const baseList = db.p.filter(p => p.ok);
  const list = res || baseList;
  return S(`<h2>${t('search')}</h2><div class="panel" style="margin-top:0"><div class="grid">
 <div><label>${t('lk')}</label><select id="fg"><option value="">${t('all')}</option><option value="F">${t('bride')}</option><option value="M">${t('groom')}</option></select></div>
 <div><label>${t('from')}</label><input id="f1" type="number" value="18"></div><div><label>${t('to')}</label><input id="f2" type="number" value="60"></div>
 <div><label>${t('d')}</label><select id="fd">${dO(1)}</select></div><div><label>${t('st')}</label><select id="fs">${sO(1)}</select></div></div>
 <p><button class="btn" onclick="doSearch()">${t('go')}</button> <button class="btn ghost" onclick="res=null;fv={};draw()">${t('clr')}</button></p></div>
-<p class="m">${list.length} ${t('cnt')}</p><div class="cards">${list.map(card).join('')||`<p>${t('none')}</p>`}</div>`)}
+<p class="m">${list.length} ${t('cnt')}</p><div class="cards">${list.map(card).join('')||`<div class="panel" style="grid-column:1/-1;text-align:center;padding:24px 12px"><p class="m" style="margin:0">${lang=='ml'?'പരിശോധിച്ചുറപ്പിച്ച പ്രൊഫൈലുകൾ ഒന്നും ഇപ്പോൾ ലഭ്യമല്ല. പുതിയ രജിസ്ട്രേഷനുകൾ അഡ്മിൻ അംഗീകരിക്കുന്ന മുറയ്ക്ക് ഇവിടെ കാണാം.':'No verified profiles available currently. Newly approved registrations will appear here.'}</p></div>`}</div>`)}
 function doSearch(){
- const hideDemos = (localStorage.getItem('kth_hide_demos') === '1');
  const v=i=>document.getElementById(i).value,a=+v('f1'),b=+v('f2');
- res=db.p.filter(p=>p.ok&&(!hideDemos || p.source === 'cloud' || p.id >= 8)&&(!v('fg')||p.g==v('fg'))&&p.age>=a&&p.age<=b&&(v('fd')===''||p.d==v('fd'))&&(v('fs')===''||p.st==v('fs')));
+ res=db.p.filter(p=>p.ok&&(!v('fg')||p.g==v('fg'))&&p.age>=a&&p.age<=b&&(v('fd')===''||p.d==v('fd'))&&(v('fs')===''||p.st==v('fs')));
  draw();
 }
 
@@ -546,9 +545,9 @@ function admin(){
  if(!isAdmin)return S(`<h2>${t('al')}</h2><div class="panel" style="max-width:380px"><label>${t('pin')}</label><input id="pin" type="password" style="max-width:240px"><p><button class="btn" onclick="if(document.getElementById('pin').value==(window.OURSUPPORT_CONFIG&&OURSUPPORT_CONFIG.adminPin||'974522')){isAdmin=true;syncMatrimonyFromCloud(()=>{draw()});draw()}else toast(t('badpin'))">${t('enter')}</button></p></div>`);
  
  const pd=db.p.filter(p=>!p.ok);
- const approvedReal=db.p.filter(p=>p.ok && (p.source==='cloud' || p.id>=8));
- const approvedDemos=db.p.filter(p=>p.ok && p.id<8 && p.source!=='cloud');
- const hideDemos = (localStorage.getItem('kth_hide_demos') === '1');
+ const approvedReal=db.p.filter(p=>p.ok);
+ 
+ 
  
  return S(`
   <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:16px">
@@ -701,15 +700,7 @@ function admin(){
     ` : `<p class="m" style="margin:0">${lang=='ml'?'ഇതുവരെ പ്രൊഫൈലുകൾ ഒന്നും ലൈവ് ആക്കിയിട്ടില്ല.':'No live approved profiles yet.'}</p>`}
   </div>
 
-  <!-- DEMO PROFILES CONTROL -->
-  <div class="panel" style="margin-top:20px;border-left:4px solid var(--gold)">
-    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
-      <div>
-        <h4 style="margin:0 0 4px">🎭 ${lang=='ml'?'ഡെമോ / മോക്ക് പ്രൊഫൈലുകൾ':'Demo / Mock Profiles'} (${approvedDemos.length})</h4>
-        <div class="m" style="font-size:0.82rem">
-          ${lang=='ml'?'തുടക്കത്തിൽ സൈറ്റ് ശൂന്യമായി കാണാതിരിക്കാൻ വെച്ചിട്ടുള്ള മോക്ക് പ്രൊഫൈലുകൾ (അനിത, രാഹുൽ, ഫാത്തിമ...)':'Initial mock profiles created to showcase the platform design.'}
-        </div>
-      </div>
+  
       <label style="display:inline-flex;align-items:center;gap:8px;font-size:0.88rem;cursor:pointer">
         <input type="checkbox" ${hideDemos ? '' : 'checked'} onchange="localStorage.setItem('kth_hide_demos', this.checked?'0':'1'); draw(); toast(this.checked?(lang=='ml'?'ഡെമോ പ്രൊഫൈലുകൾ കാണിക്കുന്നു':'Demo profiles visible'):(lang=='ml'?'ഡെമോ പ്രൊഫൈലുകൾ മറച്ചു':'Demo profiles hidden'))">
         <b>${lang=='ml'?'വെബ്സൈറ്റിൽ ഡെമോ കാണിക്കുക':'Show Demos on Website'}</b>
