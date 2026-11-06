@@ -291,7 +291,7 @@ function stChg(fd){const e=document.getElementById('f_st');if(!e)return;const st
  const c=document.getElementById('stdoc');if(!c||(!fd&&c.dataset.st==st))return;c.dataset.st=st;if(!fd)delete fv.d_st;
  c.innerHTML=st==0?'':`<div class="grid"><div><label>${t('stdoc')}: ${L(ST[st])} *</label><select id="d_st">${SD[st].map((x,i)=>`<option value="${i}">${L(x)}</option>`).join('')}</select></div><div><label>${t('upl')} * <span id="n_stImg"></span></label><input type="file" accept="image/*" onchange="pickDoc(this,'stImg')"></div></div>`;
  if(fd&&st!=0&&fv.d_st!=null)document.getElementById('d_st').value=fv.d_st}
-function panels(ed){return FG.map(g=>`${g[0]=='G7'?docBlock():''}<div class="panel"><h3 style="margin:0 0 14px">${lb(g[0])}</h3><div class="grid">${g[1].map(fld).join('')}</div>${g[0]=='G7'?`<div style="margin-top:14px"><label>${t('photo')}${ed?'':' *'} — ${t('photod')}</label><input type="file" accept="image/*" onchange="pick(this)"><img id="pv" alt=""></div>${ed?'':`<p><label style="color:var(--ink)"><input type="checkbox" id="cs"> ${t('cons')}</label></p><div class="note">${t('otp')}</div><div class="note">${t('legal')}</div>`}`:''}</div>`).join('')}
+function panels(ed){return FG.map(g=>`<div class="panel"><h3 style="margin:0 0 14px">${lb(g[0])}</h3><div class="grid">${g[1].map(fld).join('')}</div>${g[0]=='G7'?`<div style="margin-top:14px"><label>${t('photo')} (${lang=='ml'?'ഓപ്ഷണൽ - ഇപ്പോൾ നൽകാം, അല്ലെങ്കിൽ പിന്നീട് WhatsApp വഴി അയക്കാം':'Optional - can share later via WhatsApp'}) — ${t('photod')}</label><input type="file" accept="image/*" onchange="pick(this)"><img id="pv" alt=""></div>${ed?'':`<p><label style="color:var(--ink)"><input type="checkbox" id="cs"> ${t('cons')}</label></p><div class="note">${t('otp')}</div><div class="note">${t('legal')}</div>`}`:''}</div>`).join('')}
 function reg(){
  if(me&&!justReg)return mine();
  if(me&&justReg){const m=matches(me);
@@ -376,13 +376,11 @@ function submitReg(){const o={};FG.forEach(g=>g[1].forEach(([k,ty])=>{const v=do
  if(!o.name){toast(lang=='ml'?'ദയവായി പേര് നൽകുക':'Please enter full name');const el=document.getElementById('f_name');if(el)el.focus();return}
  if(!(o.age>=18)){toast(lang=='ml'?'പ്രായം 18 അല്ലെങ്കിൽ അതിൽ കൂടുതലായിരിക്കണം':'Age must be 18 or above');const el=document.getElementById('f_age');if(el)el.focus();return}
  if(!o.phone||o.phone.length!=10){toast(lang=='ml'?'ശരിയായ 10 അക്ക മൊബൈൽ നമ്പർ നൽകുക':'Please enter valid 10-digit mobile number');const el=document.getElementById('f_phone');if(el)el.focus();return}
- if(!photo){toast(lang=='ml'?'ദയവായി പ്രൊഫൈൽ ഫോട്ടോ അപ്‌ലോഡ് ചെയ്യുക':'Please upload clear profile photo');return}
- if(!docs.idImg){toast(lang=='ml'?'തിരിച്ചറിയൽ രേഖ (ID Proof) അപ്‌ലോഡ് ചെയ്യുക':'Please upload ID Proof');return}
- if(o.st!==0&&!docs.stImg){toast(lang=='ml'?'വിവാഹ നില തെളിയിക്കുന്ന രേഖ അപ്‌ലോഡ് ചെയ്യുക':'Please upload marital status proof');return}
+
  const csEl=document.getElementById('cs');
  if(!csEl||!csEl.checked){toast(lang=='ml'?'സമ്മതപത്രം അംഗീകരിക്കാൻ ടിക്ക് ചെയ്യുക':'Please accept the consent checkbox');if(csEl)csEl.focus();return}
  if(db.p.some(x=>x.phone==o.phone)){toast(t('dup'));return}
- const np=Object.assign({id:db.next++,ph:photo,ok:0,dId:+document.getElementById('d_id').value,dSt:o.st?+document.getElementById('d_st').value:'',docs:Object.assign({},docs)},o);db.p.push(np);setMe(np);justReg=true;save();
+ const np=Object.assign({id:db.next++,ph:photo||null,ok:0,docs:Object.assign({},docs)},o);db.p.push(np);setMe(np);justReg=true;save();
  try{localStorage.removeItem('kth_draft_mat_reg');localStorage.removeItem('kth_draft_mat_photo');localStorage.removeItem('kth_draft_mat_docs');localStorage.removeItem('kth_mat_view')}catch(e){}
  
  let photoThumb = '';
@@ -634,10 +632,10 @@ function admin(){
           const fullWaMsg = 'നമസ്കാരം ' + pName + ',\n' +
             'കൈത്താങ്ങ് / ഒരു സപ്പോർട്ട് (OruSupport.com) മാട്രിമോണി സേവനത്തിൽ താങ്കൾ നൽകിയ രജിസ്ട്രേഷൻ (Ref: ' + pRef + ') ഞങ്ങൾക്ക് ലഭിച്ചിട്ടുണ്ട്.\n\n' +
             'താങ്കളുടെ പ്രൊഫൈൽ പരിശോധിച്ച് വെബ്സൈറ്റിൽ ലൈവ് (Live) ആക്കുന്നതിനായി:\n' +
-            '1. താങ്കളുടെ വ്യക്തമായ ഒരു ഫോട്ടോ (Profile Photo)\n' +
-            '2. തിരിച്ചറിയൽ രേഖയുടെ കോപ്പി (Aadhaar Card / ID Proof)\n\n' +
-            'എന്നിവ ദയവായി ഈ വാട്സ്ആപ്പിലേക്ക് അയച്ചു തരുമല്ലോ.\n\n' +
-            'ഞങ്ങളുടെ കോർഡിനേറ്റർ രേഖകൾ വെരിഫൈ ചെയ്ത ഉടൻ തന്നെ താങ്കളുടെ പ്രൊഫൈൽ സൗജന്യ മാട്രിമോണി സേവനത്തിൽ സജീവമാക്കുന്നതായിരിക്കും.\n\n' +
+            '1. പ്രൊഫൈൽ ഫോട്ടോ (വെബ്സൈറ്റിൽ ഫോട്ടോ ഉൾപ്പെടുത്താൻ താല്പര്യമുണ്ടെങ്കിൽ മാത്രം അയച്ചുതന്നാൽ മതിയാകും).\n' +
+            '2. വിവരങ്ങൾ ബോധ്യപ്പെടുന്നതിനായി തിരിച്ചറിയൽ രേഖയുടെ കോപ്പി (Aadhaar Card / ID Proof).\n\n' +
+            'എന്നിവ ദയവായി ഈ വാട്സ്ആപ്പിലേക്ക് അയച്ചു തരുമല്ലോ. രേഖകൾ പരിശോധനയ്ക്ക് ശേഷം പൂർണ്ണ സുരക്ഷിതമായി സൂക്ഷിക്കുന്നതാണ്.\n\n' +
+            'ഞങ്ങളുടെ കോർഡിനേറ്റർ വിവരങ്ങൾ വെരിഫൈ ചെയ്ത ഉടൻ തന്നെ താങ്കളുടെ പ്രൊഫൈൽ സൗജന്യ മാട്രിമോണി സേവനത്തിൽ സജീവമാക്കുന്നതായിരിക്കും.\n\n' +
             'നന്ദി,\nപീപ്പിൾസ് സർവീസ് മിഷൻ കേരള · OruSupport.com\nഹെൽപ്‌ലൈൻ: 9745226500';
           const waText = encodeURIComponent(fullWaMsg);
           const waLink = p.phone ? 'https://wa.me/91' + p.phone + '?text=' + waText : '#';
@@ -680,14 +678,18 @@ function admin(){
                 ` : ''}
               </div>
 
-              <!-- PHOTO ATTACH OPTION FOR ADMIN -->
-              <div style="margin:6px 0;display:flex;gap:6px;flex-wrap:wrap">
-                <label style="font-size:0.78rem;cursor:pointer;color:var(--teal);display:inline-flex;align-items:center;gap:4px;font-weight:600;background:#E3F2EE;padding:4px 8px;border-radius:6px">
+              <!-- PHOTO & VERIFY OPTIONS FOR ADMIN -->
+              <div style="margin:6px 0;display:flex;gap:6px;flex-wrap:wrap;align-items:center">
+                <label style="font-size:0.78rem;cursor:pointer;color:var(--teal);display:inline-flex;align-items:center;gap:4px;font-weight:600;background:#E3F2EE;padding:5px 8px;border-radius:6px">
                   📷 ${hasPhoto ? (lang=='ml'?'ഫോട്ടോ ചേർത്തു ✓':'Photo Added ✓') : (lang=='ml'?'ഫോട്ടോ അറ്റാച്ച് ചെയ്യുക':'Attach Photo')}
                   <input type="file" accept="image/*" style="display:none" onchange="adminAttachPhoto(${p.id}, this)">
                 </label>
-                <label style="font-size:0.78rem;cursor:pointer;color:#4F46E5;display:inline-flex;align-items:center;gap:4px;font-weight:600;background:#EEF2FF;padding:4px 8px;border-radius:6px">
-                  📄 ${p.docs && p.docs.idImg ? (lang=='ml'?'രേഖ ചേർത്തു ✓':'ID Added ✓') : (lang=='ml'?'ആധാർ അറ്റാച്ച് ചെയ്യുക':'Attach ID Proof')}
+                <label style="font-size:0.78rem;cursor:pointer;color:#065F46;background:#D1FAE5;padding:5px 8px;border-radius:6px;display:inline-flex;align-items:center;gap:5px">
+                  <input type="checkbox" ${p.docs && p.docs.verified ? 'checked' : ''} onchange="const pr=db.p.find(x=>x.id==${p.id});if(pr){pr.docs=pr.docs||{};pr.docs.verified=this.checked;save();toast(this.checked?(lang=='ml'?'രേഖകൾ വാട്സ്ആപ്പിൽ വെരിഫൈ ചെയ്തു ✓':'ID Verified on WhatsApp ✓'):'')}">
+                  <b>${lang=='ml'?'വാട്സ്ആപ്പിൽ രേഖ പരിശോധിച്ചു ✓':'Verified on WhatsApp ✓'}</b>
+                </label>
+                <label style="font-size:0.78rem;cursor:pointer;color:#4F46E5;display:inline-flex;align-items:center;gap:4px;font-weight:600;background:#EEF2FF;padding:5px 8px;border-radius:6px">
+                  📄 ${p.docs && p.docs.idImg ? (lang=='ml'?'രേഖ ചേർത്തു ✓':'ID Added ✓') : (lang=='ml'?'രേഖ അറ്റാച്ച് (ഓപ്ഷണൽ)':'Attach ID (Optional)')}
                   <input type="file" accept="image/*" style="display:none" onchange="adminAttachDoc(${p.id}, this)">
                 </label>
               </div>
