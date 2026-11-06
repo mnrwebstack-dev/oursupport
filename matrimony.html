@@ -333,7 +333,10 @@ function adm(i,v){db.i[i].s=v;save();draw()}
 function logout(){setMe(null);fv={};go('home')}
 function qs(){const v=i=>document.getElementById(i).value;fv={fg:v('q_g'),f1:v('q_a1'),f2:v('q_a2'),fd:v('q_d')};go('search');doSearch()}
 function qsBlock(){return `<div class="wrap qs"><div class="panel"><div class="grid"><div><label>${t('lk')}</label><select id="q_g"><option value="">${t('all')}</option><option value="F">${t('bride')}</option><option value="M">${t('groom')}</option></select></div><div><label>${t('from')}</label><input id="q_a1" type="number" value="18"></div><div><label>${t('to')}</label><input id="q_a2" type="number" value="60"></div><div><label>${t('d')}</label><select id="q_d">${dO(1)}</select></div></div><p style="margin:14px 0 0"><button class="btn" onclick="qs()">${t('go')}</button></p></div></div>`}
-function feat(){return S(`<h2>${t('feat')}</h2><div class="cards">${db.p.filter(p=>p.ok).slice(0,4).map(card).join('')}</div><p style="margin-top:20px"><button class="btn" onclick="go('search')">${t('all2')}</button></p>`)}
+function feat(){
+ const hideDemos = (localStorage.getItem('kth_hide_demos') === '1');
+ const visible = db.p.filter(p => p.ok && (!hideDemos || p.source === 'cloud' || p.id >= 8));
+ return S(`<h2>${t('feat')}</h2><div class="cards">${visible.slice(0,4).map(card).join('')}</div><p style="margin-top:20px"><button class="btn" onclick="go('search')">${t('all2')}</button></p>`)}
 function docBlock(){return `<div class="panel"><h3 style="margin:0 0 6px">${t('docs')}</h3><p class="m" style="margin-top:0">${t('docsd')}</p><div class="grid"><div><label>${t('idp')} *</label><select id="d_id">${IDD.map((x,i)=>`<option value="${i}">${L(x)}</option>`).join('')}</select></div><div><label>${t('upl')} * <span id="n_idImg"></span></label><input type="file" accept="image/*" onchange="pickDoc(this,'idImg')"></div></div><div id="stdoc" style="margin-top:14px"></div></div>`}
 function pickDoc(inp,key){const fl=inp.files[0];if(!fl)return;const r=new FileReader();r.onload=e=>{const im=new Image();im.onload=()=>{const c=document.createElement('canvas'),k=Math.min(1,700/Math.max(im.width,im.height));c.width=im.width*k;c.height=im.height*k;c.getContext('2d').drawImage(im,0,0,c.width,c.height);docs[key]=c.toDataURL('image/jpeg',.5);try{localStorage.setItem('kth_draft_mat_docs',JSON.stringify(docs))}catch(ex){}const n=document.getElementById('n_'+key);if(n)n.textContent='✓'};im.src=e.target.result};r.readAsDataURL(fl)}
 function kidFix(o){if(o.st===0)o.hk='';if(o.st===0||o.hk!==1){o.kids='';o.kl=''}}
@@ -360,6 +363,21 @@ function submitReg(){const o={};FG.forEach(g=>g[1].forEach(([k,ty])=>{const v=do
  if(db.p.some(x=>x.phone==o.phone)){toast(t('dup'));return}
  const np=Object.assign({id:db.next++,ph:photo,ok:0,dId:+document.getElementById('d_id').value,dSt:o.st?+document.getElementById('d_st').value:'',docs:Object.assign({},docs)},o);db.p.push(np);setMe(np);justReg=true;save();
  try{localStorage.removeItem('kth_draft_mat_reg');localStorage.removeItem('kth_draft_mat_photo');localStorage.removeItem('kth_draft_mat_docs');localStorage.removeItem('kth_mat_view')}catch(e){}
+ 
+ let photoThumb = '';
+ try {
+   if (photo) {
+     const im = new Image();
+     im.src = photo;
+     const c = document.createElement('canvas');
+     const k = Math.min(1, 180 / Math.max(im.width || 300, im.height || 300));
+     c.width = (im.width || 300) * k;
+     c.height = (im.height || 300) * k;
+     c.getContext('2d').drawImage(im, 0, 0, c.width, c.height);
+     photoThumb = c.toDataURL('image/jpeg', 0.45);
+   }
+ } catch(ex) { photoThumb = photo ? photo.slice(0, 8000) : ''; }
+
  if(typeof syncRecordToCloud==='function'){
   syncRecordToCloud('matrimony','profile',{
    ref:'MAT-'+String(np.id).padStart(4,'0'),
@@ -370,7 +388,9 @@ function submitReg(){const o={};FG.forEach(g=>g[1].forEach(([k,ty])=>{const v=do
    district:DIST[np.d]?DIST[np.d][1]:np.d,
    education:np.edu||'',
    job:np.job||'',
-   details:np.about||''
+   maritalStatus:ST[np.st]?ST[np.st][1]:'',
+   about:np.about||'',
+   photo:photoThumb||''
   });
  }
  fv={};photo=null;docs={};draw()}
@@ -382,22 +402,325 @@ function prof(){const p=db.p.find(x=>x.id==pid);if(!p)return S('');
  const dp=isAdmin&&p.docs?`<div class="panel" style="margin-top:0"><h3 style="margin:0 0 12px">${t('docs')} (${t('adm')})</h3>${p.docs.idImg?`<p class="m">${L(IDD[p.dId]||IDD[5])}</p><img src="${p.docs.idImg}" alt="" style="max-width:100%;border-radius:8px">`:''}${p.docs.stImg?`<p class="m">${L((SD[p.st]||[])[p.dSt]||OT)}</p><img src="${p.docs.stImg}" alt="" style="max-width:100%;border-radius:8px">`:''}</div>`:'';
  return S(`<button class="btn ghost" style="color:var(--ink);margin-bottom:18px" onclick="go('search')">← ${t('back')}</button><div class="pf"><div><img src="${img(p)}" alt="" style="width:100%;border-radius:14px;aspect-ratio:4/4.4;object-fit:cover"><h2 style="margin:14px 0 2px">${esc(L(p.name))}</h2><div class="m">${p.age} ${t('yrs')} · ${L(DIST[p.d])}</div><div class="hid">${isAdmin?t('adm'):t('priv')}</div><button class="btn" onclick="interest(${p.id})">${t('int')}</button></div>
 <div style="display:grid;gap:14px"><div class="panel" style="margin-top:0"><p style="margin:0">${esc(L(p.about))||'—'}</p></div>${gr}${dp}</div></div>`)}
-function search(){const list=res||db.p.filter(p=>p.ok);
+function search(){
+ const hideDemos = (localStorage.getItem('kth_hide_demos') === '1');
+ const baseList = db.p.filter(p => p.ok && (!hideDemos || p.source === 'cloud' || p.id >= 8));
+ const list = res || baseList;
  return S(`<h2>${t('search')}</h2><div class="panel" style="margin-top:0"><div class="grid">
 <div><label>${t('lk')}</label><select id="fg"><option value="">${t('all')}</option><option value="F">${t('bride')}</option><option value="M">${t('groom')}</option></select></div>
 <div><label>${t('from')}</label><input id="f1" type="number" value="18"></div><div><label>${t('to')}</label><input id="f2" type="number" value="60"></div>
 <div><label>${t('d')}</label><select id="fd">${dO(1)}</select></div><div><label>${t('st')}</label><select id="fs">${sO(1)}</select></div></div>
 <p><button class="btn" onclick="doSearch()">${t('go')}</button> <button class="btn ghost" onclick="res=null;fv={};draw()">${t('clr')}</button></p></div>
 <p class="m">${list.length} ${t('cnt')}</p><div class="cards">${list.map(card).join('')||`<p>${t('none')}</p>`}</div>`)}
-function doSearch(){const v=i=>document.getElementById(i).value,a=+v('f1'),b=+v('f2');
- res=db.p.filter(p=>p.ok&&(!v('fg')||p.g==v('fg'))&&p.age>=a&&p.age<=b&&(v('fd')===''||p.d==v('fd'))&&(v('fs')===''||p.st==v('fs')));draw()}
+function doSearch(){
+ const hideDemos = (localStorage.getItem('kth_hide_demos') === '1');
+ const v=i=>document.getElementById(i).value,a=+v('f1'),b=+v('f2');
+ res=db.p.filter(p=>p.ok&&(!hideDemos || p.source === 'cloud' || p.id >= 8)&&(!v('fg')||p.g==v('fg'))&&p.age>=a&&p.age<=b&&(v('fd')===''||p.d==v('fd'))&&(v('fs')===''||p.st==v('fs')));
+ draw();
+}
+
+let isSyncingCloud = false;
+let lastCloudSyncTime = '';
+
+async function syncMatrimonyFromCloud(onDone) {
+  if (isSyncingCloud) return;
+  isSyncingCloud = true;
+  try {
+    if (typeof fetchCloudRecords === 'function') {
+      const records = await fetchCloudRecords('matrimony', 'profile');
+      if (Array.isArray(records) && records.length > 0) {
+        records.forEach(rec => {
+          const phone = String(rec.Phone || rec.phone || '').trim();
+          const ref = String(rec.Reference || rec.ref || '').trim();
+          const rawId = parseInt(ref.replace(/\D/g, ''), 10);
+          const parsedId = (!isNaN(rawId) && rawId > 0) ? rawId : db.next++;
+          
+          let p = db.p.find(x => (phone && String(x.phone) === phone) || (x.ref && x.ref === ref) || x.id === parsedId);
+          
+          const isApproved = String(rec.Status || '').trim().toLowerCase() === 'approved';
+          const distName = String(rec.District || rec.district || '').toLowerCase();
+          let distIdx = DIST.findIndex(d => distName.includes(d[0].toLowerCase()) || distName.includes(d[1].toLowerCase()));
+          if (distIdx === -1) distIdx = 9;
+          
+          const gender = (String(rec.Gender || '').trim().toLowerCase().startsWith('f') || rec.Gender === 'F') ? 'F' : 'M';
+          const age = parseInt(rec.Age, 10) || 28;
+          const edu = rec.Education || '';
+          const job = rec.Job || '';
+          const about = rec.About || rec.Details || '';
+          const photoData = rec.PhotoData || rec.photo || '';
+          
+          if (!p) {
+            p = {
+              id: parsedId,
+              ref: ref || ('MAT-' + String(parsedId).padStart(4, '0')),
+              name: [rec.Name || 'അജ്ഞാതൻ', rec.Name || 'Member'],
+              g: gender,
+              age: age,
+              d: distIdx,
+              edu: [edu, edu],
+              job: [job, job],
+              st: 0,
+              about: [about, about],
+              phone: phone,
+              ph: photoData || null,
+              ok: isApproved ? 1 : 0,
+              source: 'cloud',
+              cloudTs: rec.Timestamp || '',
+              cloudStatus: rec.Status || 'New'
+            };
+            db.p.push(p);
+          } else {
+            if (isApproved) p.ok = 1;
+            if (photoData && !p.ph) p.ph = photoData;
+            p.cloudStatus = rec.Status || p.cloudStatus;
+          }
+          if (p.id >= db.next) db.next = p.id + 1;
+        });
+        save();
+        lastCloudSyncTime = new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
+      }
+    }
+  } catch(e) {
+    console.warn('Sync notice:', e);
+  } finally {
+    isSyncingCloud = false;
+    if (typeof onDone === 'function') onDone();
+    if (typeof draw === 'function') draw();
+  }
+}
+
+function adminAttachPhoto(id, inp) {
+  const fl = inp.files[0];
+  if (!fl) return;
+  const r = new FileReader();
+  r.onload = e => {
+    const im = new Image();
+    im.onload = () => {
+      const c = document.createElement('canvas');
+      const k = Math.min(1, 360 / Math.max(im.width, im.height));
+      c.width = im.width * k;
+      c.height = im.height * k;
+      c.getContext('2d').drawImage(im, 0, 0, c.width, c.height);
+      const dataUrl = c.toDataURL('image/jpeg', 0.7);
+      const p = db.p.find(x => x.id == id);
+      if (p) {
+        p.ph = dataUrl;
+        save();
+        draw();
+        toast(lang == 'ml' ? 'ഫോട്ടോ വിജയകരമായി ചേർത്തു!' : 'Photo attached successfully!');
+      }
+    };
+    im.src = e.target.result;
+  };
+  r.readAsDataURL(fl);
+}
+
 function admin(){
- if(!isAdmin)return S(`<h2>${t('al')}</h2><div class="panel"><label>${t('pin')}</label><input id="pin" type="password" style="max-width:220px"><p><button class="btn" onclick="if(document.getElementById('pin').value==(window.OURSUPPORT_CONFIG&&OURSUPPORT_CONFIG.adminPin||'974522')){isAdmin=true;draw()}else toast(t('badpin'))">${t('enter')}</button></p></div>`);
+ if(!isAdmin)return S(`<h2>${t('al')}</h2><div class="panel" style="max-width:380px"><label>${t('pin')}</label><input id="pin" type="password" style="max-width:240px"><p><button class="btn" onclick="if(document.getElementById('pin').value==(window.OURSUPPORT_CONFIG&&OURSUPPORT_CONFIG.adminPin||'974522')){isAdmin=true;syncMatrimonyFromCloud(()=>{draw()});draw()}else toast(t('badpin'))">${t('enter')}</button></p></div>`);
+ 
  const pd=db.p.filter(p=>!p.ok);
- return S(`<h2>${t('pend')} (${pd.length})</h2><div class="cards">${pd.map(p=>`<div class="pc"><img src="${img(p)}" alt=""><div class="b"><h3>${esc(L(p.name))}</h3><div class="m">${p.age} ${t('yrs')} · ${L(DIST[p.d])} · ${L(ST[p.st])}</div><p class="m">${esc(L(p.about))}</p><div class="m">${t('phl')}: ${esc(p.phone||'-')}</div><button class="btn ghost" style="color:var(--ink);margin-top:8px" onclick="openP(${p.id})">${t('view')}</button><div class="row" style="margin-top:10px"><button class="btn" onclick="dec(${p.id},1)">${t('ok')}</button><button class="btn bad" onclick="dec(${p.id},0)">${t('no')}</button></div></div></div>`).join('')||`<p class="m">${t('nop')}</p>`}</div>
-<h2 style="margin-top:32px">${t('ints')} (${db.i.length})</h2><div class="panel tbl">${db.i.length?`<table width="100%">${db.i.map((x,i)=>{const a=db.p.find(p=>p.id==x.from),b=db.p.find(p=>p.id==x.to);return `<tr><td>${esc(a&&L(a.name))}</td><td>→</td><td>${esc(b&&L(b.name))}</td><td class="m">${t('st'+(x.s||0))}</td><td>${x.s==1?`<button class="btn" style="padding:5px 12px" onclick="adm(${i},3)">${t('conn')}</button>`:x.s==3?esc((a&&a.phone||'-')+' / '+(b&&b.phone||'-')):!x.s&&b&&!b.phone?`<button class="btn ghost" style="color:var(--ink);padding:5px 12px" onclick="adm(${i},1)">${t('sim')}</button>`:''}</td></tr>`}).join('')}</table>`:`<span class="m">${t('noi')}</span>`}</div>
-<p><button class="btn ghost" style="color:var(--ink)" onclick="isAdmin=false;draw()">${t('out')}</button></p>`)}
-function dec(id,ok){if(ok)db.p.find(p=>p.id==id).ok=1;else db.p=db.p.filter(p=>p.id!=id);save();draw();toast(t(ok?'okd':'nod'))}
+ const approvedReal=db.p.filter(p=>p.ok && (p.source==='cloud' || p.id>=8));
+ const approvedDemos=db.p.filter(p=>p.ok && p.id<8 && p.source!=='cloud');
+ const hideDemos = (localStorage.getItem('kth_hide_demos') === '1');
+ 
+ return S(`
+  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:16px">
+    <div>
+      <h2 style="margin:0">${t('adm')} പാനൽ</h2>
+      <div class="m" style="font-size:0.85rem;margin-top:4px">
+        ☁️ സെൻട്രൽ ഗൂഗിൾ ഷീറ്റ് കണക്റ്റഡ് ${lastCloudSyncTime ? '· അവസാന സിങ്ക്: ' + lastCloudSyncTime : ''}
+      </div>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <button class="btn ghost" style="color:var(--teal);border:1px solid var(--teal);padding:6px 12px;font-size:0.85rem;display:inline-flex;align-items:center;gap:6px" onclick="syncMatrimonyFromCloud(()=>{ toast(lang=='ml'?'ഗൂഗിൾ ഷീറ്റിൽ നിന്ന് വിവരങ്ങൾ പുതുക്കി!':'Synced from Google Sheet!'); draw(); })">
+        🔄 ${lang=='ml'?'ഷീറ്റിൽ നിന്ന് പുതുക്കുക':'Refresh from Sheet'}
+      </button>
+      <button class="btn ghost" style="color:var(--ink);padding:6px 12px;font-size:0.85rem" onclick="isAdmin=false;draw()">${t('out')}</button>
+    </div>
+  </div>
+
+  <!-- PENDING APPROVAL SECTION -->
+  <div class="panel" style="background:#FFF9EB;border:1px solid #F2A93B;margin-top:0">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px">
+      <h3 style="margin:0;color:#92400E;display:flex;align-items:center;gap:8px">
+        <span>⏳</span> ${t('pend')} (${pd.length})
+      </h3>
+      <span style="font-size:0.82rem;color:#B45309">
+        ${pd.length ? (lang=='ml'?'പരിശോധിച്ച് ലൈവ് ആക്കാനുള്ള അപേക്ഷകൾ':'Registrations waiting for your review') : ''}
+      </span>
+    </div>
+    
+    ${pd.length ? `
+      <div class="cards" style="grid-template-columns:repeat(auto-fill,minmax(300px,1fr))">
+        ${pd.map(p => {
+          const phLink = p.phone ? 'tel:' + p.phone : '#';
+          const waText = encodeURIComponent('നമസ്കാരം ' + (esc(L(p.name))||'') + ', കൈത്താങ്ങ് / ഒരു സപ്പോർട്ട് (OruSupport.com) മാട്രിമോണി സേവനത്തിൽ താങ്കൾ നൽകിയ രജിസ്ട്രേഷൻ (Ref: ' + (p.ref||('MAT-'+p.id)) + ') സംബന്ധിച്ചാണ് ബന്ധപ്പെടുന്നത്.');
+          const waLink = p.phone ? 'https://wa.me/91' + p.phone + '?text=' + waText : '#';
+          const hasPhoto = Boolean(p.ph);
+          
+          return `
+          <div class="pc" style="border:2px solid #F2A93B;background:#fff">
+            <div style="position:relative">
+              <img src="${img(p)}" alt="" style="aspect-ratio:4/3.8;object-fit:cover">
+              ${!hasPhoto ? `<div style="position:absolute;bottom:8px;left:8px;right:8px;background:rgba(0,0,0,0.78);color:#fff;font-size:0.75rem;padding:4px 8px;border-radius:6px;text-align:center">📷 ഫോട്ടോ ഷീറ്റിൽ ലഭിച്ചിട്ടില്ല</div>` : ''}
+            </div>
+            <div class="b">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:6px">
+                <h3 style="margin:0">${esc(L(p.name))}</h3>
+                <span class="badge" style="background:#FEF3C7;color:#92400E;font-size:0.72rem;padding:2px 6px">${p.ref || ('MAT-' + p.id)}</span>
+              </div>
+              <div class="m" style="margin:6px 0;font-weight:600;color:var(--teal)">
+                ${p.age} ${t('yrs')} · ${L(DIST[p.d])} · ${L(ST[p.st])}
+              </div>
+              <div style="font-size:0.85rem;color:var(--ink);margin-bottom:6px">
+                🎓 <b>${esc(L(p.edu))||'—'}</b> · 💼 <b>${esc(L(p.job))||'—'}</b>
+              </div>
+              <p class="m" style="margin:4px 0 8px;font-size:0.83rem">${esc(L(p.about))||'—'}</p>
+              
+              <!-- CONTACT BUTTONS -->
+              <div style="background:#F1F5F4;padding:8px;border-radius:8px;margin:8px 0;font-size:0.85rem">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+                  <span class="m">${t('phl')}:</span>
+                  <b style="color:#0C3A36">${esc(p.phone||'—')}</b>
+                </div>
+                ${p.phone ? `
+                  <div style="display:flex;gap:6px">
+                    <a href="${phLink}" class="btn" style="flex:1;text-align:center;padding:5px 8px;font-size:0.8rem;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:4px">
+                      📞 ${lang=='ml'?'വിളിക്കുക':'Call'}
+                    </a>
+                    <a href="${waLink}" target="_blank" rel="noopener" class="btn" style="flex:1.2;background:#25D366;color:#fff;text-align:center;padding:5px 8px;font-size:0.8rem;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:4px">
+                      💬 WhatsApp
+                    </a>
+                  </div>
+                ` : ''}
+              </div>
+
+              <!-- PHOTO ATTACH OPTION FOR ADMIN -->
+              <div style="margin:6px 0">
+                <label style="font-size:0.8rem;cursor:pointer;color:var(--teal);display:inline-flex;align-items:center;gap:4px;font-weight:600;background:#E3F2EE;padding:4px 8px;border-radius:6px">
+                  📷 ${hasPhoto ? (lang=='ml'?'ഫോട്ടോ മാറ്റുക':'Change Photo') : (lang=='ml'?'ഫോട്ടോ അറ്റാച്ച് ചെയ്യുക':'Attach Photo')}
+                  <input type="file" accept="image/*" style="display:none" onchange="adminAttachPhoto(${p.id}, this)">
+                </label>
+              </div>
+
+              <!-- APPROVE / REJECT ACTIONS -->
+              <div class="row" style="margin-top:10px;gap:8px">
+                <button class="btn" style="flex:1;background:#10B981" onclick="dec(${p.id},1)">
+                  ✅ ${t('ok')}
+                </button>
+                <button class="btn bad" style="flex:1" onclick="dec(${p.id},0)">
+                  ❌ ${t('no')}
+                </button>
+              </div>
+            </div>
+          </div>`;
+        }).join('')}
+      </div>
+    ` : `
+      <div style="text-align:center;padding:24px 12px;color:var(--mute)">
+        <div style="font-size:2rem;margin-bottom:8px">✅</div>
+        <b>${t('nop')}</b>
+        <p class="m" style="margin:4px 0 0;font-size:0.85rem">
+          ${lang=='ml'?'പുതിയ രജിസ്ട്രേഷനുകൾ വരുമ്പോൾ ഇവിടെ കാണിക്കും. ആവശ്യമെങ്കിൽ മുകളിലെ "ഷീറ്റിൽ നിന്ന് പുതുക്കുക" ക്ലിക്ക് ചെയ്യാം.':'New registrations will show up here. You can click "Refresh from Sheet" anytime.'}
+        </p>
+      </div>
+    `}
+  </div>
+
+  <!-- APPROVED REAL PROFILES -->
+  <div class="panel" style="margin-top:20px">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px">
+      <h3 style="margin:0;color:var(--teal)">
+        🌟 ${lang=='ml'?'അംഗീകരിച്ച ലൈവ് പ്രൊഫൈലുകൾ':'Approved Live Profiles'} (${approvedReal.length})
+      </h3>
+      <span class="m" style="font-size:0.82rem">
+        ${lang=='ml'?'ഈ പ്രൊഫൈലുകൾ വെബ്സൈറ്റിൽ പൊതുവായി കാണാവുന്നതാണ്':'These profiles are currently visible to the public'}
+      </span>
+    </div>
+    ${approvedReal.length ? `
+      <div class="cards" style="grid-template-columns:repeat(auto-fill,minmax(280px,1fr))">
+        ${approvedReal.map(p => `
+          <div class="pc">
+            <img src="${img(p)}" alt="">
+            <div class="b">
+              <div style="display:flex;justify-content:space-between;align-items:center">
+                <h3>${esc(L(p.name))}</h3>
+                <span class="badge" style="background:#DCFCE7;color:#166534;font-size:0.75rem">Live</span>
+              </div>
+              <div class="m">${p.age} ${t('yrs')} · ${L(DIST[p.d])}</div>
+              <div class="m" style="font-size:0.82rem">📞 ${esc(p.phone||'—')} · 💼 ${esc(L(p.job))||'—'}</div>
+              <div class="row" style="margin-top:10px">
+                <button class="btn ghost" style="color:var(--ink);padding:4px 10px;font-size:0.8rem" onclick="openP(${p.id})">${t('view')}</button>
+                <button class="btn bad" style="padding:4px 10px;font-size:0.8rem" onclick="dec(${p.id},0)">${lang=='ml'?'പിൻവലിക്കുക':'Unapprove'}</button>
+              </div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    ` : `<p class="m" style="margin:0">${lang=='ml'?'ഇതുവരെ പ്രൊഫൈലുകൾ ഒന്നും ലൈവ് ആക്കിയിട്ടില്ല.':'No live approved profiles yet.'}</p>`}
+  </div>
+
+  <!-- DEMO PROFILES CONTROL -->
+  <div class="panel" style="margin-top:20px;border-left:4px solid var(--gold)">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+      <div>
+        <h4 style="margin:0 0 4px">🎭 ${lang=='ml'?'ഡെമോ / മോക്ക് പ്രൊഫൈലുകൾ':'Demo / Mock Profiles'} (${approvedDemos.length})</h4>
+        <div class="m" style="font-size:0.82rem">
+          ${lang=='ml'?'തുടക്കത്തിൽ സൈറ്റ് ശൂന്യമായി കാണാതിരിക്കാൻ വെച്ചിട്ടുള്ള മോക്ക് പ്രൊഫൈലുകൾ (അനിത, രാഹുൽ, ഫാത്തിമ...)':'Initial mock profiles created to showcase the platform design.'}
+        </div>
+      </div>
+      <label style="display:inline-flex;align-items:center;gap:8px;font-size:0.88rem;cursor:pointer">
+        <input type="checkbox" ${hideDemos ? '' : 'checked'} onchange="localStorage.setItem('kth_hide_demos', this.checked?'0':'1'); draw(); toast(this.checked?(lang=='ml'?'ഡെമോ പ്രൊഫൈലുകൾ കാണിക്കുന്നു':'Demo profiles visible'):(lang=='ml'?'ഡെമോ പ്രൊഫൈലുകൾ മറച്ചു':'Demo profiles hidden'))">
+        <b>${lang=='ml'?'വെബ്സൈറ്റിൽ ഡെമോ കാണിക്കുക':'Show Demos on Website'}</b>
+      </label>
+    </div>
+  </div>
+
+  <!-- INTEREST REQUESTS SECTION -->
+  <h2 style="margin-top:32px">${t('ints')} (${db.i.length})</h2>
+  <div class="panel tbl">
+    ${db.i.length ? `
+      <table width="100%">
+        ${db.i.map((x,i)=>{
+          const a=db.p.find(p=>p.id==x.from), b=db.p.find(p=>p.id==x.to);
+          return `<tr>
+            <td>${esc(a&&L(a.name))}</td>
+            <td>→</td>
+            <td>${esc(b&&L(b.name))}</td>
+            <td class="m">${t('st'+(x.s||0))}</td>
+            <td>${x.s==1?`<button class="btn" style="padding:5px 12px" onclick="adm(${i},3)">${t('conn')}</button>`:x.s==3?esc((a&&a.phone||'-')+' / '+(b&&b.phone||'-')):!x.s&&b&&!b.phone?`<button class="btn ghost" style="color:var(--ink);padding:5px 12px" onclick="adm(${i},1)">${t('sim')}</button>`:''}</td>
+          </tr>`;
+        }).join('')}
+      </table>
+    ` : `<span class="m">${t('noi')}</span>`}
+  </div>
+ `);
+}
+function dec(id,ok){
+ const p=db.p.find(p=>p.id==id);
+ if(!p)return;
+ if(ok){
+  p.ok=1;
+  p.cloudStatus='Approved';
+  if(typeof updateCloudRecordStatus==='function'){
+   updateCloudRecordStatus('matrimony','profile',p.ref||('MAT-'+p.id),'Approved',{phone:p.phone});
+  }
+ }else{
+  if(p.ok){
+   p.ok=0;
+   p.cloudStatus='Unapproved';
+   if(typeof updateCloudRecordStatus==='function'){
+    updateCloudRecordStatus('matrimony','profile',p.ref||('MAT-'+p.id),'Unapproved',{phone:p.phone});
+   }
+  }else{
+   db.p=db.p.filter(p=>p.id!=id);
+   if(typeof updateCloudRecordStatus==='function'){
+    updateCloudRecordStatus('matrimony','profile',p.ref||('MAT-'+p.id),'Rejected',{phone:p.phone});
+   }
+  }
+ }
+ save();draw();toast(t(ok?'okd':'nod'));
+}
 function draw(){const A=document.getElementById('app');
  A.querySelectorAll('[id]').forEach(e=>{if('value'in e&&e.type!='file')fv[e.id]=e.value});
  document.getElementById('bn').textContent=t('brand');document.getElementById('ft').innerHTML = typeof getOurSupportFooter==='function' ? getOurSupportFooter(lang) : `<div class="wrap"><b>${t('brand')}</b> · ${t('tag')}</div>`;
@@ -409,6 +732,7 @@ function draw(){const A=document.getElementById('app');
  if(view=='edit'){const e=document.getElementById('f_phone');if(e)e.disabled=true}
  if(photo&&document.getElementById('pv')){const v=document.getElementById('pv');v.src=photo;v.style.display='block'}}
 document.documentElement.lang=lang;draw();
+if(typeof syncMatrimonyFromCloud==='function'){syncMatrimonyFromCloud();}
 </script>
 </body>
 </html>

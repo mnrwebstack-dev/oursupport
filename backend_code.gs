@@ -30,6 +30,7 @@ function doPost(e) {
     var rawData = e.postData ? e.postData.contents : "{}";
     var payload = JSON.parse(rawData);
     
+    var action = payload.action || "append";
     var service = payload.service || "general";
     var type = payload.type || "request";
     var data = payload.data || {};
@@ -41,6 +42,31 @@ function doPost(e) {
     if (!sheet) {
       sheet = ss.insertSheet(sheetName);
       setupHeaders(sheet, sheetName);
+    }
+    
+    // Status update handling (Admin Approve / Reject)
+    if (action === "updateStatus") {
+      var ref = payload.ref || (data && data.ref) || "";
+      var newStatus = payload.status || "Approved";
+      var values = sheet.getDataRange().getValues();
+      var updated = false;
+      
+      for (var r = 1; r < values.length; r++) {
+        var rowRef = String(values[r][1] || "");
+        var rowPhone = String(values[r][5] || "");
+        if ((ref && rowRef.indexOf(ref) !== -1) || (payload.phone && rowPhone.indexOf(String(payload.phone)) !== -1)) {
+          sheet.getRange(r + 1, 3).setValue(newStatus); // Column 3: Status
+          updated = true;
+          break;
+        }
+      }
+      return ContentService.createTextOutput(JSON.stringify({
+        status: "success",
+        action: "updateStatus",
+        updated: updated,
+        ref: ref,
+        newStatus: newStatus
+      })).setMimeType(ContentService.MimeType.JSON);
     }
     
     var row = formatRow(sheetName, data);

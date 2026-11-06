@@ -241,8 +241,49 @@ function inst(){const d=fv.id_;const l=INST.filter(x=>d==null||d===''||x.d==+d);
  return S(`<h2>${t('it')}</h2><p class="m">${t('itd')}</p><div class="panel" style="margin-top:0;max-width:340px"><label>${t('dd')}</label><select id="id_" onchange="draw()">${opt(DIST,1)}</select></div><div class="cards">${l.map(x=>`<div class="card"><h3>${L(x.n)}</h3><div><span class="tag">${L(x.s)}</span><span class="tag">${L(DIST[x.d])}</span></div><p class="m" style="margin:4px 0">${L(x.i)}</p></div>`).join('')||`<p class="m">${t('nores')}</p>`}</div><div class="note">${t('demo')}</div>`)}
 function track(){const p=fv.tp;const l=p&&p.length==10?db.r.filter(r=>r.ph==p||r.gp==p):null;
  return S(`<h2>${t('tr')}</h2><div class="panel" style="margin-top:0;max-width:460px"><p class="m">${t('trd')}</p><input id="tp" inputmode="numeric" maxlength="10"><p><button class="btn" onclick="draw()">${t('trb')}</button></p></div>`+(l?(l.length?`<div class="cards">${l.map(r=>`<div class="card"><b>EDU-${String(r.id).padStart(4,'0')}</b><span>${t('t'+r.ty)}</span><span class="m">${r.date}</span><span class="badge">${t('st'+r.s)}</span></div>`).join('')}</div>`:`<p class="m" style="margin-top:14px">${t('trn')}</p>`):''))}
+async function syncEducationFromCloud() {
+  if (typeof fetchCloudRecords !== 'function') return;
+  try {
+    const recs = await fetchCloudRecords('education', 'request');
+    if (Array.isArray(recs) && recs.length > 0) {
+      recs.forEach(rec => {
+        const ref = String(rec.Reference || rec.ref || '').trim();
+        const rawId = parseInt(ref.replace(/\D/g, ''), 10);
+        const parsedId = (!isNaN(rawId) && rawId > 0) ? rawId : db.n++;
+        const phone = String(rec.Phone || rec.phone || '').trim();
+        let r = db.r.find(x => x.id === parsedId || (phone && x.ph === phone));
+        const distName = String(rec.District || '').toLowerCase();
+        let distIdx = DIST.findIndex(d => distName.includes(d[0].toLowerCase()) || distName.includes(d[1].toLowerCase()));
+        if (distIdx === -1) distIdx = 0;
+        if (!r) {
+          r = {
+            id: parsedId,
+            ref: ref,
+            name: rec.Name || 'അപേക്ഷകൻ',
+            age: parseInt(rec.Age, 10) || 18,
+            ph: phone,
+            gn: rec.GuardianName || '',
+            gp: rec.GuardianPhone || '',
+            d: distIdx,
+            cls: rec.Class || '',
+            ty: 0,
+            x1: '',
+            x2: '',
+            note: rec.Details || rec.Type || '',
+            s: 0,
+            date: (rec.Timestamp || new Date().toISOString()).slice(0, 10)
+          };
+          db.r.push(r);
+        }
+      });
+      save();
+      if (typeof draw === 'function') draw();
+    }
+  } catch(e) {}
+}
+
 function admin(){
- if(!isAdmin)return S(`<h2>${t('al')}</h2><div class="panel" style="max-width:340px"><label>${t('pin')}</label><input id="pin" type="password"><p><button class="btn" onclick="if(document.getElementById('pin').value==(window.OURSUPPORT_CONFIG&&OURSUPPORT_CONFIG.adminPin||'974522')){isAdmin=true;draw()}else toast(t('badpin'))">${t('enter')}</button></p></div>`);
+ if(!isAdmin)return S(`<h2>${t('al')}</h2><div class="panel" style="max-width:340px"><label>${t('pin')}</label><input id="pin" type="password"><p><button class="btn" onclick="if(document.getElementById('pin').value==(window.OURSUPPORT_CONFIG&&OURSUPPORT_CONFIG.adminPin||'974522')){isAdmin=true;syncEducationFromCloud();draw()}else toast(t('badpin'))">${t('enter')}</button></p></div>`);
  return S(`<h2>${t('rq')} (${db.r.length})</h2><div class="panel tbl" style="margin-top:0">${db.r.length?`<table><tr><th>ID</th><th></th><th></th><th></th><th></th></tr>${db.r.map(r=>`<tr><td>EDU-${String(r.id).padStart(4,'0')}<br><span class="m">${r.date}</span></td><td><b>${esc(r.name)}</b>, ${r.age}<br>${esc(r.ph)} · ${L(DIST[r.d])}<br><span class="m">${esc(r.cls)}</span>${r.gn?`<br><span class="m">${t('guard')}: ${esc(r.gn)} ${esc(r.gp)}</span>`:''}</td><td>${t('t'+r.ty)}<br><span class="m">${r.x1!==''?L(r.ty==0?XO.x10[r.x1]:r.ty==1?XO.x11[r.x1]:XO.x12[r.x1]):''}</span><br><span class="m">${esc(r.note)}</span></td><td><select onchange="setS(${r.id},this.value)">${[0,1,2,3].map(i=>`<option value="${i}"${r.s==i?' selected':''}>${t('st'+i)}</option>`).join('')}</select></td></tr>`).join('')}</table>`:`<span class="m">${t('none')}</span>`}</div><p><button class="btn ghost" style="color:var(--ink)" onclick="isAdmin=false;draw()">${t('out')}</button></p>`)}
 function setS(id,v){db.r.find(r=>r.id==id).s=+v;save();toast(t('st'+v))}
 function draw(){const A=document.getElementById('app');
@@ -254,6 +295,7 @@ function draw(){const A=document.getElementById('app');
  A.querySelectorAll('[id]').forEach(e=>{if(fv[e.id]!=null&&'value'in e&&e.type!='file'&&e.type!='checkbox')e.value=fv[e.id]});
  gChg()}
 document.documentElement.lang=lang;draw();
+if(typeof syncEducationFromCloud==='function'){syncEducationFromCloud();}
 </script>
 </body>
 </html>

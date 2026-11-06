@@ -208,3 +208,52 @@ function syncRecordToCloud(service, type, data) {
     }
   }
 }
+
+/**
+ * Universal Cloud Fetch Engine
+ * Reads real registrations / submissions from Central Google Sheet
+ */
+async function fetchCloudRecords(service, type) {
+  if (!OURSUPPORT_CONFIG.cloudApiUrl || !OURSUPPORT_CONFIG.cloudApiUrl.startsWith('http')) {
+    return [];
+  }
+  try {
+    const url = OURSUPPORT_CONFIG.cloudApiUrl + '?service=' + encodeURIComponent(service) + '&type=' + encodeURIComponent(type || 'request') + '&_t=' + Date.now();
+    const res = await fetch(url);
+    if (!res.ok) return [];
+    const data = await res.json();
+    if (data && data.status === 'success' && Array.isArray(data.records)) {
+      return data.records;
+    }
+  } catch (err) {
+    console.warn('Cloud fetch notice:', err);
+  }
+  return [];
+}
+
+/**
+ * Universal Cloud Status Updater
+ * Updates status (Approved / Rejected / Contacted) in Google Sheet
+ */
+function updateCloudRecordStatus(service, type, ref, status, extra) {
+  if (!OURSUPPORT_CONFIG.cloudApiUrl || !OURSUPPORT_CONFIG.cloudApiUrl.startsWith('http')) {
+    return;
+  }
+  try {
+    fetch(OURSUPPORT_CONFIG.cloudApiUrl, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        action: 'updateStatus',
+        service: service,
+        type: type,
+        ref: ref,
+        status: status,
+        extra: extra || {}
+      })
+    }).catch(err => console.log('Status update background notice:', err));
+  } catch(e) {
+    console.warn('Status update notice:', e);
+  }
+}
