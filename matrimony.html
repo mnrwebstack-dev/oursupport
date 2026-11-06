@@ -501,13 +501,40 @@ function adminAttachPhoto(id, inp) {
       c.width = im.width * k;
       c.height = im.height * k;
       c.getContext('2d').drawImage(im, 0, 0, c.width, c.height);
-      const dataUrl = c.toDataURL('image/jpeg', 0.7);
+      const dataUrl = c.toDataURL('image/jpeg', 0.75);
       const p = db.p.find(x => x.id == id);
       if (p) {
         p.ph = dataUrl;
         save();
         draw();
-        toast(lang == 'ml' ? 'ഫോട്ടോ വിജയകരമായി ചേർത്തു!' : 'Photo attached successfully!');
+        toast(lang == 'ml' ? 'ഫോട്ടോ വിജയകരമായി അറ്റാച്ച് ചെയ്തു!' : 'Photo attached successfully!');
+      }
+    };
+    im.src = e.target.result;
+  };
+  r.readAsDataURL(fl);
+}
+
+function adminAttachDoc(id, inp) {
+  const fl = inp.files[0];
+  if (!fl) return;
+  const r = new FileReader();
+  r.onload = e => {
+    const im = new Image();
+    im.onload = () => {
+      const c = document.createElement('canvas');
+      const k = Math.min(1, 700 / Math.max(im.width, im.height));
+      c.width = im.width * k;
+      c.height = im.height * k;
+      c.getContext('2d').drawImage(im, 0, 0, c.width, c.height);
+      const dataUrl = c.toDataURL('image/jpeg', 0.55);
+      const p = db.p.find(x => x.id == id);
+      if (p) {
+        p.docs = p.docs || {};
+        p.docs.idImg = dataUrl;
+        save();
+        draw();
+        toast(lang == 'ml' ? 'തിരിച്ചറിയൽ രേഖ അറ്റാച്ച് ചെയ്തു!' : 'ID document attached successfully!');
       }
     };
     im.src = e.target.result;
@@ -554,7 +581,17 @@ function admin(){
       <div class="cards" style="grid-template-columns:repeat(auto-fill,minmax(300px,1fr))">
         ${pd.map(p => {
           const phLink = p.phone ? 'tel:' + p.phone : '#';
-          const waText = encodeURIComponent('നമസ്കാരം ' + (esc(L(p.name))||'') + ', കൈത്താങ്ങ് / ഒരു സപ്പോർട്ട് (OruSupport.com) മാട്രിമോണി സേവനത്തിൽ താങ്കൾ നൽകിയ രജിസ്ട്രേഷൻ (Ref: ' + (p.ref||('MAT-'+p.id)) + ') സംബന്ധിച്ചാണ് ബന്ധപ്പെടുന്നത്.');
+          const pName = esc(L(p.name)) || 'സഹോദരാ';
+          const pRef = p.ref || ('MAT-' + String(p.id).padStart(4, '0'));
+          const fullWaMsg = 'നമസ്കാരം ' + pName + ',\n' +
+            'കൈത്താങ്ങ് / ഒരു സപ്പോർട്ട് (OruSupport.com) മാട്രിമോണി സേവനത്തിൽ താങ്കൾ നൽകിയ രജിസ്ട്രേഷൻ (Ref: ' + pRef + ') ഞങ്ങൾക്ക് ലഭിച്ചിട്ടുണ്ട്.\n\n' +
+            'താങ്കളുടെ പ്രൊഫൈൽ പരിശോധിച്ച് വെബ്സൈറ്റിൽ ലൈവ് (Live) ആക്കുന്നതിനായി:\n' +
+            '1. താങ്കളുടെ വ്യക്തമായ ഒരു ഫോട്ടോ (Profile Photo)\n' +
+            '2. തിരിച്ചറിയൽ രേഖയുടെ കോപ്പി (Aadhaar Card / ID Proof)\n\n' +
+            'എന്നിവ ദയവായി ഈ വാട്സ്ആപ്പിലേക്ക് അയച്ചു തരുമല്ലോ.\n\n' +
+            'ഞങ്ങളുടെ കോർഡിനേറ്റർ രേഖകൾ വെരിഫൈ ചെയ്ത ഉടൻ തന്നെ താങ്കളുടെ പ്രൊഫൈൽ സൗജന്യ മാട്രിമോണി സേവനത്തിൽ സജീവമാക്കുന്നതായിരിക്കും.\n\n' +
+            'നന്ദി,\nപീപ്പിൾസ് സർവീസ് മിഷൻ കേരള · OruSupport.com\nഹെൽപ്‌ലൈൻ: 9745226500';
+          const waText = encodeURIComponent(fullWaMsg);
           const waLink = p.phone ? 'https://wa.me/91' + p.phone + '?text=' + waText : '#';
           const hasPhoto = Boolean(p.ph);
           
@@ -596,10 +633,14 @@ function admin(){
               </div>
 
               <!-- PHOTO ATTACH OPTION FOR ADMIN -->
-              <div style="margin:6px 0">
-                <label style="font-size:0.8rem;cursor:pointer;color:var(--teal);display:inline-flex;align-items:center;gap:4px;font-weight:600;background:#E3F2EE;padding:4px 8px;border-radius:6px">
-                  📷 ${hasPhoto ? (lang=='ml'?'ഫോട്ടോ മാറ്റുക':'Change Photo') : (lang=='ml'?'ഫോട്ടോ അറ്റാച്ച് ചെയ്യുക':'Attach Photo')}
+              <div style="margin:6px 0;display:flex;gap:6px;flex-wrap:wrap">
+                <label style="font-size:0.78rem;cursor:pointer;color:var(--teal);display:inline-flex;align-items:center;gap:4px;font-weight:600;background:#E3F2EE;padding:4px 8px;border-radius:6px">
+                  📷 ${hasPhoto ? (lang=='ml'?'ഫോട്ടോ ചേർത്തു ✓':'Photo Added ✓') : (lang=='ml'?'ഫോട്ടോ അറ്റാച്ച് ചെയ്യുക':'Attach Photo')}
                   <input type="file" accept="image/*" style="display:none" onchange="adminAttachPhoto(${p.id}, this)">
+                </label>
+                <label style="font-size:0.78rem;cursor:pointer;color:#4F46E5;display:inline-flex;align-items:center;gap:4px;font-weight:600;background:#EEF2FF;padding:4px 8px;border-radius:6px">
+                  📄 ${p.docs && p.docs.idImg ? (lang=='ml'?'രേഖ ചേർത്തു ✓':'ID Added ✓') : (lang=='ml'?'ആധാർ അറ്റാച്ച് ചെയ്യുക':'Attach ID Proof')}
+                  <input type="file" accept="image/*" style="display:none" onchange="adminAttachDoc(${p.id}, this)">
                 </label>
               </div>
 
