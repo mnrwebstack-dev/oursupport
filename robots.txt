@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://www.orusupport.com/sitemap.xml
+Sitemap: https://orusupport.com/sitemap.xml
